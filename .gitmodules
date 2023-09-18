@@ -1,0 +1,3 @@
+[submodule "submodules/GatoGraphQL"]
+	path = submodules/GatoGraphQL
+	url = https://github.com/GatoGraphQL/GatoGraphQL
