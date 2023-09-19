@@ -28,8 +28,8 @@ return [
             ->notPath([
                 // Exclude all composer.json from own libraries (they get broken!)
                 '#[saying\-hello\-to\-gato]/*/composer.json#',
-                // Exclude all libraries for WordPress: Packages ending in "-wp"
-                '#[saying\-hello\-to\-gato]/[a-zA-Z0-9_-]*-wp/#',
+                // // Exclude all libraries for WordPress: Packages ending in "-wp"
+                // '#[saying\-hello\-to\-gato]/[a-zA-Z0-9_-]*-wp/#',
                 // ...
                 // Exclude libraries
                 // ...
