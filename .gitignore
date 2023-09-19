@@ -1,0 +1,18 @@
+/build/
+/vendor/
+phpcs.xml
+phpunit.xml
+phpunit-test-results.xml
+/.phpunit.cache
+.php-cs-fixer.cache
+composer.lock
+# The root composer.lock is commited to the repo,
+# to make sure the CI doesn't fail
+!/composer.lock
+.lando.local.yml
+# Files for running the webservers
+composer.local.json
+composer.local.lock
+# VSCode
+/.vscode/
+!/.vscode/launch.json
