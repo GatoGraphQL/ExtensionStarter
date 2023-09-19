@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use PoP\PRO\Config\Rector\Downgrade\Configurators\HelloGatoContainerConfigurationService;
+use PoP\ExtensionStarter\Config\Rector\Downgrade\Configurators\HelloGatoContainerConfigurationService;
 use Rector\Config\RectorConfig;
 
 return static function (RectorConfig $rectorConfig): void {

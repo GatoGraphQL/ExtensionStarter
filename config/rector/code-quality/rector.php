@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use PoP\PRO\Config\Rector\CodeQuality\Configurators\CodeQualityContainerConfigurationService;
+use PoP\ExtensionStarter\Config\Rector\CodeQuality\Configurators\CodeQualityContainerConfigurationService;
 use Rector\Config\RectorConfig;
 
 return static function (RectorConfig $rectorConfig): void {

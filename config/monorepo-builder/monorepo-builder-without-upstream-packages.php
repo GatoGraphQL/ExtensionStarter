@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use PoP\PRO\Config\Symplify\MonorepoBuilder\Configurators\ContainerConfigurationService;
+use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\Configurators\ContainerConfigurationService;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
