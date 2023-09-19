@@ -1,0 +1,99 @@
+####################################################################################
+# GitHub Action:
+# Test that scoping the plugins works well
+####################################################################################
+name: Scoping tests
+on:
+    #push:
+        #branches:
+            #- master
+    #pull_request: null
+
+env:
+    CHECKOUT_SUBMODULES: "recursive"
+    # see https://github.com/composer/composer/issues/9368#issuecomment-718112361
+    COMPOSER_ROOT_VERSION: "dev-master"
+
+jobs:
+    provide_data:
+        name: Provide configuration of scoped releases
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v3
+                with:
+                    submodules: ${{ env.CHECKOUT_SUBMODULES }}
+
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 8.1
+                    coverage: none
+                env:
+                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            -   uses: "ramsey/composer-install@v2"
+
+            -   id: output_data
+                run: |
+                    echo "plugin_config_entries=$(vendor/bin/monorepo-builder plugin-config-entries-json --config=config/monorepo-builder/plugin-config-entries-json.php --scoped-only)" >> $GITHUB_OUTPUT
+        outputs:
+            plugin_config_entries: ${{ steps.output_data.outputs.plugin_config_entries }}
+
+    main:
+        name: Scope the code from ${{ matrix.pluginConfig.plugin_slug }} (via PHP-Scoper), and execute tests
+        needs: provide_data
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                pluginConfig: ${{ fromJson(needs.provide_data.outputs.plugin_config_entries) }}
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v3
+                with:
+                    submodules: ${{ env.CHECKOUT_SUBMODULES }}
+
+                # see https://github.com/shivammathur/setup-php
+            -   name: Set-up PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 8.1
+                    coverage: none
+                env:
+                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            -   name: Install root dependencies
+                uses: "ramsey/composer-install@v2"
+
+            # "custom-bump-interdependency" temporarily needed because of bug:
+            # https://github.com/symplify/symplify/issues/2773
+            -   name: Localize package paths
+                run: |
+                    vendor/bin/monorepo-builder custom-bump-interdependency --config=config/monorepo-builder/custom-bump-interdependency.php "dev-master"
+                    vendor/bin/monorepo-builder localize-composer-paths --config=config/monorepo-builder/localize-composer-paths.php ${{ matrix.pluginConfig.path }}/composer.json --ansi
+
+            -   name: Install release dependencies for PROD
+                run: composer install --no-dev --no-progress --no-interaction --ansi
+                working-directory: ${{ matrix.pluginConfig.path }}
+
+            -   name: Install PHP-Scoper (globally)
+                run: |
+                    composer global config minimum-stability dev
+                    composer global config prefer-stable true
+                    composer global require humbug/php-scoper
+
+            # (Current situation) If the scoped results correspond to vendor/ only, we must do "--output-dir ../prefixed-plugin/vendor"
+            # (Not happening now) If they also include src/, we must do "--output-dir ../prefixed-plugin"
+            -   name: Scope code into separate folder
+                run: php-scoper add-prefix --config=${{ matrix.pluginConfig.scoping.phpscoper_config }} --output-dir $GITHUB_WORKSPACE/build-prefixed/vendor --ansi
+                working-directory: ${{ matrix.pluginConfig.path }}
+
+            -   name: Copy scoped code back into original location
+                run: rsync -av build-prefixed/ ${{ matrix.pluginConfig.path }} --quiet
+
+            -   name: Regenerate autoloader for PROD
+                run: composer dumpautoload --optimize --classmap-authoritative --ansi
+                working-directory: ${{ matrix.pluginConfig.path }}
+
+            -   name: Run Rector on the scoped code
+                run: vendor/bin/rector process --config=${{ matrix.pluginConfig.scoping.rector_test_config }} --ansi
+
