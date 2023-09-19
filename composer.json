@@ -1,0 +1,388 @@
+{
+    "name": "gatographql/extension-starter-monorepo",
+    "description": "GitHub template repository to quickstart your extension for Gato GraphQL",
+    "authors": [
+        {
+            "name": "Leonardo Losoviz",
+            "email": "name@company.com",
+            "homepage": "https://gatographql.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.5",
+        "johnpbloch/wordpress": "^6.3",
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^10.2",
+        "rector/rector": "^0.18",
+        "slevomat/coding-standard": "^7.0",
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/var-dumper": "^6.0",
+        "symplify/monorepo-builder": "^10.2.2",
+        "szepeviktor/phpstan-wordpress": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/leoloso/monorepo-builder.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/leoloso/package-builder.git"
+        }
+    ],
+    "extra": {
+        "wordpress-install-dir": "vendor/wordpress/wordpress"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "boxuk/wp-muplugin-loader": true,
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "johnpbloch/wordpress-core-installer": true,
+            "oomphinc/composer-installers-extender": true
+        }
+    },
+    "scripts": {
+        "all": [
+            "@validate-monorepo",
+            "@test-all",
+            "@analyse-all",
+            "@fix-style-all"
+        ],
+        "test-all": [
+            "@test-upstream",
+            "@test"
+        ],
+        "check-style-all": [
+            "@check-style"
+        ],
+        "fix-style-all": [
+            "@fix-style"
+        ],
+        "analyse-all": [
+            "@analyse-upstream",
+            "@analyse"
+        ],
+        "unit-test-all": [
+            "@unit-test-upstream",
+            "@unit-test"
+        ],
+        "integration-test-all": [
+            "@integration-test-upstream",
+            "@integration-test"
+        ],
+        "remove-unused-imports-all": [
+            "@remove-unused-imports",
+            "@remove-unused-imports-upstream"
+        ],
+        "test": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit --log-junit=phpunit-test-results.xml"
+        ],
+        "unit-test": "phpunit --filter='/^((?!Integration).)*$/' --log-junit=phpunit-test-results.xml",
+        "stopping-unit-test": "phpunit --filter='/^((?!Integration).)*$/' --log-junit=phpunit-test-results.xml --order-by=defects --stop-on-error --stop-on-failure",
+        "unit-test-upstream": "composer unit-test -d submodules/GatoGraphQL",
+        "stopping-unit-test-upstream": "composer stopping-unit-test -d submodules/GatoGraphQL",
+        "integration-test": [
+            "Composer\\Config::disableProcessTimeout",
+            "@optimize-autoloader",
+            "phpunit --filter='Integration' --log-junit=phpunit-test-results.xml",
+            "@deoptimize-autoloader"
+        ],
+        "stopping-integration-test": [
+            "Composer\\Config::disableProcessTimeout",
+            "@optimize-autoloader",
+            "phpunit --filter='Integration' --log-junit=phpunit-test-results.xml --order-by=defects --stop-on-error --stop-on-failure",
+            "@deoptimize-autoloader"
+        ],
+        "integration-test-upstream": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer integration-test -d submodules/GatoGraphQL"
+        ],
+        "stopping-integration-test-upstream": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer stopping-integration-test -d submodules/GatoGraphQL"
+        ],
+        "prod-integration-test": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer integration-test -d webservers/hello-gato-for-prod"
+        ],
+        "stopping-prod-integration-test": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer stopping-integration-test -d webservers/hello-gato-for-prod"
+        ],
+        "prod-activate-all-extensions-bundle": "composer activate-all-extensions-bundle -d webservers/hello-gato-for-prod",
+        "prod-deactivate-all-extensions-bundle": "composer deactivate-all-extensions-bundle -d webservers/hello-gato-for-prod",
+        "prod-integration-test-all-extensions-bundle": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer integration-test-all-extensions-bundle -d webservers/hello-gato-for-prod"
+        ],
+        "prod-integration-test-upstream": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer prod-integration-test -d submodules/GatoGraphQL"
+        ],
+        "stopping-prod-integration-test-upstream": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer stopping-prod-integration-test -d submodules/GatoGraphQL"
+        ],
+        "debug": "XDEBUG_TRIGGER=debug phpunit",
+        "check-style": "php -d memory_limit=512M vendor/bin/phpcs -n src $(monorepo-builder source-packages --config=config/monorepo-builder/source-packages.php --psr4-only --subfolder=src --subfolder=tests)",
+        "fix-style": "php -d memory_limit=512M vendor/bin/phpcbf -n src $(monorepo-builder source-packages --config=config/monorepo-builder/source-packages.php --psr4-only --subfolder=src --subfolder=tests)",
+        "analyse": "phpstan analyse --memory-limit 1G --ansi",
+        "test-upstream": "composer test -d submodules/GatoGraphQL",
+        "check-style-upstream": "composer check-style -d submodules/GatoGraphQL",
+        "analyse-upstream": "composer analyse -d submodules/GatoGraphQL",
+        "preview-src-downgrade": "rector process $(monorepo-builder source-packages --config=config/monorepo-builder/source-packages.php --psr4-only --subfolder=src) --config=config/rector/downgrade/monorepo/rector.php --ansi --dry-run || true",
+        "preview-vendor-downgrade": "submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/monorepo/rector.php --dry-run \"\" \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\" || true",
+        "preview-code-downgrade": [
+            "@preview-src-downgrade",
+            "@preview-vendor-downgrade"
+        ],
+        "preview-hello-gato-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/hello-gato/rector.php --dry-run layers/GatoGraphQLForWP/plugins/hello-gato \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
+        "preview-low-level-persisted-query-editing-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/low-level-persisted-query-editing/rector.php --dry-run layers/GatoGraphQLForWP/plugins/low-level-persisted-query-editing \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
+        "ssh-server": "composer ssh-server -d webservers/hello-gato",
+        "build-server": "composer build-server -d webservers/hello-gato",
+        "init-server": "composer init-server -d webservers/hello-gato",
+        "init-server-upstream": "composer init-server -d submodules/GatoGraphQL",
+        "init-server-prod": "composer init-server -d webservers/hello-gato-for-prod",
+        "start-server": "composer start-server -d webservers/hello-gato",
+        "destroy-server": "composer destroy-server -d webservers/hello-gato",
+        "reset-db": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer reset-db -d webservers/hello-gato"
+        ],
+        "reset-db-prod": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer reset-db -d webservers/hello-gato-for-prod"
+        ],
+        "install-site": "composer install-site -d webservers/hello-gato",
+        "import-data": "composer import-data -d webservers/hello-gato",
+        "create-users": "composer create-users -d webservers/hello-gato",
+        "update-deps": "composer update-deps -d webservers/hello-gato",
+        "optimize-autoloader": "composer optimize-autoloader -d webservers/hello-gato",
+        "deoptimize-autoloader": "composer deoptimize-autoloader -d webservers/hello-gato",
+        "log-server-errors": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer log-server-errors -d webservers/hello-gato"
+        ],
+        "log-server-warnings": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer log-server-warnings -d webservers/hello-gato"
+        ],
+        "rebuild-server": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer rebuild-server -d webservers/hello-gato"
+        ],
+        "rebuild-app-and-server": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer rebuild-app-and-server -d webservers/hello-gato"
+        ],
+        "rebuild-app-and-server-prod": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer rebuild-app-and-server -d webservers/hello-gato-for-prod"
+        ],
+        "stop-server": "composer stop-server -d webservers/hello-gato",
+        "stop-server-upstream": "composer stop-server -d submodules/GatoGraphQL",
+        "enable-caching": "composer enable-caching -d webservers/hello-gato",
+        "disable-caching": "composer disable-caching -d webservers/hello-gato",
+        "enable-restrictive-defaults": "composer enable-restrictive-defaults -d webservers/hello-gato",
+        "disable-restrictive-defaults": "composer disable-restrictive-defaults -d webservers/hello-gato",
+        "use-default-restrictive-defaults": "composer use-default-restrictive-defaults -d webservers/hello-gato",
+        "delete-settings": "composer delete-settings -d webservers/hello-gato",
+        "purge-cache": "composer purge-cache -d webservers/hello-gato",
+        "purge-cache-upstream": "composer purge-cache -d submodules/GatoGraphQL",
+        "server-info": "composer server-info -d webservers/hello-gato",
+        "merge-monorepo": "monorepo-builder merge --config=config/monorepo-builder/merge.php --ansi",
+        "propagate-monorepo": "monorepo-builder propagate --config=config/monorepo-builder/propagate.php --ansi",
+        "validate-monorepo": "monorepo-builder validate --config=config/monorepo-builder/validate.php --ansi",
+        "release-patch": "monorepo-builder release patch --config=config/monorepo-builder/release.php --ansi",
+        "release-minor": "monorepo-builder release minor --config=config/monorepo-builder/release.php --ansi",
+        "release-major": "monorepo-builder release major --config=config/monorepo-builder/release.php --ansi",
+        "merge-phpstan": "monorepo-builder merge-phpstan --config=config/monorepo-builder/merge-phpstan.php --ansi",
+        "improve-code-quality": "rector process --config=config/rector/code-quality/rector.php --ansi",
+        "upgrade-to-phpunit-10": "rector process --config=config/rector/upgrades/phpunit-10/rector.php --ansi",
+        "remove-unused-imports": "php-cs-fixer fix --config=.php-cs-fixer.dist.php",
+        "remove-unused-imports-upstream": "composer remove-unused-imports -d submodules/GatoGraphQL",
+        "copy-folders-from-upstream-monorepo": "monorepo-builder copy-upstream-monorepo-folders",
+        "copy-files-from-upstream-monorepo": "monorepo-builder copy-upstream-monorepo-files",
+        "copy-upstream-files": [
+            "@copy-folders-from-upstream-monorepo",
+            "@copy-files-from-upstream-monorepo"
+        ],
+        "copy-extension-module-images-to-upstream-monorepo": "monorepo-builder copy-downstream-extension-module-images-to-upstream-monorepo",
+        "build-js-upstream": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer build-js -d submodules/GatoGraphQL"
+        ],
+        "build-js": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash -x submodules/GatoGraphQL/dev-helpers/scripts/build-js.sh layers/GatoGraphQLForWP/plugins BUILD_PROD"
+        ],
+        "build-js-all": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build-js-upstream",
+            "@build-js"
+        ],
+        "npm-start-js-upstream": "composer npm-start-js -d submodules/GatoGraphQL",
+        "npm-start-js": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash -x submodules/GatoGraphQL/dev-helpers/scripts/build-js.sh layers/GatoGraphQLForWP/plugins COMPILE_DEV"
+        ],
+        "npm-start-js-all": [
+            "@npm-start-js-upstream",
+            "@npm-start-js"
+        ],
+        "install-deps-build-js": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash -x submodules/GatoGraphQL/dev-helpers/scripts/build-js.sh layers/GatoGraphQLForWP/plugins INSTALL_DEPS"
+        ],
+        "install-deps-build-js-upstream": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer install-deps-build-js -d submodules/GatoGraphQL"
+        ],
+        "install-deps-build-js-all": [
+            "Composer\\Config::disableProcessTimeout",
+            "@install-deps-build-js-upstream",
+            "@install-deps-build-js"
+        ],
+        "print-github-actions-artifact-download-urls": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer print-github-actions-artifact-download-urls -d webservers/hello-gato-for-prod"
+        ],
+        "print-github-actions-gatographql-artifact-download-url": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer print-github-actions-gatographql-artifact-download-url -d webservers/hello-gato-for-prod"
+        ],
+        "print-github-actions-hello-gato-artifact-download-url": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer print-github-actions-hello-gato-artifact-download-url -d webservers/hello-gato-for-prod"
+        ],
+        "print-github-actions-upstream-artifact-download-urls": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer print-github-actions-upstream-artifact-download-urls -d webservers/hello-gato-for-prod"
+        ],
+        "print-github-actions-all-artifact-download-urls": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer print-github-actions-all-artifact-download-urls -d webservers/hello-gato-for-prod"
+        ],
+        "print-github-actions-artifact-full-response": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer print-github-actions-artifact-full-response -d webservers/hello-gato-for-prod"
+        ],
+        "print-github-actions-upstream-artifact-full-response": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer print-github-actions-upstream-artifact-full-response -d webservers/hello-gato-for-prod"
+        ],
+        "print-github-actions-all-artifact-full-response": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer print-github-actions-all-artifact-full-response -d webservers/hello-gato-for-prod"
+        ],
+        "server-install-gatographql-generated-plugin-from-github-actions": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer server-install-gatographql-generated-plugin-from-github-actions -d webservers/hello-gato-for-prod"
+        ],
+        "server-install-hello-gato-generated-plugin-from-github-actions": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer server-install-hello-gato-generated-plugin-from-github-actions -d webservers/hello-gato-for-prod"
+        ],
+        "server-install-generated-plugins-from-github-actions": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer server-install-generated-plugins-from-github-actions -d webservers/hello-gato-for-prod"
+        ],
+        "server-install-generated-plugins-from-upstream-github-actions": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer server-install-generated-plugins-from-upstream-github-actions -d webservers/hello-gato-for-prod"
+        ],
+        "server-install-generated-plugins-from-all-github-actions": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer server-install-generated-plugins-from-all-github-actions -d webservers/hello-gato-for-prod"
+        ],
+        "server-install-generated-plugins-from-github-actions-upstream": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer server-install-generated-plugins-from-github-actions-upstream -d webservers/hello-gato-for-prod"
+        ]
+    },
+    "scripts-descriptions": {
+        "all": "Execute all required tests (except downgrade)",
+        "test-all": "Execute PHPUnit tests on the upstream and downstream repos",
+        "check-style-all": "Validate PSR-12 coding standards on the upstream and downstream repos",
+        "analyse-all": "Run PHPStan static analysis of the code on the upstream and downstream repos",
+        "unit-test-all": "Execute unit tests (PHPUnit) on the upstream and downstream repos",
+        "integration-test-all": "Execute integration tests (PHPUnit) on the upstream and downstream repos",
+        "test": "Execute PHPUnit tests",
+        "unit-test": "Execute unit tests (PHPUnit)",
+        "integration-test": "Execute integration tests (PHPUnit)",
+        "prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver",
+        "stopping-prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure",
+        "prod-integration-test-all-extensions-bundle": "Execute integration tests (PHPUnit) against the PROD webserver, using the 'gatographql-all-extensions-bundle' plugin",
+        "debug": "Debug PHPUnit tests",
+        "check-style": "Validate PSR-12 coding standards (via phpcs)",
+        "fix-style": "Fix PSR-12 coding standards (via phpcbf)",
+        "analyse": "Run PHPStan static analysis of the code",
+        "preview-src-downgrade": "Run Rector in 'dry-run' mode to preview how the src/ folder will be downgraded to PHP 7.2",
+        "preview-vendor-downgrade": "Run Rector in 'dry-run' mode to preview how the vendor/ folder will be downgraded to PHP 7.2",
+        "preview-code-downgrade": "Run Rector in 'dry-run' mode to preview how the all code (i.e. src/ + vendor/ folders) will be downgraded to PHP 7.2",
+        "ssh-server": "SSH into the Lando webserver with the 'Gato GraphQL' demo site",
+        "build-server": "Initialize the Lando webserver with the 'Gato GraphQL' demo site, for development. To be executed only the first time",
+        "init-server": "Alias of 'start-server",
+        "start-server": "Start the Lando webserver with the 'Gato GraphQL' demo site, for development",
+        "destroy-server": "Destroy the Lando webserver with the 'Gato GraphQL' demo site",
+        "reset-db": "Resets the WordPress database",
+        "install-site": "Installs the WordPress site",
+        "import-data": "Imports pre-defined data into the DB (posts, users, CPTs, etc)",
+        "update-deps": "Update the Composer dependencies for the 'Gato GraphQL' plugins",
+        "optimize-autoloader": "Optimizes the Composer autoloaders for all the plugins installed in the webserver",
+        "deoptimize-autoloader": "Removes the optimization of the Composer autoloaders for all the plugins installed in the webserver",
+        "log-server-errors": "Show (on real time) the errors from the Lando webserver",
+        "log-server-warnings": "Show (on real time) the warnings from the Lando webserver",
+        "rebuild-app-and-server": "Update the App dependencies (from Composer) and rebuild the Lando webserver",
+        "stop-server": "Stop the Lando webserver",
+        "enable-caching": "Enable caching for the 'Gato GraphQL' in DEV",
+        "disable-caching": "Disable caching for the 'Gato GraphQL' in DEV",
+        "enable-restrictive-defaults": "Use restrictive default values for the Settings",
+        "disable-restrictive-defaults": "Do not use restrictive default values for the Settings",
+        "use-default-restrictive-defaults": "Remove the set value, use the default one",
+        "delete-settings": "Delete the plugin settings from the DB",
+        "purge-cache": "Purge the cache for the 'Gato GraphQL' in DEV",
+        "server-info": "Retrieve information from the Lando webserver",
+        "validate-monorepo": "Validate that version constraints for dependencies are the same for all packages",
+        "merge-monorepo": "Create the monorepo's composer.json file, containing all dependencies from all packages",
+        "propagate-monorepo": "Propagate versions from the monorepo's composer.json file to all packages",
+        "release-patch": "Release a new 'patch' version (xx.xx.PATCH) (bump version, commit, push, tag, revert to 'dev-master', commit, push)",
+        "release-minor": "Release a new 'minor' version (xx.MINOR.xx) (bump version, commit, push, tag, revert to 'dev-master', commit, push)",
+        "release-major": "Release a new 'major' version (MAJOR.xx.xx) (bump version, commit, push, tag, revert to 'dev-master', commit, push)",
+        "merge-phpstan": "Generate a single PHPStan config for the monorepo, invoking the config for the PHPStan config for all packages",
+        "improve-code-quality": "Improve code quality (via Rector)",
+        "upgrade-to-phpunit-10": "Run Rector to upgrade PHPUnit tests to v10",
+        "remove-unused-imports": "Remove unused `use` imports",
+        "copy-folders-from-upstream-monorepo": "[multi-monorepo] Copy all files in specific folders to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
+        "copy-files-from-upstream-monorepo": "[multi-monorepo] Copy specific files to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
+        "copy-upstream-files": "[multi-monorepo] Copy both specific files, and all files in specific folders, to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
+        "copy-extension-module-images-to-upstream-monorepo": "Copy all the module documentation images from the PRO extensions, from leoloso/PRO (which is private) to GatoGraphQL/GatoGraphQL (which is public), to make them accessible via HTTP in production (as the images are not included within the extension plugins)",
+        "build-js": "Build all JS packages, blocks and editor scripts from the Gato GraphQL PRO plugin",
+        "install-deps-build-js": "Build all JS packages, blocks and editor scripts from the Gato GraphQL PRO plugin, installing all dependencies from npm",
+        "print-github-actions-artifact-download-urls": "After generating the plugin artifacts in GitHub Actions, retrieve their download URLs",
+        "server-install-generated-plugins-from-github-actions": "Install the latest generated plugins from GitHub Actions in the Lando webserver for PROD"
+    },
+    "replace": {
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
