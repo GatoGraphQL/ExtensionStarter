@@ -81,6 +81,3 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT
 ## Security
 
 If you discover any security related issues, please email name@company.com instead of using the issue tracker.
-
-[link-author]: https://github.com/leoloso
-[link-contributors]: ../../contributors
