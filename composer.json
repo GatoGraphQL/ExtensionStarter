@@ -26,10 +26,14 @@
     },
     "autoload": {
         "psr-4": {
+            "PoP\\ExtensionStarter\\": "src",
+            "PoP\\PoP\\": "submodules/GatoGraphQL/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
+            "PoP\\ExtensionStarter\\": "tests",
+            "PoP\\PoP\\": "submodules/GatoGraphQL/tests"
         }
     },
     "repositories": [
