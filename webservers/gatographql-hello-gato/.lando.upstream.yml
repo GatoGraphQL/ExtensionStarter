@@ -1,8 +1,0 @@
-services:
-  appserver:
-    overrides:
-      volumes:
-        - >-
-          ../../layers/GatoGraphQLForWP/plugins/hello-gato:/app/wordpress/wp-content/plugins/gatographql-hello-gato
-        - >-
-          ../../layers/GatoGraphQLForWP/packages/hello-gato-schema:/app/wordpress/wp-content/plugins/gatographql-hello-gato/vendor/saying-hello-to-gato/hello-gato-schema

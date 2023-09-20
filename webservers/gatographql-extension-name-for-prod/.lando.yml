@@ -1,4 +1,4 @@
-name: gatographql-hello-gato-for-prod
+name: gatographql-extension-name-for-prod
 recipe: wordpress
 config:
   webroot: wordpress
@@ -7,7 +7,7 @@ config:
   ssl: true
 proxy:
   mailhog:
-    - mail.gatographql-hello-gato-for-prod.lndo.site
+    - mail.gatographql-extension-name-for-prod.lndo.site
 services:
   mailhog:
     type: mailhog

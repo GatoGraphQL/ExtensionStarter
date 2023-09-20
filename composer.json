@@ -122,17 +122,17 @@
         ],
         "prod-integration-test": [
             "Composer\\Config::disableProcessTimeout",
-            "composer integration-test -d webservers/hello-gato-for-prod"
+            "composer integration-test -d webservers/extension-name-for-prod"
         ],
         "stopping-prod-integration-test": [
             "Composer\\Config::disableProcessTimeout",
-            "composer stopping-integration-test -d webservers/hello-gato-for-prod"
+            "composer stopping-integration-test -d webservers/extension-name-for-prod"
         ],
-        "prod-activate-all-extensions-bundle": "composer activate-all-extensions-bundle -d webservers/hello-gato-for-prod",
-        "prod-deactivate-all-extensions-bundle": "composer deactivate-all-extensions-bundle -d webservers/hello-gato-for-prod",
+        "prod-activate-all-extensions-bundle": "composer activate-all-extensions-bundle -d webservers/extension-name-for-prod",
+        "prod-deactivate-all-extensions-bundle": "composer deactivate-all-extensions-bundle -d webservers/extension-name-for-prod",
         "prod-integration-test-all-extensions-bundle": [
             "Composer\\Config::disableProcessTimeout",
-            "composer integration-test-all-extensions-bundle -d webservers/hello-gato-for-prod"
+            "composer integration-test-all-extensions-bundle -d webservers/extension-name-for-prod"
         ],
         "prod-integration-test-upstream": [
             "Composer\\Config::disableProcessTimeout",
@@ -155,60 +155,60 @@
             "@preview-src-downgrade",
             "@preview-vendor-downgrade"
         ],
-        "preview-hello-gato-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/hello-gato/rector.php --dry-run layers/GatoGraphQLForWP/plugins/hello-gato \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
+        "preview-extension-name-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/extension-name/rector.php --dry-run layers/GatoGraphQLForWP/plugins/extension-name \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
         "preview-low-level-persisted-query-editing-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/low-level-persisted-query-editing/rector.php --dry-run layers/GatoGraphQLForWP/plugins/low-level-persisted-query-editing \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
-        "ssh-server": "composer ssh-server -d webservers/hello-gato",
-        "build-server": "composer build-server -d webservers/hello-gato",
-        "init-server": "composer init-server -d webservers/hello-gato",
+        "ssh-server": "composer ssh-server -d webservers/extension-name",
+        "build-server": "composer build-server -d webservers/extension-name",
+        "init-server": "composer init-server -d webservers/extension-name",
         "init-server-upstream": "composer init-server -d submodules/GatoGraphQL",
-        "init-server-prod": "composer init-server -d webservers/hello-gato-for-prod",
-        "start-server": "composer start-server -d webservers/hello-gato",
-        "destroy-server": "composer destroy-server -d webservers/hello-gato",
+        "init-server-prod": "composer init-server -d webservers/extension-name-for-prod",
+        "start-server": "composer start-server -d webservers/extension-name",
+        "destroy-server": "composer destroy-server -d webservers/extension-name",
         "reset-db": [
             "Composer\\Config::disableProcessTimeout",
-            "composer reset-db -d webservers/hello-gato"
+            "composer reset-db -d webservers/extension-name"
         ],
         "reset-db-prod": [
             "Composer\\Config::disableProcessTimeout",
-            "composer reset-db -d webservers/hello-gato-for-prod"
+            "composer reset-db -d webservers/extension-name-for-prod"
         ],
-        "install-site": "composer install-site -d webservers/hello-gato",
-        "import-data": "composer import-data -d webservers/hello-gato",
-        "create-users": "composer create-users -d webservers/hello-gato",
-        "update-deps": "composer update-deps -d webservers/hello-gato",
-        "optimize-autoloader": "composer optimize-autoloader -d webservers/hello-gato",
-        "deoptimize-autoloader": "composer deoptimize-autoloader -d webservers/hello-gato",
+        "install-site": "composer install-site -d webservers/extension-name",
+        "import-data": "composer import-data -d webservers/extension-name",
+        "create-users": "composer create-users -d webservers/extension-name",
+        "update-deps": "composer update-deps -d webservers/extension-name",
+        "optimize-autoloader": "composer optimize-autoloader -d webservers/extension-name",
+        "deoptimize-autoloader": "composer deoptimize-autoloader -d webservers/extension-name",
         "log-server-errors": [
             "Composer\\Config::disableProcessTimeout",
-            "composer log-server-errors -d webservers/hello-gato"
+            "composer log-server-errors -d webservers/extension-name"
         ],
         "log-server-warnings": [
             "Composer\\Config::disableProcessTimeout",
-            "composer log-server-warnings -d webservers/hello-gato"
+            "composer log-server-warnings -d webservers/extension-name"
         ],
         "rebuild-server": [
             "Composer\\Config::disableProcessTimeout",
-            "composer rebuild-server -d webservers/hello-gato"
+            "composer rebuild-server -d webservers/extension-name"
         ],
         "rebuild-app-and-server": [
             "Composer\\Config::disableProcessTimeout",
-            "composer rebuild-app-and-server -d webservers/hello-gato"
+            "composer rebuild-app-and-server -d webservers/extension-name"
         ],
         "rebuild-app-and-server-prod": [
             "Composer\\Config::disableProcessTimeout",
-            "composer rebuild-app-and-server -d webservers/hello-gato-for-prod"
+            "composer rebuild-app-and-server -d webservers/extension-name-for-prod"
         ],
-        "stop-server": "composer stop-server -d webservers/hello-gato",
+        "stop-server": "composer stop-server -d webservers/extension-name",
         "stop-server-upstream": "composer stop-server -d submodules/GatoGraphQL",
-        "enable-caching": "composer enable-caching -d webservers/hello-gato",
-        "disable-caching": "composer disable-caching -d webservers/hello-gato",
-        "enable-restrictive-defaults": "composer enable-restrictive-defaults -d webservers/hello-gato",
-        "disable-restrictive-defaults": "composer disable-restrictive-defaults -d webservers/hello-gato",
-        "use-default-restrictive-defaults": "composer use-default-restrictive-defaults -d webservers/hello-gato",
-        "delete-settings": "composer delete-settings -d webservers/hello-gato",
-        "purge-cache": "composer purge-cache -d webservers/hello-gato",
+        "enable-caching": "composer enable-caching -d webservers/extension-name",
+        "disable-caching": "composer disable-caching -d webservers/extension-name",
+        "enable-restrictive-defaults": "composer enable-restrictive-defaults -d webservers/extension-name",
+        "disable-restrictive-defaults": "composer disable-restrictive-defaults -d webservers/extension-name",
+        "use-default-restrictive-defaults": "composer use-default-restrictive-defaults -d webservers/extension-name",
+        "delete-settings": "composer delete-settings -d webservers/extension-name",
+        "purge-cache": "composer purge-cache -d webservers/extension-name",
         "purge-cache-upstream": "composer purge-cache -d submodules/GatoGraphQL",
-        "server-info": "composer server-info -d webservers/hello-gato",
+        "server-info": "composer server-info -d webservers/extension-name",
         "merge-monorepo": "monorepo-builder merge --config=config/monorepo-builder/merge.php --ansi",
         "propagate-monorepo": "monorepo-builder propagate --config=config/monorepo-builder/propagate.php --ansi",
         "validate-monorepo": "monorepo-builder validate --config=config/monorepo-builder/validate.php --ansi",
@@ -263,59 +263,59 @@
         ],
         "print-github-actions-artifact-download-urls": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-artifact-download-urls -d webservers/hello-gato-for-prod"
+            "composer print-github-actions-artifact-download-urls -d webservers/extension-name-for-prod"
         ],
         "print-github-actions-gatographql-artifact-download-url": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-gatographql-artifact-download-url -d webservers/hello-gato-for-prod"
+            "composer print-github-actions-gatographql-artifact-download-url -d webservers/extension-name-for-prod"
         ],
-        "print-github-actions-hello-gato-artifact-download-url": [
+        "print-github-actions-extension-name-artifact-download-url": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-hello-gato-artifact-download-url -d webservers/hello-gato-for-prod"
+            "composer print-github-actions-extension-name-artifact-download-url -d webservers/extension-name-for-prod"
         ],
         "print-github-actions-upstream-artifact-download-urls": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-upstream-artifact-download-urls -d webservers/hello-gato-for-prod"
+            "composer print-github-actions-upstream-artifact-download-urls -d webservers/extension-name-for-prod"
         ],
         "print-github-actions-all-artifact-download-urls": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-all-artifact-download-urls -d webservers/hello-gato-for-prod"
+            "composer print-github-actions-all-artifact-download-urls -d webservers/extension-name-for-prod"
         ],
         "print-github-actions-artifact-full-response": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-artifact-full-response -d webservers/hello-gato-for-prod"
+            "composer print-github-actions-artifact-full-response -d webservers/extension-name-for-prod"
         ],
         "print-github-actions-upstream-artifact-full-response": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-upstream-artifact-full-response -d webservers/hello-gato-for-prod"
+            "composer print-github-actions-upstream-artifact-full-response -d webservers/extension-name-for-prod"
         ],
         "print-github-actions-all-artifact-full-response": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-all-artifact-full-response -d webservers/hello-gato-for-prod"
+            "composer print-github-actions-all-artifact-full-response -d webservers/extension-name-for-prod"
         ],
         "server-install-gatographql-generated-plugin-from-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-gatographql-generated-plugin-from-github-actions -d webservers/hello-gato-for-prod"
+            "composer server-install-gatographql-generated-plugin-from-github-actions -d webservers/extension-name-for-prod"
         ],
-        "server-install-hello-gato-generated-plugin-from-github-actions": [
+        "server-install-extension-name-generated-plugin-from-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-hello-gato-generated-plugin-from-github-actions -d webservers/hello-gato-for-prod"
+            "composer server-install-extension-name-generated-plugin-from-github-actions -d webservers/extension-name-for-prod"
         ],
         "server-install-generated-plugins-from-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-generated-plugins-from-github-actions -d webservers/hello-gato-for-prod"
+            "composer server-install-generated-plugins-from-github-actions -d webservers/extension-name-for-prod"
         ],
         "server-install-generated-plugins-from-upstream-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-generated-plugins-from-upstream-github-actions -d webservers/hello-gato-for-prod"
+            "composer server-install-generated-plugins-from-upstream-github-actions -d webservers/extension-name-for-prod"
         ],
         "server-install-generated-plugins-from-all-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-generated-plugins-from-all-github-actions -d webservers/hello-gato-for-prod"
+            "composer server-install-generated-plugins-from-all-github-actions -d webservers/extension-name-for-prod"
         ],
         "server-install-generated-plugins-from-github-actions-upstream": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-generated-plugins-from-github-actions-upstream -d webservers/hello-gato-for-prod"
+            "composer server-install-generated-plugins-from-github-actions-upstream -d webservers/extension-name-for-prod"
         ]
     },
     "scripts-descriptions": {

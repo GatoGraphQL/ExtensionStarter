@@ -17,7 +17,7 @@ return static function (RectorConfig $rectorConfig): void {
     doCommonContainerConfiguration($rectorConfig);
 
     $monorepoDir = dirname(__DIR__, 2);
-    $pluginDir = $monorepoDir . '/layers/GatoGraphQLForWP/plugins/hello-gato';
+    $pluginDir = $monorepoDir . '/layers/GatoGraphQLForWP/plugins/extension-name';
 
     // Rector relies on autoload setup of your project; Composer autoload is included by default; to add more:
     $rectorConfig->bootstrapFiles([

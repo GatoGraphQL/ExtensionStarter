@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Isolated\Symfony\Component\Finder\Finder;
 
 /**
- * @see submodules/GatoGraphQL/ci/scoping/scoper-hello-gato.inc.php
+ * @see submodules/GatoGraphQL/ci/scoping/scoper-extension-name.inc.php
  */
 function convertRelativeToFullPath(string $relativePath): string
 {
@@ -15,7 +15,7 @@ function convertRelativeToFullPath(string $relativePath): string
 }
 
 return [
-    'prefix' => 'PrefixedSayingHelloToGato',
+    'prefix' => 'PrefixedExtensionVendor',
     'finders' => [
         // Scope packages under vendor/, excluding local WordPress packages
         Finder::create()
@@ -27,19 +27,19 @@ return [
             ])
             ->notPath([
                 // Exclude all composer.json from own libraries (they get broken!)
-                '#[saying\-hello\-to\-gato]/*/composer.json#',
+                '#[extension\-vendor]/*/composer.json#',
                 // // Exclude all libraries for WordPress: Packages ending in "-wp"
-                // '#[saying\-hello\-to\-gato]/[a-zA-Z0-9_-]*-wp/#',
+                // '#[extension\-vendor]/[a-zA-Z0-9_-]*-wp/#',
                 // ...
                 // Exclude libraries
                 // ...
             ])
             ->in([
-                convertRelativeToFullPath('hello-gato/vendor'),
+                convertRelativeToFullPath('extension-name/vendor'),
             ]),
     ],
     'exclude-namespaces' => [
         // Own namespaces
-        'SayingHelloToGato',
+        'ExtensionVendor',
     ],
 ];

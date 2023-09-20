@@ -1,8 +1,8 @@
-name: gatographql-hello-gato
+name: gatographql-extension-name
 recipe: wordpress
 proxy:
   mailhog:
-    - mail.gatographql-hello-gato.lndo.site
+    - mail.gatographql-extension-name.lndo.site
 config:
   webroot: wordpress
   php: '8.1'
