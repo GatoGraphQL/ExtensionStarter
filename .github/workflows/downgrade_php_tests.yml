@@ -1,0 +1,145 @@
+name: Downgrade PHP tests
+on:
+    #push:
+        #branches:
+            #- master
+    #pull_request: null
+env:
+    CHECKOUT_SUBMODULES: "recursive"
+
+jobs:
+    provide_data:
+        name: Provide list of source packages
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v3
+                with:
+                    submodules: ${{ env.CHECKOUT_SUBMODULES }}
+
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 8.1
+                    coverage: none
+                env:
+                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            -   uses: "ramsey/composer-install@v2"
+
+            -   id: output_data
+                run: |
+                    echo "package_srcs=$(vendor/bin/monorepo-builder source-packages --config=config/monorepo-builder/source-packages.php --psr4-only --subfolder=src)" >> $GITHUB_OUTPUT
+                    echo "exclude_package_tests=$(vendor/bin/monorepo-builder source-packages --config=config/monorepo-builder/source-packages.php --psr4-only --subfolder=tests | sed -e 's/ / --exclude /g')" >> $GITHUB_OUTPUT
+                    echo "skip_downgrade_test_paths=$(vendor/bin/monorepo-builder skip-downgrade-test-paths --config=config/monorepo-builder/skip-downgrade-test-paths.php | sed -e 's/ / --exclude /g')" >> $GITHUB_OUTPUT
+                    echo "generate_artifact_with_downgraded_code=$(vendor/bin/monorepo-builder env-var GENERATE_ARTIFACT_WITH_DOWNGRADED_CODE --config=config/monorepo-builder/env-var.php)" >> $GITHUB_OUTPUT
+                    echo "additional_downgrade_rector_configs=$(vendor/bin/monorepo-builder additional-downgrade-rector-configs --config=config/monorepo-builder/additional-downgrade-rector-configs.php)" >> $GITHUB_OUTPUT
+                    echo "local_package_owners=$(vendor/bin/monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)" >> $GITHUB_OUTPUT
+
+        outputs:
+            package_srcs: ${{ steps.output_data.outputs.package_srcs }}
+            exclude_package_tests: ${{ steps.output_data.outputs.exclude_package_tests }}
+            skip_downgrade_test_paths: ${{ steps.output_data.outputs.skip_downgrade_test_paths }}
+            generate_artifact: ${{ steps.output_data.outputs.generate_artifact_with_downgraded_code }}
+            additional_downgrade_rector_configs: ${{ steps.output_data.outputs.additional_downgrade_rector_configs }}
+            local_package_owners: ${{ steps.output_data.outputs.local_package_owners }}
+
+    main:
+        needs: provide_data
+        name: Downgrade code to PHP 7.2 via Rector, and execute tests
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v3
+                with:
+                    submodules: ${{ env.CHECKOUT_SUBMODULES }}
+
+                # see https://github.com/shivammathur/setup-php
+            -   name: Set-up PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 8.1
+                    coverage: none
+                env:
+                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            -   name: Install Composer dependencies
+                uses: "ramsey/composer-install@v2"
+
+            -   name: Local packages - Downgrade PHP code via Rector
+                run: vendor/bin/rector process ${{ needs.provide_data.outputs.package_srcs }} --config=config/rector/downgrade/monorepo/rector.php --ansi
+
+            # before_downgrade_code.sh => Hacks to fix the codebase in preparation of the Rector downgrade
+            -   name: Custom bash script to fix items in the code in preparation for the Rector downgrade
+                run: submodules/ExtensionStarter/submodules/GatoGraphQL/ci/downgrade/before_downgrade_code.sh
+
+            # Pass param "additional_rector_configs" to fix bug
+            # @see https://github.com/rectorphp/rector/issues/5962
+            -   name: Dependencies - Downgrade PHP code via Rector
+                run: submodules/ExtensionStarter/submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/monorepo/rector.php "" "" "${{ needs.provide_data.outputs.additional_downgrade_rector_configs }}" "${{ needs.provide_data.outputs.local_package_owners }}"
+
+            # after_downgrade_code.sh => Hacks to fix the codebase whenever Rector cannot handle it
+            -   name: Custom bash script to fix items in the code that Rector cannot handle
+                run: submodules/ExtensionStarter/submodules/GatoGraphQL/ci/downgrade/after_downgrade_code.sh
+
+            ################################################################################
+            # Run Rector again with --dry-run, check no further downgrades are executed
+            # This serves 2 purposes:
+            # 1. Make sure that all downgrades were executed, i.e. chained downgrades were executed successfully
+            # 2. Check that no buggy code has been produced from running a buggy Rector rule
+            #
+            # Running Rector a second time takes several minutes, making the CI slow for testing PRs
+            # Then, only execute it in the "push" event
+            # (it this will seldom throw an error, and only after upgrading the dependencies, mostly Rector itself)
+            ################################################################################
+            -   name: (Again) Local packages - Downgrade PHP code via Rector
+                run: vendor/bin/rector process ${{ needs.provide_data.outputs.package_srcs }} --config=config/rector/downgrade/monorepo/rector.php --ansi --dry-run
+                if: github.event_name == 'push'
+
+            -   name: (Again) Dependencies - Downgrade PHP code via Rector
+                run: submodules/ExtensionStarter/submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/monorepo/rector.php --dry-run "" "${{ needs.provide_data.outputs.additional_downgrade_rector_configs }}" "${{ needs.provide_data.outputs.local_package_owners }}"
+                if: github.event_name == 'push'
+            ################################################################################
+
+            # Prepare for testing on PHP 7.2
+            -   name: Install PHP Parallel Lint
+                run: composer create-project php-parallel-lint/php-parallel-lint php-parallel-lint --ansi --no-dev
+
+            # Only PROD dependencies must be tested
+            # --ignore-platform-reqs to avoid Composer checking the PHP 8.1 requirement
+            -   name: Keep dependencies for PROD only (for testing)
+                uses: "ramsey/composer-install@v2"
+                with:
+                    composer-options: "--no-dev --ignore-platform-reqs"
+
+            # Upload artifact with downgraded code, for debugging
+            -   name: Create build folder
+                run: mkdir build
+                if: ${{ needs.provide_data.outputs.generate_artifact }}
+            -   name: Install zip
+                uses: montudor/action-zip@v1.0.0
+                if: ${{ needs.provide_data.outputs.generate_artifact }}
+            -   name: Create zip
+                run: zip -X -r build/downgraded-code.zip . -x *.git* build/\* php-parallel-lint/\*
+                if: ${{ needs.provide_data.outputs.generate_artifact }}
+            -   name: Upload artifact
+                uses: actions/upload-artifact@v3
+                if: ${{ needs.provide_data.outputs.generate_artifact }}
+                with:
+                    name: downgraded-code
+                    path: build/downgraded-code.zip
+                    retention-days: 1
+
+            -   name: Switch to PHP 7.2
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 7.2
+                    coverage: none
+                env:
+                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            # Test everything, including Composer dependencies which (supposedly)
+            # do not require downgrading
+            # Use a PHP Linter. If PHP is not valid, it will throw an error
+            -   name: Run PHP Parallel Lint on PHP 7.2
+                run: php-parallel-lint/parallel-lint layers/ vendor/ --exclude ${{ needs.provide_data.outputs.skip_downgrade_test_paths }} --exclude ${{ needs.provide_data.outputs.exclude_package_tests }}
+
+

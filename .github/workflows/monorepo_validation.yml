@@ -1,0 +1,33 @@
+name: Monorepo validation
+on:
+    #push:
+        #branches:
+            #- master
+    #pull_request: null
+env:
+    CHECKOUT_SUBMODULES: "recursive"
+
+jobs:
+    main:
+        name: Validate monorepo
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v3
+                with:
+                    submodules: ${{ env.CHECKOUT_SUBMODULES }}
+
+            -   name: Set-up PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 8.1
+                    coverage: none
+                env:
+                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            -   name: Install Composer dependencies
+                uses: "ramsey/composer-install@v2"
+
+            -   name: Run validation
+                run: vendor/bin/monorepo-builder validate --config=config/monorepo-builder/validate.php --ansi
+
