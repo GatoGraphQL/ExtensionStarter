@@ -150,7 +150,6 @@
             "@preview-vendor-downgrade"
         ],
         "preview-extension-name-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/extension-name/rector.php --dry-run layers/GatoGraphQLForWP/plugins/extension-name \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
-        "preview-low-level-persisted-query-editing-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/low-level-persisted-query-editing/rector.php --dry-run layers/GatoGraphQLForWP/plugins/low-level-persisted-query-editing \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
         "ssh-server": "composer ssh-server -d webservers/extension-name",
         "build-server": "composer build-server -d webservers/extension-name",
         "init-server": "composer init-server -d webservers/extension-name",
