@@ -1,13 +1,13 @@
 {
     "name": "extension-vendor/gatographql-extension-name-for-prod-dev",
     "description": "Gato GraphQL - Extension Name for PROD (PHP 7.2 + Generated .zip plugins)",
-    "homepage": "https://gatographql.com",
+    "homepage": "https://mysite.com",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "Leonardo Losoviz",
+            "name": "Extension Vendor",
             "email": "name@company.com",
-            "homepage": "https://gatographql.com"
+            "homepage": "https://mysite.com"
         }
     ],
     "minimum-stability": "dev",

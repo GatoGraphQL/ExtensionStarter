@@ -6,7 +6,7 @@ Description: Integration of plugin Extension Name with Gato GraphQL
 Version: 1.1.0-dev
 Requires at least: 5.4
 Requires PHP: 8.1
-Author: Leonardo Losoviz
+Author: Extension Vendor
 License:
 License URI:
 Text Domain: gatographql-extension-name
