@@ -51,7 +51,7 @@ final class SetCurrentMutualConflictsReleaseWorker implements ReleaseWorkerInter
         );
 
         /**
-         * All packages have been added under "conflict", included the PRO ones from downstream.
+         * All packages have been added under "conflict", included the ones from downstream.
          * Remove them from the upstream packages
          */
         $upstreamPackagesComposerFileInfos = $this->upstreamPackageFilterer->filterUpstreamComposerFileInfos($packagesComposerFileInfos);

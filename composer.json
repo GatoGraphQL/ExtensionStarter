@@ -374,8 +374,8 @@
         "copy-folders-from-upstream-monorepo": "[multi-monorepo] Copy all files in specific folders to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
         "copy-files-from-upstream-monorepo": "[multi-monorepo] Copy specific files to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
         "copy-upstream-files": "[multi-monorepo] Copy both specific files, and all files in specific folders, to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
-        "build-js": "Build all JS packages, blocks and editor scripts from the Gato GraphQL PRO plugin",
-        "install-deps-build-js": "Build all JS packages, blocks and editor scripts from the Gato GraphQL PRO plugin, installing all dependencies from npm",
+        "build-js": "Build all JS packages, blocks and editor scripts from Gato GraphQL - Extension Name",
+        "install-deps-build-js": "Build all JS packages, blocks and editor scripts from Gato GraphQL - Extension Name, installing all dependencies from npm",
         "print-github-actions-artifact-download-urls": "After generating the plugin artifacts in GitHub Actions, retrieve their download URLs",
         "server-install-generated-plugins-from-github-actions": "Install the latest generated plugins from GitHub Actions in the Lando webserver for PROD"
     },

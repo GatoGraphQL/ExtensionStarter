@@ -74,7 +74,7 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
 
         /**
          * Replace "-dev" to deploy to PROD, and bump to the new version,
-         * on the PRO source code only, so these release workers replace
+         * on the downstream source code only, so these release workers replace
          * the ones from upstream.
          */
         $upstreamDownstreamClasses = [
