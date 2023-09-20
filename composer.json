@@ -128,12 +128,6 @@
             "Composer\\Config::disableProcessTimeout",
             "composer stopping-integration-test -d webservers/extension-name-for-prod"
         ],
-        "prod-activate-all-extensions-bundle": "composer activate-all-extensions-bundle -d webservers/extension-name-for-prod",
-        "prod-deactivate-all-extensions-bundle": "composer deactivate-all-extensions-bundle -d webservers/extension-name-for-prod",
-        "prod-integration-test-all-extensions-bundle": [
-            "Composer\\Config::disableProcessTimeout",
-            "composer integration-test-all-extensions-bundle -d webservers/extension-name-for-prod"
-        ],
         "prod-integration-test-upstream": [
             "Composer\\Config::disableProcessTimeout",
             "composer prod-integration-test -d submodules/GatoGraphQL"
@@ -330,7 +324,6 @@
         "integration-test": "Execute integration tests (PHPUnit)",
         "prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver",
         "stopping-prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure",
-        "prod-integration-test-all-extensions-bundle": "Execute integration tests (PHPUnit) against the PROD webserver, using the 'gatographql-all-extensions-bundle' plugin",
         "debug": "Debug PHPUnit tests",
         "check-style": "Validate PSR-12 coding standards (via phpcs)",
         "fix-style": "Fix PSR-12 coding standards (via phpcbf)",
