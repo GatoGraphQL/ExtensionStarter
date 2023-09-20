@@ -1,0 +1,56 @@
+{
+    "name": "extension-vendor/extension-name",
+    "type": "wordpress-plugin",
+    "description": "Integration of plugin Extension Name with Gato GraphQL",
+    "keywords": ["WordPress", "Gato", "GatoGraphQL", "GraphQL", "ExtensionName"],
+    "homepage": "https://github.com/GatoGraphQL/extension-name",
+    "require": {
+        "php": "^8.1",
+        "extension-vendor/extension-name-schema": "^1.1"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^10.2",
+        "squizlabs/php_codesniffer": "^3.6",
+        "szepeviktor/phpstan-wordpress": "^1.0",
+        "wpackagist-plugin/extension-name": "^6.1"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ExtensionVendor\\ExtensionName\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ExtensionVendor\\ExtensionName\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs src tests",
+        "fix-style": "phpcbf src tests",
+        "phpstan": "phpstan analyse -l 8 src tests"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "replace": {
+        "pop-schema/schema-commons": "self.version"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
