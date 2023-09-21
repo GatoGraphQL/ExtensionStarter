@@ -11,9 +11,12 @@ class ExtensionStaticHelpers
 {
     public static function getGitHubRepoDocsRootPathURL(): string
     {
+        // @todo Complete for Extension Name!
+        $gitDevelopmentBranch = 'main';
+        
         $extensionPluginVersion = PluginApp::getExtension(GatoGraphQLExtension::class)->getPluginVersion();
         $tag = PluginVersionHelpers::isDevelopmentVersion($extensionPluginVersion)
-            ? 'master'
+            ? $gitDevelopmentBranch
             : $extensionPluginVersion;
         return 'https://raw.githubusercontent.com/GatoGraphQL/ExtensionStarter/' . $tag . '/layers/GatoGraphQLForWP/plugins/extension-name/';
     }
