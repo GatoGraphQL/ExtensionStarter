@@ -79,7 +79,7 @@ class CopyUpstreamMonorepoFoldersDataSource
      *
      * After changing this value, regenerate the workflow files by running:
      *
-     *   composer copy-upstream
+     *   composer copy-upstream-files
      */
     protected function runGitHubActionsOnPRs(): bool
     {
@@ -92,7 +92,7 @@ class CopyUpstreamMonorepoFoldersDataSource
      *
      * After changing this value, regenerate the workflow files by running:
      *
-     *   composer copy-upstream
+     *   composer copy-upstream-files
      */
     protected function runGitHubActionsOnPushToMaster(): bool
     {
