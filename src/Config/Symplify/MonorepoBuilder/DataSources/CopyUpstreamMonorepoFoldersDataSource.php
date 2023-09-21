@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 
+use PoP\ExtensionStarter\Monorepo\MonorepoMetadata;
+
 class CopyUpstreamMonorepoFoldersDataSource
 {
     public function __construct(
@@ -37,6 +39,11 @@ class CopyUpstreamMonorepoFoldersDataSource
                     $this->runGitHubActionsOnPushToMaster() ? [] : [
                         '/push:(\s+)branches:(\s+)- master/' => '#push:$1#branches:$2#- master',
                     ],
+                    // Replace the Git branch if needed
+                    [
+                        '/(#?)branches:(\s+)(#?)- master/' => '$1branches:$2$3- ' . $this->getGitMainBranch(),
+                    ],
+                        
                 )
             ],
             // Webserver assets
@@ -90,5 +97,10 @@ class CopyUpstreamMonorepoFoldersDataSource
     protected function runGitHubActionsOnPushToMaster(): bool
     {
         return false;
+    }
+
+    protected function getGitMainBranch(): string
+    {
+        return MonorepoMetadata::GIT_MAIN_BRANCH;
     }
 }
