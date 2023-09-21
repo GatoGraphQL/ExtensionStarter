@@ -18,7 +18,7 @@ class EnvironmentVariablesDataSource extends UpstreamEnvironmentVariablesDataSou
             parent::getEnvironmentVariables(),
             [
                 self::RETENTION_DAYS_FOR_GENERATED_PLUGINS => 90,
-                self::GIT_MAIN_BRANCH => MonorepoMetadata::GIT_MAIN_BRANCH,
+                self::GIT_BASE_BRANCH => MonorepoMetadata::GIT_BASE_BRANCH,
                 self::GIT_USER_NAME => MonorepoMetadata::GIT_USER_NAME,
                 self::GIT_USER_EMAIL => MonorepoMetadata::GIT_USER_EMAIL,
             ]

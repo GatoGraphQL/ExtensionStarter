@@ -101,6 +101,6 @@ class CopyUpstreamMonorepoFoldersDataSource
 
     protected function getGitMainBranch(): string
     {
-        return MonorepoMetadata::GIT_MAIN_BRANCH;
+        return MonorepoMetadata::GIT_BASE_BRANCH;
     }
 }
