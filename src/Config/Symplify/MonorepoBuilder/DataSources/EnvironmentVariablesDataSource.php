@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 
+use PoP\ExtensionStarter\Monorepo\MonorepoMetadata;
 use PoP\PoP\Config\Symplify\MonorepoBuilder\DataSources\EnvironmentVariablesDataSource as UpstreamEnvironmentVariablesDataSource;
 
 class EnvironmentVariablesDataSource extends UpstreamEnvironmentVariablesDataSource
@@ -17,9 +18,9 @@ class EnvironmentVariablesDataSource extends UpstreamEnvironmentVariablesDataSou
             parent::getEnvironmentVariables(),
             [
                 self::RETENTION_DAYS_FOR_GENERATED_PLUGINS => 90,
-                self::GIT_MAIN_BRANCH => 'main',
-                self::GIT_USER_NAME => 'extension-git-user-name',
-                self::GIT_USER_EMAIL => 'extension-git-user@email.com',
+                self::GIT_MAIN_BRANCH => MonorepoMetadata::GIT_MAIN_BRANCH,
+                self::GIT_USER_NAME => MonorepoMetadata::GIT_USER_NAME,
+                self::GIT_USER_EMAIL => MonorepoMetadata::GIT_USER_EMAIL,
             ]
         );
     }
