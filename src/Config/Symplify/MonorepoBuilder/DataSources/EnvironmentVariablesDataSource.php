@@ -17,7 +17,8 @@ class EnvironmentVariablesDataSource extends UpstreamEnvironmentVariablesDataSou
             parent::getEnvironmentVariables(),
             [
                 self::RETENTION_DAYS_FOR_GENERATED_PLUGINS => 90,
-                self::INSTAWP_INSTANCE_SLEEPING_TIME => 180,
+                self::GIT_USER_NAME => 'extension-git-user-name',
+                self::GIT_USER_EMAIL => 'extension-git-user@email.com',
             ]
         );
     }
