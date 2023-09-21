@@ -4,10 +4,10 @@
 ####################################################################################
 name: Scoping tests
 on:
-    #push:
-        #branches:
-            #- master
-    #pull_request: null
+    push:
+        branches:
+            - main
+    pull_request: null
 
 env:
     CHECKOUT_SUBMODULES: "recursive"

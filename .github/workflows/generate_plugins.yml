@@ -24,10 +24,10 @@ name: Generate plugins
 on:
     release:
         types: [published]
-    #push:
-        #branches:
-            #- master
-    #pull_request: null
+    push:
+        branches:
+            - main
+    pull_request: null
 
 env:
     CHECKOUT_SUBMODULES: "recursive"
@@ -57,10 +57,14 @@ jobs:
                     echo "plugin_config_entries=$(vendor/bin/monorepo-builder plugin-config-entries-json --config=config/monorepo-builder/plugin-config-entries-json.php)" >> $GITHUB_OUTPUT
                     echo "retention_days_for_generated_plugins=$(vendor/bin/monorepo-builder env-var RETENTION_DAYS_FOR_GENERATED_PLUGINS --config=config/monorepo-builder/env-var.php)" >> $GITHUB_OUTPUT
                     echo "local_package_owners=$(vendor/bin/monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)" >> $GITHUB_OUTPUT
+                    echo "git_user_name=$(vendor/bin/monorepo-builder env-var GIT_USER_NAME --config=config/monorepo-builder/env-var.php)" >> $GITHUB_OUTPUT
+                    echo "git_user_email=$(vendor/bin/monorepo-builder env-var GIT_USER_EMAIL --config=config/monorepo-builder/env-var.php)" >> $GITHUB_OUTPUT
         outputs:
             plugin_config_entries: ${{ steps.output_data.outputs.plugin_config_entries }}
             retention_days: ${{ steps.output_data.outputs.retention_days_for_generated_plugins }}
             local_package_owners: ${{ steps.output_data.outputs.local_package_owners }}
+            git_user_name: ${{ steps.output_data.outputs.git_user_name }}
+            git_user_email: ${{ steps.output_data.outputs.git_user_email }}
 
     # Build plugin => downgrade => (maybe) scope => (maybe) upload to release and deploy to dist repo
     process:
@@ -139,7 +143,7 @@ jobs:
 
             # additional_rector_configs => Hack to fix bug: https://github.com/rectorphp/rector/issues/5962
             -   name: Downgrade code for production (to PHP 7.2)
-                run: submodules/ExtensionStarter/submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh "${{ matrix.pluginConfig.rector_downgrade_config }}" "" "${{ matrix.pluginConfig.path }}" "${{ matrix.pluginConfig.additional_rector_configs }}" "${{ needs.provide_data.outputs.local_package_owners }}"
+                run: submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh "${{ matrix.pluginConfig.rector_downgrade_config }}" "" "${{ matrix.pluginConfig.path }}" "${{ matrix.pluginConfig.additional_rector_configs }}" "${{ needs.provide_data.outputs.local_package_owners }}"
 
             # after_downgrade_code.sh => Hacks to fix the codebase whenever Rector cannot handle it
             -   name: Custom bash script to fix items in the code that Rector cannot handle
@@ -253,7 +257,7 @@ jobs:
                     split-repository-organization: ${{ matrix.pluginConfig.dist_repo_organization }}
                     split-repository-name: ${{ matrix.pluginConfig.dist_repo_name }}
                     tag: ${{ steps.previous_tag.outputs.tag }}
-                    user-name: "leoloso"
-                    user-email: "leo@getpop.org"
+                    user-name: "${{ needs.provide_data.outputs.git_user_name }}"
+                    user-email: "${{ needs.provide_data.outputs.git_user_email }}"
                 if: github.event_name == 'release'
 
