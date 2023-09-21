@@ -83,7 +83,7 @@ class CopyUpstreamMonorepoFoldersDataSource
      */
     protected function runGitHubActionsOnPRs(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -96,7 +96,7 @@ class CopyUpstreamMonorepoFoldersDataSource
      */
     protected function runGitHubActionsOnPushToMaster(): bool
     {
-        return false;
+        return true;
     }
 
     protected function getGitMainBranch(): string
