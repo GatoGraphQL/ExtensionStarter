@@ -5,7 +5,7 @@ on:
         # Thanks to this (otherwise superfluous) comment, this configuration
         # will not be commented out (i.e. disabled) for the downstream repo
         branches:
-            - master
+            - main
 env:
     CHECKOUT_SUBMODULES: "recursive"
 

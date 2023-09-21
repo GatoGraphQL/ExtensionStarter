@@ -24,10 +24,10 @@ name: Generate plugins
 on:
     release:
         types: [published]
-    #push:
-        #branches:
-            #- master
-    #pull_request: null
+    push:
+        branches:
+            - main
+    pull_request: null
 
 env:
     CHECKOUT_SUBMODULES: "recursive"
