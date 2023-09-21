@@ -48,7 +48,7 @@ class PluginDataSource extends UpstreamPluginDataSource
 
         foreach ($pluginConfigEntries as &$pluginConfigEntry) {
             $pluginConfigEntry['version'] = MonorepoMetadata::VERSION;
-            $pluginConfigEntry['dist_repo_branch'] = MonorepoMetadata::GIT_MAIN_BRANCH;
+            $pluginConfigEntry['dist_repo_branch'] = MonorepoMetadata::GIT_BASE_BRANCH;
         }
 
         return $pluginConfigEntries;
