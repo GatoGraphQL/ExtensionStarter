@@ -48,12 +48,12 @@
         "symfony/var-dumper": "^6.0",
         "symplify/monorepo-builder": "^10.2.2",
         "szepeviktor/phpstan-wordpress": "^1.0",
-        "wpackagist-plugin/extension-name": "^6.1"
+        "wpackagist-plugin/hello-dolly": "^6.1"
     },
     "autoload": {
         "psr-4": {
-            "DollyShepherd\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/extension-name-schema/src",
-            "DollyShepherd\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/extension-name/src",
+            "DollyShepherd\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/src",
+            "DollyShepherd\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/src",
             "GatoGraphQL\\ExtensionDemo\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/extension-demo/src",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/src",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/src",
@@ -191,8 +191,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "DollyShepherd\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/extension-name-schema/tests",
-            "DollyShepherd\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/extension-name/tests",
+            "DollyShepherd\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/tests",
+            "DollyShepherd\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/tests",
             "GatoGraphQL\\ExtensionDemo\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/extension-demo/tests",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/tests",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/tests",
@@ -444,7 +444,7 @@
             "@preview-src-downgrade",
             "@preview-vendor-downgrade"
         ],
-        "preview-extension-name-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/extension-name/rector.php --dry-run layers/GatoGraphQLForWP/plugins/extension-name \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
+        "preview-hello-dolly-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/hello-dolly/rector.php --dry-run layers/GatoGraphQLForWP/plugins/hello-dolly \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
         "ssh-server": "composer ssh-server -d webservers/gatographql-extensions",
         "build-server": "composer build-server -d webservers/gatographql-extensions",
         "init-server": "composer init-server -d webservers/gatographql-extensions",
@@ -557,9 +557,9 @@
             "Composer\\Config::disableProcessTimeout",
             "composer print-github-actions-gatographql-artifact-download-url -d webservers/gatographql-extensions-for-prod"
         ],
-        "print-github-actions-extension-name-artifact-download-url": [
+        "print-github-actions-hello-dolly-artifact-download-url": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-extension-name-artifact-download-url -d webservers/gatographql-extensions-for-prod"
+            "composer print-github-actions-hello-dolly-artifact-download-url -d webservers/gatographql-extensions-for-prod"
         ],
         "print-github-actions-upstream-artifact-download-urls": [
             "Composer\\Config::disableProcessTimeout",
@@ -585,9 +585,9 @@
             "Composer\\Config::disableProcessTimeout",
             "composer server-install-gatographql-generated-plugin-from-github-actions -d webservers/gatographql-extensions-for-prod"
         ],
-        "server-install-extension-name-generated-plugin-from-github-actions": [
+        "server-install-hello-dolly-generated-plugin-from-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-extension-name-generated-plugin-from-github-actions -d webservers/gatographql-extensions-for-prod"
+            "composer server-install-hello-dolly-generated-plugin-from-github-actions -d webservers/gatographql-extensions-for-prod"
         ],
         "server-install-generated-plugins-from-github-actions": [
             "Composer\\Config::disableProcessTimeout",
@@ -667,8 +667,8 @@
         "server-install-generated-plugins-from-github-actions": "Install the latest generated plugins from GitHub Actions in the Lando webserver for PROD"
     },
     "replace": {
-        "dolly-shepherd/extension-name": "self.version",
-        "dolly-shepherd/extension-name-schema": "self.version",
+        "dolly-shepherd/hello-dolly": "self.version",
+        "dolly-shepherd/hello-dolly-schema": "self.version",
         "gatographql/extension-demo": "self.version",
         "gatographql/external-dependency-wrappers": "self.version",
         "gatographql/gatographql": "self.version",

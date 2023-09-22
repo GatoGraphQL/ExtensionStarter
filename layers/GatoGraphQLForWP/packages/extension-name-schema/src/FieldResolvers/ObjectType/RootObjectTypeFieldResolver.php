@@ -70,7 +70,7 @@ class RootObjectTypeFieldResolver extends AbstractObjectTypeFieldResolver
     public function getFieldDescription(ObjectTypeResolverInterface $objectTypeResolver, string $fieldName): ?string
     {
         return match ($fieldName) {
-            'helloGato' => $this->getTranslationAPI()->__('Demo field', 'extension-name-schema'),
+            'helloGato' => $this->getTranslationAPI()->__('Demo field', 'hello-dolly-schema'),
             default => parent::getFieldDescription($objectTypeResolver, $fieldName),
         };
     }
@@ -83,7 +83,7 @@ class RootObjectTypeFieldResolver extends AbstractObjectTypeFieldResolver
     ): mixed {
         switch ($fieldDataAccessor->getFieldName()) {
             case 'helloGato':
-                return \__('Hello Gato!', 'extension-name-schema');
+                return \__('Hello Gato!', 'hello-dolly-schema');
         }
 
         return parent::resolveValue($objectTypeResolver, $object, $fieldDataAccessor, $objectTypeFieldResolutionFeedbackStore);

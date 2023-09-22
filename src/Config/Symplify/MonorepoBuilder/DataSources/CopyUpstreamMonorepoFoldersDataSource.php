@@ -60,14 +60,14 @@ class CopyUpstreamMonorepoFoldersDataSource
                 'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql/setup',
                 'toFolder' => $this->rootDir . '/webservers/gatographql-extensions/setup',
                 'patternReplacements' => [
-                    '#gatographql.lndo.site#' => 'gatographql-extension-name.lndo.site',
+                    '#gatographql.lndo.site#' => 'gatographql-hello-dolly.lndo.site',
                 ],
             ],
             [
                 'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql-for-prod/setup',
                 'toFolder' => $this->rootDir . '/webservers/gatographql-extensions-for-prod/setup',
                 'patternReplacements' => [
-                    '#gatographql-for-prod.lndo.site#' => 'gatographql-extension-name-for-prod.lndo.site',
+                    '#gatographql-for-prod.lndo.site#' => 'gatographql-hello-dolly-for-prod.lndo.site',
                 ],
             ],
         ];

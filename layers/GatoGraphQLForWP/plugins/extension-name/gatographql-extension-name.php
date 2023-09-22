@@ -9,7 +9,7 @@ Requires PHP: 8.1
 Author: Dolly Shepherd
 License:
 License URI:
-Text Domain: gatographql-extension-name
+Text Domain: gatographql-hello-dolly
 Domain Path: /languages
 */
 
@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
 }
 
 \add_action('init', function (): void {
-    load_plugin_textdomain('gatographql-extension-name', false, plugin_basename(__FILE__) . '/languages');
+    load_plugin_textdomain('gatographql-hello-dolly', false, plugin_basename(__FILE__) . '/languages');
 });
 
 /**
@@ -41,7 +41,7 @@ add_action(
          * @see https://getcomposer.org/doc/articles/versions.md#stabilities
          */
         $extensionVersion = '1.1.0-dev';
-        $extensionName = \__('Gato GraphQL - Hello Dolly', 'gatographql-extension-name');
+        $extensionName = \__('Gato GraphQL - Hello Dolly', 'gatographql-hello-dolly');
         $mainPluginVersionConstraint = '^1.1';
         
         /**
@@ -52,8 +52,8 @@ add_action(
                 _e(sprintf(
                     '<div class="notice notice-error"><p>%s</p></div>',
                     sprintf(
-                        __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-extension-name'),
-                        __('Gato GraphQL', 'gatographql-extension-name'),
+                        __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-hello-dolly'),
+                        __('Gato GraphQL', 'gatographql-hello-dolly'),
                         $extensionName
                     )
                 ));
@@ -95,18 +95,18 @@ add_action(
                     $requiredPluginFile,
                 ]);
                 \add_action('admin_notices', function () use ($extensionName, $isWordPressPluginActive, $requiredPluginVersion) {
-                    $pluginName = __('Hello Dolly', 'gatographql-extension-name');
+                    $pluginName = __('Hello Dolly', 'gatographql-hello-dolly');
                     _e(sprintf(
                         '<div class="notice notice-error"><p>%s</p></div>',
                         $isWordPressPluginActive
                             ? sprintf(
-                                __('Installed version of plugin <strong>%s</strong> does not satisfy required constraint <code>%s</code>. Plugin <strong>%s</strong> has not been loaded.', 'gatographql-extension-name'),
+                                __('Installed version of plugin <strong>%s</strong> does not satisfy required constraint <code>%s</code>. Plugin <strong>%s</strong> has not been loaded.', 'gatographql-hello-dolly'),
                                 $pluginName,
                                 $requiredPluginVersion,
                                 $extensionName
                             )
                             : sprintf(
-                                __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-extension-name'),
+                                __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-hello-dolly'),
                                 $pluginName,
                                 $extensionName
                             )

@@ -17,7 +17,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
         SchemaTypeModuleResolverTrait::getPriority as getUpstreamPriority;
     }
 
-    public final const SCHEMA_EXTENSION_NAME = GatoGraphQLExtension::NAMESPACE . '\schema-extension-name';
+    public final const SCHEMA_EXTENSION_NAME = GatoGraphQLExtension::NAMESPACE . '\schema-hello-dolly';
 
     private ?MarkdownContentParserInterface $markdownContentParser = null;
 
@@ -49,7 +49,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
         return match ($module) {
             self::SCHEMA_EXTENSION_NAME => [
                 new DependedOnActiveWordPressPlugin(
-                    \__('Hello Dolly', 'gatographql-extension-name'),
+                    \__('Hello Dolly', 'gatographql-hello-dolly'),
                     'extension-wordpress-plugin/extension-wordpress-plugin-php-filename.php',
                     'extension-wordpress-plugin-constraint',
                 ),
@@ -61,7 +61,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getName(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_EXTENSION_NAME => \__('Hello Dolly Schema', 'gatographql-extension-name'),
+            self::SCHEMA_EXTENSION_NAME => \__('Hello Dolly Schema', 'gatographql-hello-dolly'),
             default => $module,
         };
     }
@@ -69,7 +69,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getDescription(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_EXTENSION_NAME => \__('Add schema elements for the Hello Dolly extension for Gato GraphQL.', 'gatographql-extension-name'),
+            self::SCHEMA_EXTENSION_NAME => \__('Add schema elements for the Hello Dolly extension for Gato GraphQL.', 'gatographql-hello-dolly'),
             default => parent::getDescription($module),
         };
     }

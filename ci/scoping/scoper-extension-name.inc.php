@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Isolated\Symfony\Component\Finder\Finder;
 
 /**
- * @see submodules/GatoGraphQL/ci/scoping/scoper-extension-name.inc.php
+ * @see submodules/GatoGraphQL/ci/scoping/scoper-hello-dolly.inc.php
  */
 function convertRelativeToFullPath(string $relativePath): string
 {
@@ -35,7 +35,7 @@ return [
                 // ...
             ])
             ->in([
-                convertRelativeToFullPath('extension-name/vendor'),
+                convertRelativeToFullPath('hello-dolly/vendor'),
             ]),
     ],
     'exclude-namespaces' => [

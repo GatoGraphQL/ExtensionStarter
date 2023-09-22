@@ -10,6 +10,6 @@ class HelloDollyContainerConfigurationService extends AbstractExtensionDowngrade
 {
     protected function getPluginRelativePath(): string
     {
-        return 'layers/GatoGraphQLForWP/plugins/extension-name';
+        return 'layers/GatoGraphQLForWP/plugins/hello-dolly';
     }
 }

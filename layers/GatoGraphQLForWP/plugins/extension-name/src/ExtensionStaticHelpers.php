@@ -18,6 +18,6 @@ class ExtensionStaticHelpers
         $tag = PluginVersionHelpers::isDevelopmentVersion($extensionPluginVersion)
             ? $gitDevelopmentBranch
             : $extensionPluginVersion;
-        return 'https://raw.githubusercontent.com/GatoGraphQL/ExtensionStarter/' . $tag . '/layers/GatoGraphQLForWP/plugins/extension-name/';
+        return 'https://raw.githubusercontent.com/GatoGraphQL/ExtensionStarter/' . $tag . '/layers/GatoGraphQLForWP/plugins/hello-dolly/';
     }
 }
