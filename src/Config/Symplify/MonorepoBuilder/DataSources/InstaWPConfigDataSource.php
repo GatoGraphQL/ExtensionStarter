@@ -14,7 +14,7 @@ class InstaWPConfigDataSource extends UpstreamInstaWPConfigDataSource
     public function getInstaWPConfigEntries(): array
     {
         return [
-            // @todo Complete for Extension Name!
+            // @todo Complete for Hello Dolly!
             [
                 'templateSlug' => '???',
                 'repoID' => 0,

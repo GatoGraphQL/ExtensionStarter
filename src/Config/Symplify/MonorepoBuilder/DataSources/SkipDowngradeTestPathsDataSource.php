@@ -25,7 +25,7 @@ class SkipDowngradeTestPathsDataSource extends UpstreamSkipDowngradeTestPathsDat
                 fn (string $path) => $this->upstreamRelativeRootPath . '/' . $path,
                 parent::getSkipDowngradeTestProjectPaths()
             ),
-            // @todo Complete for Extension Name!
+            // @todo Complete for Hello Dolly!
             []
         );
     }

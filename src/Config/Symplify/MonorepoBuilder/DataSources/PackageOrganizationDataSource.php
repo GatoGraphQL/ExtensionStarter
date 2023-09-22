@@ -22,8 +22,8 @@ class PackageOrganizationDataSource extends UpstreamPackageOrganizationDataSourc
     public function getPackagePathOrganizations(): array
     {
         $packagePathOrganizations = [
-            'layers/GatoGraphQLForWP/packages' => 'ExtensionVendor',
-            'layers/GatoGraphQLForWP/plugins' => 'ExtensionVendor',
+            'layers/GatoGraphQLForWP/packages' => 'DollyShepherd',
+            'layers/GatoGraphQLForWP/plugins' => 'DollyShepherd',
         ];
 
         if ($this->includeUpstreamPackages) {

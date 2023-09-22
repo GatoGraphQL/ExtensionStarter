@@ -1,9 +1,0 @@
-services:
-    _defaults:
-        public: true
-        autowire: true
-        autoconfigure: true
-
-    ExtensionVendor\ExtensionName\Container\CompilerPasses\:
-        resource: '../src/Container/CompilerPasses/*'
-

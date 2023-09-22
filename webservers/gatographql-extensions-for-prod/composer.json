@@ -1,11 +1,11 @@
 {
-    "name": "extension-vendor/gatographql-extensions-for-prod-dev",
-    "description": "Gato GraphQL - Extension Name for PROD (PHP 7.2 + Generated .zip plugins)",
+    "name": "dolly-shepherd/gatographql-extensions-for-prod-dev",
+    "description": "Gato GraphQL - Hello Dolly for PROD (PHP 7.2 + Generated .zip plugins)",
     "homepage": "https://mysite.com",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "Extension Vendor",
+            "name": "Dolly Shepherd",
             "email": "name@company.com",
             "homepage": "https://mysite.com"
         }
