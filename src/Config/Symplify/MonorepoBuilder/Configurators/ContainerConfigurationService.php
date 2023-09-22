@@ -18,9 +18,11 @@ use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\ReleaseWork
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\SkipDowngradeTestPathsDataSource;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ValueObject\Option as CustomOption;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ValueObject\Param;
+use PoP\ExtensionStarter\Monorepo\MonorepoMetadata;
 use PoP\PoP\Config\Symplify\MonorepoBuilder\Configurators\ContainerConfigurationService as UpstreamContainerConfigurationService;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator;
+use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Neon\NeonPrinter;
 
 class ContainerConfigurationService extends UpstreamContainerConfigurationService
@@ -41,10 +43,13 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
     {
         parent::configureContainer();
 
+        $parameters = $this->containerConfigurator->parameters();
+
+        $parameters->set(Option::DEFAULT_BRANCH_NAME, MonorepoMetadata::GIT_BASE_BRANCH);
+        
         /**
          * Indicate which is the upstream path to the Release Workers
          */
-        $parameters = $this->containerConfigurator->parameters();
         $parameters->set(
             Param::UPSTREAM_RELATIVE_PATH,
             $this->upstreamRelativeRootPath
