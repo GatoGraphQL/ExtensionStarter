@@ -48,7 +48,7 @@
         "symfony/var-dumper": "^6.0",
         "symplify/monorepo-builder": "^10.2.2",
         "szepeviktor/phpstan-wordpress": "^1.0",
-        "wpackagist-plugin/hello-dolly": "^6.1"
+        "wpackagist-plugin/hello-dolly": "^1.7"
     },
     "autoload": {
         "psr-4": {
