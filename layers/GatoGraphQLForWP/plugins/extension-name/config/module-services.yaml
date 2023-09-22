@@ -4,5 +4,5 @@ services:
         autowire: true
         autoconfigure: true
 
-    DollyShepherd\ExtensionName\ModuleResolvers\:
+    DollyShepherd\HelloDolly\ModuleResolvers\:
         resource: '../src/ModuleResolvers/*'

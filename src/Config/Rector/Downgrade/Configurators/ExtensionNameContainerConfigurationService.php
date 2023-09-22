@@ -6,7 +6,7 @@ namespace PoP\ExtensionStarter\Config\Rector\Downgrade\Configurators;
 
 use PoP\PoP\Config\Rector\Downgrade\Configurators\AbstractExtensionDowngradeContainerConfigurationService;
 
-class ExtensionNameContainerConfigurationService extends AbstractExtensionDowngradeContainerConfigurationService
+class HelloDollyContainerConfigurationService extends AbstractExtensionDowngradeContainerConfigurationService
 {
     protected function getPluginRelativePath(): string
     {

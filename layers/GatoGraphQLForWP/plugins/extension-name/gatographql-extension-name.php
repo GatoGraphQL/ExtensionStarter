@@ -13,7 +13,7 @@ Text Domain: gatographql-extension-name
 Domain Path: /languages
 */
 
-use DollyShepherd\ExtensionName\GatoGraphQLExtension;
+use DollyShepherd\HelloDolly\GatoGraphQLExtension;
 use GatoGraphQL\GatoGraphQL\Plugin;
 use GatoGraphQL\GatoGraphQL\PluginApp;
 use GatoGraphQL\GatoGraphQL\PluginStaticHelpers;

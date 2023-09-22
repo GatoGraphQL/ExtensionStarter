@@ -4,6 +4,6 @@ services:
         autowire: true
         autoconfigure: true
 
-    DollyShepherd\ExtensionName\Container\CompilerPasses\:
+    DollyShepherd\HelloDolly\Container\CompilerPasses\:
         resource: '../src/Container/CompilerPasses/*'
 
