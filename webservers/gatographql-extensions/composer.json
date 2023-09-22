@@ -1,5 +1,5 @@
 {
-    "name": "extension-vendor/gatographql-extension-name-dev",
+    "name": "extension-vendor/gatographql-extensions-dev",
     "description": "Gato GraphQL - Extension Name",
     "homepage": "https://mysite.com",
     "license": "GPL-2.0-or-later",
@@ -41,7 +41,7 @@
         "ssh-server": "lando ssh",
         "build-server": [
             "Composer\\Config::disableProcessTimeout",
-            "lando init --source remote --remote-url https://wordpress.org/latest.tar.gz --recipe wordpress --webroot wordpress --name gatographql-extension-name",
+            "lando init --source remote --remote-url https://wordpress.org/latest.tar.gz --recipe wordpress --webroot wordpress --name gatographql-extensions",
             "@update-deps",
             "@start-server",
             "@install-site"
