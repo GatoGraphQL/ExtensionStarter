@@ -83,7 +83,7 @@ class RootObjectTypeFieldResolver extends AbstractObjectTypeFieldResolver
     ): mixed {
         switch ($fieldDataAccessor->getFieldName()) {
             case 'helloDolly':
-                return \__('Hello Gato!', 'hello-dolly-schema');
+                return \hello_dolly_get_lyric();
         }
 
         return parent::resolveValue($objectTypeResolver, $object, $fieldDataAccessor, $objectTypeFieldResolutionFeedbackStore);
