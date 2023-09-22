@@ -15,7 +15,7 @@ function convertRelativeToFullPath(string $relativePath): string
 }
 
 return [
-    'prefix' => 'PrefixedExtensionVendor',
+    'prefix' => 'PrefixedDollyShepherd',
     'finders' => [
         // Scope packages under vendor/, excluding local WordPress packages
         Finder::create()
