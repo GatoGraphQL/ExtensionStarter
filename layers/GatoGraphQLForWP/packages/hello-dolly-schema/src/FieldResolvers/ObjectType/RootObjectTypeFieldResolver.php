@@ -70,7 +70,7 @@ class RootObjectTypeFieldResolver extends AbstractObjectTypeFieldResolver
     public function getFieldDescription(ObjectTypeResolverInterface $objectTypeResolver, string $fieldName): ?string
     {
         return match ($fieldName) {
-            'helloDolly' => $this->getTranslationAPI()->__('Demo field', 'hello-dolly-schema'),
+            'helloDolly' => $this->getTranslationAPI()->__('Symbol of the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong: Hello, Dolly.', 'hello-dolly-schema'),
             default => parent::getFieldDescription($objectTypeResolver, $fieldName),
         };
     }
