@@ -49,7 +49,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
         return match ($module) {
             self::SCHEMA_EXTENSION_NAME => [
                 new DependedOnActiveWordPressPlugin(
-                    \__('Extension Name', 'gatographql-extension-name'),
+                    \__('Hello Dolly', 'gatographql-extension-name'),
                     'extension-wordpress-plugin/extension-wordpress-plugin-php-filename.php',
                     'extension-wordpress-plugin-constraint',
                 ),
@@ -61,7 +61,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getName(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_EXTENSION_NAME => \__('Extension Name Schema', 'gatographql-extension-name'),
+            self::SCHEMA_EXTENSION_NAME => \__('Hello Dolly Schema', 'gatographql-extension-name'),
             default => $module,
         };
     }
@@ -69,7 +69,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getDescription(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_EXTENSION_NAME => \__('Add schema elements for the Extension Name extension for Gato GraphQL.', 'gatographql-extension-name'),
+            self::SCHEMA_EXTENSION_NAME => \__('Add schema elements for the Hello Dolly extension for Gato GraphQL.', 'gatographql-extension-name'),
             default => parent::getDescription($module),
         };
     }

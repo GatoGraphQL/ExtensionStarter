@@ -11,7 +11,7 @@ class ExtensionStaticHelpers
 {
     public static function getGitHubRepoDocsRootPathURL(): string
     {
-        // @todo Complete for Extension Name!
+        // @todo Complete for Hello Dolly!
         $gitDevelopmentBranch = 'main';
         
         $extensionPluginVersion = PluginApp::getExtension(GatoGraphQLExtension::class)->getPluginVersion();

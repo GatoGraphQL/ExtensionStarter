@@ -1,6 +1,6 @@
-# Extension Name Schema
+# Hello Dolly Schema
 
-Add schema elements for the Extension Name extension for Gato GraphQL.
+Add schema elements for the Hello Dolly extension for Gato GraphQL.
 
 ## Install
 

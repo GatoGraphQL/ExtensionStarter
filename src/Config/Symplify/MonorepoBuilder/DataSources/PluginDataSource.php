@@ -32,7 +32,7 @@ class PluginDataSource extends UpstreamPluginDataSource
         // Plugins
         // ------------------------------------------------------------
         $pluginConfigEntries = [
-            // Gato GraphQL - Extension Name
+            // Gato GraphQL - Hello Dolly
             [
                 'path' => 'layers/GatoGraphQLForWP/plugins/extension-name',
                 'plugin_slug' => 'gatographql-extension-name',

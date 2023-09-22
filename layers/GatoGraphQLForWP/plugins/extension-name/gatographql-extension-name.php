@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Gato GraphQL - Extension Name
+Plugin Name: Gato GraphQL - Hello Dolly
 Plugin URI:
-Description: Integration of plugin Extension Name with Gato GraphQL
+Description: Integration of plugin Hello Dolly with Gato GraphQL
 Version: 1.1.0-dev
 Requires at least: 5.4
 Requires PHP: 8.1
@@ -41,7 +41,7 @@ add_action(
          * @see https://getcomposer.org/doc/articles/versions.md#stabilities
          */
         $extensionVersion = '1.1.0-dev';
-        $extensionName = \__('Gato GraphQL - Extension Name', 'gatographql-extension-name');
+        $extensionName = \__('Gato GraphQL - Hello Dolly', 'gatographql-extension-name');
         $mainPluginVersionConstraint = '^1.1';
         
         /**
@@ -75,7 +75,7 @@ add_action(
         // Unless this extension is included inside a bundle...
         if (!$extensionManager->isExtensionBundled(GatoGraphQLExtension::class))  {
             /**
-             * Validate the Extension Name plugin is active and satisfy
+             * Validate the Hello Dolly plugin is active and satisfy
              * the required version constraint
              */
             $requiredPluginFile = 'extension-wordpress-plugin/extension-wordpress-plugin-php-filename.php';
@@ -95,7 +95,7 @@ add_action(
                     $requiredPluginFile,
                 ]);
                 \add_action('admin_notices', function () use ($extensionName, $isWordPressPluginActive, $requiredPluginVersion) {
-                    $pluginName = __('Extension Name', 'gatographql-extension-name');
+                    $pluginName = __('Hello Dolly', 'gatographql-extension-name');
                     _e(sprintf(
                         '<div class="notice notice-error"><p>%s</p></div>',
                         $isWordPressPluginActive

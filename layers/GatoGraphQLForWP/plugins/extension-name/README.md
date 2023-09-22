@@ -1,6 +1,6 @@
-# Extension Name for Gato GraphQL
+# Hello Dolly for Gato GraphQL
 
-Integration of plugin Extension Name with Gato GraphQL
+Integration of plugin Hello Dolly with Gato GraphQL
 
 ## Install
 
