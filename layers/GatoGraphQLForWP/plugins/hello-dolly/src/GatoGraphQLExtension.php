@@ -35,7 +35,7 @@ class GatoGraphQLExtension extends AbstractGatoGraphQLExtension
     public function getDependentOnPluginFiles(): array
     {
         return [
-            'extension-wordpress-plugin/extension-wordpress-plugin-php-filename.php',
+            'hello-dolly/hello.php',
         ];
     }
 }
