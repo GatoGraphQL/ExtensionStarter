@@ -7,7 +7,7 @@ Add schema elements for the Extension Name extension for Gato GraphQL.
 Via Composer
 
 ``` bash
-composer require extension-vendor/extension-name-schema
+composer require dolly-shepherd/extension-name-schema
 ```
 
 ## PHP versions

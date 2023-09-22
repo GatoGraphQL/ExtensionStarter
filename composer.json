@@ -667,8 +667,8 @@
         "server-install-generated-plugins-from-github-actions": "Install the latest generated plugins from GitHub Actions in the Lando webserver for PROD"
     },
     "replace": {
-        "extension-vendor/extension-name": "self.version",
-        "extension-vendor/extension-name-schema": "self.version",
+        "dolly-shepherd/extension-name": "self.version",
+        "dolly-shepherd/extension-name-schema": "self.version",
         "gatographql/extension-demo": "self.version",
         "gatographql/external-dependency-wrappers": "self.version",
         "gatographql/gatographql": "self.version",

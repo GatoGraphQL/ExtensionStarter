@@ -5,4 +5,4 @@ services:
         - >-
           ../../layers/GatoGraphQLForWP/plugins/extension-name:/app/wordpress/wp-content/plugins/gatographql-extension-name
         - >-
-          ../../layers/GatoGraphQLForWP/packages/extension-name-schema:/app/wordpress/wp-content/plugins/gatographql-extension-name/vendor/extension-vendor/extension-name-schema
+          ../../layers/GatoGraphQLForWP/packages/extension-name-schema:/app/wordpress/wp-content/plugins/gatographql-extension-name/vendor/dolly-shepherd/extension-name-schema

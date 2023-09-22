@@ -1,5 +1,5 @@
 {
-    "name": "extension-vendor/extension-name-schema",
+    "name": "dolly-shepherd/extension-name-schema",
     "type": "library",
     "description": "GitHub template repository to quickstart your extension for Gato GraphQL.",
     "keywords": ["WordPress", "Gato", "GatoGraphQL", "GraphQL", "ExtensionName"],
