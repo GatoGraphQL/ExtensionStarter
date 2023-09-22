@@ -1,5 +1,5 @@
 {
-    "name": "extension-vendor/gatographql-extension-name-for-prod-dev",
+    "name": "extension-vendor/gatographql-extensions-for-prod-dev",
     "description": "Gato GraphQL - Extension Name for PROD (PHP 7.2 + Generated .zip plugins)",
     "homepage": "https://mysite.com",
     "license": "GPL-2.0-or-later",
@@ -41,7 +41,7 @@
         "ssh-server": "lando ssh",
         "build-server": [
             "Composer\\Config::disableProcessTimeout",
-            "lando init --source remote --remote-url https://wordpress.org/latest.tar.gz --recipe wordpress --webroot wordpress --name gatographql-extension-name-for-prod",
+            "lando init --source remote --remote-url https://wordpress.org/latest.tar.gz --recipe wordpress --webroot wordpress --name gatographql-extensions-for-prod",
             "@update-deps",
             "@start-server",
             "@install-site"
@@ -100,11 +100,11 @@
         "server-info": "lando info",
         "integration-test": [
             "Composer\\Config::disableProcessTimeout",
-            "cd ../../ && INTEGRATION_TESTS_WEBSERVER_DOMAIN=gatographql-extension-name-for-prod.lndo.site phpunit --filter='Integration'"
+            "cd ../../ && INTEGRATION_TESTS_WEBSERVER_DOMAIN=gatographql-extensions-for-prod.lndo.site phpunit --filter='Integration'"
         ],
         "stopping-integration-test": [
             "Composer\\Config::disableProcessTimeout",
-            "cd ../../ && INTEGRATION_TESTS_WEBSERVER_DOMAIN=gatographql-extension-name-for-prod.lndo.site phpunit --filter='Integration' --log-junit=phpunit-test-results.xml --order-by=defects --stop-on-error --stop-on-failure"
+            "cd ../../ && INTEGRATION_TESTS_WEBSERVER_DOMAIN=gatographql-extensions-for-prod.lndo.site phpunit --filter='Integration' --log-junit=phpunit-test-results.xml --order-by=defects --stop-on-error --stop-on-failure"
         ]
     }
 }

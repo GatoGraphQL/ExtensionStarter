@@ -49,23 +49,23 @@ class CopyUpstreamMonorepoFoldersDataSource
             // Webserver assets
             [
                 'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql/assets',
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extension-name/assets',
+                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions/assets',
             ],
             [
                 'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql-for-prod/assets',
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extension-name-for-prod/assets',
+                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions-for-prod/assets',
             ],
             // Webserver setup
             [
                 'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql/setup',
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extension-name/setup',
+                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions/setup',
                 'patternReplacements' => [
                     '#gatographql.lndo.site#' => 'gatographql-extension-name.lndo.site',
                 ],
             ],
             [
                 'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql-for-prod/setup',
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extension-name-for-prod/setup',
+                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions-for-prod/setup',
                 'patternReplacements' => [
                     '#gatographql-for-prod.lndo.site#' => 'gatographql-extension-name-for-prod.lndo.site',
                 ],

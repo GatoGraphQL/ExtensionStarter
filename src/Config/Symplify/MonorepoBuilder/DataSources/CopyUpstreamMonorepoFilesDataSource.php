@@ -24,7 +24,7 @@ class CopyUpstreamMonorepoFilesDataSource
                 'files' => [
                     $upstreamLandoConfigFile,
                 ],
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extension-name',
+                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions',
                 'patternReplacements' => [
                     '#../../layers/#' => '../../' . $this->upstreamRelativeRootPath . '/layers/',
                 ],
