@@ -3,5 +3,5 @@ services:
         public: true
         autowire: true
 
-    ExtensionVendor\ExtensionNameSchema\FieldResolvers\:
+    DollyShepherd\ExtensionNameSchema\FieldResolvers\:
         resource: '../src/FieldResolvers/*'

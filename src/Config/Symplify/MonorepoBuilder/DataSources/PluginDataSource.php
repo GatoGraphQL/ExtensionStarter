@@ -40,7 +40,7 @@ class PluginDataSource extends UpstreamPluginDataSource
                 'exclude_files' => implode(' ', [
                     'docs/images/\*',
                 ]),
-                'dist_repo_organization' => 'ExtensionVendor',
+                'dist_repo_organization' => 'DollyShepherd',
                 'dist_repo_name' => 'gatographql-extension-name-dist',
                 'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/extension-name/rector.php',
             ],

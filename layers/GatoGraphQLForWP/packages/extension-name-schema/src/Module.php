@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ExtensionVendor\ExtensionNameSchema;
+namespace DollyShepherd\ExtensionNameSchema;
 
 use PoP\Root\Module\ModuleInterface;
 use PoP\Root\Module\AbstractModule;

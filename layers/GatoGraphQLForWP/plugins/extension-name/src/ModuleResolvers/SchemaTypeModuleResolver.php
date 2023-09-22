@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ExtensionVendor\ExtensionName\ModuleResolvers;
+namespace DollyShepherd\ExtensionName\ModuleResolvers;
 
-use ExtensionVendor\ExtensionName\GatoGraphQLExtension;
+use DollyShepherd\ExtensionName\GatoGraphQLExtension;
 use GatoGraphQL\GatoGraphQL\ContentProcessors\MarkdownContentParserInterface;
 use GatoGraphQL\GatoGraphQL\ModuleResolvers\AbstractModuleResolver;
 use GatoGraphQL\GatoGraphQL\ModuleResolvers\SchemaTypeModuleResolverTrait;

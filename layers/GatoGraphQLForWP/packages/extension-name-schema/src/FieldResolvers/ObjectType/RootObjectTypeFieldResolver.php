@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ExtensionVendor\ExtensionNameSchema\FieldResolvers\ObjectType;
+namespace DollyShepherd\ExtensionNameSchema\FieldResolvers\ObjectType;
 
 use PoP\ComponentModel\QueryResolution\FieldDataAccessorInterface;
 use PoP\ComponentModel\Feedback\ObjectTypeFieldResolutionFeedbackStore;

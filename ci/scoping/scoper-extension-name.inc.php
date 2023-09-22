@@ -40,6 +40,6 @@ return [
     ],
     'exclude-namespaces' => [
         // Own namespaces
-        'ExtensionVendor',
+        'DollyShepherd',
     ],
 ];

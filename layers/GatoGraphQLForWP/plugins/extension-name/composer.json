@@ -23,12 +23,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "ExtensionVendor\\ExtensionName\\": "src"
+            "DollyShepherd\\ExtensionName\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ExtensionVendor\\ExtensionName\\": "tests"
+            "DollyShepherd\\ExtensionName\\": "tests"
         }
     },
     "scripts": {

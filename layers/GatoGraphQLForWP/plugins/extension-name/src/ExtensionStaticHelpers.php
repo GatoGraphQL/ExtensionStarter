@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ExtensionVendor\ExtensionName;
+namespace DollyShepherd\ExtensionName;
 
 use GatoGraphQL\GatoGraphQL\PluginApp;
 use GatoGraphQL\GatoGraphQL\StaticHelpers\PluginVersionHelpers;

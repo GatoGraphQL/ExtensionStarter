@@ -52,8 +52,8 @@
     },
     "autoload": {
         "psr-4": {
-            "ExtensionVendor\\ExtensionNameSchema\\": "layers/GatoGraphQLForWP/packages/extension-name-schema/src",
-            "ExtensionVendor\\ExtensionName\\": "layers/GatoGraphQLForWP/plugins/extension-name/src",
+            "DollyShepherd\\ExtensionNameSchema\\": "layers/GatoGraphQLForWP/packages/extension-name-schema/src",
+            "DollyShepherd\\ExtensionName\\": "layers/GatoGraphQLForWP/plugins/extension-name/src",
             "GatoGraphQL\\ExtensionDemo\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/extension-demo/src",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/src",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/src",
@@ -191,8 +191,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ExtensionVendor\\ExtensionNameSchema\\": "layers/GatoGraphQLForWP/packages/extension-name-schema/tests",
-            "ExtensionVendor\\ExtensionName\\": "layers/GatoGraphQLForWP/plugins/extension-name/tests",
+            "DollyShepherd\\ExtensionNameSchema\\": "layers/GatoGraphQLForWP/packages/extension-name-schema/tests",
+            "DollyShepherd\\ExtensionName\\": "layers/GatoGraphQLForWP/plugins/extension-name/tests",
             "GatoGraphQL\\ExtensionDemo\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/extension-demo/tests",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/tests",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/tests",
