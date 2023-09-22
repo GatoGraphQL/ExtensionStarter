@@ -50,8 +50,8 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
             self::SCHEMA_EXTENSION_NAME => [
                 new DependedOnActiveWordPressPlugin(
                     \__('Hello Dolly', 'gatographql-hello-dolly'),
-                    'extension-wordpress-plugin/extension-wordpress-plugin-php-filename.php',
-                    'extension-wordpress-plugin-constraint',
+                    'hello-dolly/hello.php',
+                    '^1.7',
                 ),
             ],
             default => parent::getDependentOnActiveWordPressPlugins($module),

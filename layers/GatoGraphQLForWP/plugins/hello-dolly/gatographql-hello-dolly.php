@@ -78,8 +78,8 @@ add_action(
              * Validate the Hello Dolly plugin is active and satisfy
              * the required version constraint
              */
-            $requiredPluginFile = 'extension-wordpress-plugin/extension-wordpress-plugin-php-filename.php';
-            $requiredPluginVersion = 'extension-wordpress-plugin-constraint';
+            $requiredPluginFile = 'hello-dolly/hello.php';
+            $requiredPluginVersion = '^1.7';
             $isWordPressPluginActive = PluginStaticHelpers::isWordPressPluginActive($requiredPluginFile);
             if (!$isWordPressPluginActive
                 || !PluginStaticHelpers::doesActivePluginSatisfyVersionConstraint(

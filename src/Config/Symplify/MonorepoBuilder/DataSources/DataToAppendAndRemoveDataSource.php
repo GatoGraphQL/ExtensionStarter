@@ -30,7 +30,7 @@ class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataS
     public function getDataToRemove(): array
     {
         $dataToRemove = parent::getDataToRemove();
-        $dataToRemove['require-dev']['wpackagist-plugin/extension-wordpress-plugin'] = '*';
+        $dataToRemove['require-dev']['wpackagist-plugin/hello-dolly'] = '*';
         return $dataToRemove;
     }
 }
