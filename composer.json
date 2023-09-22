@@ -417,11 +417,11 @@
         ],
         "prod-integration-test": [
             "Composer\\Config::disableProcessTimeout",
-            "composer integration-test -d webservers/extensions-for-prod"
+            "composer integration-test -d webservers/gatographql-extensions-for-prod"
         ],
         "stopping-prod-integration-test": [
             "Composer\\Config::disableProcessTimeout",
-            "composer stopping-integration-test -d webservers/extensions-for-prod"
+            "composer stopping-integration-test -d webservers/gatographql-extensions-for-prod"
         ],
         "prod-integration-test-upstream": [
             "Composer\\Config::disableProcessTimeout",
@@ -445,58 +445,58 @@
             "@preview-vendor-downgrade"
         ],
         "preview-extension-name-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/extension-name/rector.php --dry-run layers/GatoGraphQLForWP/plugins/extension-name \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
-        "ssh-server": "composer ssh-server -d webservers/extensions",
-        "build-server": "composer build-server -d webservers/extensions",
-        "init-server": "composer init-server -d webservers/extensions",
+        "ssh-server": "composer ssh-server -d webservers/gatographql-extensions",
+        "build-server": "composer build-server -d webservers/gatographql-extensions",
+        "init-server": "composer init-server -d webservers/gatographql-extensions",
         "init-server-upstream": "composer init-server -d submodules/GatoGraphQL",
-        "init-server-prod": "composer init-server -d webservers/extensions-for-prod",
-        "start-server": "composer start-server -d webservers/extensions",
-        "destroy-server": "composer destroy-server -d webservers/extensions",
+        "init-server-prod": "composer init-server -d webservers/gatographql-extensions-for-prod",
+        "start-server": "composer start-server -d webservers/gatographql-extensions",
+        "destroy-server": "composer destroy-server -d webservers/gatographql-extensions",
         "reset-db": [
             "Composer\\Config::disableProcessTimeout",
-            "composer reset-db -d webservers/extensions"
+            "composer reset-db -d webservers/gatographql-extensions"
         ],
         "reset-db-prod": [
             "Composer\\Config::disableProcessTimeout",
-            "composer reset-db -d webservers/extensions-for-prod"
+            "composer reset-db -d webservers/gatographql-extensions-for-prod"
         ],
-        "install-site": "composer install-site -d webservers/extensions",
-        "import-data": "composer import-data -d webservers/extensions",
-        "create-users": "composer create-users -d webservers/extensions",
-        "update-deps": "composer update-deps -d webservers/extensions",
-        "optimize-autoloader": "composer optimize-autoloader -d webservers/extensions",
-        "deoptimize-autoloader": "composer deoptimize-autoloader -d webservers/extensions",
+        "install-site": "composer install-site -d webservers/gatographql-extensions",
+        "import-data": "composer import-data -d webservers/gatographql-extensions",
+        "create-users": "composer create-users -d webservers/gatographql-extensions",
+        "update-deps": "composer update-deps -d webservers/gatographql-extensions",
+        "optimize-autoloader": "composer optimize-autoloader -d webservers/gatographql-extensions",
+        "deoptimize-autoloader": "composer deoptimize-autoloader -d webservers/gatographql-extensions",
         "log-server-errors": [
             "Composer\\Config::disableProcessTimeout",
-            "composer log-server-errors -d webservers/extensions"
+            "composer log-server-errors -d webservers/gatographql-extensions"
         ],
         "log-server-warnings": [
             "Composer\\Config::disableProcessTimeout",
-            "composer log-server-warnings -d webservers/extensions"
+            "composer log-server-warnings -d webservers/gatographql-extensions"
         ],
         "rebuild-server": [
             "Composer\\Config::disableProcessTimeout",
-            "composer rebuild-server -d webservers/extensions"
+            "composer rebuild-server -d webservers/gatographql-extensions"
         ],
         "rebuild-app-and-server": [
             "Composer\\Config::disableProcessTimeout",
-            "composer rebuild-app-and-server -d webservers/extensions"
+            "composer rebuild-app-and-server -d webservers/gatographql-extensions"
         ],
         "rebuild-app-and-server-prod": [
             "Composer\\Config::disableProcessTimeout",
-            "composer rebuild-app-and-server -d webservers/extensions-for-prod"
+            "composer rebuild-app-and-server -d webservers/gatographql-extensions-for-prod"
         ],
-        "stop-server": "composer stop-server -d webservers/extensions",
+        "stop-server": "composer stop-server -d webservers/gatographql-extensions",
         "stop-server-upstream": "composer stop-server -d submodules/GatoGraphQL",
-        "enable-caching": "composer enable-caching -d webservers/extensions",
-        "disable-caching": "composer disable-caching -d webservers/extensions",
-        "enable-restrictive-defaults": "composer enable-restrictive-defaults -d webservers/extensions",
-        "disable-restrictive-defaults": "composer disable-restrictive-defaults -d webservers/extensions",
-        "use-default-restrictive-defaults": "composer use-default-restrictive-defaults -d webservers/extensions",
-        "delete-settings": "composer delete-settings -d webservers/extensions",
-        "purge-cache": "composer purge-cache -d webservers/extensions",
+        "enable-caching": "composer enable-caching -d webservers/gatographql-extensions",
+        "disable-caching": "composer disable-caching -d webservers/gatographql-extensions",
+        "enable-restrictive-defaults": "composer enable-restrictive-defaults -d webservers/gatographql-extensions",
+        "disable-restrictive-defaults": "composer disable-restrictive-defaults -d webservers/gatographql-extensions",
+        "use-default-restrictive-defaults": "composer use-default-restrictive-defaults -d webservers/gatographql-extensions",
+        "delete-settings": "composer delete-settings -d webservers/gatographql-extensions",
+        "purge-cache": "composer purge-cache -d webservers/gatographql-extensions",
         "purge-cache-upstream": "composer purge-cache -d submodules/GatoGraphQL",
-        "server-info": "composer server-info -d webservers/extensions",
+        "server-info": "composer server-info -d webservers/gatographql-extensions",
         "merge-monorepo": "monorepo-builder merge --config=config/monorepo-builder/merge.php --ansi",
         "propagate-monorepo": "monorepo-builder propagate --config=config/monorepo-builder/propagate.php --ansi",
         "validate-monorepo": "monorepo-builder validate --config=config/monorepo-builder/validate.php --ansi",
@@ -551,59 +551,59 @@
         ],
         "print-github-actions-artifact-download-urls": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-artifact-download-urls -d webservers/extensions-for-prod"
+            "composer print-github-actions-artifact-download-urls -d webservers/gatographql-extensions-for-prod"
         ],
         "print-github-actions-gatographql-artifact-download-url": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-gatographql-artifact-download-url -d webservers/extensions-for-prod"
+            "composer print-github-actions-gatographql-artifact-download-url -d webservers/gatographql-extensions-for-prod"
         ],
         "print-github-actions-extension-name-artifact-download-url": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-extension-name-artifact-download-url -d webservers/extensions-for-prod"
+            "composer print-github-actions-extension-name-artifact-download-url -d webservers/gatographql-extensions-for-prod"
         ],
         "print-github-actions-upstream-artifact-download-urls": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-upstream-artifact-download-urls -d webservers/extensions-for-prod"
+            "composer print-github-actions-upstream-artifact-download-urls -d webservers/gatographql-extensions-for-prod"
         ],
         "print-github-actions-all-artifact-download-urls": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-all-artifact-download-urls -d webservers/extensions-for-prod"
+            "composer print-github-actions-all-artifact-download-urls -d webservers/gatographql-extensions-for-prod"
         ],
         "print-github-actions-artifact-full-response": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-artifact-full-response -d webservers/extensions-for-prod"
+            "composer print-github-actions-artifact-full-response -d webservers/gatographql-extensions-for-prod"
         ],
         "print-github-actions-upstream-artifact-full-response": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-upstream-artifact-full-response -d webservers/extensions-for-prod"
+            "composer print-github-actions-upstream-artifact-full-response -d webservers/gatographql-extensions-for-prod"
         ],
         "print-github-actions-all-artifact-full-response": [
             "Composer\\Config::disableProcessTimeout",
-            "composer print-github-actions-all-artifact-full-response -d webservers/extensions-for-prod"
+            "composer print-github-actions-all-artifact-full-response -d webservers/gatographql-extensions-for-prod"
         ],
         "server-install-gatographql-generated-plugin-from-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-gatographql-generated-plugin-from-github-actions -d webservers/extensions-for-prod"
+            "composer server-install-gatographql-generated-plugin-from-github-actions -d webservers/gatographql-extensions-for-prod"
         ],
         "server-install-extension-name-generated-plugin-from-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-extension-name-generated-plugin-from-github-actions -d webservers/extensions-for-prod"
+            "composer server-install-extension-name-generated-plugin-from-github-actions -d webservers/gatographql-extensions-for-prod"
         ],
         "server-install-generated-plugins-from-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-generated-plugins-from-github-actions -d webservers/extensions-for-prod"
+            "composer server-install-generated-plugins-from-github-actions -d webservers/gatographql-extensions-for-prod"
         ],
         "server-install-generated-plugins-from-upstream-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-generated-plugins-from-upstream-github-actions -d webservers/extensions-for-prod"
+            "composer server-install-generated-plugins-from-upstream-github-actions -d webservers/gatographql-extensions-for-prod"
         ],
         "server-install-generated-plugins-from-all-github-actions": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-generated-plugins-from-all-github-actions -d webservers/extensions-for-prod"
+            "composer server-install-generated-plugins-from-all-github-actions -d webservers/gatographql-extensions-for-prod"
         ],
         "server-install-generated-plugins-from-github-actions-upstream": [
             "Composer\\Config::disableProcessTimeout",
-            "composer server-install-generated-plugins-from-github-actions-upstream -d webservers/extensions-for-prod"
+            "composer server-install-generated-plugins-from-github-actions-upstream -d webservers/gatographql-extensions-for-prod"
         ]
     },
     "scripts-descriptions": {
