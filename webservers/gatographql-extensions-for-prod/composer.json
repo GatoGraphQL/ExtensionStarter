@@ -1,6 +1,6 @@
 {
     "name": "dolly-shepherd/gatographql-extensions-for-prod-dev",
-    "description": "Gato GraphQL - Hello Dolly for PROD (PHP 7.2 + Generated .zip plugins)",
+    "description": "Gato GraphQL - Extensions for PROD (PHP 7.2 + Generated .zip plugins)",
     "homepage": "https://mysite.com",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -59,7 +59,10 @@
             "@install-site"
         ],
         "install-site": "lando composer install-site-within-container",
-        "install-site-within-container": "/bin/sh /app/setup/setup.sh",
+        "install-site-within-container": [
+            "/bin/sh /app/setup/setup.sh",
+            "/bin/sh /app/setup-extensions/setup.sh"
+        ],
         "import-data": "lando composer import-data-within-container",
         "import-data-within-container": "/bin/sh /app/setup/import-data.sh",
         "create-users": "lando composer create-users-within-container",
