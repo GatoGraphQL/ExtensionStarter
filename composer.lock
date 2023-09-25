@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b594a588bdd091e0a2887b98e7721b59",
+    "content-hash": "35096eefeddecb559d05b2e57075196a",
     "packages": [
         {
             "name": "antecedent/patchwork",
@@ -7584,9 +7584,11 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": [],
-    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "brain/cortex": 15
+    },
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1",
