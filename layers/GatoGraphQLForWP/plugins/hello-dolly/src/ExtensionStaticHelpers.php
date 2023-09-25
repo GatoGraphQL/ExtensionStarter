@@ -13,7 +13,7 @@ class ExtensionStaticHelpers
     {
         // @todo Complete for Hello Dolly!
         $gitDevelopmentBranch = 'main';
-        
+
         $extensionPluginVersion = PluginApp::getExtension(GatoGraphQLExtension::class)->getPluginVersion();
         $tag = PluginVersionHelpers::isDevelopmentVersion($extensionPluginVersion)
             ? $gitDevelopmentBranch

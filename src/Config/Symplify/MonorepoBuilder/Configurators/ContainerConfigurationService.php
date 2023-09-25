@@ -46,7 +46,7 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
         $parameters = $this->containerConfigurator->parameters();
 
         $parameters->set(Option::DEFAULT_BRANCH_NAME, MonorepoMetadata::GIT_BASE_BRANCH);
-        
+
         /**
          * Indicate which is the upstream path to the Release Workers
          */

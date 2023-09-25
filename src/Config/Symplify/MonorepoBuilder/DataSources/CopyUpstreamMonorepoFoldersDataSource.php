@@ -46,7 +46,6 @@ class CopyUpstreamMonorepoFoldersDataSource
                     [
                         '/(#?)branches:(\s+)(#?)- master/' => '$1branches:$2$3- ' . $this->getGitMainBranch(),
                     ],
-                        
                 )
             ],
             // Webserver assets
