@@ -6,14 +6,14 @@ namespace PoP\ExtensionStarter\Config\Rector\CodeQuality\Configurators;
 
 use PoP\ExtensionStarter\Config\Rector\Configurators\ContainerConfigurationServiceTrait;
 use PoP\PoP\Config\Rector\CodeQuality\Configurators\AbstractCodeQualityContainerConfigurationService;
-use PoP\PoP\Config\Rector\CodeQuality\Configurators\CodeQualityContainerConfigurationService as UpstreamCodeQualityContainerConfigurationService;
+// use PoP\PoP\Config\Rector\CodeQuality\Configurators\CodeQualityContainerConfigurationService as UpstreamCodeQualityContainerConfigurationService;
 use Rector\Config\RectorConfig;
 
 class CodeQualityContainerConfigurationService extends AbstractCodeQualityContainerConfigurationService
 {
     use ContainerConfigurationServiceTrait;
 
-    protected UpstreamCodeQualityContainerConfigurationService $upstreamCodeQualityContainerConfigurationService;
+    // protected UpstreamCodeQualityContainerConfigurationService $upstreamCodeQualityContainerConfigurationService;
 
     public function __construct(
         RectorConfig $rectorConfig,
@@ -24,10 +24,10 @@ class CodeQualityContainerConfigurationService extends AbstractCodeQualityContai
             $rectorConfig,
             $rootDirectory,
         );
-        $this->upstreamCodeQualityContainerConfigurationService = new UpstreamCodeQualityContainerConfigurationService(
-            $rectorConfig,
-            $rootDirectory . '/' . $upstreamRelativeRootPath,
-        );
+        // $this->upstreamCodeQualityContainerConfigurationService = new UpstreamCodeQualityContainerConfigurationService(
+        //     $rectorConfig,
+        //     $rootDirectory . '/' . $upstreamRelativeRootPath,
+        // );
     }
 
     /**
@@ -36,5 +36,9 @@ class CodeQualityContainerConfigurationService extends AbstractCodeQualityContai
     protected function getPaths(): array
     {
         return $this->getDownstreamProjectPaths();
+        // return array_merge(
+        //     $this->upstreamCodeQualityContainerConfigurationService->getPaths(),
+        //     $this->getDownstreamProjectPaths(),
+        // );
     }
 }
