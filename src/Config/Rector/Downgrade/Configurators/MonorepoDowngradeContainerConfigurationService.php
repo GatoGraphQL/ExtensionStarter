@@ -19,4 +19,17 @@ class MonorepoDowngradeContainerConfigurationService extends UpstreamMonorepoDow
             $rootDirectory,
         );
     }
+
+    /**
+     * @return string[]
+     */
+    protected function getBootstrapFiles(): array
+    {
+        return array_merge(
+            parent::getBootstrapFiles(),
+            [
+                $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+            ]
+        );
+    }
 }
