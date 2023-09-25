@@ -35,9 +35,6 @@ class CodeQualityContainerConfigurationService extends AbstractCodeQualityContai
      */
     protected function getPaths(): array
     {
-        return array_merge(
-            $this->upstreamCodeQualityContainerConfigurationService->getPaths(),
-            $this->getDownstreamProjectPaths(),
-        );
+        return $this->getDownstreamProjectPaths();
     }
 }
