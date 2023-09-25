@@ -661,7 +661,5 @@
         "pop-wp-schema/taxonomymeta": "self.version",
         "pop-wp-schema/usermeta": "self.version",
         "pop-wp-schema/users": "self.version"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
