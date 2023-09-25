@@ -34,7 +34,6 @@ class CopyUpstreamMonorepoFoldersDataSource
                         '#CHECKOUT_SUBMODULES:(\s+".*")?#' => 'CHECKOUT_SUBMODULES: "recursive"',
                         // Replace the Git branch if needed
                         '#COMPOSER_ROOT_VERSION:(\s+.*)#' => 'COMPOSER_ROOT_VERSION: ' . $devBranch,
-                        '#/custom-bump-interdependency.php "?dev-master"?#' => '/custom-bump-interdependency.php "' . $devBranch . '"',
                         // Use files from upstream
                         '#ci/downgrade/before_downgrade_code\.sh#' => $this->upstreamRelativeRootPath . '/ci/downgrade/before_downgrade_code.sh',
                         '#ci/downgrade/downgrade_code\.sh#' => $this->upstreamRelativeRootPath . '/ci/downgrade/downgrade_code.sh',
