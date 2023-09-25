@@ -20,8 +20,9 @@ class CopyUpstreamMonorepoFoldersDataSource
     public function getCopyUpstreamMonorepoFoldersEntries(): array
     {
         $devBranch = 'dev-' . $this->getGitMainBranch();
-        $commentOutThemeActivationPatternReplacements = [
+        $commentOutSetupStepsPatternReplacements = [
             '#(/bin/sh /app/setup/activate-theme.sh)#' => '#$1',
+            '#(/bin/sh /app/setup/create-menus.sh)#' => '#$1',
         ];
         return [
             // GitHub Workflows
@@ -65,7 +66,7 @@ class CopyUpstreamMonorepoFoldersDataSource
                 'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql/setup',
                 'toFolder' => $this->rootDir . '/webservers/gatographql-extensions/setup',
                 'patternReplacements' => array_merge(
-                    $commentOutThemeActivationPatternReplacements,
+                    $commentOutSetupStepsPatternReplacements,
                     [
                         '#gatographql.lndo.site#' => 'gatographql-extensions.lndo.site',
                     ]
@@ -75,7 +76,7 @@ class CopyUpstreamMonorepoFoldersDataSource
                 'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql-for-prod/setup',
                 'toFolder' => $this->rootDir . '/webservers/gatographql-extensions-for-prod/setup',
                 'patternReplacements' => array_merge(
-                    $commentOutThemeActivationPatternReplacements,
+                    $commentOutSetupStepsPatternReplacements,
                     [
                         '#gatographql-for-prod.lndo.site#' => 'gatographql-extensions-for-prod.lndo.site',
                     ]
