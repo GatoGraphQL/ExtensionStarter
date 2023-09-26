@@ -1,5 +1,5 @@
 {
-    "name": "dolly-shepherd/gatographql-extensions-for-prod-dev",
+    "name": "gatographql-extensions-dev/gatographql-extensions-for-prod",
     "description": "Gato GraphQL - Extensions for PROD (PHP 7.2 + Generated .zip plugins)",
     "homepage": "https://mysite.com",
     "license": "GPL-2.0-or-later",
