@@ -17,7 +17,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
         SchemaTypeModuleResolverTrait::getPriority as getUpstreamPriority;
     }
 
-    public final const SCHEMA_EXTENSION_NAME = GatoGraphQLExtension::NAMESPACE . '\schema-hello-dolly';
+    public final const SCHEMA_HELLO_DOLLY = GatoGraphQLExtension::NAMESPACE . '\schema-hello-dolly';
 
     private ?MarkdownContentParserInterface $markdownContentParser = null;
 
@@ -37,7 +37,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getModulesToResolve(): array
     {
         return [
-            self::SCHEMA_EXTENSION_NAME,
+            self::SCHEMA_HELLO_DOLLY,
         ];
     }
 
@@ -47,7 +47,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getDependentOnActiveWordPressPlugins(string $module): array
     {
         return match ($module) {
-            self::SCHEMA_EXTENSION_NAME => [
+            self::SCHEMA_HELLO_DOLLY => [
                 new DependedOnActiveWordPressPlugin(
                     \__('Hello Dolly', 'gatographql-hello-dolly'),
                     'hello-dolly/hello.php',
@@ -61,7 +61,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getName(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_EXTENSION_NAME => \__('Hello Dolly Schema', 'gatographql-hello-dolly'),
+            self::SCHEMA_HELLO_DOLLY => \__('Hello Dolly Schema', 'gatographql-hello-dolly'),
             default => $module,
         };
     }
@@ -69,7 +69,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getDescription(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_EXTENSION_NAME => \__('Add schema elements for the Hello Dolly extension for Gato GraphQL.', 'gatographql-hello-dolly'),
+            self::SCHEMA_HELLO_DOLLY => \__('Add schema elements for the Hello Dolly extension for Gato GraphQL.', 'gatographql-hello-dolly'),
             default => parent::getDescription($module),
         };
     }

@@ -19,7 +19,7 @@ class ExtensionInitializationConfiguration extends AbstractExtensionInitializati
     protected function getModuleClassesToSkipIfModuleDisabled(): array
     {
         return [
-            SchemaTypeModuleResolver::SCHEMA_EXTENSION_NAME => [
+            SchemaTypeModuleResolver::SCHEMA_HELLO_DOLLY => [
                 \DollyShepherd\HelloDollySchema\Module::class,
             ],
         ];
