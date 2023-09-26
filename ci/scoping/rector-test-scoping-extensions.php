@@ -18,10 +18,11 @@ return static function (RectorConfig $rectorConfig): void {
 
     $monorepoDir = dirname(__DIR__, 2);
     $pluginDir = $monorepoDir . '/layers/GatoGraphQLForWP/plugins/hello-dolly';
+    $autoloadFile = $pluginDir . '/vendor/scoper-autoload.php';
 
     // Rector relies on autoload setup of your project; Composer autoload is included by default; to add more:
     $rectorConfig->bootstrapFiles([
-        $pluginDir . '/vendor/scoper-autoload.php',
+        $autoloadFile,
     ]);
 
     // files to rector
@@ -32,5 +33,8 @@ return static function (RectorConfig $rectorConfig): void {
     // files to skip
     $rectorConfig->skip([
         '*/tests/*',
+
+        // Starting from Rector v0.18.2, processing this file might throw errors, then skip it
+        $autoloadFile,
     ]);
 };
