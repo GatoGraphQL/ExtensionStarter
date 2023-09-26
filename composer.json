@@ -75,7 +75,7 @@
             "PoPAPI\\API\\": "submodules/GatoGraphQL/layers/API/packages/api/src",
             "PoPAPI\\GraphQLAPI\\": "submodules/GatoGraphQL/layers/API/packages/api-graphql/src",
             "PoPAPI\\RESTAPI\\": "submodules/GatoGraphQL/layers/API/packages/api-rest/src",
-            "PoPBackbone\\PHPHooks\\": "submodules/GatoGraphQL/layers/Backbone/packages/php-hooks/src",
+            "PoPBackbone\\PHPHooks\\": "submodules/GatoGraphQL/layers/Backbone/packages/php-hooks/upstream-src",
             "PoPBackbone\\WPDataParser\\": "submodules/GatoGraphQL/layers/Backbone/packages/wp-data-parser/src",
             "PoPCMSSchema\\CategoriesWP\\": "submodules/GatoGraphQL/layers/CMSSchema/packages/categories-wp/src",
             "PoPCMSSchema\\Categories\\": "submodules/GatoGraphQL/layers/CMSSchema/packages/categories/src",
