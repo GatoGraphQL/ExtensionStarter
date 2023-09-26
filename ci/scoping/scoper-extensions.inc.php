@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Isolated\Symfony\Component\Finder\Finder;
 
 /**
- * @see submodules/GatoGraphQL/ci/scoping/scoper-hello-dolly.inc.php
+ * @see submodules/GatoGraphQL/ci/scoping/scoper-gatographql.inc.php
  */
 function convertRelativeToFullPath(string $relativePath): string
 {

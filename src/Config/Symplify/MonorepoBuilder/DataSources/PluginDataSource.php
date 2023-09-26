@@ -15,8 +15,8 @@ use PoP\ExtensionStarter\Monorepo\MonorepoMetadata;
  *
  *     ```
  *     'scoping' => [
- *         'phpscoper_config' => $this->rootDir . '/ci/scoping/scoper-hello-dolly.inc.php',
- *         'rector_test_config' => $this->rootDir . '/ci/scoping/rector-test-scoping-hello-dolly.php',
+ *         'phpscoper_config' => $this->rootDir . '/ci/scoping/scoper-extensions.inc.php',
+ *         'rector_test_config' => $this->rootDir . '/ci/scoping/rector-test-scoping-extensions.php',
  *     ],
  *     ```
  *
