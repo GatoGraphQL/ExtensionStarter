@@ -23,7 +23,7 @@ class DowngradeRectorDataSource extends UpstreamDowngradeRectorDataSource
         return [
             $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/config/rector/downgrade/monorepo/chained-rules/rector-arrowfunction-mixedtype.php',
             $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/config/rector/downgrade/monorepo/chained-rules/rector-arrowfunction-uniontype.php',
-            $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/config/rector/downgrade/monorepo/chained-rules/rector-covariant-return-type.php',
+            $this->rootDir . '/config/rector/downgrade/monorepo/chained-rules/rector-covariant-return-type.php',
         ];
     }
 }
