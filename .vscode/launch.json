@@ -10,8 +10,8 @@
             "request": "launch",
             "port": 9003,
             "pathMappings": {
-                "/app/wordpress/wp-content/plugins/gatographql-extension-name/vendor/dolly-shepherd/extension-name-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/extension-name-schema",
-                "/app/wordpress/wp-content/plugins/gatographql-extension-name": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/extension-name",
+                "/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/dolly-shepherd/hello-dolly-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/hello-dolly-schema",
+                "/app/wordpress/wp-content/plugins/gatographql-hello-dolly": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/hello-dolly",
                 
 
                 "/app/wordpress/wp-content/plugins/gatographql-testing": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing",
