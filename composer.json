@@ -52,7 +52,6 @@
         "psr-4": {
             "DollyShepherd\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/src",
             "DollyShepherd\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/src",
-            "GatoGraphQL\\ExtensionDemo\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/extension-demo/src",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/src",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/src",
             "GatoGraphQL\\PluginUtils\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/plugin-utils/src",
@@ -191,7 +190,6 @@
         "psr-4": {
             "DollyShepherd\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/tests",
             "DollyShepherd\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/tests",
-            "GatoGraphQL\\ExtensionDemo\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/extension-demo/tests",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/tests",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/tests",
             "GatoGraphQL\\PluginUtils\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/plugin-utils/tests",
@@ -526,7 +524,6 @@
     "replace": {
         "dolly-shepherd/hello-dolly": "self.version",
         "dolly-shepherd/hello-dolly-schema": "self.version",
-        "gatographql/extension-demo": "self.version",
         "gatographql/external-dependency-wrappers": "self.version",
         "gatographql/gatographql": "self.version",
         "gatographql/plugin-utils": "self.version",
