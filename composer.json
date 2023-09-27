@@ -3,9 +3,9 @@
     "description": "GitHub template repository to quickstart your extension for Gato GraphQL",
     "authors": [
         {
-            "name": "Dolly Shepherd",
-            "email": "name@company.com",
-            "homepage": "https://mysite.com"
+            "name": "Leonardo Losoviz",
+            "email": "leo@getpop.org",
+            "homepage": "https://gatographql.com"
         }
     ],
     "require": {

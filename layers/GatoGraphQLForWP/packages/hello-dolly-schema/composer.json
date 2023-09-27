@@ -2,6 +2,13 @@
     "name": "dolly-shepherd/hello-dolly-schema",
     "type": "library",
     "description": "GitHub template repository to quickstart your extension for Gato GraphQL.",
+    "authors": [
+        {
+            "name": "Dolly Shepherd",
+            "email": "name@company.com",
+            "homepage": "https://mysite.com"
+        }
+    ],
     "keywords": ["WordPress", "Gato", "GatoGraphQL", "GraphQL", "HelloDolly"],
     "homepage": "https://github.com/DollyShepherd/HelloDollySchema",
     "require": {

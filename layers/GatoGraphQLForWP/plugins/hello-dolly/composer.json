@@ -2,6 +2,13 @@
     "name": "dolly-shepherd/hello-dolly",
     "type": "wordpress-plugin",
     "description": "Integration of plugin Hello Dolly with Gato GraphQL",
+    "authors": [
+        {
+            "name": "Dolly Shepherd",
+            "email": "name@company.com",
+            "homepage": "https://mysite.com"
+        }
+    ],
     "keywords": ["WordPress", "Gato", "GatoGraphQL", "GraphQL", "HelloDolly"],
     "homepage": "https://github.com/GatoGraphQL/hello-dolly",
     "require": {
