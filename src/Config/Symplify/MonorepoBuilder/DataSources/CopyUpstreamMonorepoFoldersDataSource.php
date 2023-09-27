@@ -40,12 +40,12 @@ class CopyUpstreamMonorepoFoldersDataSource
                         '#ci/downgrade/downgrade_code\.sh#' => $this->upstreamRelativeRootPath . '/ci/downgrade/downgrade_code.sh',
                         '#ci/downgrade/after_downgrade_code\.sh#' => $this->upstreamRelativeRootPath . '/ci/downgrade/after_downgrade_code.sh',
                     ],
-                    $this->runGitHubActionsOnPRs() ? [] : [
-                        '/pull_request: null/' => '#pull_request: null',
-                    ],
-                    $this->runGitHubActionsOnPushToMaster() ? [] : [
-                        '/push:(\s+)branches:(\s+)- master/' => '#push:$1#branches:$2#- master',
-                    ],
+                    // $this->runGitHubActionsOnPRs() ? [] : [
+                    //     '/pull_request: null/' => '#pull_request: null',
+                    // ],
+                    // $this->runGitHubActionsOnPushToMaster() ? [] : [
+                    //     '/push:(\s+)branches:(\s+)- master/' => '#push:$1#branches:$2#- master',
+                    // ],
                     // Replace the Git branch if needed
                     [
                         '/(#?)branches:(\s+)(#?)- master/' => '$1branches:$2$3- ' . $this->getGitMainBranch(),
@@ -85,31 +85,31 @@ class CopyUpstreamMonorepoFoldersDataSource
         ];
     }
 
-    /**
-     * Indicate if to run GitHub Actions on PRs.
-     * Set to `false` to save on the 2000 minutes/month for private repos.
-     *
-     * After changing this value, regenerate the workflow files by running:
-     *
-     *   composer copy-upstream-files
-     */
-    protected function runGitHubActionsOnPRs(): bool
-    {
-        return true;
-    }
+    // /**
+    //  * Indicate if to run GitHub Actions on PRs.
+    //  * Set to `false` to save on the 2000 minutes/month for private repos.
+    //  *
+    //  * After changing this value, regenerate the workflow files by running:
+    //  *
+    //  *   composer copy-upstream-files
+    //  */
+    // protected function runGitHubActionsOnPRs(): bool
+    // {
+    //     return true;
+    // }
 
-    /**
-     * Indicate if to run GitHub Actions when pushing to master.
-     * Set to `false` to save on the 2000 minutes/month for private repos.
-     *
-     * After changing this value, regenerate the workflow files by running:
-     *
-     *   composer copy-upstream-files
-     */
-    protected function runGitHubActionsOnPushToMaster(): bool
-    {
-        return true;
-    }
+    // /**
+    //  * Indicate if to run GitHub Actions when pushing to master.
+    //  * Set to `false` to save on the 2000 minutes/month for private repos.
+    //  *
+    //  * After changing this value, regenerate the workflow files by running:
+    //  *
+    //  *   composer copy-upstream-files
+    //  */
+    // protected function runGitHubActionsOnPushToMaster(): bool
+    // {
+    //     return true;
+    // }
 
     protected function getGitMainBranch(): string
     {
