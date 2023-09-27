@@ -5,8 +5,6 @@ services:
         - >-
           ../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing:/app/wordpress/wp-content/plugins/gatographql-testing
         - >-
-          ../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/extension-demo:/app/wordpress/wp-content/plugins/gatographql-extension-demo
-        - >-
           ../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql:/app/wordpress/wp-content/plugins/gatographql
         - >-
           ../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema:/app/wordpress/wp-content/plugins/gatographql-testing-schema
