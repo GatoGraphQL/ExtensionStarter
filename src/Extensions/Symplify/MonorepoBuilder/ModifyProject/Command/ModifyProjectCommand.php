@@ -75,7 +75,8 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
         // $version = $this->versionResolver->resolveVersion($input, $stage);
 
         foreach ($modifyProjectWorkers as $modifyProjectWorker) {
-            $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($version);
+            // $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($version);
+            $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription();
             $this->symfonyStyle->title($title);
             $this->modifyProjectWorkerReporter->printMetadata($modifyProjectWorker);
 
