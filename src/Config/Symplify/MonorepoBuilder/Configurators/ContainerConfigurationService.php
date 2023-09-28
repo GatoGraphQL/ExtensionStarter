@@ -11,6 +11,7 @@ use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\DataToAppen
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\DowngradeRectorDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\EnvironmentVariablesDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\InstaWPConfigDataSource;
+use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\ModifyProjectWorkersDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PHPStanDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PackageOrganizationDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PluginDataSource;
@@ -147,6 +148,11 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
         return new ReleaseWorkersDataSource();
     }
 
+    protected function getModifyProjectWorkersDataSource(): ?ModifyProjectWorkersDataSource
+    {
+        return new ModifyProjectWorkersDataSource();
+    }
+
     protected function setCustomServices(ServicesConfigurator $services): void
     {
         $services
@@ -156,6 +162,25 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
             ->load('PoP\\PoP\\Monorepo\\', $this->rootDirectory . '/' . $this->upstreamRelativeRootPath . '/src/Monorepo/*')
             ->load('PoP\\ExtensionStarter\\Config\\', $this->rootDirectory . '/src/Config/*')
             ->load('PoP\\ExtensionStarter\\Extensions\\', $this->rootDirectory . '/src/Extensions/*');
+    }
+
+    protected function setServices(ServicesConfigurator $services): void
+    {
+        parent::setServices($services);
+
+        $this->setModifyProjectWorkerServices($services);
+    }
+
+    protected function setModifyProjectWorkerServices(ServicesConfigurator $services): void
+    {
+        /**
+         * ModifyProject workers - in order to execute
+         */
+        if ($modifyProjectWorkersConfig = $this->getModifyProjectWorkersDataSource()) {
+            foreach ($modifyProjectWorkersConfig->getModifyProjectWorkerClasses() as $modifyProjectWorkerClass) {
+                $services->set($modifyProjectWorkerClass);
+            }
+        }
     }
 
     protected function getCopyUpstreamMonorepoFoldersDataSource(): ?CopyUpstreamMonorepoFoldersDataSource
