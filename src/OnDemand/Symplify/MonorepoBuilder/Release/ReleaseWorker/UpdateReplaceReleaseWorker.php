@@ -11,7 +11,6 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ValueObject\Param;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
@@ -26,7 +25,6 @@ final class UpdateReplaceReleaseWorker implements ReleaseWorkerInterface
         ParameterProvider $parameterProvider,
         private UpstreamVersionResolver $upstreamVersionResolver,
         private UpstreamPackageFilterer $upstreamPackageFilterer,
-        private ProcessRunner $processRunner,
     ) {
         $this->upstreamRelativePath = $parameterProvider->provideStringParameter(Param::UPSTREAM_RELATIVE_PATH);
     }
