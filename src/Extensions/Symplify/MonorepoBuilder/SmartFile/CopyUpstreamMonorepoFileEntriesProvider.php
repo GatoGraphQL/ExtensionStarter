@@ -22,7 +22,7 @@ final class CopyUpstreamMonorepoFileEntriesProvider
     }
 
     /**
-     * @return array<string,mixed>
+     * @return array<mixed>
      */
     public function provideCopyUpstreamMonorepoFileEntries(): array
     {
