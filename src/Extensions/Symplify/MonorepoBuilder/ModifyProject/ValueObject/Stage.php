@@ -10,4 +10,8 @@ final class Stage
      * @var string
      */
     public const MAIN = 'main';
+    /**
+     * @var string
+     */
+    public const INITIALIZE = 'initialize';
 }
