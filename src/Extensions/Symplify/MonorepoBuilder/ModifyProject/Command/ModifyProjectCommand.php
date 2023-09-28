@@ -9,10 +9,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Configuration\StageResolver;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Configuration\VersionResolver;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorkerProvider;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\SemVersion;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\MonorepoBuilder\ValueObject\File;
@@ -26,7 +24,7 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
         private ModifyProjectWorkerProvider $modifyProjectWorkerProvider,
         private SourcesPresenceValidator $sourcesPresenceValidator,
         private StageResolver $stageResolver,
-        private VersionResolver $versionResolver,
+        // private VersionResolver $versionResolver,
         private ModifyProjectWorkerReporter $modifyProjectWorkerReporter
     ) {
         parent::__construct();
@@ -37,11 +35,11 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Perform modifyProject process with set ModifyProject Workers.');
 
-        $description = sprintf(
-            'ModifyProject version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"',
-            implode('", "', SemVersion::ALL)
-        );
-        $this->addArgument(Option::VERSION, InputArgument::REQUIRED, $description);
+        // $description = sprintf(
+        //     'ModifyProject version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"',
+        //     implode('", "', SemVersion::ALL)
+        // );
+        // $this->addArgument(Option::VERSION, InputArgument::REQUIRED, $description);
 
         $this->addOption(
             Option::DRY_RUN,
@@ -74,7 +72,7 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
         $totalWorkerCount = count($modifyProjectWorkers);
         $i = 0;
         $isDryRun = (bool) $input->getOption(Option::DRY_RUN);
-        $version = $this->versionResolver->resolveVersion($input, $stage);
+        // $version = $this->versionResolver->resolveVersion($input, $stage);
 
         foreach ($modifyProjectWorkers as $modifyProjectWorker) {
             $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($version);
@@ -82,21 +80,26 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
             $this->modifyProjectWorkerReporter->printMetadata($modifyProjectWorker);
 
             if (! $isDryRun) {
-                $modifyProjectWorker->work($version);
+                // $modifyProjectWorker->work($version);
+                $modifyProjectWorker->work();
             }
         }
 
         if ($isDryRun) {
             $this->symfonyStyle->note('Running in dry mode, nothing is changed');
         } elseif ($stage === Stage::MAIN) {
-            $message = 'The project has been successfully modified';
             // $message = sprintf('Version "%s" is now released!', $version->getVersionString());
+            $message = 'The project has been successfully modified';
             $this->symfonyStyle->success($message);
         } else {
+            // $finishedMessage = sprintf(
+            //     'Stage "%s" for version "%s" is now finished!',
+            //     $stage,
+            //     $version->getVersionString()
+            // );
             $finishedMessage = sprintf(
-                'Stage "%s" for version "%s" is now finished!',
-                $stage,
-                $version->getVersionString()
+                'Stage "%s" is now finished!',
+                $stage
             );
             $this->symfonyStyle->success($finishedMessage);
         }
