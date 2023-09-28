@@ -64,6 +64,7 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
             if ($pos === false) {
                 continue;
             }
+            /** @var int $pos */
             array_splice(
                 $releaseWorkerClasses,
                 $pos + 1,
@@ -95,6 +96,7 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
             if ($pos === false) {
                 continue;
             }
+            /** @var int $pos */
             array_splice(
                 $releaseWorkerClasses,
                 $pos,
