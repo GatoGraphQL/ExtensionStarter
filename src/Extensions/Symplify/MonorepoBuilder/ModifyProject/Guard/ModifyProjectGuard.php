@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard;
 
-use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
@@ -29,7 +28,7 @@ final class ModifyProjectGuard
      */
     public function __construct(
         // ParameterProvider $parameterProvider,
-        private TagResolverInterface $tagResolver,
+        // private TagResolverInterface $tagResolver,
         private array $modifyProjectWorkers
     ) {
         // $this->isStageRequired = $parameterProvider->provideBoolParameter(Option::IS_STAGE_REQUIRED);
