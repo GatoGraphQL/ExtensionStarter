@@ -33,7 +33,7 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
     protected function configure(): void
     {
         $this->setName(CommandNaming::classToName(self::class));
-        $this->setDescription('Perform modifyProject process with set ModifyProject Workers.');
+        $this->setDescription('Modify the project using "Modify Project Workers".');
 
         // $description = sprintf(
         //     'ModifyProject version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"',
