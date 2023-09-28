@@ -9,7 +9,7 @@ use PoP\PoP\Config\Symplify\MonorepoBuilder\DataSources\InstaWPConfigDataSource 
 class InstaWPConfigDataSource extends UpstreamInstaWPConfigDataSource
 {
     /**
-     * @return array<array<mixed>
+     * @return array<array<string,mixed>>
      */
     public function getInstaWPConfigEntries(): array
     {
