@@ -9,7 +9,6 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contr
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
 final class ModifyProjectGuard
 {
@@ -29,7 +28,7 @@ final class ModifyProjectGuard
      * @param ModifyProjectWorkerInterface[] $modifyProjectWorkers
      */
     public function __construct(
-        ParameterProvider $parameterProvider,
+        // ParameterProvider $parameterProvider,
         private TagResolverInterface $tagResolver,
         private array $modifyProjectWorkers
     ) {
