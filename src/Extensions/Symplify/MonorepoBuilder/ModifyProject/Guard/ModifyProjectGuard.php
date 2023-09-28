@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\InitializeProject\Guard;
+namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard;
 
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
@@ -14,7 +14,7 @@ use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
-final class InitializeProjectGuard
+final class ModifyProjectGuard
 {
     private bool $isStageRequired = false;
 

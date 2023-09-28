@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\InitializeProject\Exception;
+namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception;
 
 use Exception;
 

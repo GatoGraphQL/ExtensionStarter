@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\InitializeProject\Contract\InitializeProjectWorker;
+namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker;
 
 use PharIo\Version\Version;
 
-interface InitializeProjectWorkerInterface
+interface ModifyProjectWorkerInterface
 {
     /**
      * 1 line description of what this worker does, in a commanding form! e.g.:

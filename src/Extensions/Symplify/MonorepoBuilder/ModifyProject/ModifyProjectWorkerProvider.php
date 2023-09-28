@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\InitializeProject;
+namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject;
 
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Release\ReleaseWorkerProvider\ReleaseWorkerProviderTest
  */
-final class InitializeProjectWorkerProvider
+final class ModifyProjectWorkerProvider
 {
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers

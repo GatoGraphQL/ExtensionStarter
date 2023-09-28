@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\InitializeProject\Output;
+namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output;
 
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 
-final class InitializeProjectWorkerReporter
+final class ModifyProjectWorkerReporter
 {
     public function __construct(
         private SymfonyStyle $symfonyStyle

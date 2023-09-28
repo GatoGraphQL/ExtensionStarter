@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\InitializeProject\Configuration;
+namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Configuration;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;

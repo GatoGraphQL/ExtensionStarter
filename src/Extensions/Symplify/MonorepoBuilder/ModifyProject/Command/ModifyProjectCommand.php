@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\InitializeProject\Command;
+namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Command;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,7 +20,7 @@ use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\PackageBuilder\Console\Command\CommandNaming;
 
-final class InitializeProjectCommand extends AbstractSymplifyCommand
+final class ModifyProjectCommand extends AbstractSymplifyCommand
 {
     public function __construct(
         private ReleaseWorkerProvider $releaseWorkerProvider,
