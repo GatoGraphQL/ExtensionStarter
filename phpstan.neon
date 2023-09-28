@@ -2,6 +2,7 @@ parameters:
     level: 8
 
 includes:
+    - phpstan.neon.dist
     - vendor/szepeviktor/phpstan-wordpress/extension.neon
     - layers/GatoGraphQLForWP/plugins/hello-dolly/phpstan.neon.dist
     - layers/GatoGraphQLForWP/packages/hello-dolly-schema/phpstan.neon.dist
