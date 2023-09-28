@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker;
 
-use PharIo\Version\Version;
-
 interface ModifyProjectWorkerInterface
 {
     /**
@@ -14,7 +12,9 @@ interface ModifyProjectWorkerInterface
      * - "Dump new items to CHANGELOG.md"
      * - "Run coding standards"
      */
-    public function getDescription(Version $version): string;
+    // public function getDescription(Version $version): string;
+    public function getDescription(): string;
 
-    public function work(Version $version): void;
+    // public function work(Version $version): void;
+    public function work(): void;
 }

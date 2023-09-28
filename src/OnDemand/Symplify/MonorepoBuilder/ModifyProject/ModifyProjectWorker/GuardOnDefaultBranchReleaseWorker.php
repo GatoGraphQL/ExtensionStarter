@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker;
 
-use PharIo\Version\Version;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\ValueObject\Option;
@@ -22,7 +21,7 @@ final class GuardOnDefaultBranchModifyProjectWorker implements ModifyProjectWork
         $this->branchName = $parameterProvider->provideStringParameter(Option::DEFAULT_BRANCH_NAME);
     }
 
-    public function work(Version $version): void
+    public function work(): void
     {
         $currentBranchName = trim($this->processRunner->run('git branch --show-current'));
         if ($currentBranchName !== $this->branchName) {
@@ -34,7 +33,7 @@ final class GuardOnDefaultBranchModifyProjectWorker implements ModifyProjectWork
         }
     }
 
-    public function getDescription(Version $version): string
+    public function getDescription(): string
     {
         return 'Check we are on the default branch, to avoid commit/push to a different branch';
     }
