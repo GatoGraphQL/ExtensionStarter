@@ -18,7 +18,8 @@ final class StageResolver
 
     public function resolveFromInput(InputInterface $input): string
     {
-        $stage = (string) $input->getOption(Option::STAGE);
+        // $stage = (string) $input->getOption(Option::STAGE);
+        $stage = (string) $input->getArgument(Option::STAGE);
 
         // empty
         if ($stage === Stage::MAIN) {
