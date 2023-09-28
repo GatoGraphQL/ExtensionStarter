@@ -66,7 +66,7 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
             }
             array_splice(
                 $releaseWorkerClasses,
-                array_search($upstreamClass, $releaseWorkerClasses) + 1,
+                $pos + 1,
                 0,
                 [
                     $downstreamClass
@@ -97,7 +97,7 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
             }
             array_splice(
                 $releaseWorkerClasses,
-                array_search($upstreamClass, $releaseWorkerClasses),
+                $pos,
                 1,
                 [
                     $downstreamClass
