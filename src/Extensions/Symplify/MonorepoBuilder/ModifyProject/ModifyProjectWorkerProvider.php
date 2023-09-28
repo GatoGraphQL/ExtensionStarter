@@ -4,53 +4,53 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject;
 
-use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
-use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 
 /**
- * @see \Symplify\MonorepoBuilder\Tests\Release\ReleaseWorkerProvider\ReleaseWorkerProviderTest
+ * @see \Symplify\MonorepoBuilder\Tests\ModifyProject\ModifyProjectWorkerProvider\ModifyProjectWorkerProviderTest
  */
 final class ModifyProjectWorkerProvider
 {
     /**
-     * @param ReleaseWorkerInterface[] $releaseWorkers
+     * @param ModifyProjectWorkerInterface[] $modifyProjectWorkers
      */
     public function __construct(
-        private array $releaseWorkers
+        private array $modifyProjectWorkers
     ) {
     }
 
     /**
-     * @return ReleaseWorkerInterface[]
+     * @return ModifyProjectWorkerInterface[]
      */
     public function provide(): array
     {
-        return $this->releaseWorkers;
+        return $this->modifyProjectWorkers;
     }
 
     /**
-     * @return ReleaseWorkerInterface[]|StageAwareInterface[]
+     * @return ModifyProjectWorkerInterface[]|StageAwareInterface[]
      */
     public function provideByStage(string $stage): array
     {
         if ($stage === Stage::MAIN) {
-            return $this->releaseWorkers;
+            return $this->modifyProjectWorkers;
         }
 
-        $activeReleaseWorkers = [];
-        foreach ($this->releaseWorkers as $releaseWorker) {
-            if (! $releaseWorker instanceof StageAwareInterface) {
+        $activeModifyProjectWorkers = [];
+        foreach ($this->modifyProjectWorkers as $modifyProjectWorker) {
+            if (! $modifyProjectWorker instanceof StageAwareInterface) {
                 continue;
             }
 
-            if ($stage !== $releaseWorker->getStage()) {
+            if ($stage !== $modifyProjectWorker->getStage()) {
                 continue;
             }
 
-            $activeReleaseWorkers[] = $releaseWorker;
+            $activeModifyProjectWorkers[] = $modifyProjectWorker;
         }
 
-        return $activeReleaseWorkers;
+        return $activeModifyProjectWorkers;
     }
 }

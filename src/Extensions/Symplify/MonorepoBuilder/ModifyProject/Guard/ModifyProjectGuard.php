@@ -7,10 +7,10 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
-use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
-use Symplify\MonorepoBuilder\Release\Exception\ConfigurationException;
-use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
@@ -29,12 +29,12 @@ final class ModifyProjectGuard
     private array $stagesToAllowExistingTag = [];
 
     /**
-     * @param ReleaseWorkerInterface[] $releaseWorkers
+     * @param ModifyProjectWorkerInterface[] $modifyProjectWorkers
      */
     public function __construct(
         ParameterProvider $parameterProvider,
         private TagResolverInterface $tagResolver,
-        private array $releaseWorkers
+        private array $modifyProjectWorkers
     ) {
         $this->isStageRequired = $parameterProvider->provideBoolParameter(Option::IS_STAGE_REQUIRED);
         $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(
@@ -97,9 +97,9 @@ final class ModifyProjectGuard
         }
 
         $stages = [];
-        foreach ($this->releaseWorkers as $releaseWorker) {
-            if ($releaseWorker instanceof StageAwareInterface) {
-                $stages[] = $releaseWorker->getStage();
+        foreach ($this->modifyProjectWorkers as $modifyProjectWorker) {
+            if ($modifyProjectWorker instanceof StageAwareInterface) {
+                $stages[] = $modifyProjectWorker->getStage();
             }
         }
 

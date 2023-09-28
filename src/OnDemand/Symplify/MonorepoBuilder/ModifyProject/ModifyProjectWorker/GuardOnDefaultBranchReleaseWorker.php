@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker;
 
 use PharIo\Version\Version;
-use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 
-final class GuardOnDefaultBranchReleaseWorker implements ReleaseWorkerInterface
+final class GuardOnDefaultBranchModifyProjectWorker implements ModifyProjectWorkerInterface
 {
     private string $branchName;
 
@@ -27,7 +27,7 @@ final class GuardOnDefaultBranchReleaseWorker implements ReleaseWorkerInterface
         $currentBranchName = trim($this->processRunner->run('git branch --show-current'));
         if ($currentBranchName !== $this->branchName) {
             throw new ShouldNotHappenException(sprintf(
-                'Switch from branch "%s" to "%s" before doing the release',
+                'Switch from branch "%s" to "%s" before modifying the project',
                 $currentBranchName,
                 $this->branchName
             ));

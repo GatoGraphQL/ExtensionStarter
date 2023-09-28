@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Configuration;
 
 use Symfony\Component\Console\Input\InputInterface;
-use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
-use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard\ModifyProjectGuard;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 
 final class StageResolver
 {
     public function __construct(
-        private ReleaseGuard $releaseGuard
+        private ModifyProjectGuard $modifyProjectGuard
     ) {
     }
 
@@ -22,9 +22,9 @@ final class StageResolver
 
         // empty
         if ($stage === Stage::MAIN) {
-            $this->releaseGuard->guardRequiredStageOnEmptyStage();
+            $this->modifyProjectGuard->guardRequiredStageOnEmptyStage();
         } else {
-            $this->releaseGuard->guardStage($stage);
+            $this->modifyProjectGuard->guardStage($stage);
         }
 
         return $stage;

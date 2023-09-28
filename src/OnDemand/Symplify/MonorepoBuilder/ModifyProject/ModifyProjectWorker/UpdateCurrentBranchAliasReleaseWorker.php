@@ -8,9 +8,9 @@ use PharIo\Version\Version;
 use PoP\PoP\Extensions\Symplify\MonorepoBuilder\Utils\VersionUtils;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
-use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
 
-final class UpdateCurrentBranchAliasReleaseWorker implements ReleaseWorkerInterface
+final class UpdateCurrentBranchAliasModifyProjectWorker implements ModifyProjectWorkerInterface
 {
     public function __construct(
         private DevMasterAliasUpdater $devMasterAliasUpdater,

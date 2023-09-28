@@ -7,7 +7,7 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 interface StageAwareInterface extends ModifyProjectWorkerInterface
 {
     /**
-     * Set name of the stage, so workers can be filtered by --stage option: e.g "vendor/bin/monorepo-builder release
+     * Set name of the stage, so workers can be filtered by --stage option: e.g "vendor/bin/monorepo-builder modify-project
      * v5.0.0 --stage <name>"
      */
     public function getStage(): string;

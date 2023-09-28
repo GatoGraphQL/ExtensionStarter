@@ -8,12 +8,12 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symplify\MonorepoBuilder\Release\Configuration\StageResolver;
-use Symplify\MonorepoBuilder\Release\Configuration\VersionResolver;
-use Symplify\MonorepoBuilder\Release\Output\ReleaseWorkerReporter;
-use Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider;
-use Symplify\MonorepoBuilder\Release\ValueObject\SemVersion;
-use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Configuration\StageResolver;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Configuration\VersionResolver;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorkerProvider;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\SemVersion;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
@@ -23,11 +23,11 @@ use Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class ModifyProjectCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private ReleaseWorkerProvider $releaseWorkerProvider,
+        private ModifyProjectWorkerProvider $modifyProjectWorkerProvider,
         private SourcesPresenceValidator $sourcesPresenceValidator,
         private StageResolver $stageResolver,
         private VersionResolver $versionResolver,
-        private ReleaseWorkerReporter $releaseWorkerReporter
+        private ModifyProjectWorkerReporter $modifyProjectWorkerReporter
     ) {
         parent::__construct();
     }
@@ -35,10 +35,10 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
     protected function configure(): void
     {
         $this->setName(CommandNaming::classToName(self::class));
-        $this->setDescription('Perform release process with set Release Workers.');
+        $this->setDescription('Perform modifyProject process with set ModifyProject Workers.');
 
         $description = sprintf(
-            'Release version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"',
+            'ModifyProject version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"',
             implode('", "', SemVersion::ALL)
         );
         $this->addArgument(Option::VERSION, InputArgument::REQUIRED, $description);
@@ -60,10 +60,10 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
         // validation phase
         $stage = $this->stageResolver->resolveFromInput($input);
 
-        $releaseWorkers = $this->releaseWorkerProvider->provideByStage($stage);
-        if ($releaseWorkers === []) {
+        $modifyProjectWorkers = $this->modifyProjectWorkerProvider->provideByStage($stage);
+        if ($modifyProjectWorkers === []) {
             $errorMessage = sprintf(
-                'There are no release workers registered. Be sure to add them to "%s"',
+                'There are no modifyProject workers registered. Be sure to add them to "%s"',
                 File::CONFIG
             );
             $this->symfonyStyle->error($errorMessage);
@@ -71,25 +71,26 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
             return self::FAILURE;
         }
 
-        $totalWorkerCount = count($releaseWorkers);
+        $totalWorkerCount = count($modifyProjectWorkers);
         $i = 0;
         $isDryRun = (bool) $input->getOption(Option::DRY_RUN);
         $version = $this->versionResolver->resolveVersion($input, $stage);
 
-        foreach ($releaseWorkers as $releaseWorker) {
-            $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $releaseWorker->getDescription($version);
+        foreach ($modifyProjectWorkers as $modifyProjectWorker) {
+            $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($version);
             $this->symfonyStyle->title($title);
-            $this->releaseWorkerReporter->printMetadata($releaseWorker);
+            $this->modifyProjectWorkerReporter->printMetadata($modifyProjectWorker);
 
             if (! $isDryRun) {
-                $releaseWorker->work($version);
+                $modifyProjectWorker->work($version);
             }
         }
 
         if ($isDryRun) {
             $this->symfonyStyle->note('Running in dry mode, nothing is changed');
         } elseif ($stage === Stage::MAIN) {
-            $message = sprintf('Version "%s" is now released!', $version->getVersionString());
+            $message = 'The project has been successfully modified';
+            // $message = sprintf('Version "%s" is now released!', $version->getVersionString());
             $this->symfonyStyle->success($message);
         } else {
             $finishedMessage = sprintf(
