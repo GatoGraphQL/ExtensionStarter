@@ -18,7 +18,7 @@ class ExtensionStaticHelpers
     {
         $extensionPluginVersion = PluginApp::getExtension(GatoGraphQLExtension::class)->getPluginVersion();
         $tag = PluginVersionHelpers::isDevelopmentVersion($extensionPluginVersion)
-            ? 'main'
+            ? ExtensionMetadata::GIT_BASE_BRANCH
             : $extensionPluginVersion;
         return static::getGitHubRepoDocsRootURL() . '/' . $tag . '/layers/GatoGraphQLForWP/plugins/hello-dolly/';
     }
