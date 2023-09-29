@@ -16,8 +16,8 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
     {
         // The file has already been replaced by a previous ReleaseWorker, so the current version is that for PROD
         $replacements = [
-            "/(\s+)const(\s+)GITHUB_REPO_OWNER(\s+)?=(\s+)?['\"][a-z0-9.-]+['\"](\s+)?;/" => " const GITHUB_REPO_OWNER = '" . $inputObject->getGithubRepoOwner() . "';",
-            "/(\s+)const(\s+)GITHUB_REPO_NAME(\s+)?=(\s+)?['\"][a-z0-9.-]+['\"](\s+)?;/" => " const GITHUB_REPO_NAME = '" . $inputObject->getGithubRepoName() . "';",
+            "/(\s+)const(\s+)GITHUB_REPO_OWNER(\s+)?=(\s+)?['\"]\w+['\"](\s+)?;/" => " const GITHUB_REPO_OWNER = '" . $inputObject->getGithubRepoOwner() . "';",
+            "/(\s+)const(\s+)GITHUB_REPO_NAME(\s+)?=(\s+)?['\"]\w+['\"](\s+)?;/" => " const GITHUB_REPO_NAME = '" . $inputObject->getGithubRepoName() . "';",
         ];
         $this->fileContentReplacerSystem->replaceContentInFiles(
             [
