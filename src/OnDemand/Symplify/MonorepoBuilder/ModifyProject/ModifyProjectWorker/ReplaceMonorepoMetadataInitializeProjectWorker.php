@@ -16,8 +16,8 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
     {
         // The file has already been replaced by a previous ReleaseWorker, so the current version is that for PROD
         $replacements = [
-            "/(\s+)const(\s+)GITHUB_REPO_OWNER(\s+)?=(\s+)?['\"]\w+['\"](\s+)?;/" => " const GITHUB_REPO_OWNER = '" . $inputObject->getGithubRepoOwner() . "';",
-            "/(\s+)const(\s+)GITHUB_REPO_NAME(\s+)?=(\s+)?['\"]\w+['\"](\s+)?;/" => " const GITHUB_REPO_NAME = '" . $inputObject->getGithubRepoName() . "';",
+            ...$this->getRegexReplacement('GITHUB_REPO_OWNER', $inputObject->getGithubRepoOwner()),
+            ...$this->getRegexReplacement('GITHUB_REPO_NAME', $inputObject->getGithubRepoName()),
         ];
         $this->fileContentReplacerSystem->replaceContentInFiles(
             [
@@ -25,6 +25,16 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
             ],
             $replacements,
         );
+    }
+
+    /**
+     * @return array<string,string>
+     */
+    protected function getRegexReplacement(string $constName, string $newValue): array
+    {
+        return [
+            "/(\s+)const(\s+)" . $constName . "(\s+)?=(\s+)?['\"]\w+['\"](\s+)?;/" => " const " . $constName . " = '" . $newValue . "';",
+        ];
     }
 
     /**
