@@ -9,7 +9,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 
-final class UpdateCurrentBranchAliasModifyProjectWorker implements InitializeProjectWorkerInterface
+final class ReplaceMonorepoMetadataInitializeProjectWorker implements InitializeProjectWorkerInterface
 {
     public function __construct(
         private DevMasterAliasUpdater $devMasterAliasUpdater,
