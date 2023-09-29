@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker;
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\InitializeProjectWorkerInterface;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 
-final class GuardOnDefaultBranchModifyProjectWorker implements InitializeProjectWorkerInterface, StageAwareModifyProjectWorkerInterface
+final class GuardOnDefaultBranchModifyProjectWorker implements InitializeProjectWorkerInterface
 {
     private string $branchName;
 
@@ -22,11 +20,6 @@ final class GuardOnDefaultBranchModifyProjectWorker implements InitializeProject
         ParameterProvider $parameterProvider
     ) {
         $this->branchName = $parameterProvider->provideStringParameter(Option::DEFAULT_BRANCH_NAME);
-    }
-
-    public function getStage(): string
-    {
-        return Stage::INITIALIZE;
     }
 
     public function work(ModifyProjectInputObjectInterface $inputObject): void

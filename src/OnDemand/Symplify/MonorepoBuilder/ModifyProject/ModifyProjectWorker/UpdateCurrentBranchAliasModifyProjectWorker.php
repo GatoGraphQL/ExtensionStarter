@@ -5,24 +5,17 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker;
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\InitializeProjectWorkerInterface;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 
-final class UpdateCurrentBranchAliasModifyProjectWorker implements InitializeProjectWorkerInterface, StageAwareModifyProjectWorkerInterface
+final class UpdateCurrentBranchAliasModifyProjectWorker implements InitializeProjectWorkerInterface
 {
     public function __construct(
         private DevMasterAliasUpdater $devMasterAliasUpdater,
         private ComposerJsonProvider $composerJsonProvider,
         // private VersionUtils $versionUtils
     ) {
-    }
-
-    public function getStage(): string
-    {
-        return Stage::INITIALIZE;
     }
 
     public function work(ModifyProjectInputObjectInterface $inputObject): void
