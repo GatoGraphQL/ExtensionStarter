@@ -68,7 +68,7 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
         $i = 0;
         $isDryRun = (bool) $input->getOption(Option::DRY_RUN);
         // $version = $this->versionResolver->resolveVersion($input, $stage);
-        $inputObject = $this->getModifyProjectInputObject($stage);
+        $inputObject = $this->getModifyProjectInputObject($input, $stage);
 
         foreach ($modifyProjectWorkers as $modifyProjectWorker) {
             // $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($version);
@@ -109,7 +109,7 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
      */
     abstract protected function getModifyProjectWorkers(string $stage): array;
 
-    abstract protected function getModifyProjectInputObject(string $stage): ModifyProjectInputObjectInterface;
+    abstract protected function getModifyProjectInputObject(InputInterface $input, string $stage): ModifyProjectInputObjectInterface;
 
     abstract protected function getModifyProjectStageResolver(): ModifyProjectStageResolverInterface;
 
