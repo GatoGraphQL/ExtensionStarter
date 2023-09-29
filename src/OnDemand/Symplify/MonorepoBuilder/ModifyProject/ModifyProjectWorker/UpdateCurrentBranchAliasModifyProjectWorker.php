@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker;
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 
-final class UpdateCurrentBranchAliasModifyProjectWorker implements ModifyProjectWorkerInterface, StageAwareInterface
+final class UpdateCurrentBranchAliasModifyProjectWorker implements ModifyProjectWorkerInterface, StageAwareModifyProjectWorkerInterface
 {
     public function __construct(
         private DevMasterAliasUpdater $devMasterAliasUpdater,

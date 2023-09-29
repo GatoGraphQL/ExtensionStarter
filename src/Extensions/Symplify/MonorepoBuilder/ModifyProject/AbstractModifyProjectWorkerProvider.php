@@ -5,42 +5,39 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject;
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 
 /**
  * @see \Symplify\MonorepoBuilder\Tests\ModifyProject\ModifyProjectWorkerProvider\ModifyProjectWorkerProviderTest
  */
-final class ModifyProjectWorkerProvider
+abstract class AbstractModifyProjectWorkerProvider implements ModifyProjectWorkerProviderInterface
 {
-    /**
-     * @param ModifyProjectWorkerInterface[] $modifyProjectWorkers
-     */
-    public function __construct(
-        private array $modifyProjectWorkers
-    ) {
-    }
-
     /**
      * @return ModifyProjectWorkerInterface[]
      */
     public function provide(): array
     {
-        return $this->modifyProjectWorkers;
+        return $this->getModifyProjectWorkers();
     }
 
     /**
-     * @return ModifyProjectWorkerInterface[]|StageAwareInterface[]
+     * @return ModifyProjectWorkerInterface[]
+     */
+    abstract protected function getModifyProjectWorkers(): array;
+
+    /**
+     * @return ModifyProjectWorkerInterface[]|StageAwareModifyProjectWorkerInterface[]
      */
     public function provideByStage(string $stage): array
     {
         if ($stage === Stage::MAIN) {
-            return $this->modifyProjectWorkers;
+            return $this->getModifyProjectWorkers();
         }
 
         $activeModifyProjectWorkers = [];
-        foreach ($this->modifyProjectWorkers as $modifyProjectWorker) {
-            if (! $modifyProjectWorker instanceof StageAwareInterface) {
+        foreach ($this->getModifyProjectWorkers() as $modifyProjectWorker) {
+            if (! $modifyProjectWorker instanceof StageAwareModifyProjectWorkerInterface) {
                 continue;
             }
 

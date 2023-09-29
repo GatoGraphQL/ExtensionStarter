@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker;
 
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
+
 interface ModifyProjectWorkerInterface
 {
     /**
@@ -13,8 +15,8 @@ interface ModifyProjectWorkerInterface
      * - "Run coding standards"
      */
     // public function getDescription(Version $version): string;
-    public function getDescription(): string;
+    public function getDescription(ModifyProjectInputObjectInterface $inputObject): string;
 
     // public function work(Version $version): void;
-    public function work(): void;
+    public function work(ModifyProjectInputObjectInterface $inputObject): void;
 }

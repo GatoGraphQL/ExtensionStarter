@@ -6,7 +6,7 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 
 use Symfony\Component\Console\Style\SymfonyStyle;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
 
 final class ModifyProjectWorkerReporter
 {
@@ -23,7 +23,7 @@ final class ModifyProjectWorkerReporter
 
         // show debug data on -v/--verbose/--debug
         $this->symfonyStyle->writeln('class: ' . $modifyProjectWorker::class);
-        if ($modifyProjectWorker instanceof StageAwareInterface) {
+        if ($modifyProjectWorker instanceof StageAwareModifyProjectWorkerInterface) {
             $this->symfonyStyle->writeln('stage: ' . $modifyProjectWorker->getStage());
         }
 

@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard;
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
-final class ModifyProjectGuard
+abstract class AbstractModifyProjectGuard implements ModifyProjectGuardInterface
 {
     private bool $isStageRequired = false;
 
@@ -30,7 +30,6 @@ final class ModifyProjectGuard
     public function __construct(
         ParameterProvider $parameterProvider,
         // private TagResolverInterface $tagResolver,
-        private array $modifyProjectWorkers
     ) {
         $this->isStageRequired = $parameterProvider->provideBoolParameter(Option::IS_STAGE_REQUIRED);
         // $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(
@@ -93,8 +92,8 @@ final class ModifyProjectGuard
         }
 
         $stages = [];
-        foreach ($this->modifyProjectWorkers as $modifyProjectWorker) {
-            if ($modifyProjectWorker instanceof StageAwareInterface) {
+        foreach ($this->getModifyProjectWorkers() as $modifyProjectWorker) {
+            if ($modifyProjectWorker instanceof StageAwareModifyProjectWorkerInterface) {
                 $stages[] = $modifyProjectWorker->getStage();
             }
         }
@@ -103,6 +102,11 @@ final class ModifyProjectGuard
 
         return $this->stages;
     }
+
+    /**
+     * @return ModifyProjectWorkerInterface[]
+     */
+    abstract protected function getModifyProjectWorkers(): array;
 
     // private function ensureVersionIsNewerThanLastOne(Version $version): void
     // {
