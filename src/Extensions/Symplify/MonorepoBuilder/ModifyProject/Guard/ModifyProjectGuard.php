@@ -8,10 +8,11 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contr
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
 use Symplify\MonorepoBuilder\ValueObject\Option;
+use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
 final class ModifyProjectGuard
 {
-    // private bool $isStageRequired = false;
+    private bool $isStageRequired = false;
 
     /**
      * @var string[]
@@ -27,11 +28,11 @@ final class ModifyProjectGuard
      * @param ModifyProjectWorkerInterface[] $modifyProjectWorkers
      */
     public function __construct(
-        // ParameterProvider $parameterProvider,
+        ParameterProvider $parameterProvider,
         // private TagResolverInterface $tagResolver,
         private array $modifyProjectWorkers
     ) {
-        // $this->isStageRequired = $parameterProvider->provideBoolParameter(Option::IS_STAGE_REQUIRED);
+        $this->isStageRequired = $parameterProvider->provideBoolParameter(Option::IS_STAGE_REQUIRED);
         // $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(
         //     Option::STAGES_TO_ALLOW_EXISTING_TAG
         // );
@@ -44,10 +45,10 @@ final class ModifyProjectGuard
             return;
         }
 
-        // // stage is optional → all right
-        // if (! $this->isStageRequired) {
-        //     return;
-        // }
+        // stage is optional → all right
+        if (! $this->isStageRequired) {
+            return;
+        }
 
         // stage is required → show options
         throw new ConfigurationException(sprintf(

@@ -48,8 +48,7 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
             'Do not perform operations, just their preview'
         );
 
-        // $this->addOption(Option::STAGE, null, InputOption::VALUE_REQUIRED, 'Name of stage to perform', Stage::MAIN);
-        $this->addArgument(Option::STAGE, InputArgument::REQUIRED, 'Name of stage to perform');
+        $this->addOption(Option::STAGE, null, InputOption::VALUE_REQUIRED, 'Name of stage to perform', Stage::MAIN);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
