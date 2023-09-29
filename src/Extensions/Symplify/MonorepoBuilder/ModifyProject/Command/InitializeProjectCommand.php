@@ -50,16 +50,16 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->addOption(
             Option::GITHUB_REPO_OWNER,
             null,
-            InputOption::VALUE_REQUIRED,
+            null,
             'Owner of the GitHub repository where this project is hosted (eg: "GatoGraphQL" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`',
-            $this->getDefaultGitHubRepoOwner()
+            null //$this->getDefaultGitHubRepoOwner()
         );
         $this->addOption(
             Option::GITHUB_REPO_NAME,
             null,
-            InputOption::VALUE_REQUIRED,
+            null,
             'Name of the GitHub repository where this project is hosted (eg: "ExtensionStarter" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`',
-            $this->getDefaultGitHubRepoName()
+            null //$this->getDefaultGitHubRepoName()
         );
         // $this->addOption(
         //     Option::GITHUB_REPO_OWNER,
@@ -81,9 +81,17 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getModifyProjectInputObject(InputInterface $input, string $stage): ModifyProjectInputObjectInterface
     {
         if ($this->inputObject === null) {
+            $githubRepoOwner = (string) $input->getOption(Option::GITHUB_REPO_OWNER);
+            if ($githubRepoOwner === "") {
+                $githubRepoOwner = $this->getDefaultGitHubRepoOwner();
+            }
+            $githubRepoName = (string) $input->getOption(Option::GITHUB_REPO_NAME);
+            if ($githubRepoName === "") {
+                $githubRepoName = $this->getDefaultGitHubRepoName();
+            }
             $this->inputObject = new InitializeProjectInputObject(
-                (string) $input->getOption(Option::GITHUB_REPO_OWNER),
-                (string) $input->getOption(Option::GITHUB_REPO_NAME),
+                $githubRepoOwner,
+                $githubRepoName,
             );
         }
         return $this->inputObject;
