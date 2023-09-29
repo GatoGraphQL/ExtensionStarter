@@ -4,26 +4,24 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Command;
 
-use Symfony\Component\Console\Input\InputArgument;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Configuration\ModifyProjectStageResolverInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Configuration\StageResolver;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorkerProvider;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use Symplify\PackageBuilder\Console\Command\CommandNaming;
 
-final class ModifyProjectCommand extends AbstractSymplifyCommand
+abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private ModifyProjectWorkerProvider $modifyProjectWorkerProvider,
         private SourcesPresenceValidator $sourcesPresenceValidator,
-        private StageResolver $stageResolver,
         // private VersionResolver $versionResolver,
         private ModifyProjectWorkerReporter $modifyProjectWorkerReporter
     ) {
@@ -32,9 +30,6 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
 
     protected function configure(): void
     {
-        $this->setName(CommandNaming::classToName(self::class));
-        $this->setDescription('Modify the project using "Modify Project Workers".');
-
         // $description = sprintf(
         //     'ModifyProject version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"',
         //     implode('", "', SemVersion::ALL)
@@ -48,8 +43,7 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
             'Do not perform operations, just their preview'
         );
 
-        // $this->addOption(Option::STAGE, null, InputOption::VALUE_REQUIRED, 'Name of stage to perform', Stage::MAIN);
-        $this->addArgument(Option::STAGE, InputArgument::REQUIRED, 'Name of stage to perform');
+        $this->addOption(Option::STAGE, null, InputOption::VALUE_REQUIRED, 'Name of stage to perform', Stage::MAIN);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -57,12 +51,12 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
         $this->sourcesPresenceValidator->validateRootComposerJsonName();
 
         // validation phase
-        $stage = $this->stageResolver->resolveFromInput($input);
+        $stage = $this->getModifyProjectStageResolver()->resolveFromInput($input);
 
-        $modifyProjectWorkers = $this->modifyProjectWorkerProvider->provideByStage($stage);
+        $modifyProjectWorkers = $this->getModifyProjectWorkers($stage);
         if ($modifyProjectWorkers === []) {
             $errorMessage = sprintf(
-                'There are no modifyProject workers registered. Be sure to add them to "%s"',
+                'There are no workers registered. Be sure to add them to "%s"',
                 File::CONFIG
             );
             $this->symfonyStyle->error($errorMessage);
@@ -74,16 +68,17 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
         $i = 0;
         $isDryRun = (bool) $input->getOption(Option::DRY_RUN);
         // $version = $this->versionResolver->resolveVersion($input, $stage);
+        $inputObject = $this->getModifyProjectInputObject($stage);
 
         foreach ($modifyProjectWorkers as $modifyProjectWorker) {
             // $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($version);
-            $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription();
+            $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($inputObject);
             $this->symfonyStyle->title($title);
             $this->modifyProjectWorkerReporter->printMetadata($modifyProjectWorker);
 
             if (! $isDryRun) {
                 // $modifyProjectWorker->work($version);
-                $modifyProjectWorker->work();
+                $modifyProjectWorker->work($inputObject);
             }
         }
 
@@ -91,7 +86,7 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
             $this->symfonyStyle->note('Running in dry mode, nothing is changed');
         } elseif ($stage === Stage::MAIN) {
             // $message = sprintf('Version "%s" is now released!', $version->getVersionString());
-            $message = 'The project has been successfully modified';
+            $message = $this->getSuccessMessage();
             $this->symfonyStyle->success($message);
         } else {
             // $finishedMessage = sprintf(
@@ -107,5 +102,19 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
         }
 
         return self::SUCCESS;
+    }
+
+    /**
+     * @return ModifyProjectWorkerInterface[]|StageAwareModifyProjectWorkerInterface[]
+     */
+    abstract protected function getModifyProjectWorkers(string $stage): array;
+
+    abstract protected function getModifyProjectInputObject(string $stage): ModifyProjectInputObjectInterface;
+
+    abstract protected function getModifyProjectStageResolver(): ModifyProjectStageResolverInterface;
+
+    protected function getSuccessMessage(): string
+    {
+        return 'The project has been successfully modified';
     }
 }

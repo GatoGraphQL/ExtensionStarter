@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker;
 
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\InitializeProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 
-final class UpdateCurrentBranchAliasModifyProjectWorker implements ModifyProjectWorkerInterface, StageAwareInterface
+final class UpdateCurrentBranchAliasModifyProjectWorker implements InitializeProjectWorkerInterface, StageAwareModifyProjectWorkerInterface
 {
     public function __construct(
         private DevMasterAliasUpdater $devMasterAliasUpdater,
@@ -24,7 +25,7 @@ final class UpdateCurrentBranchAliasModifyProjectWorker implements ModifyProject
         return Stage::INITIALIZE;
     }
 
-    public function work(): void
+    public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
         // @todo Fix ModifyProject
         // $nextAlias = $this->versionUtils->getCurrentAliasFormat($version);
@@ -36,7 +37,7 @@ final class UpdateCurrentBranchAliasModifyProjectWorker implements ModifyProject
         );
     }
 
-    public function getDescription(): string
+    public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         // @todo Fix ModifyProject
         // $nextAlias = $this->versionUtils->getCurrentAliasFormat($version);

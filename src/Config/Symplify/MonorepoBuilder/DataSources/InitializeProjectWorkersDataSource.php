@@ -7,12 +7,12 @@ namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker\GuardOnDefaultBranchModifyProjectWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker\UpdateCurrentBranchAliasModifyProjectWorker;
 
-class ModifyProjectWorkersDataSource
+class InitializeProjectWorkersDataSource
 {
     /**
      * @return string[]
      */
-    public function getModifyProjectWorkerClasses(): array
+    public function getInitializeProjectWorkerClasses(): array
     {
         return [
             GuardOnDefaultBranchModifyProjectWorker::class,
