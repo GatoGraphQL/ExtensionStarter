@@ -14,6 +14,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Option;
 use Symfony\Component\Console\Input\InputOption;
+use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\PackageBuilder\Console\Command\CommandNaming;
 
@@ -24,6 +25,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     public function __construct(
         private InitializeProjectWorkerProvider $initializeProjectWorkerProvider,
         private InitializeProjectStageResolver $initializeProjectStageResolver,
+        private ProcessRunner $processRunner,
         SourcesPresenceValidator $sourcesPresenceValidator,
         // VersionResolver $versionResolver,
         ModifyProjectWorkerReporter $modifyProjectWorkerReporter
@@ -74,7 +76,12 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getModifyProjectInputObject(string $stage): ModifyProjectInputObjectInterface
     {
         if ($this->inputObject === null) {
-            $this->inputObject = new InitializeProjectInputObject();
+            $githubRepoRepo = $this->processRunner->run("basename -s .git `git config --get remote.origin.url`");
+            $githubRepoName = $this->processRunner->run("basename -s .git `git config --get remote.origin.url`");
+            $this->inputObject = new InitializeProjectInputObject(
+                $githubRepoRepo,
+                $githubRepoName,
+            );
         }
         return $this->inputObject;
     }
