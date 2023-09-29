@@ -61,7 +61,7 @@ final class ModifyProjectCommand extends AbstractSymplifyCommand
         $modifyProjectWorkers = $this->modifyProjectWorkerProvider->provideByStage($stage);
         if ($modifyProjectWorkers === []) {
             $errorMessage = sprintf(
-                'There are no modifyProject workers registered. Be sure to add them to "%s"',
+                'There are no workers registered. Be sure to add them to "%s"',
                 File::CONFIG
             );
             $this->symfonyStyle->error($errorMessage);
