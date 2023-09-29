@@ -76,10 +76,10 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getModifyProjectInputObject(string $stage): ModifyProjectInputObjectInterface
     {
         if ($this->inputObject === null) {
-            $githubRepoRepo = $this->processRunner->run("basename -s .git `git config --get remote.origin.url`");
+            $githubRepoOwner = $this->processRunner->run("basename -s .git $(dirname `git config --get remote.origin.url`)");
             $githubRepoName = $this->processRunner->run("basename -s .git `git config --get remote.origin.url`");
             $this->inputObject = new InitializeProjectInputObject(
-                $githubRepoRepo,
+                $githubRepoOwner,
                 $githubRepoName,
             );
         }
