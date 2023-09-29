@@ -12,6 +12,8 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Initi
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\InitializeProjectInputObject;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Option;
+use Symfony\Component\Console\Input\InputOption;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\PackageBuilder\Console\Command\CommandNaming;
 
@@ -38,7 +40,25 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Initialize the project, replacing the extension starter data with your own data.');
 
-        // $this->addOption(Option::STAGE, null, InputOption::VALUE_REQUIRED, 'Name of stage to perform', Stage::MAIN);
+        $this->addOption(
+            Option::GITHUB_REPO_OWNER,
+            null,
+            null,
+            'Owner of the GitHub repository (such as "GatoGraphQL" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, it retrieves this value using git',
+        );
+        $this->addOption(
+            Option::GITHUB_REPO_NAME,
+            null,
+            null,
+            'Name of the GitHub repository (such as "ExtensionStarter" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, it retrieves this value using git',
+        );
+        // $this->addOption(
+        //     Option::GITHUB_REPO_OWNER,
+        //     null,
+        //     InputOption::VALUE_REQUIRED,
+        //     'Name of stage to perform',
+        //     Stage::MAIN
+        // );
     }
 
     /**
