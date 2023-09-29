@@ -21,6 +21,8 @@ use Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class InitializeProjectCommand extends AbstractModifyProjectCommand
 {
     protected ?InitializeProjectInputObject $inputObject = null;
+    protected ?string $defaultGitHubRepoOwner = null;
+    protected ?string $defaultGitHubRepoName = null;
 
     public function __construct(
         private InitializeProjectWorkerProvider $initializeProjectWorkerProvider,
@@ -47,14 +49,16 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->addOption(
             Option::GITHUB_REPO_OWNER,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             'Owner of the GitHub repository (such as "GatoGraphQL" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, it retrieves this value using git',
+            $this->getDefaultGitHubRepoOwner()
         );
         $this->addOption(
             Option::GITHUB_REPO_NAME,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             'Name of the GitHub repository (such as "ExtensionStarter" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, it retrieves this value using git',
+            $this->getDefaultGitHubRepoName()
         );
         // $this->addOption(
         //     Option::GITHUB_REPO_OWNER,
@@ -84,6 +88,22 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             );
         }
         return $this->inputObject;
+    }
+
+    protected function getDefaultGitHubRepoOwner(): string
+    {
+        if ($this->defaultGitHubRepoOwner === null) {
+            $this->defaultGitHubRepoOwner = $this->processRunner->run("basename -s .git $(dirname `git config --get remote.origin.url`)");
+        }
+        return $this->defaultGitHubRepoOwner;
+    }
+
+    protected function getDefaultGitHubRepoName(): string
+    {
+        if ($this->defaultGitHubRepoName === null) {
+            $this->defaultGitHubRepoName = $this->processRunner->run("basename -s .git `git config --get remote.origin.url`");
+        }
+        return $this->defaultGitHubRepoName;
     }
 
     protected function getModifyProjectStageResolver(): ModifyProjectStageResolverInterface
