@@ -17,7 +17,6 @@ use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use Symplify\PackageBuilder\Console\Command\CommandNaming;
 
 abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
 {
@@ -31,9 +30,6 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
 
     protected function configure(): void
     {
-        $this->setName(CommandNaming::classToName(self::class));
-        $this->setDescription('Modify the project using "Modify Project Workers".');
-
         // $description = sprintf(
         //     'ModifyProject version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"',
         //     implode('", "', SemVersion::ALL)
