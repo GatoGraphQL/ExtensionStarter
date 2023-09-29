@@ -33,7 +33,7 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
     protected function getRegexReplacement(string $constName, string $newValue): array
     {
         return [
-            "/(\s+)const(\s+)" . $constName . "(\s+)?=(\s+)?['\"]\w+['\"](\s+)?;/" => " const " . $constName . " = '" . $newValue . "';",
+            "/(\s+)const(\s+)" . $constName . "(\s+)?=(\s+)?['\"].+['\"](\s+)?;/" => " const " . $constName . " = '" . $newValue . "';",
         ];
     }
 
