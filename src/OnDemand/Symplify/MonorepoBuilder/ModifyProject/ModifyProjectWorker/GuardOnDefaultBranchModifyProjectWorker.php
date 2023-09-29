@@ -6,6 +6,7 @@ namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\M
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\ValueObject\Option;
@@ -28,7 +29,7 @@ final class GuardOnDefaultBranchModifyProjectWorker implements ModifyProjectWork
         return Stage::INITIALIZE;
     }
 
-    public function work(): void
+    public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
         $currentBranchName = trim($this->processRunner->run('git branch --show-current'));
         if ($currentBranchName !== $this->branchName) {
@@ -40,7 +41,7 @@ final class GuardOnDefaultBranchModifyProjectWorker implements ModifyProjectWork
         }
     }
 
-    public function getDescription(): string
+    public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         return 'Check we are on the default branch, to avoid commit/push to a different branch';
     }
