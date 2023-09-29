@@ -37,7 +37,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
 
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Initialize the project, replacing the extension starter data with your own data.');
-        
+
         // $this->addOption(Option::STAGE, null, InputOption::VALUE_REQUIRED, 'Name of stage to perform', Stage::MAIN);
     }
 

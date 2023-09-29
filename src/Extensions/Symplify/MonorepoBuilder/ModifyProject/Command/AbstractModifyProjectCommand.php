@@ -108,7 +108,7 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
      * @return ModifyProjectWorkerInterface[]|StageAwareModifyProjectWorkerInterface[]
      */
     abstract protected function getModifyProjectWorkers(string $stage): array;
-    
+
     abstract protected function getModifyProjectInputObject(string $stage): ModifyProjectInputObjectInterface;
 
     abstract protected function getModifyProjectStageResolver(): ModifyProjectStageResolverInterface;

@@ -13,7 +13,7 @@ interface ModifyProjectWorkerProviderInterface
      * @return ModifyProjectWorkerInterface[]
      */
     public function provide(): array;
-    
+
     /**
      * @return ModifyProjectWorkerInterface[]|StageAwareModifyProjectWorkerInterface[]
      */
