@@ -7,39 +7,20 @@ namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\M
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\InitializeProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\InitializeProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
-use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
-use Symplify\MonorepoBuilder\ValueObject\Option;
-use Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Worker\AbstractGuardOnDefaultBranchWorker;
 
-final class GuardOnDefaultBranchModifyProjectWorker implements InitializeProjectWorkerInterface
+final class GuardOnDefaultBranchModifyProjectWorker extends AbstractGuardOnDefaultBranchWorker implements InitializeProjectWorkerInterface
 {
-    private string $branchName;
-
-    public function __construct(
-        private ProcessRunner $processRunner,
-        ParameterProvider $parameterProvider
-    ) {
-        $this->branchName = $parameterProvider->provideStringParameter(Option::DEFAULT_BRANCH_NAME);
-    }
-
     /**
      * @param InitializeProjectInputObjectInterface $inputObject
      */
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
-        $currentBranchName = trim($this->processRunner->run('git branch --show-current'));
-        if ($currentBranchName !== $this->branchName) {
-            throw new ShouldNotHappenException(sprintf(
-                'Switch from branch "%s" to "%s" before modifying the project',
-                $currentBranchName,
-                $this->branchName
-            ));
-        }
+        $this->doWork();
     }
 
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        return 'Check we are on the default branch, to avoid commit/push to a different branch';
+        return $this->doGetDescription();
     }
 }
