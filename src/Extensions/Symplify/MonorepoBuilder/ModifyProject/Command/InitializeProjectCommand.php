@@ -19,6 +19,8 @@ use Symplify\PackageBuilder\Console\Command\CommandNaming;
 
 final class InitializeProjectCommand extends AbstractModifyProjectCommand
 {
+    protected ?InitializeProjectInputObject $inputObject = null;
+
     public function __construct(
         private InitializeProjectWorkerProvider $initializeProjectWorkerProvider,
         private InitializeProjectStageResolver $initializeProjectStageResolver,
@@ -71,7 +73,10 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
 
     protected function getModifyProjectInputObject(string $stage): ModifyProjectInputObjectInterface
     {
-        return new InitializeProjectInputObject();
+        if ($this->inputObject === null) {
+            $this->inputObject = new InitializeProjectInputObject();
+        }
+        return $this->inputObject;
     }
 
     protected function getModifyProjectStageResolver(): ModifyProjectStageResolverInterface
