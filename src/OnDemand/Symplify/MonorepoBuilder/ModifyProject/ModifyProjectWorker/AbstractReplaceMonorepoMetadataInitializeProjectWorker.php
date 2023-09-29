@@ -6,7 +6,6 @@ namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\M
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\InitializeProjectWorkerInterface;
 use PoP\PoP\Extensions\Symplify\MonorepoBuilder\SmartFile\FileContentReplacerSystem;
-use PoP\PoP\Extensions\Symplify\MonorepoBuilder\Utils\VersionUtils;
 
 abstract class AbstractReplaceMonorepoMetadataInitializeProjectWorker implements InitializeProjectWorkerInterface
 {
@@ -14,7 +13,6 @@ abstract class AbstractReplaceMonorepoMetadataInitializeProjectWorker implements
 
     public function __construct(
         protected FileContentReplacerSystem $fileContentReplacerSystem,
-        protected VersionUtils $versionUtils,
     ) {
         $this->monorepoMetadataFile = $this->getMonorepoMetadataFile();
     }
