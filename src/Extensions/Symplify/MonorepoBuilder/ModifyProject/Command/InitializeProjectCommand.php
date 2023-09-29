@@ -51,14 +51,14 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             Option::GITHUB_REPO_OWNER,
             null,
             InputOption::VALUE_REQUIRED,
-            'Owner of the GitHub repository (such as "GatoGraphQL" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, it retrieves this value using git',
+            'Owner of the GitHub repository where this project is hosted (eg: "GatoGraphQL" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`',
             $this->getDefaultGitHubRepoOwner()
         );
         $this->addOption(
             Option::GITHUB_REPO_NAME,
             null,
             InputOption::VALUE_REQUIRED,
-            'Name of the GitHub repository (such as "ExtensionStarter" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, it retrieves this value using git',
+            'Name of the GitHub repository where this project is hosted (eg: "ExtensionStarter" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`',
             $this->getDefaultGitHubRepoName()
         );
         // $this->addOption(
@@ -92,7 +92,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getDefaultGitHubRepoOwner(): string
     {
         if ($this->defaultGitHubRepoOwner === null) {
-            $this->defaultGitHubRepoOwner = $this->processRunner->run("basename -s .git $(dirname `git config --get remote.origin.url`)");
+            $this->defaultGitHubRepoOwner = trim($this->processRunner->run("basename -s .git $(dirname `git config --get remote.origin.url`)"));
         }
         return $this->defaultGitHubRepoOwner;
     }
@@ -100,7 +100,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getDefaultGitHubRepoName(): string
     {
         if ($this->defaultGitHubRepoName === null) {
-            $this->defaultGitHubRepoName = $this->processRunner->run("basename -s .git `git config --get remote.origin.url`");
+            $this->defaultGitHubRepoName = trim($this->processRunner->run("basename -s .git `git config --get remote.origin.url`"));
         }
         return $this->defaultGitHubRepoName;
     }
