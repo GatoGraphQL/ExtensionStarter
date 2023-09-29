@@ -9,15 +9,21 @@ use GatoGraphQL\GatoGraphQL\StaticHelpers\PluginVersionHelpers;
 
 class ExtensionStaticHelpers
 {
+    public static function getGitHubRepoDocsRootURL(): string
+    {
+        return sprintf(
+            'https://raw.githubusercontent.com/%s/%s',
+            ExtensionMetadata::GITHUB_REPO_OWNER,
+            ExtensionMetadata::GITHUB_REPO_NAME
+        );
+    }
+
     public static function getGitHubRepoDocsRootPathURL(): string
     {
-        // @todo Complete for Hello Dolly!
-        $gitDevelopmentBranch = 'main';
-
         $extensionPluginVersion = PluginApp::getExtension(GatoGraphQLExtension::class)->getPluginVersion();
         $tag = PluginVersionHelpers::isDevelopmentVersion($extensionPluginVersion)
-            ? $gitDevelopmentBranch
+            ? ExtensionMetadata::GIT_BASE_BRANCH
             : $extensionPluginVersion;
-        return 'https://raw.githubusercontent.com/GatoGraphQL/ExtensionStarter/' . $tag . '/layers/GatoGraphQLForWP/plugins/hello-dolly/';
+        return static::getGitHubRepoDocsRootURL() . '/' . $tag . '/layers/GatoGraphQLForWP/plugins/hello-dolly/';
     }
 }
