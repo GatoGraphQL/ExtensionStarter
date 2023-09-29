@@ -9,7 +9,7 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function __construct(
         private string $githubRepoOwner,
         private string $githubRepoName,
-    ){        
+    ) {
     }
 
     public function getGithubRepoOwner(): string
