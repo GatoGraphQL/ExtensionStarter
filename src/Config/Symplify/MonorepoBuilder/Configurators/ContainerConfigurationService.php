@@ -11,7 +11,7 @@ use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\DataToAppen
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\DowngradeRectorDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\EnvironmentVariablesDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\InstaWPConfigDataSource;
-use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\ModifyProjectWorkersDataSource;
+use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\InitializeProjectWorkersDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PHPStanDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PackageOrganizationDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PluginDataSource;
@@ -148,9 +148,9 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
         return new ReleaseWorkersDataSource();
     }
 
-    protected function getModifyProjectWorkersDataSource(): ?ModifyProjectWorkersDataSource
+    protected function getInitializeProjectWorkersDataSource(): ?InitializeProjectWorkersDataSource
     {
-        return new ModifyProjectWorkersDataSource();
+        return new InitializeProjectWorkersDataSource();
     }
 
     protected function setCustomServices(ServicesConfigurator $services): void
@@ -168,16 +168,13 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
     {
         parent::setServices($services);
 
-        $this->setModifyProjectWorkerServices($services);
+        $this->setInitializeProjectWorkerServices($services);
     }
 
-    protected function setModifyProjectWorkerServices(ServicesConfigurator $services): void
+    protected function setInitializeProjectWorkerServices(ServicesConfigurator $services): void
     {
-        /**
-         * ModifyProject workers - in order to execute
-         */
-        if ($modifyProjectWorkersConfig = $this->getModifyProjectWorkersDataSource()) {
-            foreach ($modifyProjectWorkersConfig->getModifyProjectWorkerClasses() as $modifyProjectWorkerClass) {
+        if ($initializeProjectWorkersConfig = $this->getInitializeProjectWorkersDataSource()) {
+            foreach ($initializeProjectWorkersConfig->getInitializeProjectWorkerClasses() as $modifyProjectWorkerClass) {
                 $services->set($modifyProjectWorkerClass);
             }
         }
