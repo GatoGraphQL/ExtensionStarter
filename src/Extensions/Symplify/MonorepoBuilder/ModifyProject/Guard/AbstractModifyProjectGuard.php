@@ -24,9 +24,6 @@ abstract class AbstractModifyProjectGuard implements ModifyProjectGuardInterface
     //  */
     // private array $stagesToAllowExistingTag = [];
 
-    /**
-     * @param ModifyProjectWorkerInterface[] $modifyProjectWorkers
-     */
     public function __construct(
         ParameterProvider $parameterProvider,
         // private TagResolverInterface $tagResolver,
