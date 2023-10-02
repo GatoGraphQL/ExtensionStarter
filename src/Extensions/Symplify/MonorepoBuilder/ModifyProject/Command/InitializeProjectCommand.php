@@ -145,6 +145,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             }
             // validation
             $this->initializeProjectGuard->guardVersion($initialVersion);
+
             $gitBaseBranch = (string) $input->getOption(Option::GIT_BASE_BRANCH);
             if ($gitBaseBranch === '') {
                 $gitBaseBranch = $this->getDefaultGitBaseBranch();
