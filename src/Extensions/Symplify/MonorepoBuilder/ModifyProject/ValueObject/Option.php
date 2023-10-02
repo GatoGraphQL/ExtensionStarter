@@ -9,6 +9,10 @@ final class Option
     /**
      * @var string
      */
+    public final const INITIAL_VERSION = 'initial-version';
+    /**
+     * @var string
+     */
     public final const GIT_BASE_BRANCH = 'git-base-branch';
     /**
      * @var string
