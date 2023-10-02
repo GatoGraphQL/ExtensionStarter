@@ -7,12 +7,18 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 class InitializeProjectInputObject implements InitializeProjectInputObjectInterface
 {
     public function __construct(
+        private string $gitBaseBranch,
         private string $githubRepoOwner,
         private string $githubRepoName,
         private string $docsGitBaseBranch,
         private string $docsGithubRepoOwner,
         private string $docsGithubRepoName,
     ) {
+    }
+
+    public function getGitBaseBranch(): string
+    {
+        return $this->gitBaseBranch;
     }
 
     public function getGithubRepoOwner(): string

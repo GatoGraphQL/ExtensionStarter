@@ -48,6 +48,13 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->setDescription('Initialize the project, replacing the extension starter data with your own data.');
 
         $this->addOption(
+            Option::GIT_BASE_BRANCH,
+            null,
+            null,
+            'Base branch of the GitHub repository where this project is hosted. If not provided, this value is retrieved using `git`',
+            null
+        );
+        $this->addOption(
             Option::GITHUB_REPO_OWNER,
             null,
             null,
@@ -66,7 +73,10 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             Option::DOCS_GIT_BASE_BRANCH,
             null,
             null,
-            'Base branch of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, this value is retrieved using `git`',
+            sprintf(
+                'Base branch of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
+                Option::GIT_BASE_BRANCH
+            ),
             null
         );
         $this->addOption(
@@ -109,6 +119,10 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getModifyProjectInputObject(InputInterface $input, string $stage): ModifyProjectInputObjectInterface
     {
         if ($this->inputObject === null) {
+            $gitBaseBranch = (string) $input->getOption(Option::GIT_BASE_BRANCH);
+            if ($gitBaseBranch === "") {
+                $gitBaseBranch = $this->getDefaultGitBaseBranch();
+            }
             $githubRepoOwner = (string) $input->getOption(Option::GITHUB_REPO_OWNER);
             if ($githubRepoOwner === "") {
                 $githubRepoOwner = $this->getDefaultGitHubRepoOwner();
@@ -119,7 +133,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             }
             $docsGitBaseBranch = (string) $input->getOption(Option::DOCS_GIT_BASE_BRANCH);
             if ($docsGitBaseBranch === "") {
-                $docsGitBaseBranch = $this->getDefaultGitBaseBranch();
+                $docsGitBaseBranch = $gitBaseBranch;
             }
             $docsGithubRepoOwner = (string) $input->getOption(Option::DOCS_GITHUB_REPO_OWNER);
             if ($docsGithubRepoOwner === "") {
@@ -130,6 +144,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 $docsGithubRepoName = $githubRepoName;
             }
             $this->inputObject = new InitializeProjectInputObject(
+                $gitBaseBranch,
                 $githubRepoOwner,
                 $githubRepoName,
                 $docsGitBaseBranch,

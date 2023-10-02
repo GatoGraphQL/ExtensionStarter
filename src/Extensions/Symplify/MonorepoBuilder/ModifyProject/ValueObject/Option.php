@@ -9,6 +9,10 @@ final class Option
     /**
      * @var string
      */
+    public final const GIT_BASE_BRANCH = 'git-base-branch';
+    /**
+     * @var string
+     */
     public final const GITHUB_REPO_OWNER = 'github-repo-owner';
     /**
      * @var string

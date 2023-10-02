@@ -6,6 +6,7 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 
 interface InitializeProjectInputObjectInterface extends ModifyProjectInputObjectInterface
 {
+    public function getGitBaseBranch(): string;
     public function getGithubRepoOwner(): string;
     public function getGithubRepoName(): string;
     public function getDocsGitBaseBranch(): string;
