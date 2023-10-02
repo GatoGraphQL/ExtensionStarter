@@ -17,6 +17,16 @@ class InitializeProjectWorkersDataSource
         return [
             ReplaceMonorepoMetadataInitializeProjectWorker::class,
             ReplaceExtensionMetadataInitializeProjectWorker::class,
+            /**
+             * Notice that there is no need for this worker currently,
+             * because there are no blocks in the extension demo.
+             * 
+             * If there were, then this worker should be created,
+             * to replace the metadata in file:
+             * 
+             *   - `extension-metadata.config.js`
+             */
+            // ReplaceWebpackConfigMetadataInitializeProjectWorker::class,
         ];
     }
 }
