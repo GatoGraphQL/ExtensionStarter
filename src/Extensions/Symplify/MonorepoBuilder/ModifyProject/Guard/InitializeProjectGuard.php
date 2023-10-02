@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard;
 
+use PharIo\Version\InvalidVersionException;
+use PharIo\Version\Version;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\InitializeProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
-final class InitializeProjectGuard extends AbstractModifyProjectGuard
+final class InitializeProjectGuard extends AbstractModifyProjectGuard implements InitializeProjectGuardInterface
 {
     /**
      * @param InitializeProjectWorkerInterface[] $initializeProjectWorkers
@@ -26,5 +29,20 @@ final class InitializeProjectGuard extends AbstractModifyProjectGuard
     protected function getModifyProjectWorkers(): array
     {
         return $this->initializeProjectWorkers;
+    }
+
+    /**
+     * Make sure the version input follows semver
+     */
+    public function guardVersion(string $version): void
+    {
+        try {
+            new Version($version);
+        } catch (InvalidVersionException $e) {
+            throw new ConfigurationException(sprintf(
+                'Version "%s" does not follow semver',
+                $version
+            ));
+        }
     }
 }

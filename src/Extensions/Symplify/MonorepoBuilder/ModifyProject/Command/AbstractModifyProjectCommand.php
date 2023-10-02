@@ -64,11 +64,13 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
             return self::FAILURE;
         }
 
+        // validation phase
+        $inputObject = $this->getModifyProjectInputObject($input, $stage);
+
         $totalWorkerCount = count($modifyProjectWorkers);
         $i = 0;
         $isDryRun = (bool) $input->getOption(Option::DRY_RUN);
         // $version = $this->versionResolver->resolveVersion($input, $stage);
-        $inputObject = $this->getModifyProjectInputObject($input, $stage);
 
         foreach ($modifyProjectWorkers as $modifyProjectWorker) {
             // $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($version);

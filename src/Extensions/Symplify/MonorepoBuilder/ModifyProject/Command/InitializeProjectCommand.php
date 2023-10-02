@@ -8,6 +8,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Confi
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Configuration\ModifyProjectStageResolverInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard\InitializeProjectGuardInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InitializeProjectWorkerProvider;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\InitializeProjectInputObject;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
@@ -31,6 +32,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     public function __construct(
         private InitializeProjectWorkerProvider $initializeProjectWorkerProvider,
         private InitializeProjectStageResolver $initializeProjectStageResolver,
+        private InitializeProjectGuardInterface $initializeProjectGuard,
         private ProcessRunner $processRunner,
         SourcesPresenceValidator $sourcesPresenceValidator,
         // VersionResolver $versionResolver,
@@ -55,7 +57,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             null,
             InputOption::VALUE_REQUIRED,
             'Initial version to use in the monorepo, in semver format (Major.Minor.Patch)',
-            '0.1.0'
+            $this->getDefaultInitialVersion()
         );
         $this->addOption(
             Option::GIT_BASE_BRANCH,
@@ -138,36 +140,42 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     {
         if ($this->inputObject === null) {
             $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
+            if ($initialVersion === '') {
+                $initialVersion = $this->getDefaultInitialVersion();
+            }
+            // validation
+            $this->initializeProjectGuard->guardVersion($initialVersion);
+
             $gitBaseBranch = (string) $input->getOption(Option::GIT_BASE_BRANCH);
-            if ($gitBaseBranch === "") {
+            if ($gitBaseBranch === '') {
                 $gitBaseBranch = $this->getDefaultGitBaseBranch();
             }
             $gitUserName = (string) $input->getOption(Option::GIT_USER_NAME);
-            if ($gitUserName === "") {
+            if ($gitUserName === '') {
                 $gitUserName = $this->getDefaultGitUserName();
             }
             $gitUserEmail = (string) $input->getOption(Option::GIT_USER_EMAIL);
-            if ($gitUserEmail === "") {
+            if ($gitUserEmail === '') {
                 $gitUserEmail = $this->getDefaultGitUserEmail();
             }
             $githubRepoOwner = (string) $input->getOption(Option::GITHUB_REPO_OWNER);
-            if ($githubRepoOwner === "") {
+            if ($githubRepoOwner === '') {
                 $githubRepoOwner = $this->getDefaultGitHubRepoOwner();
             }
             $githubRepoName = (string) $input->getOption(Option::GITHUB_REPO_NAME);
-            if ($githubRepoName === "") {
+            if ($githubRepoName === '') {
                 $githubRepoName = $this->getDefaultGitHubRepoName();
             }
             $docsGitBaseBranch = (string) $input->getOption(Option::DOCS_GIT_BASE_BRANCH);
-            if ($docsGitBaseBranch === "") {
+            if ($docsGitBaseBranch === '') {
                 $docsGitBaseBranch = $gitBaseBranch;
             }
             $docsGithubRepoOwner = (string) $input->getOption(Option::DOCS_GITHUB_REPO_OWNER);
-            if ($docsGithubRepoOwner === "") {
+            if ($docsGithubRepoOwner === '') {
                 $docsGithubRepoOwner = $githubRepoOwner;
             }
             $docsGithubRepoName = (string) $input->getOption(Option::DOCS_GITHUB_REPO_NAME);
-            if ($docsGithubRepoName === "") {
+            if ($docsGithubRepoName === '') {
                 $docsGithubRepoName = $githubRepoName;
             }
             $this->inputObject = new InitializeProjectInputObject(
@@ -183,6 +191,11 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             );
         }
         return $this->inputObject;
+    }
+
+    protected function getDefaultInitialVersion(): string
+    {
+        return '0.1.0';
     }
 
     protected function getDefaultGitHubRepoOwner(): string
