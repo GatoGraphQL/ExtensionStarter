@@ -13,6 +13,14 @@ final class Option
     /**
      * @var string
      */
+    public final const GIT_USER_NAME = 'git-user-name';
+    /**
+     * @var string
+     */
+    public final const GIT_USER_EMAIL = 'git-user-email';
+    /**
+     * @var string
+     */
     public final const GITHUB_REPO_OWNER = 'github-repo-owner';
     /**
      * @var string
