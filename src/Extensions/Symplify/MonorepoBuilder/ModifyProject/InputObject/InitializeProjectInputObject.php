@@ -9,6 +9,7 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function __construct(
         private string $githubRepoOwner,
         private string $githubRepoName,
+        private string $docsGitBaseBranch,
         private string $docsGithubRepoOwner,
         private string $docsGithubRepoName,
     ) {
@@ -22,6 +23,11 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function getGithubRepoName(): string
     {
         return $this->githubRepoName;
+    }
+
+    public function getDocsGitBaseBranch(): string
+    {
+        return $this->docsGitBaseBranch;
     }
 
     public function getDocsGithubRepoOwner(): string

@@ -23,6 +23,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected ?InitializeProjectInputObject $inputObject = null;
     protected ?string $defaultGitHubRepoOwner = null;
     protected ?string $defaultGitHubRepoName = null;
+    protected ?string $defaultGitBaseBranch = null;
 
     public function __construct(
         private InitializeProjectWorkerProvider $initializeProjectWorkerProvider,
@@ -62,6 +63,13 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         );
 
         $this->addOption(
+            Option::DOCS_GIT_BASE_BRANCH,
+            null,
+            null,
+            'Base branch of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, this value is retrieved using `git`',
+            null
+        );
+        $this->addOption(
             Option::DOCS_GITHUB_REPO_OWNER,
             null,
             null,
@@ -69,7 +77,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 'Owner of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
                 Option::GITHUB_REPO_OWNER
             ),
-            null //$this->getDefaultGitHubRepoOwner()
+            null
         );
         $this->addOption(
             Option::DOCS_GITHUB_REPO_NAME,
@@ -79,7 +87,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 'Name of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
                 Option::GITHUB_REPO_NAME
             ),
-            null //$this->getDefaultGitHubRepoName()
+            null
         );
         // $this->addOption(
         //     Option::GITHUB_REPO_OWNER,
@@ -109,6 +117,10 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             if ($githubRepoName === "") {
                 $githubRepoName = $this->getDefaultGitHubRepoName();
             }
+            $docsGitBaseBranch = (string) $input->getOption(Option::DOCS_GIT_BASE_BRANCH);
+            if ($docsGitBaseBranch === "") {
+                $docsGitBaseBranch = $this->getDefaultGitBaseBranch();
+            }
             $docsGithubRepoOwner = (string) $input->getOption(Option::DOCS_GITHUB_REPO_OWNER);
             if ($docsGithubRepoOwner === "") {
                 $docsGithubRepoOwner = $githubRepoOwner;
@@ -120,6 +132,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             $this->inputObject = new InitializeProjectInputObject(
                 $githubRepoOwner,
                 $githubRepoName,
+                $docsGitBaseBranch,
                 $docsGithubRepoOwner,
                 $docsGithubRepoName,
             );
@@ -141,6 +154,14 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             $this->defaultGitHubRepoName = trim($this->processRunner->run("basename -s .git `git config --get remote.origin.url`"));
         }
         return $this->defaultGitHubRepoName;
+    }
+
+    protected function getDefaultGitBaseBranch(): string
+    {
+        if ($this->defaultGitBaseBranch === null) {
+            $this->defaultGitBaseBranch = trim($this->processRunner->run("git remote show origin | sed -n '/HEAD branch/s/.*: //p'"));
+        }
+        return $this->defaultGitBaseBranch;
     }
 
     protected function getModifyProjectStageResolver(): ModifyProjectStageResolverInterface

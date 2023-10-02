@@ -8,6 +8,7 @@ interface InitializeProjectInputObjectInterface extends ModifyProjectInputObject
 {
     public function getGithubRepoOwner(): string;
     public function getGithubRepoName(): string;
+    public function getDocsGitBaseBranch(): string;
     public function getDocsGithubRepoOwner(): string;
     public function getDocsGithubRepoName(): string;
 }
