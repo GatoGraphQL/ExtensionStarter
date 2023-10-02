@@ -37,7 +37,10 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
      */
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        return 'Replace all properties in the MonorepoMetadata file';
+        return sprintf(
+            'Replace properties in the Monorepo Metadata file: %s',
+            $this->printReplacements($inputObject)
+        );
     }
 
     /**
