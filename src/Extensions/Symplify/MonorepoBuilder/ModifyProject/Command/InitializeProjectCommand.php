@@ -14,6 +14,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Option;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\PackageBuilder\Console\Command\CommandNaming;
@@ -49,6 +50,13 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Initialize the project, replacing the extension starter data with your own data.');
 
+        $this->addOption(
+            Option::INITIAL_VERSION,
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Initial version to use in the monorepo, in semver format (Major.Minor.Patch)',
+            '0.1.0'
+        );
         $this->addOption(
             Option::GIT_BASE_BRANCH,
             null,
@@ -116,13 +124,6 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             ),
             null
         );
-        // $this->addOption(
-        //     Option::GITHUB_REPO_OWNER,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     'Name of stage to perform',
-        //     Stage::MAIN
-        // );
     }
 
     /**
@@ -136,6 +137,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getModifyProjectInputObject(InputInterface $input, string $stage): ModifyProjectInputObjectInterface
     {
         if ($this->inputObject === null) {
+            $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
             $gitBaseBranch = (string) $input->getOption(Option::GIT_BASE_BRANCH);
             if ($gitBaseBranch === "") {
                 $gitBaseBranch = $this->getDefaultGitBaseBranch();
@@ -169,6 +171,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 $docsGithubRepoName = $githubRepoName;
             }
             $this->inputObject = new InitializeProjectInputObject(
+                $initialVersion,
                 $gitBaseBranch,
                 $gitUserName,
                 $gitUserEmail,
