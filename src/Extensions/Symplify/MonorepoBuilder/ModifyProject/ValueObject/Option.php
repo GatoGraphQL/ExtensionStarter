@@ -17,6 +17,10 @@ final class Option
     /**
      * @var string
      */
+    public final const DOCS_GIT_BASE_BRANCH = 'docs-git-base-branch';
+    /**
+     * @var string
+     */
     public final const DOCS_GITHUB_REPO_OWNER = 'docs-github-repo-owner';
     /**
      * @var string
