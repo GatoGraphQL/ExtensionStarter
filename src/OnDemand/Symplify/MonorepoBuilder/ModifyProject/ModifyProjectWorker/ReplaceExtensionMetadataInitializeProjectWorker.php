@@ -18,8 +18,8 @@ class ReplaceExtensionMetadataInitializeProjectWorker extends AbstractReplaceExt
     {
         $files = $this->getExtensionSrcMetadataFiles();
         $replacements = [
-            ...$this->getRegexReplacement('DOCS_GITHUB_REPO_OWNER', $inputObject->getGithubRepoOwner()),
-            ...$this->getRegexReplacement('DOCS_GITHUB_REPO_NAME', $inputObject->getGithubRepoName()),
+            ...$this->getRegexReplacement('DOCS_GITHUB_REPO_OWNER', $inputObject->getDocsGithubRepoOwner()),
+            ...$this->getRegexReplacement('DOCS_GITHUB_REPO_NAME', $inputObject->getDocsGithubRepoName()),
         ];
         $this->fileContentReplacerSystem->replaceContentInFiles(
             $files,
