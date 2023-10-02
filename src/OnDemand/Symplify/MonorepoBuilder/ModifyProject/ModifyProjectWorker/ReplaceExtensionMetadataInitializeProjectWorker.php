@@ -17,11 +17,13 @@ class ReplaceExtensionMetadataInitializeProjectWorker extends AbstractReplaceExt
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
         $files = $this->getExtensionSrcMetadataFiles();
-        $replacements = [
-            ...$this->getRegexReplacement('DOCS_GIT_BASE_BRANCH', $inputObject->getDocsGitBaseBranch()),
-            ...$this->getRegexReplacement('DOCS_GITHUB_REPO_OWNER', $inputObject->getDocsGithubRepoOwner()),
-            ...$this->getRegexReplacement('DOCS_GITHUB_REPO_NAME', $inputObject->getDocsGithubRepoName()),
-        ];
+        $replacements = [];
+        foreach ($this->getReplacements($inputObject) as $constName => $newValue) {
+            $replacements = array_merge(
+                $replacements,
+                $this->getRegexReplacement($constName, $newValue)
+            );
+        }
         $this->fileContentReplacerSystem->replaceContentInFiles(
             $files,
             $replacements,
@@ -29,10 +31,26 @@ class ReplaceExtensionMetadataInitializeProjectWorker extends AbstractReplaceExt
     }
 
     /**
+     * @return array<string,string> Key: const name, Value: new value to set for that const
+     */
+    protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
+    {
+        return [
+            'DOCS_GIT_BASE_BRANCH' => $inputObject->getDocsGitBaseBranch(),
+            'DOCS_GITHUB_REPO_OWNER' => $inputObject->getDocsGithubRepoOwner(),
+            'DOCS_GITHUB_REPO_NAME' => $inputObject->getDocsGithubRepoName(),
+        ];
+    }
+
+    /**
      * @param InitializeProjectInputObjectInterface $inputObject
      */
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        return 'Replace all properties in the ExtensionMetadata file';
+        return sprintf(
+            'Replace properties in all Extension Metadata files: %s%s',
+            PHP_EOL,
+            $this->printReplacements($inputObject)
+        );
     }
 }
