@@ -19,14 +19,13 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
         $files = [
             $this->monorepoMetadataFile,
         ];
-        $replacements = [
-            ...$this->getRegexReplacement('VERSION', $this->getInitialVersionForDev($inputObject)),
-            ...$this->getRegexReplacement('GIT_BASE_BRANCH', $inputObject->getGitBaseBranch()),
-            ...$this->getRegexReplacement('GIT_USER_NAME', $inputObject->getGitUserName()),
-            ...$this->getRegexReplacement('GIT_USER_EMAIL', $inputObject->getGitUserEmail()),
-            ...$this->getRegexReplacement('GITHUB_REPO_OWNER', $inputObject->getGithubRepoOwner()),
-            ...$this->getRegexReplacement('GITHUB_REPO_NAME', $inputObject->getGithubRepoName()),
-        ];
+        $replacements = [];
+        foreach ($this->getReplacements($inputObject) as $constName => $replaceWith) {
+            $replacements = array_merge(
+                $replacements,
+                $this->getRegexReplacement($constName, $replaceWith)
+            );
+        }
         $this->fileContentReplacerSystem->replaceContentInFiles(
             $files,
             $replacements,
@@ -39,6 +38,21 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         return 'Replace all properties in the MonorepoMetadata file';
+    }
+
+    /**
+     * @return array<string,string>
+     */
+    protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
+    {
+        return [
+            'VERSION' => $this->getInitialVersionForDev($inputObject),
+            'GIT_BASE_BRANCH' => $inputObject->getGitBaseBranch(),
+            'GIT_USER_NAME' => $inputObject->getGitUserName(),
+            'GIT_USER_EMAIL' => $inputObject->getGitUserEmail(),
+            'GITHUB_REPO_OWNER' => $inputObject->getGithubRepoOwner(),
+            'GITHUB_REPO_NAME' => $inputObject->getGithubRepoName(),
+        ];
     }
 
     protected function getInitialVersionForDev(InitializeProjectInputObjectInterface $inputObject): string
