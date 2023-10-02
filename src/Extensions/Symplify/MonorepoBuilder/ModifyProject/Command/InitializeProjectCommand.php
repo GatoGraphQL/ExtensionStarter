@@ -23,6 +23,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected ?InitializeProjectInputObject $inputObject = null;
     protected ?string $defaultGitHubRepoOwner = null;
     protected ?string $defaultGitHubRepoName = null;
+    protected ?string $defaultGitBaseBranch = null;
 
     public function __construct(
         private InitializeProjectWorkerProvider $initializeProjectWorkerProvider,
@@ -157,10 +158,10 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
 
     protected function getDefaultGitBaseBranch(): string
     {
-        if ($this->defaultGitHubRepoName === null) {
-            $this->defaultGitHubRepoName = trim($this->processRunner->run("git remote show origin | sed -n '/HEAD branch/s/.*: //p'"));
+        if ($this->defaultGitBaseBranch === null) {
+            $this->defaultGitBaseBranch = trim($this->processRunner->run("git remote show origin | sed -n '/HEAD branch/s/.*: //p'"));
         }
-        return $this->defaultGitHubRepoName;
+        return $this->defaultGitBaseBranch;
     }
 
     protected function getModifyProjectStageResolver(): ModifyProjectStageResolverInterface
