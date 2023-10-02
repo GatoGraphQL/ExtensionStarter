@@ -57,7 +57,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             null,
             InputOption::VALUE_REQUIRED,
             'Initial version to use in the monorepo, in semver format (Major.Minor.Patch)',
-            '0.1.0'
+            $this->getDefaultInitialVersion()
         );
         $this->addOption(
             Option::GIT_BASE_BRANCH,
@@ -140,6 +140,9 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     {
         if ($this->inputObject === null) {
             $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
+            if ($initialVersion === "") {
+                $initialVersion = $this->getDefaultInitialVersion();
+            }
             // validation
             $this->initializeProjectGuard->guardVersion($initialVersion);
             $gitBaseBranch = (string) $input->getOption(Option::GIT_BASE_BRANCH);
@@ -187,6 +190,11 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             );
         }
         return $this->inputObject;
+    }
+
+    protected function getDefaultInitialVersion(): string
+    {
+        return '0.1.0';
     }
 
     protected function getDefaultGitHubRepoOwner(): string
