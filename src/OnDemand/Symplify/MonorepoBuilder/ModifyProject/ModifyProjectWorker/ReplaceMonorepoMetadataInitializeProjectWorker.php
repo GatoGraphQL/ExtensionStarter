@@ -20,10 +20,10 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
             $this->monorepoMetadataFile,
         ];
         $replacements = [];
-        foreach ($this->getReplacements($inputObject) as $constName => $replaceWith) {
+        foreach ($this->getReplacements($inputObject) as $constName => $newValue) {
             $replacements = array_merge(
                 $replacements,
-                $this->getRegexReplacement($constName, $replaceWith)
+                $this->getRegexReplacement($constName, $newValue)
             );
         }
         $this->fileContentReplacerSystem->replaceContentInFiles(

@@ -18,10 +18,10 @@ class ReplaceExtensionMetadataInitializeProjectWorker extends AbstractReplaceExt
     {
         $files = $this->getExtensionSrcMetadataFiles();
         $replacements = [];
-        foreach ($this->getReplacements($inputObject) as $constName => $replaceWith) {
+        foreach ($this->getReplacements($inputObject) as $constName => $newValue) {
             $replacements = array_merge(
                 $replacements,
-                $this->getRegexReplacement($constName, $replaceWith)
+                $this->getRegexReplacement($constName, $newValue)
             );
         }
         $this->fileContentReplacerSystem->replaceContentInFiles(
