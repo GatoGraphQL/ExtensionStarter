@@ -60,6 +60,27 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             'Name of the GitHub repository where this project is hosted (eg: "ExtensionStarter" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`',
             null //$this->getDefaultGitHubRepoName()
         );
+
+        $this->addOption(
+            Option::DOCS_GITHUB_REPO_OWNER,
+            null,
+            null,
+            sprintf(
+                'Owner of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
+                Option::GITHUB_REPO_OWNER
+            ),
+            null //$this->getDefaultGitHubRepoOwner()
+        );
+        $this->addOption(
+            Option::DOCS_GITHUB_REPO_NAME,
+            null,
+            null,
+            sprintf(
+                'Name of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
+                Option::GITHUB_REPO_NAME
+            ),
+            null //$this->getDefaultGitHubRepoName()
+        );
         // $this->addOption(
         //     Option::GITHUB_REPO_OWNER,
         //     null,
