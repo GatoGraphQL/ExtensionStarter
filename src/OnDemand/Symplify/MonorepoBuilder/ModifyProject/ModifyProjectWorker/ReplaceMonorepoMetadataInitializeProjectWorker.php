@@ -9,32 +9,17 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 
 class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMonorepoMetadataInitializeProjectWorker
 {
+    use ReplaceMetadataInitializeProjectWorkerTrait;
+
     /**
      * @param InitializeProjectInputObjectInterface $inputObject
      */
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
-        // The file has already been replaced by a previous ReleaseWorker, so the current version is that for PROD
-        $replacements = [
-            ...$this->getRegexReplacement('GITHUB_REPO_OWNER', $inputObject->getGithubRepoOwner()),
-            ...$this->getRegexReplacement('GITHUB_REPO_NAME', $inputObject->getGithubRepoName()),
+        $files = [
+            $this->monorepoMetadataFile,
         ];
-        $this->fileContentReplacerSystem->replaceContentInFiles(
-            [
-                $this->monorepoMetadataFile,
-            ],
-            $replacements,
-        );
-    }
-
-    /**
-     * @return array<string,string>
-     */
-    protected function getRegexReplacement(string $constName, string $newValue): array
-    {
-        return [
-            "/(\s+)const(\s+)" . $constName . "(\s+)?=(\s+)?['\"].+['\"](\s+)?;/" => " const " . $constName . " = '" . $newValue . "';",
-        ];
+        $this->replaceMetadataInFiles($inputObject, $files);
     }
 
     /**
