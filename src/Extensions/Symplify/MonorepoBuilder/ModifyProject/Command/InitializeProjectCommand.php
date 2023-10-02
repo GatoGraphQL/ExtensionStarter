@@ -119,7 +119,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             }
             $docsGitBaseBranch = (string) $input->getOption(Option::DOCS_GIT_BASE_BRANCH);
             if ($docsGitBaseBranch === "") {
-                $docsGithubRepoOwner = $this->getDefaultGitBaseBranch();
+                $docsGitBaseBranch = $this->getDefaultGitBaseBranch();
             }
             $docsGithubRepoOwner = (string) $input->getOption(Option::DOCS_GITHUB_REPO_OWNER);
             if ($docsGithubRepoOwner === "") {
