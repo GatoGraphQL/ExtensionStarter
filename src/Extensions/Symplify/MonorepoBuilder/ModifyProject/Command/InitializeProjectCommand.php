@@ -120,6 +120,8 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             $this->inputObject = new InitializeProjectInputObject(
                 $githubRepoOwner,
                 $githubRepoName,
+                $docsGithubRepoOwner,
+                $docsGithubRepoName,
             );
         }
         return $this->inputObject;
