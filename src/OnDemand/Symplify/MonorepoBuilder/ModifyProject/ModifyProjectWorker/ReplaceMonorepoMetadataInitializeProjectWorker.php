@@ -41,7 +41,7 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
     }
 
     /**
-     * @return array<string,string>
+     * @return array<string,string> Key: const name, Value: new value to set for that const
      */
     protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
     {
