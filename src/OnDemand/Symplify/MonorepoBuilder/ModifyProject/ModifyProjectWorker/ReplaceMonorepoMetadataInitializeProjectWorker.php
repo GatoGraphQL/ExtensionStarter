@@ -19,8 +19,15 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
         $files = [
             $this->monorepoMetadataFile,
         ];
-        $this->replaceMetadataInFiles($inputObject, $files);
-    }
+        $replacements = [
+            ...$this->getRegexReplacement('GITHUB_REPO_OWNER', $inputObject->getGithubRepoOwner()),
+            ...$this->getRegexReplacement('GITHUB_REPO_NAME', $inputObject->getGithubRepoName()),
+        ];
+        $this->fileContentReplacerSystem->replaceContentInFiles(
+            $files,
+            $replacements,
+        );
+    }    
 
     /**
      * @param InitializeProjectInputObjectInterface $inputObject
