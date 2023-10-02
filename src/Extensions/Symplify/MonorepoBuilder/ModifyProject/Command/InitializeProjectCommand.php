@@ -8,6 +8,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Confi
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Configuration\ModifyProjectStageResolverInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard\InitializeProjectGuardInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InitializeProjectWorkerProvider;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\InitializeProjectInputObject;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
@@ -31,6 +32,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     public function __construct(
         private InitializeProjectWorkerProvider $initializeProjectWorkerProvider,
         private InitializeProjectStageResolver $initializeProjectStageResolver,
+        private InitializeProjectGuardInterface $initializeProjectGuard,
         private ProcessRunner $processRunner,
         SourcesPresenceValidator $sourcesPresenceValidator,
         // VersionResolver $versionResolver,
@@ -138,6 +140,8 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     {
         if ($this->inputObject === null) {
             $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
+            // validation
+            $this->initializeProjectGuard->guardVersion($initialVersion);
             $gitBaseBranch = (string) $input->getOption(Option::GIT_BASE_BRANCH);
             if ($gitBaseBranch === "") {
                 $gitBaseBranch = $this->getDefaultGitBaseBranch();

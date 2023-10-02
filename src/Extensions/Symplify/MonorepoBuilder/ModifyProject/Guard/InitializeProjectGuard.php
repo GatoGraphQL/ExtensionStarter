@@ -11,7 +11,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contr
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
-final class InitializeProjectGuard extends AbstractModifyProjectGuard
+final class InitializeProjectGuard extends AbstractModifyProjectGuard implements InitializeProjectGuardInterface
 {
     /**
      * @param InitializeProjectWorkerInterface[] $initializeProjectWorkers
@@ -32,16 +32,16 @@ final class InitializeProjectGuard extends AbstractModifyProjectGuard
     }
 
     /**
-     * Make sure the INITIAL_VERSION input follows semver
+     * Make sure the version input follows semver
      */
-    public function guardVersion(string $initialVersion): void
+    public function guardVersion(string $version): void
     {
         try {
-            new Version($initialVersion);
+            new Version($version);
         } catch (InvalidVersionException $e) {
             throw new ConfigurationException(sprintf(
                 'Version "%s" does not follow semver',
-                $initialVersion
+                $version
             ));
         }
     }
