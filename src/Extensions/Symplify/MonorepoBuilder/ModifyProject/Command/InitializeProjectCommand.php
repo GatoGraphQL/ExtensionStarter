@@ -140,41 +140,41 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     {
         if ($this->inputObject === null) {
             $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
-            if ($initialVersion === "") {
+            if ($initialVersion === '') {
                 $initialVersion = $this->getDefaultInitialVersion();
             }
             // validation
             $this->initializeProjectGuard->guardVersion($initialVersion);
             $gitBaseBranch = (string) $input->getOption(Option::GIT_BASE_BRANCH);
-            if ($gitBaseBranch === "") {
+            if ($gitBaseBranch === '') {
                 $gitBaseBranch = $this->getDefaultGitBaseBranch();
             }
             $gitUserName = (string) $input->getOption(Option::GIT_USER_NAME);
-            if ($gitUserName === "") {
+            if ($gitUserName === '') {
                 $gitUserName = $this->getDefaultGitUserName();
             }
             $gitUserEmail = (string) $input->getOption(Option::GIT_USER_EMAIL);
-            if ($gitUserEmail === "") {
+            if ($gitUserEmail === '') {
                 $gitUserEmail = $this->getDefaultGitUserEmail();
             }
             $githubRepoOwner = (string) $input->getOption(Option::GITHUB_REPO_OWNER);
-            if ($githubRepoOwner === "") {
+            if ($githubRepoOwner === '') {
                 $githubRepoOwner = $this->getDefaultGitHubRepoOwner();
             }
             $githubRepoName = (string) $input->getOption(Option::GITHUB_REPO_NAME);
-            if ($githubRepoName === "") {
+            if ($githubRepoName === '') {
                 $githubRepoName = $this->getDefaultGitHubRepoName();
             }
             $docsGitBaseBranch = (string) $input->getOption(Option::DOCS_GIT_BASE_BRANCH);
-            if ($docsGitBaseBranch === "") {
+            if ($docsGitBaseBranch === '') {
                 $docsGitBaseBranch = $gitBaseBranch;
             }
             $docsGithubRepoOwner = (string) $input->getOption(Option::DOCS_GITHUB_REPO_OWNER);
-            if ($docsGithubRepoOwner === "") {
+            if ($docsGithubRepoOwner === '') {
                 $docsGithubRepoOwner = $githubRepoOwner;
             }
             $docsGithubRepoName = (string) $input->getOption(Option::DOCS_GITHUB_REPO_NAME);
-            if ($docsGithubRepoName === "") {
+            if ($docsGithubRepoName === '') {
                 $docsGithubRepoName = $githubRepoName;
             }
             $this->inputObject = new InitializeProjectInputObject(
