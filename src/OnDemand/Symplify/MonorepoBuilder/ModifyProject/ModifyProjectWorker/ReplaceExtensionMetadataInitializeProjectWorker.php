@@ -48,7 +48,8 @@ class ReplaceExtensionMetadataInitializeProjectWorker extends AbstractReplaceExt
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         return sprintf(
-            'Replace properties in all Extension Metadata files: %s',
+            'Replace properties in all Extension Metadata files: %s%s',
+            PHP_EOL,
             $this->printReplacements($inputObject)
         );
     }

@@ -23,12 +23,12 @@ trait ReplaceMetadataInitializeProjectWorkerTrait
         $items = [];
         foreach ($this->getReplacements($inputObject) as $constName => $newValue) {
             $items[] = sprintf(
-                '%s => "%s"',
+                '- %s => "%s"',
                 $constName,
                 $newValue
             );
         }
-        return implode(', ', $items);
+        return implode(PHP_EOL, $items);
     }
 
     /**
