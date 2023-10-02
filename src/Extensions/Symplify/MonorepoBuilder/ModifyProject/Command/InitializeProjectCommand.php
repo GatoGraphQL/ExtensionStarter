@@ -65,10 +65,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             Option::DOCS_GIT_BASE_BRANCH,
             null,
             null,
-            sprintf(
-                'Base branch of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, this value is retrieved using `git`',
-                Option::GITHUB_REPO_OWNER
-            ),
+            'Base branch of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, this value is retrieved using `git`',
             null
         );
         $this->addOption(
