@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 
+use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker\ReplaceExtensionMetadataInitializeProjectWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker\ReplaceMonorepoMetadataInitializeProjectWorker;
 
 class InitializeProjectWorkersDataSource
@@ -15,6 +16,7 @@ class InitializeProjectWorkersDataSource
     {
         return [
             ReplaceMonorepoMetadataInitializeProjectWorker::class,
+            ReplaceExtensionMetadataInitializeProjectWorker::class,
         ];
     }
 }
