@@ -27,7 +27,7 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
             $files,
             $replacements,
         );
-    }    
+    }
 
     /**
      * @param InitializeProjectInputObjectInterface $inputObject
