@@ -20,7 +20,7 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
             $this->monorepoMetadataFile,
         ];
         $replacements = [
-            ...$this->getRegexReplacement('VERSION', $inputObject->getInitialVersion() . '-dev'),
+            ...$this->getRegexReplacement('VERSION', $this->getInitialVersionForDev($inputObject)),
             ...$this->getRegexReplacement('GIT_BASE_BRANCH', $inputObject->getGitBaseBranch()),
             ...$this->getRegexReplacement('GIT_USER_NAME', $inputObject->getGitUserName()),
             ...$this->getRegexReplacement('GIT_USER_EMAIL', $inputObject->getGitUserEmail()),
@@ -39,5 +39,10 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         return 'Replace all properties in the MonorepoMetadata file';
+    }
+
+    protected function getInitialVersionForDev(InitializeProjectInputObjectInterface $inputObject): string
+    {
+        return $inputObject->getInitialVersion() . '-dev';
     }
 }
