@@ -21,6 +21,8 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
         ];
         $replacements = [
             ...$this->getRegexReplacement('GIT_BASE_BRANCH', $inputObject->getGitBaseBranch()),
+            ...$this->getRegexReplacement('GIT_USER_NAME', $inputObject->getGitUserName()),
+            ...$this->getRegexReplacement('GIT_USER_EMAIL', $inputObject->getGitUserEmail()),
             ...$this->getRegexReplacement('GITHUB_REPO_OWNER', $inputObject->getGithubRepoOwner()),
             ...$this->getRegexReplacement('GITHUB_REPO_NAME', $inputObject->getGithubRepoName()),
         ];

@@ -21,9 +21,10 @@ use Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class InitializeProjectCommand extends AbstractModifyProjectCommand
 {
     protected ?InitializeProjectInputObject $inputObject = null;
+    protected ?string $defaultGitBaseBranch = null;
+    protected ?string $defaultGitUserName = null;
     protected ?string $defaultGitHubRepoOwner = null;
     protected ?string $defaultGitHubRepoName = null;
-    protected ?string $defaultGitBaseBranch = null;
 
     public function __construct(
         private InitializeProjectWorkerProvider $initializeProjectWorkerProvider,
@@ -54,6 +55,21 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             'Base branch of the GitHub repository where this project is hosted. If not provided, this value is retrieved using `git`',
             null
         );
+        $this->addOption(
+            Option::GIT_USER_NAME,
+            null,
+            null,
+            'Git user name, to "split" code and push it to a different repo when merging a PR. If not provided, this value is retrieved from the global `git` config',
+            null
+        );
+        $this->addOption(
+            Option::GIT_USER_EMAIL,
+            null,
+            null,
+            'Git user email, to "split" code and push it to a different repo when merging a PR. If not provided, this value is retrieved from the global `git` config',
+            null
+        );
+
         $this->addOption(
             Option::GITHUB_REPO_OWNER,
             null,
@@ -123,6 +139,14 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             if ($gitBaseBranch === "") {
                 $gitBaseBranch = $this->getDefaultGitBaseBranch();
             }
+            $gitUserName = (string) $input->getOption(Option::GIT_USER_NAME);
+            if ($gitUserName === "") {
+                $gitUserName = $this->getDefaultGitUserName();
+            }
+            $gitUserEmail = (string) $input->getOption(Option::GIT_USER_EMAIL);
+            if ($gitUserEmail === "") {
+                $gitUserEmail = $this->getDefaultGitUserEmail();
+            }
             $githubRepoOwner = (string) $input->getOption(Option::GITHUB_REPO_OWNER);
             if ($githubRepoOwner === "") {
                 $githubRepoOwner = $this->getDefaultGitHubRepoOwner();
@@ -145,6 +169,8 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             }
             $this->inputObject = new InitializeProjectInputObject(
                 $gitBaseBranch,
+                $gitUserName,
+                $gitUserEmail,
                 $githubRepoOwner,
                 $githubRepoName,
                 $docsGitBaseBranch,
@@ -177,6 +203,22 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             $this->defaultGitBaseBranch = trim($this->processRunner->run("git remote show origin | sed -n '/HEAD branch/s/.*: //p'"));
         }
         return $this->defaultGitBaseBranch;
+    }
+
+    protected function getDefaultGitUserName(): string
+    {
+        if ($this->defaultGitUserName === null) {
+            $this->defaultGitUserName = trim($this->processRunner->run("git config user.name"));
+        }
+        return $this->defaultGitUserName;
+    }
+
+    protected function getDefaultGitUserEmail(): string
+    {
+        if ($this->defaultGitUserEmail === null) {
+            $this->defaultGitUserEmail = trim($this->processRunner->run("git config user.email"));
+        }
+        return $this->defaultGitUserEmail;
     }
 
     protected function getModifyProjectStageResolver(): ModifyProjectStageResolverInterface
