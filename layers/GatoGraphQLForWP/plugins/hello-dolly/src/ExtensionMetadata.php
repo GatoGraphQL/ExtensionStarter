@@ -8,5 +8,5 @@ final class ExtensionMetadata
 {
     final public const GIT_BASE_BRANCH = 'main';
     final public const DOC_IMAGE_HOSTING_GITHUB_REPO_OWNER = 'GatoGraphQL';
-    final public const GITHUB_REPO_NAME = 'ExtensionStarter';
+    final public const DOC_IMAGE_HOSTING_GITHUB_REPO_NAME = 'ExtensionStarter';
 }
