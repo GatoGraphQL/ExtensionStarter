@@ -17,15 +17,29 @@ class ReplaceExtensionMetadataInitializeProjectWorker extends AbstractReplaceExt
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
         $files = $this->getExtensionSrcMetadataFiles();
-        $replacements = [
-            ...$this->getRegexReplacement('DOCS_GIT_BASE_BRANCH', $inputObject->getDocsGitBaseBranch()),
-            ...$this->getRegexReplacement('DOCS_GITHUB_REPO_OWNER', $inputObject->getDocsGithubRepoOwner()),
-            ...$this->getRegexReplacement('DOCS_GITHUB_REPO_NAME', $inputObject->getDocsGithubRepoName()),
-        ];
+        $replacements = [];
+        foreach ($this->getReplacements($inputObject) as $constName => $replaceWith) {
+            $replacements = array_merge(
+                $replacements,
+                $this->getRegexReplacement($constName, $replaceWith)
+            );
+        }
         $this->fileContentReplacerSystem->replaceContentInFiles(
             $files,
             $replacements,
         );
+    }
+
+    /**
+     * @return array<string,string>
+     */
+    protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
+    {
+        return [
+            'DOCS_GIT_BASE_BRANCH' => $inputObject->getDocsGitBaseBranch(),
+            'DOCS_GITHUB_REPO_OWNER' => $inputObject->getDocsGithubRepoOwner(),
+            'DOCS_GITHUB_REPO_NAME' => $inputObject->getDocsGithubRepoName(),
+        ];
     }
 
     /**
