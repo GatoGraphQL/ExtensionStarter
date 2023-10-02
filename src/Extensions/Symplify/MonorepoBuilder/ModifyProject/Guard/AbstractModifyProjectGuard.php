@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard;
 
+use PharIo\Version\InvalidVersionException;
+use PharIo\Version\Version;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
@@ -67,6 +69,22 @@ abstract class AbstractModifyProjectGuard implements ModifyProjectGuardInterface
             $stage,
             implode('", "', $this->getStages())
         ));
+    }
+
+    /**
+     * Make sure the INITIAL_VERSION input follows semver
+     */
+    public function guardVersion(string $initialVersion): void
+    {
+        try {
+            new Version($initialVersion);
+        } catch (InvalidVersionException $e) {
+            // stage has invalid value
+            throw new ConfigurationException(sprintf(
+                'Version "%s" does not follow semver',
+                $initialVersion
+            ));
+        }
     }
 
     // public function guardVersion(Version $version, string $stage): void
