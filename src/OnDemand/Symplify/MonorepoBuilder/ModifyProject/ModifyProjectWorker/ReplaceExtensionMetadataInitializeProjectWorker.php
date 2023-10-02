@@ -7,7 +7,7 @@ namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\M
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\InitializeProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 
-class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMonorepoMetadataInitializeProjectWorker
+class ReplaceExtensionMetadataInitializeProjectWorker extends AbstractReplaceExtensionMetadataInitializeProjectWorker
 {
     use ReplaceMetadataInitializeProjectWorkerTrait;
 
@@ -16,9 +16,7 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
      */
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
-        $files = [
-            $this->monorepoMetadataFile,
-        ];
+        $files = $this->getExtensionSrcMetadataFiles();
         $this->replaceMetadataInFiles($inputObject, $files);
     }
 
@@ -27,6 +25,6 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
      */
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        return 'Replace all properties in the MonorepoMetadata file';
+        return 'Replace all properties in the ExtensionMetadata file';
     }
 }

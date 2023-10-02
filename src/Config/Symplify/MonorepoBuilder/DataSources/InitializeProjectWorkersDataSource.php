@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 
+use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker\ReplaceExtensionMetadataInitializeProjectWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker\ReplaceMonorepoMetadataInitializeProjectWorker;
 
 class InitializeProjectWorkersDataSource
@@ -15,6 +16,17 @@ class InitializeProjectWorkersDataSource
     {
         return [
             ReplaceMonorepoMetadataInitializeProjectWorker::class,
+            ReplaceExtensionMetadataInitializeProjectWorker::class,
+            /**
+             * Notice that there is no need for this worker currently,
+             * because there are no blocks in the extension demo.
+             *
+             * If there were, then this worker should be created,
+             * to replace the metadata in file:
+             *
+             *   - `extension-metadata.config.js`
+             */
+            // ReplaceWebpackConfigMetadataInitializeProjectWorker::class,
         ];
     }
 }
