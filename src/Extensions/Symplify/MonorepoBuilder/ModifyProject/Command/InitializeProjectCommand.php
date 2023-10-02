@@ -109,6 +109,14 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             if ($githubRepoName === "") {
                 $githubRepoName = $this->getDefaultGitHubRepoName();
             }
+            $docsGithubRepoOwner = (string) $input->getOption(Option::DOCS_GITHUB_REPO_OWNER);
+            if ($docsGithubRepoOwner === "") {
+                $docsGithubRepoOwner = $githubRepoOwner;
+            }
+            $docsGithubRepoName = (string) $input->getOption(Option::DOCS_GITHUB_REPO_NAME);
+            if ($docsGithubRepoName === "") {
+                $docsGithubRepoName = $githubRepoName;
+            }
             $this->inputObject = new InitializeProjectInputObject(
                 $githubRepoOwner,
                 $githubRepoName,
