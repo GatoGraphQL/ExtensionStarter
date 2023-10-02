@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker;
 
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSourceAccessors\PluginDataSourceAccessor;
+use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PluginDataSource;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\InitializeProjectWorkerInterface;
-use PoP\PoP\Config\Symplify\MonorepoBuilder\DataSources\PluginDataSource;
 use PoP\PoP\Extensions\Symplify\MonorepoBuilder\SmartFile\FileContentReplacerSystem;
 
 abstract class AbstractReplaceExtensionMetadataInitializeProjectWorker implements InitializeProjectWorkerInterface
