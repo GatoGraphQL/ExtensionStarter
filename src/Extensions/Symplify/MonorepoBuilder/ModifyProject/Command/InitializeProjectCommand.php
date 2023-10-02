@@ -23,6 +23,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected ?InitializeProjectInputObject $inputObject = null;
     protected ?string $defaultGitBaseBranch = null;
     protected ?string $defaultGitUserName = null;
+    protected ?string $defaultGitUserEmail = null;
     protected ?string $defaultGitHubRepoOwner = null;
     protected ?string $defaultGitHubRepoName = null;
 
