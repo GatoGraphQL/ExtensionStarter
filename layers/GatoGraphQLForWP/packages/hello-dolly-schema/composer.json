@@ -1,5 +1,5 @@
 {
-    "name": "my-company-for-gato-graphql/hello-dolly-schema",
+    "name": "my-company-for-gatographql/hello-dolly-schema",
     "type": "library",
     "description": "GitHub template repository to quickstart your extension for Gato GraphQL.",
     "authors": [

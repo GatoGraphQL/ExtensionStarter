@@ -524,8 +524,8 @@
         "install-deps-build-js": "Build all JS packages, blocks and editor scripts from Gato GraphQL - Hello Dolly, installing all dependencies from npm"
     },
     "replace": {
-        "my-company-for-gato-graphql/hello-dolly": "self.version",
-        "my-company-for-gato-graphql/hello-dolly-schema": "self.version",
+        "my-company-for-gatographql/hello-dolly": "self.version",
+        "my-company-for-gatographql/hello-dolly-schema": "self.version",
         "gatographql/external-dependency-wrappers": "self.version",
         "gatographql/gatographql": "self.version",
         "gatographql/plugin-utils": "self.version",
