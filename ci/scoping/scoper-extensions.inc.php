@@ -15,7 +15,7 @@ function convertRelativeToFullPath(string $relativePath): string
 }
 
 return [
-    'prefix' => 'PrefixedDollyShepherd',
+    'prefix' => 'PrefixedMyCompanyForGatoGraphQL',
     'finders' => [
         // Scope packages under vendor/, excluding local WordPress packages
         Finder::create()
@@ -27,9 +27,9 @@ return [
             ])
             ->notPath([
                 // Exclude all composer.json from own libraries (they get broken!)
-                '#[dolly\-shepherd]/*/composer.json#',
+                '#[my\-company\-for\-gatographql]/*/composer.json#',
                 // // Exclude all libraries for WordPress: Packages ending in "-wp"
-                // '#[dolly\-shepherd]/[a-zA-Z0-9_-]*-wp/#',
+                // '#[my\-company\-for\-gatographql]/[a-zA-Z0-9_-]*-wp/#',
                 // ...
                 // Exclude libraries
                 // ...
@@ -40,8 +40,8 @@ return [
     ],
     'exclude-namespaces' => [
         // Own namespaces from the ExtensionStarter
-        'DollyShepherd',
-        
+        'MyCompanyForGatoGraphQL',
+
         // Own namespaces (from the Gato GraphQL plugin)
         'PoPAPI',
         'PoPBackbone',

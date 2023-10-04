@@ -1,16 +1,16 @@
 {
-    "name": "dolly-shepherd/hello-dolly-schema",
+    "name": "my-company-for-gatographql/hello-dolly-schema",
     "type": "library",
     "description": "GitHub template repository to quickstart your extension for Gato GraphQL.",
     "authors": [
         {
-            "name": "Dolly Shepherd",
+            "name": "My Company",
             "email": "name@company.com",
             "homepage": "https://mysite.com"
         }
     ],
     "keywords": ["WordPress", "Gato", "GatoGraphQL", "GraphQL", "HelloDolly"],
-    "homepage": "https://github.com/DollyShepherd/HelloDollySchema",
+    "homepage": "https://github.com/MyCompanyForGatoGraphQL/HelloDollySchema",
     "require": {
         "php": "^8.1",
         "pop-schema/schema-commons": "^1.1"
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DollyShepherd\\HelloDollySchema\\": "src"
+            "MyCompanyForGatoGraphQL\\HelloDollySchema\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DollyShepherd\\HelloDollySchema\\": "tests"
+            "MyCompanyForGatoGraphQL\\HelloDollySchema\\": "tests"
         }
     },
     "scripts": {

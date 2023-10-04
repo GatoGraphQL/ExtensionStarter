@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DollyShepherd\HelloDolly\ModuleResolvers;
+namespace MyCompanyForGatoGraphQL\HelloDolly\ModuleResolvers;
 
-use DollyShepherd\HelloDolly\ContentProcessors\ExtensionMarkdownContentRetrieverTrait;
-use DollyShepherd\HelloDolly\ExtensionStaticHelpers;
+use MyCompanyForGatoGraphQL\HelloDolly\ContentProcessors\ExtensionMarkdownContentRetrieverTrait;
+use MyCompanyForGatoGraphQL\HelloDolly\ExtensionStaticHelpers;
 use GatoGraphQL\GatoGraphQL\ModuleResolvers\CommonModuleResolverTrait;
 use GatoGraphQL\GatoGraphQL\ModuleResolvers\HasMarkdownDocumentationModuleResolverTrait;
 

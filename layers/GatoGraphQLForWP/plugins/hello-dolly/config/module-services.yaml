@@ -4,5 +4,5 @@ services:
         autowire: true
         autoconfigure: true
 
-    DollyShepherd\HelloDolly\ModuleResolvers\:
+    MyCompanyForGatoGraphQL\HelloDolly\ModuleResolvers\:
         resource: '../src/ModuleResolvers/*'

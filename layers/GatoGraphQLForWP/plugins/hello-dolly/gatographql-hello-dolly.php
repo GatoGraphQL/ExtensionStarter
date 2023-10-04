@@ -6,14 +6,14 @@ Description: Integration of plugin Hello Dolly with Gato GraphQL
 Version: 1.1.0-dev
 Requires at least: 5.4
 Requires PHP: 8.1
-Author: Dolly Shepherd
+Author: My Company
 License:
 License URI:
 Text Domain: gatographql-hello-dolly
 Domain Path: /languages
 */
 
-use DollyShepherd\HelloDolly\GatoGraphQLExtension;
+use MyCompanyForGatoGraphQL\HelloDolly\GatoGraphQLExtension;
 use GatoGraphQL\GatoGraphQL\Plugin;
 use GatoGraphQL\GatoGraphQL\PluginApp;
 use GatoGraphQL\GatoGraphQL\PluginStaticHelpers;
