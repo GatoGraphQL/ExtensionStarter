@@ -10,8 +10,9 @@ use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\CopyUpstrea
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\DataToAppendAndRemoveDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\DowngradeRectorDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\EnvironmentVariablesDataSource;
-use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\InstaWPConfigDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\InitializeProjectWorkersDataSource;
+use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\InstaWPConfigDataSource;
+use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\MonorepoSplitPackageDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PHPStanDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PackageOrganizationDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PluginDataSource;
@@ -80,6 +81,15 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
     protected function getPackageOrganizationDataSource(): ?PackageOrganizationDataSource
     {
         return new PackageOrganizationDataSource(
+            $this->rootDirectory,
+            $this->upstreamRelativeRootPath,
+            $this->includeUpstreamPackages,
+        );
+    }
+
+    protected function getMonorepoSplitPackageDataSource(): ?MonorepoSplitPackageDataSource
+    {
+        return new MonorepoSplitPackageDataSource(
             $this->rootDirectory,
             $this->upstreamRelativeRootPath,
             $this->includeUpstreamPackages,
