@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DollyShepherd\HelloDolly\Container\CompilerPasses;
+namespace MyGatoGraphQL\HelloDolly\Container\CompilerPasses;
 
 use GatoGraphQL\GatoGraphQL\Container\CompilerPasses\AbstractConfigureSchemaNamespacingCompilerPass;
 use PoP\Root\Module\ModuleInterface;
@@ -20,7 +20,7 @@ class ConfigureSchemaNamespacingCompilerPass extends AbstractConfigureSchemaName
     protected function getModuleClasses(): array
     {
         return [
-            \DollyShepherd\HelloDollySchema\Module::class,
+            \MyGatoGraphQL\HelloDollySchema\Module::class,
         ];
     }
 }

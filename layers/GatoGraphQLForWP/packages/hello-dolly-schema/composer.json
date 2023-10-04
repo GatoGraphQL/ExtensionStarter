@@ -10,7 +10,7 @@
         }
     ],
     "keywords": ["WordPress", "Gato", "GatoGraphQL", "GraphQL", "HelloDolly"],
-    "homepage": "https://github.com/DollyShepherd/HelloDollySchema",
+    "homepage": "https://github.com/MyGatoGraphQL/HelloDollySchema",
     "require": {
         "php": "^8.1",
         "pop-schema/schema-commons": "^1.1"
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DollyShepherd\\HelloDollySchema\\": "src"
+            "MyGatoGraphQL\\HelloDollySchema\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DollyShepherd\\HelloDollySchema\\": "tests"
+            "MyGatoGraphQL\\HelloDollySchema\\": "tests"
         }
     },
     "scripts": {

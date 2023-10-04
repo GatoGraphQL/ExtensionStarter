@@ -4,5 +4,5 @@ services:
         autowire: true
         autoconfigure: true
 
-    DollyShepherd\HelloDolly\Hooks\:
+    MyGatoGraphQL\HelloDolly\Hooks\:
         resource: '../src/Hooks/*'

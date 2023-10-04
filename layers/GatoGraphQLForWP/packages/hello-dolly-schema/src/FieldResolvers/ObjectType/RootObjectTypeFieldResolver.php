@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DollyShepherd\HelloDollySchema\FieldResolvers\ObjectType;
+namespace MyGatoGraphQL\HelloDollySchema\FieldResolvers\ObjectType;
 
 use PoP\ComponentModel\QueryResolution\FieldDataAccessorInterface;
 use PoP\ComponentModel\Feedback\ObjectTypeFieldResolutionFeedbackStore;

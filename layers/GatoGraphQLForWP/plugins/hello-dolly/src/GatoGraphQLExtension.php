@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DollyShepherd\HelloDolly;
+namespace MyGatoGraphQL\HelloDolly;
 
 use PoP\Root\Module\ModuleInterface;
 use GatoGraphQL\GatoGraphQL\PluginSkeleton\AbstractGatoGraphQLExtension;

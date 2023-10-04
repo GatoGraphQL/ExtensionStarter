@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DollyShepherd\HelloDolly;
+namespace MyGatoGraphQL\HelloDolly;
 
 final class ExtensionMetadata
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DollyShepherd\HelloDolly;
+namespace MyGatoGraphQL\HelloDolly;
 
-use DollyShepherd\HelloDolly\ModuleResolvers\SchemaTypeModuleResolver;
+use MyGatoGraphQL\HelloDolly\ModuleResolvers\SchemaTypeModuleResolver;
 use GatoGraphQL\GatoGraphQL\PluginSkeleton\AbstractExtensionInitializationConfiguration;
 use PoP\Root\Module\ModuleInterface;
 
@@ -20,7 +20,7 @@ class ExtensionInitializationConfiguration extends AbstractExtensionInitializati
     {
         return [
             SchemaTypeModuleResolver::SCHEMA_HELLO_DOLLY => [
-                \DollyShepherd\HelloDollySchema\Module::class,
+                \MyGatoGraphQL\HelloDollySchema\Module::class,
             ],
         ];
     }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DollyShepherd\HelloDolly\ContentProcessors;
+namespace MyGatoGraphQL\HelloDolly\ContentProcessors;
 
-use DollyShepherd\HelloDolly\GatoGraphQLExtension;
+use MyGatoGraphQL\HelloDolly\GatoGraphQLExtension;
 use GatoGraphQL\GatoGraphQL\ContentProcessors\ExtensionMarkdownContentRetrieverTrait as UpstreamExtensionMarkdownContentRetrieverTrait;
 use GatoGraphQL\GatoGraphQL\PluginSkeleton\ExtensionInterface;
 
