@@ -40,6 +40,15 @@ return [
     ],
     'exclude-namespaces' => [
         // Own namespaces
+        'PoPAPI',
+        'PoPBackbone',
+        'PoPCMSSchema',
+        'PoPSchema',
+        'PoPWPSchema',
+        'PoP',
+        'GraphQLByPoP',
+        'GatoGraphQL',
+        // Own namespaces from the ExtensionStarter
         'DollyShepherd',
     ],
 ];
