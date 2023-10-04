@@ -22,8 +22,7 @@ class MonorepoSplitPackageDataSource extends UpstreamMonorepoSplitPackageDataSou
     public function getSkipMonorepoSplitPackagePaths(): array
     {
         $packagePaths = [
-            'layers/GatoGraphQLForWP/packages/hello-dolly-schema',
-            'layers/GatoGraphQLForWP/plugins/hello-dolly',
+            'layers/',
         ];
 
         if ($this->includeUpstreamPackages) {
