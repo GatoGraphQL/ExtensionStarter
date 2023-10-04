@@ -27,9 +27,9 @@ return [
             ])
             ->notPath([
                 // Exclude all composer.json from own libraries (they get broken!)
-                '#[dolly\-shepherd]/*/composer.json#',
+                '#[my\-company\-for\-gatographql]/*/composer.json#',
                 // // Exclude all libraries for WordPress: Packages ending in "-wp"
-                // '#[dolly\-shepherd]/[a-zA-Z0-9_-]*-wp/#',
+                // '#[my\-company\-for\-gatographql]/[a-zA-Z0-9_-]*-wp/#',
                 // ...
                 // Exclude libraries
                 // ...
