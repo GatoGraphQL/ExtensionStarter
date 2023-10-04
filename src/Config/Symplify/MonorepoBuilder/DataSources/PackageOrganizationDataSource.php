@@ -27,7 +27,7 @@ class PackageOrganizationDataSource extends UpstreamPackageOrganizationDataSourc
         ];
 
         if ($this->includeUpstreamPackages) {
-            // From GatoGraphQL/GatoGraphQL: add '/submodules/GatoGraphQL/' to each key entry
+            // From GatoGraphQL/GatoGraphQL: add 'submodules/GatoGraphQL/' to each key entry
             foreach (parent::getPackagePathOrganizations() as $upstreamPackagePath => $upstreamOrganization) {
                 $packagePathOrganizations[$this->upstreamRelativeRootPath . '/' . $upstreamPackagePath] = $upstreamOrganization;
             }
