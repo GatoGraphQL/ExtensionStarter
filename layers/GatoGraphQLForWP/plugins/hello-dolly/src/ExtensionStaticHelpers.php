@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyGatoGraphQL\HelloDolly;
+namespace MyCompanyForGatoGraphQL\HelloDolly;
 
 use GatoGraphQL\GatoGraphQL\PluginApp;
 use GatoGraphQL\GatoGraphQL\StaticHelpers\PluginVersionHelpers;

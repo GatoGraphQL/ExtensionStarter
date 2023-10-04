@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyGatoGraphQL\HelloDolly\Hooks;
+namespace MyCompanyForGatoGraphQL\HelloDolly\Hooks;
 
 use PoP\Root\Hooks\AbstractHookSet;
 

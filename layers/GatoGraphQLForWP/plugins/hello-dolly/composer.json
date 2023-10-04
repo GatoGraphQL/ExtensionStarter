@@ -30,12 +30,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "MyGatoGraphQL\\HelloDolly\\": "src"
+            "MyCompanyForGatoGraphQL\\HelloDolly\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MyGatoGraphQL\\HelloDolly\\": "tests"
+            "MyCompanyForGatoGraphQL\\HelloDolly\\": "tests"
         }
     },
     "scripts": {

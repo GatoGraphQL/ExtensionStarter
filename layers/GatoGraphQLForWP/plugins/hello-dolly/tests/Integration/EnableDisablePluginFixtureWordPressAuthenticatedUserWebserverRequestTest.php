@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyGatoGraphQL\HelloDolly\Integration;
+namespace MyCompanyForGatoGraphQL\HelloDolly\Integration;
 
 use PHPUnitForGatoGraphQL\WebserverRequests\AbstractFixtureThirdPartyPluginDependencyWordPressAuthenticatedUserWebserverRequestTestCase;
 

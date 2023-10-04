@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyGatoGraphQL\HelloDollySchema;
+namespace MyCompanyForGatoGraphQL\HelloDollySchema;
 
 use PoP\Root\Module\ModuleInterface;
 use PoP\Root\Module\AbstractModule;

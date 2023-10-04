@@ -15,7 +15,7 @@ function convertRelativeToFullPath(string $relativePath): string
 }
 
 return [
-    'prefix' => 'PrefixedMyGatoGraphQL',
+    'prefix' => 'PrefixedMyCompanyForGatoGraphQL',
     'finders' => [
         // Scope packages under vendor/, excluding local WordPress packages
         Finder::create()
@@ -40,7 +40,7 @@ return [
     ],
     'exclude-namespaces' => [
         // Own namespaces from the ExtensionStarter
-        'MyGatoGraphQL',
+        'MyCompanyForGatoGraphQL',
 
         // Own namespaces (from the Gato GraphQL plugin)
         'PoPAPI',

@@ -50,8 +50,8 @@
     },
     "autoload": {
         "psr-4": {
-            "MyGatoGraphQL\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/src",
-            "MyGatoGraphQL\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/src",
+            "MyCompanyForGatoGraphQL\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/src",
+            "MyCompanyForGatoGraphQL\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/src",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/src",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/src",
             "GatoGraphQL\\PluginUtils\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/plugin-utils/src",
@@ -188,8 +188,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "MyGatoGraphQL\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/tests",
-            "MyGatoGraphQL\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/tests",
+            "MyCompanyForGatoGraphQL\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/tests",
+            "MyCompanyForGatoGraphQL\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/tests",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/tests",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/tests",
             "GatoGraphQL\\PluginUtils\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/plugin-utils/tests",

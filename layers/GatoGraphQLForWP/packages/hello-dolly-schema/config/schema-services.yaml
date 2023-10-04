@@ -3,5 +3,5 @@ services:
         public: true
         autowire: true
 
-    MyGatoGraphQL\HelloDollySchema\FieldResolvers\:
+    MyCompanyForGatoGraphQL\HelloDollySchema\FieldResolvers\:
         resource: '../src/FieldResolvers/*'
