@@ -39,7 +39,10 @@ return [
             ]),
     ],
     'exclude-namespaces' => [
-        // Own namespaces
+        // Own namespaces from the ExtensionStarter
+        'DollyShepherd',
+        
+        // Own namespaces (from the Gato GraphQL plugin)
         'PoPAPI',
         'PoPBackbone',
         'PoPCMSSchema',
@@ -48,7 +51,5 @@ return [
         'PoP',
         'GraphQLByPoP',
         'GatoGraphQL',
-        // Own namespaces from the ExtensionStarter
-        'DollyShepherd',
     ],
 ];
