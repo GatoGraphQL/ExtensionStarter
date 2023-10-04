@@ -7,7 +7,7 @@ Add schema elements for the Hello Dolly extension for Gato GraphQL.
 Via Composer
 
 ``` bash
-composer require dolly-shepherd/hello-dolly-schema
+composer require my-company-for-gato-graphql/hello-dolly-schema
 ```
 
 ## PHP versions

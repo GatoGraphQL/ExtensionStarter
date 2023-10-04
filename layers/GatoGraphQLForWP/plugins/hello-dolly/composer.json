@@ -1,5 +1,5 @@
 {
-    "name": "dolly-shepherd/hello-dolly",
+    "name": "my-company-for-gato-graphql/hello-dolly",
     "type": "wordpress-plugin",
     "description": "Integration of plugin Hello Dolly with Gato GraphQL",
     "authors": [
@@ -13,7 +13,7 @@
     "homepage": "https://github.com/GatoGraphQL/hello-dolly",
     "require": {
         "php": "^8.1",
-        "dolly-shepherd/hello-dolly-schema": "^1.1"
+        "my-company-for-gato-graphql/hello-dolly-schema": "^1.1"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.8",
