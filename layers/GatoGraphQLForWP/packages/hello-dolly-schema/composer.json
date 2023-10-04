@@ -9,7 +9,7 @@
             "homepage": "https://mysite.com"
         }
     ],
-    "keywords": ["WordPress", "Gato", "GatoGraphQL", "GraphQL", "Extension", "Starter"],
+    "keywords": ["WordPress", "plugin", "Gato", "GatoGraphQL", "GraphQL", "Extension", "Starter"],
     "homepage": "https://github.com/MyCompanyForGatoGraphQL/HelloDollySchema",
     "require": {
         "php": "^8.1",
