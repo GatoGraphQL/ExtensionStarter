@@ -9,8 +9,6 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 
 class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker
 {
-    use ReplaceMetadataInitializeProjectWorkerTrait;
-    
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         return sprintf(
@@ -18,6 +16,19 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             PHP_EOL,
             $this->printReplacements($inputObject)
         );
+    }
+
+    protected function printReplacements(InitializeProjectInputObjectInterface $inputObject): string
+    {
+        $items = [];
+        foreach ($this->getReplacements($inputObject) as $search => $replace) {
+            $items[] = sprintf(
+                '- "%s" => "%s"',
+                $search,
+                $replace
+            );
+        }
+        return implode(PHP_EOL, $items);
     }
 
     /**
