@@ -131,7 +131,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             null,
             InputOption::VALUE_REQUIRED,
             sprintf(
-                'PHP namespace owner to use in the repo',
+                'PHP namespace owner to use in the codebase. Eg: "MyCompanyName"',
                 Option::PHP_NAMESPACE_OWNER
             )
         );
