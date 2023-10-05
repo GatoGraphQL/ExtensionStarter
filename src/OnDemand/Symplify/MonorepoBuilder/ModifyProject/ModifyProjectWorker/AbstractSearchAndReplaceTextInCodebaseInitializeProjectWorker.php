@@ -21,9 +21,13 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
 
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
+        $folders = $this->getSearchInFolders();
         foreach ($this->getReplacements($inputObject) as $search => $replace) {
-            $files = $this->getFilesContainingStringSmartFileInfos($search);
-            $this->fileContentReplacerSystem->replaceContentInFiles(
+            $files = $this->filesContainingStringFinder->findFilesContainingString(
+                $search,
+                $folders
+            );
+            $this->fileContentReplacerSystem->replaceContentInSmartFileInfos(
                 $files,
                 [
                     $search => $replace,
@@ -36,18 +40,6 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
      * @return array<string,string> Key: string to search, Value: string to replace with
      */
     abstract protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array;
-
-    /**
-     * @return SmartFileInfo[]
-     */
-    protected function getFilesContainingStringSmartFileInfos(string $search): array
-    {
-        $folders = $this->getSearchInFolders();
-        return $this->filesContainingStringFinder->findFilesContainingString(
-            $search,
-            $folders
-        );
-    }
 
     /**
      * By default, directly search within the root folder
