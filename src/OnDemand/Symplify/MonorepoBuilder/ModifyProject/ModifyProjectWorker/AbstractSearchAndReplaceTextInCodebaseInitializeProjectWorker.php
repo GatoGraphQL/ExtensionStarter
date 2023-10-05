@@ -9,7 +9,6 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contr
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\InitializeProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\PoP\Extensions\Symplify\MonorepoBuilder\SmartFile\FileContentReplacerSystem;
-use Symplify\SmartFileSystem\SmartFileInfo;
 
 abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker implements InitializeProjectWorkerInterface
 {
