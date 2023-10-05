@@ -12,7 +12,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         return sprintf(
-            'Replace the initial strings from the Extension Starter with the user inputs: %s%s',
+            'Replace strings with the user inputs: %s%s',
             PHP_EOL,
             $this->printReplacements($inputObject)
         );
