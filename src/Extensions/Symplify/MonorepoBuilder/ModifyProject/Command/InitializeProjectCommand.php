@@ -144,6 +144,34 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             ),
             null
         );
+
+        $this->addOption(
+            Option::MY_COMPANY_NAME,
+            null,
+            null,
+            sprintf(
+                'Name of the person or company owning the extension. If not provided, the value for option `%s` is used',
+                Option::GIT_USER_NAME
+            ),
+            null
+        );
+        $this->addOption(
+            Option::MY_COMPANY_EMAIL,
+            null,
+            null,
+            sprintf(
+                'Email of the person or company owning the extension. If not provided, the value for option `%s` is used',
+                Option::GIT_USER_EMAIL
+            ),
+            null
+        );
+        $this->addOption(
+            Option::MY_COMPANY_WEBSITE,
+            null,
+            null,
+            'Website of the person or company owning the extension. If not provided, the GitHub repo for this project is used',
+            null
+        );
     }
 
     /**
