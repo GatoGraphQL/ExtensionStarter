@@ -73,7 +73,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             $rootFolder . '/ci',
             $rootFolder . '/layers',
             $rootFolder . '/src/Config/Symplify/MonorepoBuilder/DataSources',
-            $rootFolder . '/webservers/gatographql-extensions',
+            $rootFolder . '/webservers',
         ];
     }
 
@@ -98,6 +98,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             '*.json',
             '*.md',
             '*.pot',
+            '*.sh',
             '*.yaml',
             '*.yml',
             // File: .lando.upstream.yml
