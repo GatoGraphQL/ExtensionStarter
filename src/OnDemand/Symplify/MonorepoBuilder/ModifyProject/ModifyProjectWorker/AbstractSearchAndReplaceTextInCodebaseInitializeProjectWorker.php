@@ -33,8 +33,9 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
             $this->fileContentReplacerSystem->replaceContentInSmartFileInfos(
                 $files,
                 [
-                    '#' . $search . '#' => $replace,
+                    $search => $replace,
                 ],
+                false,
             );
         }
     }
