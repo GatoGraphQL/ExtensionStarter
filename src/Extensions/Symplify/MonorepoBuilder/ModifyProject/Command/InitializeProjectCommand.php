@@ -54,7 +54,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
 
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Initialize the project, replacing the extension starter data with your own data.');
-        
+
         $this->addArgument(
             Option::PHP_NAMESPACE_OWNER,
             InputArgument::REQUIRED,
@@ -165,7 +165,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             if ($composerVendor === '') {
                 $composerVendor = $this->stringUtils->camelToUnderscore($phpNamespaceOwner);
             }
-            
+
             $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
             if ($initialVersion === '') {
                 $initialVersion = $this->getDefaultInitialVersion();
