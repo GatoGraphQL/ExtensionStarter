@@ -130,6 +130,12 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
         ];
     }
 
+    /**
+     * Files in the root folder which may also contain some
+     * string to search/replace
+     *
+     * @return string[]
+     */
     protected function getRootFolderFileNamesToSearchReplace(): array
     {
         return [
