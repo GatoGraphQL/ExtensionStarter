@@ -126,6 +126,24 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             ),
             null
         );
+        $this->addOption(
+            Option::PHP_NAMESPACE_OWNER,
+            null,
+            InputOption::VALUE_REQUIRED,
+            sprintf(
+                'PHP namespace owner to use in the repo',
+                Option::PHP_NAMESPACE_OWNER
+            )
+        );
+        $this->addOption(
+            Option::COMPOSER_VENDOR,
+            null,
+            null,
+            sprintf(
+                'Composer vendor to use in the repo. If not provided, it is generated from the PHP Namespace Owner',
+                Option::COMPOSER_VENDOR
+            )
+        );
     }
 
     /**
