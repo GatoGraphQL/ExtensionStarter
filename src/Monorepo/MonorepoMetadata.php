@@ -29,10 +29,12 @@ final class MonorepoMetadata
     /**
      * @gatographql-extension-starter
      * 
-     * This is needed to generate the "dev-main" alias
+     * This const is needed to generate the "dev-main" alias
      * to install packages locally using Composer,
-     * and the default branch to push code to when
-     * doing a "monorepo split".
+     * it is the default branch to push code to when
+     * doing a "monorepo split", and the branch from which
+     * to serve images inside the plugin's documentation
+     * (pointing to raw.githubusercontent.com)
      */
     final public const GIT_BASE_BRANCH = 'main';
 
@@ -54,8 +56,8 @@ final class MonorepoMetadata
      * @gatographql-extension-starter
      * 
      * GitHub organization account hosting this project,
-     * as to point there to retrieve images for the plugin
-     * in production (under raw.githubusercontent.com), and
+     * from which to serve images inside the plugin's documentation
+     * (pointing to raw.githubusercontent.com), and
      * to set as default account when doing a "monorepo split"
      */
     final public const GITHUB_REPO_OWNER = 'GatoGraphQL';
@@ -63,9 +65,9 @@ final class MonorepoMetadata
     /**
      * @gatographql-extension-starter
      * 
-     * GitHub repo name hosting this project,
-     * as to point there to retrieve images for the plugin
-     * in production (under raw.githubusercontent.com)
+     * GitHub repo name hosting this project, from which
+     * to serve images inside the plugin's documentation
+     * (pointing to raw.githubusercontent.com)
      */
     final public const GITHUB_REPO_NAME = 'ExtensionStarter';
 }
