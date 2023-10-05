@@ -73,7 +73,7 @@ final class FileCopierSystem
             $copiedFiles[] = $toFile;
         }
         if ($patternReplacements !== []) {
-            $this->fileContentReplacerSystem->replaceContentInFiles($copiedFiles, $patternReplacements);
+            $this->fileContentReplacerSystem->replaceContentInFiles($copiedFiles, $patternReplacements, true);
         }
         return $copiedFiles;
     }

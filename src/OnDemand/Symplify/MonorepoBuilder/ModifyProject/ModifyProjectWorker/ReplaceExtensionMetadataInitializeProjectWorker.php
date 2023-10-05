@@ -27,6 +27,7 @@ class ReplaceExtensionMetadataInitializeProjectWorker extends AbstractReplaceExt
         $this->fileContentReplacerSystem->replaceContentInFiles(
             $files,
             $replacements,
+            true,
         );
     }
 
