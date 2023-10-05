@@ -6,6 +6,11 @@
             "name": "Leonardo Losoviz",
             "email": "leo@getpop.org",
             "homepage": "https://gatographql.com"
+        },
+        {
+            "name": "My Company",
+            "email": "name@company.com",
+            "homepage": "https://mysite.com"
         }
     ],
     "require": {
