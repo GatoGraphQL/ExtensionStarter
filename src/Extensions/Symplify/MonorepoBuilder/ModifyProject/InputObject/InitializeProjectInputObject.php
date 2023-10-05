@@ -16,6 +16,8 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
         private string $docsGitBaseBranch,
         private string $docsGithubRepoOwner,
         private string $docsGithubRepoName,
+        private string $phpNamespaceOwner,
+        private string $composerVendor,
     ) {
     }
 
@@ -62,5 +64,15 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function getDocsGithubRepoName(): string
     {
         return $this->docsGithubRepoName;
+    }
+
+    public function getPHPNamespaceOwner(): string
+    {
+        return $this->phpNamespaceOwner;
+    }
+
+    public function getComposerVendor(): string
+    {
+        return $this->composerVendor;
     }
 }

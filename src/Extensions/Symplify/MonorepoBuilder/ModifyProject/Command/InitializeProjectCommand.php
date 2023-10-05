@@ -178,6 +178,11 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             if ($docsGithubRepoName === '') {
                 $docsGithubRepoName = $githubRepoName;
             }
+            $phpNamespaceOwner = '';
+            $composerVendor = '';
+            if ($composerVendor === '') {
+                $composerVendor = $phpNamespaceOwner;
+            }
             $this->inputObject = new InitializeProjectInputObject(
                 $initialVersion,
                 $gitBaseBranch,
@@ -188,6 +193,8 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 $docsGitBaseBranch,
                 $docsGithubRepoOwner,
                 $docsGithubRepoName,
+                $phpNamespaceOwner,
+                $composerVendor,
             );
         }
         return $this->inputObject;
