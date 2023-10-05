@@ -9,9 +9,6 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function __construct(
         private string $phpNamespaceOwner,
         private string $composerVendor,
-        private string $myCompanyName,
-        private string $myCompanyEmail,
-        private string $myCompanyWebsite,
         private string $initialVersion,
         private string $gitBaseBranch,
         private string $gitUserName,
@@ -21,6 +18,9 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
         private string $docsGitBaseBranch,
         private string $docsGithubRepoOwner,
         private string $docsGithubRepoName,
+        private string $myCompanyName,
+        private string $myCompanyEmail,
+        private string $myCompanyWebsite,
     ) {
     }
 
@@ -32,21 +32,6 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function getComposerVendor(): string
     {
         return $this->composerVendor;
-    }
-
-    public function getMyCompanyName(): string
-    {
-        return $this->myCompanyName;
-    }
-
-    public function getMyCompanyEmail(): string
-    {
-        return $this->myCompanyEmail;
-    }
-
-    public function getMyCompanyWebsite(): string
-    {
-        return $this->myCompanyWebsite;
     }
 
     public function getInitialVersion(): string
@@ -92,5 +77,20 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function getDocsGithubRepoName(): string
     {
         return $this->docsGithubRepoName;
+    }
+
+    public function getMyCompanyName(): string
+    {
+        return $this->myCompanyName;
+    }
+
+    public function getMyCompanyEmail(): string
+    {
+        return $this->myCompanyEmail;
+    }
+
+    public function getMyCompanyWebsite(): string
+    {
+        return $this->myCompanyWebsite;
     }
 }
