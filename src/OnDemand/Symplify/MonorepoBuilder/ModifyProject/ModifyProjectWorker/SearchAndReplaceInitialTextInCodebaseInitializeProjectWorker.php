@@ -20,7 +20,19 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
     protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
     {
         return [
-            'MyCompanyForGatoGraphQL' => 'TemporaryTestDeleteThisValue',
+            // 'MyCompanyForGatoGraphQL' => 'TemporaryTestDeleteThisValue',
+            'my-company-for-gatographql' => 'temporary-test-delete-this-value',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getSearchInFolders(): array
+    {
+        return [
+            ...parent::getSearchInFolders(),
+            $this->getRootFolder() . '/.vscode',
         ];
     }
 }
