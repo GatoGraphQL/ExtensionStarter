@@ -205,6 +205,8 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 $composerVendor = $this->camelToUnderscore($phpNamespaceOwner);
             }
             $this->inputObject = new InitializeProjectInputObject(
+                $phpNamespaceOwner,
+                $composerVendor,
                 $initialVersion,
                 $gitBaseBranch,
                 $gitUserName,
@@ -214,8 +216,6 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 $docsGitBaseBranch,
                 $docsGithubRepoOwner,
                 $docsGithubRepoName,
-                $phpNamespaceOwner,
-                $composerVendor,
             );
         }
         return $this->inputObject;
