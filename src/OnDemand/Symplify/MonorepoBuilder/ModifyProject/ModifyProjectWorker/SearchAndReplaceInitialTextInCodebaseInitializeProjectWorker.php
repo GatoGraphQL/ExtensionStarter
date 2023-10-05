@@ -20,7 +20,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
     protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
     {
         return [
-            // 'MyCompanyForGatoGraphQL' => 'TemporaryTestDeleteThisValue',
+            'MyCompanyForGatoGraphQL' => 'TemporaryTestDeleteThisValue',
             'my-company-for-gatographql' => 'temporary-test-delete-this-value',
         ];
     }
@@ -33,6 +33,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
         $rootFolder = $this->getRootFolder();
         return [
             $rootFolder . '/.vscode',
+            $rootFolder . '/ci',
             $rootFolder . '/layers',
             $rootFolder . '/webservers/gatographql-extensions',
         ];
