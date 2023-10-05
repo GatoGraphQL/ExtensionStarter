@@ -20,7 +20,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
     protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
     {
         return [
-            'MyCompanyForGatoGraphQL' => 'TemporaryTestDeleteThisValue',
+            // 'MyCompanyForGatoGraphQL' => 'TemporaryTestDeleteThisValue',
             'my-company-for-gatographql' => 'temporary-test-delete-this-value',
         ];
     }
@@ -58,6 +58,8 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             ...parent::getFileExtensions(),
             '*.json',
             '*.yml',
+            // File: .lando.upstream.yml
+            '.*.yml',
         ];
     }
 }
