@@ -205,6 +205,24 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             if ($docsGithubRepoName === '') {
                 $docsGithubRepoName = $githubRepoName;
             }
+
+            $myCompanyName = (string) $input->getOption(Option::MY_COMPANY_NAME);
+            if ($myCompanyName === '') {
+                $myCompanyName = $gitUserName;
+            }
+            $myCompanyEmail = (string) $input->getOption(Option::MY_COMPANY_EMAIL);
+            if ($myCompanyEmail === '') {
+                $myCompanyEmail = $gitUserEmail;
+            }
+            $myCompanyWebsite = (string) $input->getOption(Option::MY_COMPANY_WEBSITE);
+            if ($myCompanyWebsite === '') {
+                $myCompanyWebsite = sprintf(
+                    'https://github.com/%s/%s',
+                    $githubRepoOwner,
+                    $githubRepoName
+                );
+            }
+            
             $this->inputObject = new InitializeProjectInputObject(
                 $phpNamespaceOwner,
                 $composerVendor,
@@ -217,6 +235,9 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 $docsGitBaseBranch,
                 $docsGithubRepoOwner,
                 $docsGithubRepoName,
+                $myCompanyName,
+                $myCompanyEmail,
+                $myCompanyWebsite,
             );
         }
         return $this->inputObject;

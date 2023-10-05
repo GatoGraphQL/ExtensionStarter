@@ -50,4 +50,16 @@ final class Option
      * @var string
      */
     public final const DOCS_GITHUB_REPO_NAME = 'docs-github-repo-name';
+    /**
+     * @var string
+     */
+    public final const MY_COMPANY_NAME = 'my-company-name';
+    /**
+     * @var string
+     */
+    public final const MY_COMPANY_EMAIL = 'my-company-email';
+    /**
+     * @var string
+     */
+    public final const MY_COMPANY_WEBSITE = 'my-company-website';
 }
