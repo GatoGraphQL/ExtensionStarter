@@ -48,4 +48,16 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             'wordpress',
         ];
     }
+
+    /**
+     * @return string[]
+     */
+    protected function getFileExtensions(): array
+    {
+        return [
+            ...parent::getFileExtensions(),
+            '*.json',
+            '*.yaml',
+        ];
+    }
 }

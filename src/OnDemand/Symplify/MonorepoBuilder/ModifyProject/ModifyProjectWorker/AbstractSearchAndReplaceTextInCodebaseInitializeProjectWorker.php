@@ -78,8 +78,6 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
     {
         return [
             '*.php',
-            '*.json',
-            '*.yaml',
         ];
     }
 }
