@@ -123,9 +123,19 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
                 $fileExtensions,
                 $ignoreDotFiles
             ),
-            $rootFolder . '/composer.json',
-            $rootFolder . '/CODE_OF_CONDUCT.md',
-            $rootFolder . '/README.md',
+            ...array_map(
+                fn (string $fileName) => $rootFolder . '/' . $fileName,
+                $this->getRootFolderFileNamesToSearchReplace()
+            ),
+        ];
+    }
+
+    protected function getRootFolderFileNamesToSearchReplace(): array
+    {
+        return [
+            'composer.json',
+            'CODE_OF_CONDUCT.md',
+            'README.md',
         ];
     }
 }
