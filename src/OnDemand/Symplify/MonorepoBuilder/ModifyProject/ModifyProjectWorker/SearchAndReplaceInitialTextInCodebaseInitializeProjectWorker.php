@@ -21,7 +21,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
     {
         return [
             'MyCompanyForGatoGraphQL' => $inputObject->getPHPNamespaceOwner(),
-            'my-company-for-gatographql' => 'temporary-test-delete-this-value',
+            'my-company-for-gatographql' => $inputObject->getComposerVendor(),
         ];
     }
 
