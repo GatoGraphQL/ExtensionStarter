@@ -181,7 +181,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             $phpNamespaceOwner = (string) $input->getOption(Option::PHP_NAMESPACE_OWNER);
             $composerVendor = (string) $input->getOption(Option::COMPOSER_VENDOR);
             if ($composerVendor === '') {
-                $composerVendor = $phpNamespaceOwner;
+                $composerVendor = $this->camelToUnderscore($phpNamespaceOwner);
             }
             $this->inputObject = new InitializeProjectInputObject(
                 $initialVersion,
@@ -253,5 +253,19 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getSuccessMessage(): string
     {
         return 'The project has been successfully initialized';
+    }
+
+    /**
+     * @see https://stackoverflow.com/a/40514305/14402031
+     */
+    protected function camelToUnderscore(string $string, string $us = "-"): string
+    {
+        return strtolower(
+            preg_replace(
+                '/(?<=\d)(?=[A-Za-z])|(?<=[A-Za-z])(?=\d)|(?<=[a-z])(?=[A-Z])/',
+                $us,
+                $string
+            )
+        );
     }
 }
