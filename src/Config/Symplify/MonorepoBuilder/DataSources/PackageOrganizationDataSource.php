@@ -37,12 +37,12 @@ class PackageOrganizationDataSource extends UpstreamPackageOrganizationDataSourc
      * List of paths to the packages and account names in GitHub where to
      * do the "monorepo split".
      * 
-     * @gatographql-extension-starter When pushing code to the repo, the "monorepo split" feature
-     *                                copies all code for each of the modified packages into their
-     *                                own GitHub repo, with the package name as repo name,
-     *                                and GitHub account as defined below.
-     *                                (Eg: package "hello-dolly-schema" could be
-     *                                pushed to http://github.com/GatoGraphQL/hello-dolly-schema)
+     * @gatographql-extension When pushing code to the repo, the "monorepo split" feature
+     *                        copies all code for each of the modified packages into their
+     *                        own GitHub repo, with the package name as repo name,
+     *                        and GitHub account as defined below.
+     *                        (Eg: package "hello-dolly-schema" could be
+     *                        pushed to http://github.com/GatoGraphQL/hello-dolly-schema)
      * @return array<string,string>
      */
     protected function getExtensionPackagePathOrganizations(): array
