@@ -42,6 +42,12 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
         return [
             'MyCompanyForGatoGraphQL' => $inputObject->getPHPNamespaceOwner(),
             'my-company-for-gatographql' => $inputObject->getComposerVendor(),
+            /**
+             * Replace Composer package in regex patterns.
+             *
+             * @see ci/scoping/scoper-extensions.inc.php
+             */
+            preg_quote('my-company-for-gatographql') => preg_quote($inputObject->getComposerVendor()),
         ];
     }
 
