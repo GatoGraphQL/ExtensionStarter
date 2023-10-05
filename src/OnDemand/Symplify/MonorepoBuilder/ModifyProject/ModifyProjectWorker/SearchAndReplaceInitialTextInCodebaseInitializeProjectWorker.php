@@ -9,6 +9,9 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 
 class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker
 {
+    /**
+     * @param InitializeProjectInputObjectInterface $inputObject
+     */
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         return sprintf(
