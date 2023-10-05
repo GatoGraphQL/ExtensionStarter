@@ -41,7 +41,14 @@ class PluginDataSource extends UpstreamPluginDataSource
                     'docs/images/\*',
                 ]),
                 'dist_repo_organization' => MonorepoMetadata::GITHUB_REPO_OWNER,
-                'dist_repo_name' => 'gatographql-hello-dolly-dist',
+                /**
+                 * @gatographql-extension-starter Uncomment this line to enable publishing
+                 *                                the generated plugin's code to a GitHub repo,
+                 *                                with owner provided by 'dist_repo_organization'
+                 *                                and repo name by 'dist_repo_name'.
+                 *                                Create the repository if it doesn't exist!
+                 */
+                // 'dist_repo_name' => 'gatographql-hello-dolly-dist',
                 'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/hello-dolly/rector.php',
             ],
         ];
