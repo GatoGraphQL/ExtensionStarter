@@ -86,6 +86,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             ...parent::getFileExtensions(),
             '*.json',
             '*.md',
+            '*.pot',
             '*.yaml',
             '*.yml',
             // File: .lando.upstream.yml
