@@ -45,4 +45,19 @@ final class InitializeProjectGuard extends AbstractModifyProjectGuard implements
             ));
         }
     }
+
+    /**
+     * Validate theare are no spaces or forbidden characters
+     *
+     * @see https://stackoverflow.com/a/60470526/14402031
+     */
+    public function guardPHPNamespaceOwner(string $phpNamespaceOwner): void
+    {
+        if (!preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/", $phpNamespaceOwner)) {
+            throw new ConfigurationException(sprintf(
+                'PHP namespace owner "%s" is not valid',
+                $phpNamespaceOwner
+            ));
+        }
+    }
 }

@@ -11,7 +11,24 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
 {
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        return 'Search the initital strings in the Extension Starter and replace them with the user\' values';
+        return sprintf(
+            'Replace strings with the user inputs: %s%s',
+            PHP_EOL,
+            $this->printReplacements($inputObject)
+        );
+    }
+
+    protected function printReplacements(InitializeProjectInputObjectInterface $inputObject): string
+    {
+        $items = [];
+        foreach ($this->getReplacements($inputObject) as $search => $replace) {
+            $items[] = sprintf(
+                '- "%s" => "%s"',
+                $search,
+                $replace
+            );
+        }
+        return implode(PHP_EOL, $items);
     }
 
     /**
@@ -20,8 +37,8 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
     protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
     {
         return [
-            'MyCompanyForGatoGraphQL' => 'TemporaryTestDeleteThisValue',
-            'my-company-for-gatographql' => 'temporary-test-delete-this-value',
+            'MyCompanyForGatoGraphQL' => $inputObject->getPHPNamespaceOwner(),
+            'my-company-for-gatographql' => $inputObject->getComposerVendor(),
         ];
     }
 

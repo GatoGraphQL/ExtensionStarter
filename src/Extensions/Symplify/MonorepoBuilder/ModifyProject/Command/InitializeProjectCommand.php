@@ -14,6 +14,8 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Option;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\Utils\StringUtils;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
@@ -34,6 +36,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         private InitializeProjectStageResolver $initializeProjectStageResolver,
         private InitializeProjectGuardInterface $initializeProjectGuard,
         private ProcessRunner $processRunner,
+        private StringUtils $stringUtils,
         SourcesPresenceValidator $sourcesPresenceValidator,
         // VersionResolver $versionResolver,
         ModifyProjectWorkerReporter $modifyProjectWorkerReporter
@@ -51,6 +54,21 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
 
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Initialize the project, replacing the extension starter data with your own data.');
+
+        $this->addArgument(
+            Option::PHP_NAMESPACE_OWNER,
+            InputArgument::REQUIRED,
+            'PHP namespace owner to use in the codebase. Eg: "MyCompanyName"'
+        );
+        $this->addOption(
+            Option::COMPOSER_VENDOR,
+            null,
+            null,
+            sprintf(
+                'Composer vendor to use in the repo. If not provided, it is generated from the "%s" option',
+                Option::PHP_NAMESPACE_OWNER
+            )
+        );
 
         $this->addOption(
             Option::INITIAL_VERSION,
@@ -139,6 +157,15 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getModifyProjectInputObject(InputInterface $input, string $stage): ModifyProjectInputObjectInterface
     {
         if ($this->inputObject === null) {
+            $phpNamespaceOwner = (string) $input->getArgument(Option::PHP_NAMESPACE_OWNER);
+            // validation
+            $this->initializeProjectGuard->guardPHPNamespaceOwner($phpNamespaceOwner);
+
+            $composerVendor = (string) $input->getOption(Option::COMPOSER_VENDOR);
+            if ($composerVendor === '') {
+                $composerVendor = $this->stringUtils->camelToUnderscore($phpNamespaceOwner);
+            }
+
             $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
             if ($initialVersion === '') {
                 $initialVersion = $this->getDefaultInitialVersion();
@@ -179,6 +206,8 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 $docsGithubRepoName = $githubRepoName;
             }
             $this->inputObject = new InitializeProjectInputObject(
+                $phpNamespaceOwner,
+                $composerVendor,
                 $initialVersion,
                 $gitBaseBranch,
                 $gitUserName,
