@@ -28,7 +28,8 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
                 $search,
                 $searchInFolders,
                 $excludeFolders,
-                $fileExtensions
+                $fileExtensions,
+                false
             );
             $this->fileContentReplacerSystem->replaceContentInSmartFileInfos(
                 $files,

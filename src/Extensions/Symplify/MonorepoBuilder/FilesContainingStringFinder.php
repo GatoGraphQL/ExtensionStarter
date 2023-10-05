@@ -24,6 +24,7 @@ final class FilesContainingStringFinder
         array $inFolders,
         array $excludeFolders = [],
         array $fileExtensions = [],
+        bool $ignoreDotFiles = true,
     ): array {
         if ($inFolders === []) {
             return [];
@@ -33,6 +34,7 @@ final class FilesContainingStringFinder
         $finder->in($inFolders)
             ->exclude($excludeFolders)
             ->files()
+            ->ignoreDotFiles($ignoreDotFiles)
             ->name($fileExtensions)
             ->contains($search);
 
