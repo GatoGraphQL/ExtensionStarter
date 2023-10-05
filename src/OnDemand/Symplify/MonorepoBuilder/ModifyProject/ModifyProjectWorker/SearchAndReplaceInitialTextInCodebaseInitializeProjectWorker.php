@@ -124,6 +124,8 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
                 $ignoreDotFiles
             ),
             $rootFolder . '/composer.json',
+            $rootFolder . '/CODE_OF_CONDUCT.md',
+            $rootFolder . '/README.md',
         ];
     }
 }
