@@ -20,7 +20,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
     protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
     {
         return [
-            // 'MyCompanyForGatoGraphQL' => 'TemporaryTestDeleteThisValue',
+            'MyCompanyForGatoGraphQL' => 'TemporaryTestDeleteThisValue',
             'my-company-for-gatographql' => 'temporary-test-delete-this-value',
         ];
     }
@@ -30,9 +30,22 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
      */
     protected function getSearchInFolders(): array
     {
+        $rootFolder = $this->getRootFolder();
         return [
-            ...parent::getSearchInFolders(),
-            $this->getRootFolder() . '/.vscode',
+            $rootFolder . '/.vscode',
+            $rootFolder . '/layers',
+            $rootFolder . '/webservers',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getExcludeFolders(): array
+    {
+        return [
+            ...parent::getExcludeFolders(),
+            'wordpress',
         ];
     }
 }
