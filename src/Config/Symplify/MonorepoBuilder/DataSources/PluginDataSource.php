@@ -49,6 +49,8 @@ class PluginDataSource extends UpstreamPluginDataSource
                  *                        and owner under 'dist_repo_organization'
                  *                        (eg: https://github.com/GatoGraphQL/gatographql-hello-dolly-dist).
                  *                        Create the repository if it doesn't exist!
+                 *
+                 * @gatographql-example submodules/GatoGraphQL/src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php
                  */
                 // 'dist_repo_name' => 'gatographql-hello-dolly-dist',
                 // 'dist_repo_organization' => MonorepoMetadata::GITHUB_REPO_OWNER,

@@ -43,6 +43,7 @@ class PackageOrganizationDataSource extends UpstreamPackageOrganizationDataSourc
      *                        and GitHub account as defined below.
      *                        (Eg: package "hello-dolly-schema" could be
      *                        pushed to http://github.com/GatoGraphQL/hello-dolly-schema)
+     *
      * @return array<string,string>
      */
     protected function getExtensionPackagePathOrganizations(): array
