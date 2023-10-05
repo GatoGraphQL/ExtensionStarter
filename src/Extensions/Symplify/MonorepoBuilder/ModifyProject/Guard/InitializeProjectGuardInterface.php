@@ -7,4 +7,5 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 interface InitializeProjectGuardInterface extends ModifyProjectGuardInterface
 {
     public function guardVersion(string $version): void;
+    public function guardPHPNamespaceOwner(string $phpNamespaceOwner): void;
 }

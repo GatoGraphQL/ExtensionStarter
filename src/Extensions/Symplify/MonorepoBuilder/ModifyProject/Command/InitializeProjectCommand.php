@@ -179,6 +179,8 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 $docsGithubRepoName = $githubRepoName;
             }
             $phpNamespaceOwner = (string) $input->getOption(Option::PHP_NAMESPACE_OWNER);
+            // validation
+            $this->initializeProjectGuard->guardPHPNamespaceOwner($phpNamespaceOwner);
             $composerVendor = (string) $input->getOption(Option::COMPOSER_VENDOR);
             if ($composerVendor === '') {
                 $composerVendor = $this->camelToUnderscore($phpNamespaceOwner);
