@@ -57,7 +57,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
         return [
             ...parent::getFileExtensions(),
             '*.json',
-            '*.yaml',
+            '*.yml',
         ];
     }
 }
