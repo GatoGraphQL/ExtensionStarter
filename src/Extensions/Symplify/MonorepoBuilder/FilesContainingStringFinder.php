@@ -16,33 +16,34 @@ final class FilesContainingStringFinder
     }
 
     /**
-     * @param string[] $folders
-     * @return SmartFileInfo[] $smartFileInfos
+     * @param string[] $searchInFolders
+     * @param string[] $excludeFolders
+     * @param string[] $fileExtensions
+     * @return string[]
      */
     public function findFilesContainingString(
         string $search,
-        array $inFolders,
+        array $searchInFolders,
         array $excludeFolders = [],
         array $fileExtensions = [],
         bool $ignoreDotFiles = true,
     ): array {
-        if ($inFolders === []) {
+        if ($searchInFolders === []) {
             return [];
         }
 
         $finder = new Finder();
-        $finder->in($inFolders)
+        $finder->in($searchInFolders)
             ->exclude($excludeFolders)
             ->files()
             ->ignoreDotFiles($ignoreDotFiles)
             ->name($fileExtensions)
             ->contains($search);
 
-        return $this->finderSanitizer->sanitize($finder);
-        // $fileSmartFileInfos = $this->finderSanitizer->sanitize($finder);
-        // return array_map(
-        //     fn (SmartFileInfo $smartFileInfo) => new SmartFileInfo($smartFileInfo->getRealPath() . '/package.json'),
-        //     $fileSmartFileInfos
-        // );
+        $fileSmartFileInfos = $this->finderSanitizer->sanitize($finder);
+        return array_map(
+            fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
+            $fileSmartFileInfos
+        );
     }
 }

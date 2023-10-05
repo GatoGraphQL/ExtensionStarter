@@ -24,14 +24,14 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
         $excludeFolders = $this->getExcludeFolders();
         $fileExtensions = $this->getFileExtensions();
         foreach ($this->getReplacements($inputObject) as $search => $replace) {
-            $files = $this->filesContainingStringFinder->findFilesContainingString(
+            $files = $this->findFilesContainingString(
                 $search,
                 $searchInFolders,
                 $excludeFolders,
                 $fileExtensions,
                 false
             );
-            $this->fileContentReplacerSystem->replaceContentInSmartFileInfos(
+            $this->fileContentReplacerSystem->replaceContentInFiles(
                 $files,
                 [
                     $search => $replace,
@@ -39,6 +39,26 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
                 false,
             );
         }
+    }
+
+    /**
+     * @param string[] $folders
+     * @return string[]
+     */
+    protected function findFilesContainingString(
+        string $search,
+        array $searchInFolders,
+        array $excludeFolders,
+        array $fileExtensions,
+        bool $ignoreDotFiles,
+    ): array {
+        return $this->filesContainingStringFinder->findFilesContainingString(
+            $search,
+            $searchInFolders,
+            $excludeFolders,
+            $fileExtensions,
+            $ignoreDotFiles
+        );
     }
 
     /**

@@ -63,4 +63,33 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             '.*.yml',
         ];
     }
+
+    /**
+     * Because the monorepo's composer.json falls outside the
+     * "search in" folders, explicitly add it as a result.
+     *
+     * @param string[] $searchInFolders
+     * @param string[] $excludeFolders
+     * @param string[] $fileExtensions
+     * @return string[]
+     */
+    protected function findFilesContainingString(
+        string $search,
+        array $searchInFolders,
+        array $excludeFolders,
+        array $fileExtensions,
+        bool $ignoreDotFiles,
+    ): array {
+        $rootFolder = $this->getRootFolder();
+        return [
+            ...parent::findFilesContainingString(
+                $search,
+                $searchInFolders,
+                $excludeFolders,
+                $fileExtensions,
+                $ignoreDotFiles
+            ),
+            $rootFolder . '/composer.json',
+        ];
+    }
 }
