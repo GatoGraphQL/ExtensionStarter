@@ -20,7 +20,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
     protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
     {
         return [
-            'MyCompanyForGatoGraphQL' => 'TemporaryTestDeleteThisValue',
+            'MyCompanyForGatoGraphQL' => $inputObject->getPHPNamespaceOwner(),
             'my-company-for-gatographql' => 'temporary-test-delete-this-value',
         ];
     }
