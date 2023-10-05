@@ -178,8 +178,8 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             if ($docsGithubRepoName === '') {
                 $docsGithubRepoName = $githubRepoName;
             }
-            $phpNamespaceOwner = '';
-            $composerVendor = '';
+            $phpNamespaceOwner = (string) $input->getOption(Option::PHP_NAMESPACE_OWNER);
+            $composerVendor = (string) $input->getOption(Option::COMPOSER_VENDOR);
             if ($composerVendor === '') {
                 $composerVendor = $phpNamespaceOwner;
             }
