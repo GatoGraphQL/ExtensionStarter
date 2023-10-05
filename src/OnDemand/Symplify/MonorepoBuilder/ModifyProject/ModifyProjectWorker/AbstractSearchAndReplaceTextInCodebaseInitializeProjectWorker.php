@@ -18,6 +18,9 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
     ) {
     }
 
+    /**
+     * @param InitializeProjectInputObjectInterface $inputObject
+     */
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
         $searchInFolders = $this->getSearchInFolders();
@@ -42,7 +45,9 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
     }
 
     /**
-     * @param string[] $folders
+     * @param string[] $searchInFolders
+     * @param string[] $excludeFolders
+     * @param string[] $fileExtensions
      * @return string[]
      */
     protected function findFilesContainingString(
