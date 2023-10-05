@@ -67,7 +67,8 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
     protected function getExcludeFolders(): array
     {
         return [
-            'node_modules',
+            'vendor',
+            'submodules'
         ];
     }
 
