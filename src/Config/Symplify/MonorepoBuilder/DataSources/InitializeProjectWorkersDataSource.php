@@ -6,6 +6,7 @@ namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker\ReplaceExtensionMetadataInitializeProjectWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker\ReplaceMonorepoMetadataInitializeProjectWorker;
+use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\ModifyProjectWorker\SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker;
 
 class InitializeProjectWorkersDataSource
 {
@@ -27,6 +28,7 @@ class InitializeProjectWorkersDataSource
              *   - `extension-metadata.config.js`
              */
             // ReplaceWebpackConfigMetadataInitializeProjectWorker::class,
+            SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker::class,
         ];
     }
 }
