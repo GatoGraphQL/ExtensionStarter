@@ -38,12 +38,10 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         private ProcessRunner $processRunner,
         private StringUtils $stringUtils,
         SourcesPresenceValidator $sourcesPresenceValidator,
-        // VersionResolver $versionResolver,
         ModifyProjectWorkerReporter $modifyProjectWorkerReporter
     ) {
         parent::__construct(
             $sourcesPresenceValidator,
-            // $versionResolver,
             $modifyProjectWorkerReporter,
         );
     }

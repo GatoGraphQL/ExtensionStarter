@@ -19,19 +19,10 @@ abstract class AbstractModifyProjectGuard implements ModifyProjectGuardInterface
      */
     private array $stages = [];
 
-    // /**
-    //  * @var string[]
-    //  */
-    // private array $stagesToAllowExistingTag = [];
-
     public function __construct(
         ParameterProvider $parameterProvider,
-        // private TagResolverInterface $tagResolver,
     ) {
         $this->isStageRequired = $parameterProvider->provideBoolParameter(Option::IS_STAGE_REQUIRED);
-        // $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(
-        //     Option::STAGES_TO_ALLOW_EXISTING_TAG
-        // );
     }
 
     public function guardRequiredStageOnEmptyStage(): void
@@ -69,16 +60,6 @@ abstract class AbstractModifyProjectGuard implements ModifyProjectGuardInterface
         ));
     }
 
-    // public function guardVersion(Version $version, string $stage): void
-    // {
-    //     // stage is set and it doesn't need a validation
-    //     if ($stage !== Stage::MAIN && in_array($stage, $this->stagesToAllowExistingTag, true)) {
-    //         return;
-    //     }
-
-    //     $this->ensureVersionIsNewerThanLastOne($version);
-    // }
-
     /**
      * @return string[]
      */
@@ -104,29 +85,4 @@ abstract class AbstractModifyProjectGuard implements ModifyProjectGuardInterface
      * @return ModifyProjectWorkerInterface[]
      */
     abstract protected function getModifyProjectWorkers(): array;
-
-    // private function ensureVersionIsNewerThanLastOne(Version $version): void
-    // {
-    //     $mostRecentVersion = $this->tagResolver->resolve(getcwd());
-
-    //     // no tag yet
-    //     if ($mostRecentVersion === null) {
-    //         return;
-    //     }
-
-    //     // normalize to workaround phar-io bug
-    //     $mostRecentVersion = strtolower($mostRecentVersion);
-
-    //     // validation
-    //     $mostRecentVersion = new Version($mostRecentVersion);
-    //     if ($version->isGreaterThan($mostRecentVersion)) {
-    //         return;
-    //     }
-
-    //     throw new InvalidGitVersionException(sprintf(
-    //         'Provided version "%s" must be greater than the last one: "%s"',
-    //         $version->getVersionString(),
-    //         $mostRecentVersion->getVersionString()
-    //     ));
-    // }
 }

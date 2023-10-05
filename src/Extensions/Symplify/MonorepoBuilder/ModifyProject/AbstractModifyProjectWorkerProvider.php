@@ -8,9 +8,6 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contr
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Stage;
 
-/**
- * @see \Symplify\MonorepoBuilder\Tests\ModifyProject\ModifyProjectWorkerProvider\ModifyProjectWorkerProviderTest
- */
 abstract class AbstractModifyProjectWorkerProvider implements ModifyProjectWorkerProviderInterface
 {
     /**

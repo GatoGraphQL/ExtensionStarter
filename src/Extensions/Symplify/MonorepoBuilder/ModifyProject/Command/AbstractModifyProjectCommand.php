@@ -22,7 +22,6 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
 {
     public function __construct(
         private SourcesPresenceValidator $sourcesPresenceValidator,
-        // private VersionResolver $versionResolver,
         private ModifyProjectWorkerReporter $modifyProjectWorkerReporter
     ) {
         parent::__construct();
@@ -30,12 +29,6 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
 
     protected function configure(): void
     {
-        // $description = sprintf(
-        //     'ModifyProject version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"',
-        //     implode('", "', SemVersion::ALL)
-        // );
-        // $this->addArgument(Option::VERSION, InputArgument::REQUIRED, $description);
-
         $this->addOption(
             Option::DRY_RUN,
             null,
@@ -73,7 +66,6 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
         // $version = $this->versionResolver->resolveVersion($input, $stage);
 
         foreach ($modifyProjectWorkers as $modifyProjectWorker) {
-            // $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($version);
             $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($inputObject);
             $this->symfonyStyle->title($title);
             $this->modifyProjectWorkerReporter->printMetadata($modifyProjectWorker);
@@ -87,15 +79,9 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
         if ($isDryRun) {
             $this->symfonyStyle->note('Running in dry mode, nothing is changed');
         } elseif ($stage === Stage::MAIN) {
-            // $message = sprintf('Version "%s" is now released!', $version->getVersionString());
             $message = $this->getSuccessMessage();
             $this->symfonyStyle->success($message);
         } else {
-            // $finishedMessage = sprintf(
-            //     'Stage "%s" for version "%s" is now finished!',
-            //     $stage,
-            //     $version->getVersionString()
-            // );
             $finishedMessage = sprintf(
                 'Stage "%s" is now finished!',
                 $stage

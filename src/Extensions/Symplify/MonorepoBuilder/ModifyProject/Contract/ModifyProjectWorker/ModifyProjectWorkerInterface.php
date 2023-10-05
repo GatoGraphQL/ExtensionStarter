@@ -14,9 +14,7 @@ interface ModifyProjectWorkerInterface
      * - "Dump new items to CHANGELOG.md"
      * - "Run coding standards"
      */
-    // public function getDescription(Version $version): string;
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string;
 
-    // public function work(Version $version): void;
     public function work(ModifyProjectInputObjectInterface $inputObject): void;
 }
