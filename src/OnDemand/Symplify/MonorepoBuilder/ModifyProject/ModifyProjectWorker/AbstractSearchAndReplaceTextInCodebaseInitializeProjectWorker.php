@@ -42,15 +42,18 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
      */
     protected function getFilesContainingStringSmartFileInfos(string $search): array
     {
-        $folders = $this->getFolders();
-        return $this->filesContainingStringFinder->findFilesContainingString($folders, $search);
+        $folders = $this->getSearchInFolders();
+        return $this->filesContainingStringFinder->findFilesContainingString(
+            $search,
+            $folders
+        );
     }
 
     /**
      * By default, directly search within the root folder
      * @return string[]
      */
-    protected function getFolders(): array
+    protected function getSearchInFolders(): array
     {
         return [
             $this->getRootFolder(),

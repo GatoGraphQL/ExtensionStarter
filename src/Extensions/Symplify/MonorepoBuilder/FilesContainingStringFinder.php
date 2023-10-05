@@ -20,16 +20,20 @@ final class FilesContainingStringFinder
      * @return SmartFileInfo[] $smartFileInfos
      */
     public function findFilesContainingString(
-        array $folders,
         string $search,
+        array $inFolders,
+        array $excludeFolders = ['node_modules'],
+        array $fileExtensions = ['*.php', '*.json'],
     ): array {
-        if ($folders === []) {
+        if ($inFolders === []) {
             return [];
         }
 
         $finder = new Finder();
-        $finder->in($folders)
+        $finder->in($inFolders)
+            ->exclude($excludeFolders)
             ->files()
+            ->name($fileExtensions)
             ->contains($search);
 
         return $this->finderSanitizer->sanitize($finder);
