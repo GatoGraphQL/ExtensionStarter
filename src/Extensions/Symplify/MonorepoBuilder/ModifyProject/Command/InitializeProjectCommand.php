@@ -14,6 +14,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Option;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\Utils\StringUtils;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -35,6 +36,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         private InitializeProjectStageResolver $initializeProjectStageResolver,
         private InitializeProjectGuardInterface $initializeProjectGuard,
         private ProcessRunner $processRunner,
+        private StringUtils $stringUtils,
         SourcesPresenceValidator $sourcesPresenceValidator,
         // VersionResolver $versionResolver,
         ModifyProjectWorkerReporter $modifyProjectWorkerReporter
@@ -164,7 +166,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
 
             $composerVendor = (string) $input->getOption(Option::COMPOSER_VENDOR);
             if ($composerVendor === '') {
-                $composerVendor = $this->camelToUnderscore($phpNamespaceOwner);
+                $composerVendor = $this->stringUtils->camelToUnderscore($phpNamespaceOwner);
             }
             
             $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
@@ -276,19 +278,5 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getSuccessMessage(): string
     {
         return 'The project has been successfully initialized';
-    }
-
-    /**
-     * @see https://stackoverflow.com/a/40514305/14402031
-     */
-    protected function camelToUnderscore(string $string, string $us = "-"): string
-    {
-        return strtolower(
-            preg_replace(
-                '/(?<=\d)(?=[A-Za-z])|(?<=[A-Za-z])(?=\d)|(?<=[a-z])(?=[A-Z])/',
-                $us,
-                $string
-            )
-        );
     }
 }
