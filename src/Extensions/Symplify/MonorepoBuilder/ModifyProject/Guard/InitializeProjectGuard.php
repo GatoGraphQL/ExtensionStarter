@@ -53,7 +53,7 @@ final class InitializeProjectGuard extends AbstractModifyProjectGuard implements
      */
     public function guardPHPNamespaceOwner(string $phpNamespaceOwner): void
     {
-        if (!preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff\\]*[a-zA-Z0-9_\x7f-\xff]$/", $phpNamespaceOwner)) {
+        if (!preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff\\\\]*[a-zA-Z0-9_\x7f-\xff]$/", $phpNamespaceOwner)) {
             throw new ConfigurationException(sprintf(
                 'PHP namespace owner "%s" is not valid',
                 $phpNamespaceOwner
