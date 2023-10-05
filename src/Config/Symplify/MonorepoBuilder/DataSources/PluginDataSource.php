@@ -44,6 +44,7 @@ class PluginDataSource extends UpstreamPluginDataSource
                 
                 /**
                  * @gatographql-extension-starter
+                 * @gatographql-extension-starter-action-required
                  * 
                  * Uncomment the lines below to enable publishing
                  * the generated plugin's code to a GitHub repo,
