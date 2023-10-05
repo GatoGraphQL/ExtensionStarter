@@ -14,6 +14,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Option;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
@@ -51,6 +52,24 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
 
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Initialize the project, replacing the extension starter data with your own data.');
+        
+        $this->addArgument(
+            Option::PHP_NAMESPACE_OWNER,
+            InputArgument::REQUIRED,
+            sprintf(
+                'PHP namespace owner to use in the codebase. Eg: "MyCompanyName"',
+                Option::PHP_NAMESPACE_OWNER
+            )
+        );
+        $this->addOption(
+            Option::COMPOSER_VENDOR,
+            null,
+            null,
+            sprintf(
+                'Composer vendor to use in the repo. If not provided, it is generated from the PHP Namespace Owner',
+                Option::COMPOSER_VENDOR
+            )
+        );
 
         $this->addOption(
             Option::INITIAL_VERSION,
@@ -126,24 +145,6 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             ),
             null
         );
-        $this->addOption(
-            Option::PHP_NAMESPACE_OWNER,
-            null,
-            InputOption::VALUE_REQUIRED,
-            sprintf(
-                'PHP namespace owner to use in the codebase. Eg: "MyCompanyName"',
-                Option::PHP_NAMESPACE_OWNER
-            )
-        );
-        $this->addOption(
-            Option::COMPOSER_VENDOR,
-            null,
-            null,
-            sprintf(
-                'Composer vendor to use in the repo. If not provided, it is generated from the PHP Namespace Owner',
-                Option::COMPOSER_VENDOR
-            )
-        );
     }
 
     /**
@@ -196,7 +197,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             if ($docsGithubRepoName === '') {
                 $docsGithubRepoName = $githubRepoName;
             }
-            $phpNamespaceOwner = (string) $input->getOption(Option::PHP_NAMESPACE_OWNER);
+            $phpNamespaceOwner = (string) $input->getArgument(Option::PHP_NAMESPACE_OWNER);
             // validation
             $this->initializeProjectGuard->guardPHPNamespaceOwner($phpNamespaceOwner);
             $composerVendor = (string) $input->getOption(Option::COMPOSER_VENDOR);
