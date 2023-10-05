@@ -58,18 +58,15 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->addArgument(
             Option::PHP_NAMESPACE_OWNER,
             InputArgument::REQUIRED,
-            sprintf(
-                'PHP namespace owner to use in the codebase. Eg: "MyCompanyName"',
-                Option::PHP_NAMESPACE_OWNER
-            )
+            'PHP namespace owner to use in the codebase. Eg: "MyCompanyName"'
         );
         $this->addOption(
             Option::COMPOSER_VENDOR,
             null,
             null,
             sprintf(
-                'Composer vendor to use in the repo. If not provided, it is generated from the PHP Namespace Owner',
-                Option::COMPOSER_VENDOR
+                'Composer vendor to use in the repo. If not provided, it is generated from the "%s" option',
+                Option::PHP_NAMESPACE_OWNER
             )
         );
 
