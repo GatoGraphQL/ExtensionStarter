@@ -7,7 +7,7 @@ namespace PoP\ExtensionStarter\Monorepo;
 final class MonorepoMetadata
 {
     /**
-     * @gatographql-extension
+     * @gatographql-extension-starter
      * 
      * This is the version used by all packages and plugins
      * in the monorepo. During development, it has the "-dev"
@@ -27,7 +27,7 @@ final class MonorepoMetadata
     final public const VERSION = '1.1.0-dev';
 
     /**
-     * @gatographql-extension
+     * @gatographql-extension-starter
      * 
      * This is needed to generate the "dev-main" alias
      * to install packages locally using Composer,
@@ -37,21 +37,21 @@ final class MonorepoMetadata
     final public const GIT_BASE_BRANCH = 'main';
 
     /**
-     * @gatographql-extension
+     * @gatographql-extension-starter
      * 
      * Git user to use when doing a "monorepo split".
      */
     final public const GIT_USER_NAME = 'leoloso';
 
     /**
-     * @gatographql-extension
+     * @gatographql-extension-starter
      * 
      * Git email to use when doing a "monorepo split".
      */
     final public const GIT_USER_EMAIL = 'leo@getpop.org';
 
     /**
-     * @gatographql-extension
+     * @gatographql-extension-starter
      * 
      * GitHub organization account hosting this project,
      * as to point there to retrieve images for the plugin
@@ -61,7 +61,7 @@ final class MonorepoMetadata
     final public const GITHUB_REPO_OWNER = 'GatoGraphQL';
 
     /**
-     * @gatographql-extension
+     * @gatographql-extension-starter
      * 
      * GitHub repo name hosting this project,
      * as to point there to retrieve images for the plugin
