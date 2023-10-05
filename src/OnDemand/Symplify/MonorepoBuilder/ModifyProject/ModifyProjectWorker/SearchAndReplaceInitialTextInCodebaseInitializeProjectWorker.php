@@ -11,7 +11,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
 {
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        return 'Search the initital strings in the Extension Starter and replace them with the user\' values';
+        return 'Replace the strings from the Extension Starter with the user inputs';
     }
 
     /**
