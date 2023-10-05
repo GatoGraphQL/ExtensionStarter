@@ -9,6 +9,14 @@ final class Option
     /**
      * @var string
      */
+    public final const PHP_NAMESPACE_OWNER = 'php-namespace-owner';
+    /**
+     * @var string
+     */
+    public final const COMPOSER_VENDOR = 'composer-vendor';
+    /**
+     * @var string
+     */
     public final const INITIAL_VERSION = 'initial-version';
     /**
      * @var string
@@ -42,12 +50,4 @@ final class Option
      * @var string
      */
     public final const DOCS_GITHUB_REPO_NAME = 'docs-github-repo-name';
-    /**
-     * @var string
-     */
-    public final const PHP_NAMESPACE_OWNER = 'php-namespace-owner';
-    /**
-     * @var string
-     */
-    public final const COMPOSER_VENDOR = 'composer-vendor';
 }
