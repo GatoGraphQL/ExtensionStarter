@@ -239,7 +239,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                     $githubRepoName
                 );
             }
-            
+
             $this->inputObject = new InitializeProjectInputObject(
                 $phpNamespaceOwner,
                 $composerVendor,

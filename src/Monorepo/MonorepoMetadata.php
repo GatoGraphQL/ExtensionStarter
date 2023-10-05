@@ -8,7 +8,7 @@ final class MonorepoMetadata
 {
     /**
      * @gatographql-extension-starter-info
-     * 
+     *
      * This is the version used by all packages and plugins
      * in the monorepo. During development, it has the "-dev"
      * suffix; when creating a release, this suffix is
@@ -28,7 +28,7 @@ final class MonorepoMetadata
 
     /**
      * @gatographql-extension-starter-info
-     * 
+     *
      * This const is needed to generate the "dev-main" alias
      * to install packages locally using Composer,
      * it is the default branch to push code to when
@@ -40,21 +40,21 @@ final class MonorepoMetadata
 
     /**
      * @gatographql-extension-starter-info
-     * 
+     *
      * Git user to use when doing a "monorepo split".
      */
     final public const GIT_USER_NAME = 'leoloso';
 
     /**
      * @gatographql-extension-starter-info
-     * 
+     *
      * Git email to use when doing a "monorepo split".
      */
     final public const GIT_USER_EMAIL = 'leo@getpop.org';
 
     /**
      * @gatographql-extension-starter-info
-     * 
+     *
      * GitHub organization account hosting this project,
      * from which to serve images inside the plugin's documentation
      * (pointing to raw.githubusercontent.com), and
@@ -64,7 +64,7 @@ final class MonorepoMetadata
 
     /**
      * @gatographql-extension-starter-info
-     * 
+     *
      * GitHub repo name hosting this project, from which
      * to serve images inside the plugin's documentation
      * (pointing to raw.githubusercontent.com)
