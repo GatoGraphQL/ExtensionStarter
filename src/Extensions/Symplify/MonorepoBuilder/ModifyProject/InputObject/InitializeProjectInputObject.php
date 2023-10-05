@@ -9,6 +9,9 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function __construct(
         private string $phpNamespaceOwner,
         private string $composerVendor,
+        private string $myCompanyName,
+        private string $myCompanyEmail,
+        private string $myCompanyWebsite,
         private string $initialVersion,
         private string $gitBaseBranch,
         private string $gitUserName,
@@ -29,6 +32,21 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function getComposerVendor(): string
     {
         return $this->composerVendor;
+    }
+
+    public function getMyCompanyName(): string
+    {
+        return $this->myCompanyName;
+    }
+
+    public function getMyCompanyEmail(): string
+    {
+        return $this->myCompanyEmail;
+    }
+
+    public function getMyCompanyWebsite(): string
+    {
+        return $this->myCompanyWebsite;
     }
 
     public function getInitialVersion(): string

@@ -8,6 +8,9 @@ interface InitializeProjectInputObjectInterface extends ModifyProjectInputObject
 {
     public function getPHPNamespaceOwner(): string;
     public function getComposerVendor(): string;
+    public function getMyCompanyName(): string;
+    public function getMyCompanyEmail(): string;
+    public function getMyCompanyWebsite(): string;
     public function getInitialVersion(): string;
     public function getGitBaseBranch(): string;
     public function getGitUserName(): string;

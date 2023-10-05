@@ -48,6 +48,10 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
              * @see ci/scoping/scoper-extensions.inc.php
              */
             preg_quote('my-company-for-gatographql') => preg_quote($inputObject->getComposerVendor()),
+
+            'My Company' => $inputObject->getMyCompanyName(),
+            'name@company.com' => $inputObject->getMyCompanyEmail(),
+            'https://mysite.com' => $inputObject->getMyCompanyWebsite(),
         ];
     }
 
