@@ -21,11 +21,15 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
 
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
-        $folders = $this->getSearchInFolders();
+        $searchInFolders = $this->getSearchInFolders();
+        $excludeFolders = $this->getExcludeFolders();
+        $fileExtensions = $this->getFileExtensions();
         foreach ($this->getReplacements($inputObject) as $search => $replace) {
             $files = $this->filesContainingStringFinder->findFilesContainingString(
                 $search,
-                $folders
+                $searchInFolders,
+                $excludeFolders,
+                $fileExtensions
             );
             $this->fileContentReplacerSystem->replaceContentInSmartFileInfos(
                 $files,
@@ -55,5 +59,27 @@ abstract class AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker imp
     protected function getRootFolder(): string
     {
         return dirname(__DIR__, 6);
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getExcludeFolders(): array
+    {
+        return [
+            'node_modules',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getFileExtensions(): array
+    {
+        return [
+            '*.php',
+            '*.json',
+            '*.yaml',
+        ];
     }
 }

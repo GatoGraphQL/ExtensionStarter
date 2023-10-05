@@ -22,8 +22,8 @@ final class FilesContainingStringFinder
     public function findFilesContainingString(
         string $search,
         array $inFolders,
-        array $excludeFolders = ['node_modules'],
-        array $fileExtensions = ['*.php', '*.json'],
+        array $excludeFolders = [],
+        array $fileExtensions = [],
     ): array {
         if ($inFolders === []) {
             return [];
