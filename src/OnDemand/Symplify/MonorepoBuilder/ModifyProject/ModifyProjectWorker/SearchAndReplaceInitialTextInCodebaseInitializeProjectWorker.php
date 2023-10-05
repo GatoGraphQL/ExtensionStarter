@@ -34,7 +34,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
         return [
             $rootFolder . '/.vscode',
             $rootFolder . '/layers',
-            $rootFolder . '/webservers',
+            $rootFolder . '/webservers/gatographql-extensions',
         ];
     }
 
