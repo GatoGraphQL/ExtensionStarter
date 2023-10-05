@@ -33,7 +33,7 @@ class MonorepoSplitPackageDataSource extends UpstreamMonorepoSplitPackageDataSou
     }
 
     /**
-     * @gatographql-extension-starter
+     * @gatographql-extension-starter-info
      * @gatographql-extension-starter-action-required
      * 
      * Partial paths to the packages for which to disable doing a

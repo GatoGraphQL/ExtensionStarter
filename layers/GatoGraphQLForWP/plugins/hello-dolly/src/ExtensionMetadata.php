@@ -7,7 +7,7 @@ namespace MyCompanyForGatoGraphQL\HelloDolly;
 final class ExtensionMetadata
 {
     /**
-     * @gatographql-extension-starter
+     * @gatographql-extension-starter-info
      * 
      * This is the default branch to push code to when
      * doing a "monorepo split".
@@ -15,7 +15,7 @@ final class ExtensionMetadata
     final public const DOCS_GIT_BASE_BRANCH = 'main';
 
     /**
-     * @gatographql-extension-starter
+     * @gatographql-extension-starter-info
      * 
      * GitHub organization account hosting the documentation
      * for this project (by default the project itself),
@@ -25,7 +25,7 @@ final class ExtensionMetadata
     final public const DOCS_GITHUB_REPO_OWNER = 'GatoGraphQL';
 
     /**
-     * @gatographql-extension-starter
+     * @gatographql-extension-starter-info
      * 
      * GitHub repo name hosting hosting the documentation
      * for this project (by default the project itself),

@@ -43,7 +43,7 @@ class PluginDataSource extends UpstreamPluginDataSource
                 'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/hello-dolly/rector.php',
                 
                 /**
-                 * @gatographql-extension-starter
+                 * @gatographql-extension-starter-info
                  * @gatographql-extension-starter-action-required
                  * 
                  * Uncomment the lines below to enable publishing
