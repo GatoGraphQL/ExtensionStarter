@@ -141,6 +141,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
         return [
             'composer.json',
             'CODE_OF_CONDUCT.md',
+            'CONTRIBUTING.md',
             'README.md',
         ];
     }
