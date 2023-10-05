@@ -10,7 +10,7 @@ fi
 if wp plugin is-installed gatographql-hello-dolly --path=/app/wordpress; then
     wp plugin activate gatographql-hello-dolly --path=/app/wordpress
 else
-    # wp plugin install https://github.com/GatoGraphQL/ExtensionStarter/releases/latest/download/gatographql-hello-dolly.zip --force --activate --path=/app/wordpress
+    # wp plugin install https://github.com/GatoGraphQL/ExtensionStarter/releases/latest/download/gatographql-hello-dolly-MAJOR.MINOR.PATCH.zip --force --activate --path=/app/wordpress
     echo "Please download the latest PROD version of the 'Gato GraphQL - Hello Dolly' plugin from your GitHub repo, and install it on this WordPress site"
 fi
 
