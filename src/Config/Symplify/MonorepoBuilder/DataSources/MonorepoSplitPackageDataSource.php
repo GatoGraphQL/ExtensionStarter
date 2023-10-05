@@ -33,7 +33,8 @@ class MonorepoSplitPackageDataSource extends UpstreamMonorepoSplitPackageDataSou
     }
 
     /**
-     * @gatographql-extension-starter
+     * @gatographql-extension-starter-info
+     * @gatographql-extension-starter-action-required
      * 
      * Partial paths to the packages for which to disable doing a
      * "monorepo split"
@@ -52,6 +53,8 @@ class MonorepoSplitPackageDataSource extends UpstreamMonorepoSplitPackageDataSou
      * 
      * Otherwise, it is not needed for creating a Gato GraphQL
      * extension plugin (hence all packages are disabled by default).
+     *
+     * To re-enable, simply return an empty array.
      *
      * @return string[]
      */
