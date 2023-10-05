@@ -11,12 +11,14 @@ final class StringUtils
      */
     public function camelToUnderscore(string $string, string $us = '-'): string
     {
-        return strtolower(
-            preg_replace(
-                '/(?<=\d)(?=[A-Za-z])|(?<=[A-Za-z])(?=\d)|(?<=[a-z])(?=[A-Z])/',
-                $us,
-                $string
-            )
+        $replaced = preg_replace(
+            '/(?<=\d)(?=[A-Za-z])|(?<=[A-Za-z])(?=\d)|(?<=[a-z])(?=[A-Z])/',
+            $us,
+            $string
         );
+        if ($replaced === null) {
+            return '';
+        }
+        return strtolower($replaced);
     }
 }
