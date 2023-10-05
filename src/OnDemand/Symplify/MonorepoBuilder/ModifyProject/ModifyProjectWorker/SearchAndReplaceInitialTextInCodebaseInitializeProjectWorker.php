@@ -35,6 +35,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             $rootFolder . '/.vscode',
             $rootFolder . '/ci',
             $rootFolder . '/layers',
+            $rootFolder . '/src/Config/Symplify/MonorepoBuilder/DataSources',
             $rootFolder . '/webservers/gatographql-extensions',
         ];
     }
