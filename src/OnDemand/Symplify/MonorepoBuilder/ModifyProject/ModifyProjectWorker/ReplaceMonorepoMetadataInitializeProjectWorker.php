@@ -29,6 +29,7 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
         $this->fileContentReplacerSystem->replaceContentInFiles(
             $files,
             $replacements,
+            true,
         );
     }
 
