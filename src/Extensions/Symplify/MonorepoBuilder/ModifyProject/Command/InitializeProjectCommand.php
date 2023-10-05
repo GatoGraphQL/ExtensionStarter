@@ -57,7 +57,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             Option::PHP_NAMESPACE_OWNER,
             InputArgument::REQUIRED,
             sprintf(
-                'PHP namespace owner to use in the codebase. Eg: "MyCompanyName" or "MyCompany\\MyDepartment" (to print MyCompany\MyDepartment)',
+                'PHP namespace owner to use in the codebase. Eg: "MyCompanyName"',
                 Option::PHP_NAMESPACE_OWNER
             )
         );
