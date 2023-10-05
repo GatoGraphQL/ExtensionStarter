@@ -9,9 +9,15 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 
 class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends AbstractSearchAndReplaceTextInCodebaseInitializeProjectWorker
 {
+    use ReplaceMetadataInitializeProjectWorkerTrait;
+    
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        return 'Replace the strings from the Extension Starter with the user inputs';
+        return sprintf(
+            'Replace the strings from the Extension Starter with the user inputs: %s%s',
+            PHP_EOL,
+            $this->printReplacements($inputObject)
+        );
     }
 
     /**
