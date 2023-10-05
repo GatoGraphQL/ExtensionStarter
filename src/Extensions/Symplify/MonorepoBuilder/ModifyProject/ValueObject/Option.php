@@ -9,6 +9,14 @@ final class Option
     /**
      * @var string
      */
+    public final const PHP_NAMESPACE_OWNER = 'php-namespace-owner';
+    /**
+     * @var string
+     */
+    public final const COMPOSER_VENDOR = 'composer-vendor';
+    /**
+     * @var string
+     */
     public final const INITIAL_VERSION = 'initial-version';
     /**
      * @var string
@@ -45,9 +53,13 @@ final class Option
     /**
      * @var string
      */
-    public final const PHP_NAMESPACE_OWNER = 'php-namespace-owner';
+    public final const MY_COMPANY_NAME = 'my-company-name';
     /**
      * @var string
      */
-    public final const COMPOSER_VENDOR = 'composer-vendor';
+    public final const MY_COMPANY_EMAIL = 'my-company-email';
+    /**
+     * @var string
+     */
+    public final const MY_COMPANY_WEBSITE = 'my-company-website';
 }

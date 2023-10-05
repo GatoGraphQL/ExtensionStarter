@@ -1,7 +1,6 @@
 {
     "name": "gatographql-extensions-dev/gatographql-extensions",
     "description": "Gato GraphQL - Extensions",
-    "homepage": "https://github.com/GatoGraphQL/ExtensionStarter",
     "license": "GPL-2.0-or-later",
     "authors": [
         {

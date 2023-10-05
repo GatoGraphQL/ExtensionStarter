@@ -18,6 +18,9 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
         private string $docsGitBaseBranch,
         private string $docsGithubRepoOwner,
         private string $docsGithubRepoName,
+        private string $myCompanyName,
+        private string $myCompanyEmail,
+        private string $myCompanyWebsite,
     ) {
     }
 
@@ -74,5 +77,20 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function getDocsGithubRepoName(): string
     {
         return $this->docsGithubRepoName;
+    }
+
+    public function getMyCompanyName(): string
+    {
+        return $this->myCompanyName;
+    }
+
+    public function getMyCompanyEmail(): string
+    {
+        return $this->myCompanyEmail;
+    }
+
+    public function getMyCompanyWebsite(): string
+    {
+        return $this->myCompanyWebsite;
     }
 }

@@ -8,7 +8,7 @@ final class ExtensionMetadata
 {
     /**
      * @gatographql-extension-starter-info
-     * 
+     *
      * This is the default branch to push code to when
      * doing a "monorepo split".
      */
@@ -16,7 +16,7 @@ final class ExtensionMetadata
 
     /**
      * @gatographql-extension-starter-info
-     * 
+     *
      * GitHub organization account hosting the documentation
      * for this project (by default the project itself),
      * from which to serve images inside the plugin's documentation
@@ -26,7 +26,7 @@ final class ExtensionMetadata
 
     /**
      * @gatographql-extension-starter-info
-     * 
+     *
      * GitHub repo name hosting hosting the documentation
      * for this project (by default the project itself),
      * from which to serve images inside the plugin's documentation

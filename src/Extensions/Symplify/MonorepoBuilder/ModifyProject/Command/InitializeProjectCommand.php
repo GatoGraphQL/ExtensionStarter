@@ -63,7 +63,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->addOption(
             Option::COMPOSER_VENDOR,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             sprintf(
                 'Composer vendor to use in the repo. If not provided, it is generated from the "%s" option',
                 Option::PHP_NAMESPACE_OWNER
@@ -80,69 +80,86 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->addOption(
             Option::GIT_BASE_BRANCH,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             'Base branch of the GitHub repository where this project is hosted. If not provided, this value is retrieved using `git`',
-            null
         );
         $this->addOption(
             Option::GIT_USER_NAME,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             'Git user name, to "split" code and push it to a different repo when merging a PR. If not provided, this value is retrieved from the global `git` config',
-            null
         );
         $this->addOption(
             Option::GIT_USER_EMAIL,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             'Git user email, to "split" code and push it to a different repo when merging a PR. If not provided, this value is retrieved from the global `git` config',
-            null
         );
 
         $this->addOption(
             Option::GITHUB_REPO_OWNER,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             'Owner of the GitHub repository where this project is hosted (eg: "GatoGraphQL" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`',
-            null //$this->getDefaultGitHubRepoOwner()
         );
         $this->addOption(
             Option::GITHUB_REPO_NAME,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             'Name of the GitHub repository where this project is hosted (eg: "ExtensionStarter" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`',
-            null //$this->getDefaultGitHubRepoName()
         );
 
         $this->addOption(
             Option::DOCS_GIT_BASE_BRANCH,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             sprintf(
                 'Base branch of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
                 Option::GIT_BASE_BRANCH
             ),
-            null
         );
         $this->addOption(
             Option::DOCS_GITHUB_REPO_OWNER,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             sprintf(
                 'Owner of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
                 Option::GITHUB_REPO_OWNER
             ),
-            null
         );
         $this->addOption(
             Option::DOCS_GITHUB_REPO_NAME,
             null,
-            null,
+            InputOption::VALUE_REQUIRED,
             sprintf(
                 'Name of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
                 Option::GITHUB_REPO_NAME
             ),
-            null
+        );
+
+        $this->addOption(
+            Option::MY_COMPANY_NAME,
+            null,
+            InputOption::VALUE_REQUIRED,
+            sprintf(
+                'Name of the person or company owning the extension. If not provided, the value for option `%s` is used',
+                Option::GIT_USER_NAME
+            ),
+        );
+        $this->addOption(
+            Option::MY_COMPANY_EMAIL,
+            null,
+            InputOption::VALUE_REQUIRED,
+            sprintf(
+                'Email of the person or company owning the extension. If not provided, the value for option `%s` is used',
+                Option::GIT_USER_EMAIL
+            ),
+        );
+        $this->addOption(
+            Option::MY_COMPANY_WEBSITE,
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Website of the person or company owning the extension. If not provided, the GitHub repo for this project is used',
         );
     }
 
@@ -205,6 +222,24 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             if ($docsGithubRepoName === '') {
                 $docsGithubRepoName = $githubRepoName;
             }
+
+            $myCompanyName = (string) $input->getOption(Option::MY_COMPANY_NAME);
+            if ($myCompanyName === '') {
+                $myCompanyName = $gitUserName;
+            }
+            $myCompanyEmail = (string) $input->getOption(Option::MY_COMPANY_EMAIL);
+            if ($myCompanyEmail === '') {
+                $myCompanyEmail = $gitUserEmail;
+            }
+            $myCompanyWebsite = (string) $input->getOption(Option::MY_COMPANY_WEBSITE);
+            if ($myCompanyWebsite === '') {
+                $myCompanyWebsite = sprintf(
+                    'https://github.com/%s/%s',
+                    $githubRepoOwner,
+                    $githubRepoName
+                );
+            }
+
             $this->inputObject = new InitializeProjectInputObject(
                 $phpNamespaceOwner,
                 $composerVendor,
@@ -217,6 +252,9 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 $docsGitBaseBranch,
                 $docsGithubRepoOwner,
                 $docsGithubRepoName,
+                $myCompanyName,
+                $myCompanyEmail,
+                $myCompanyWebsite,
             );
         }
         return $this->inputObject;

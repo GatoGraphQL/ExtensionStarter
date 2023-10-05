@@ -39,6 +39,11 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
      */
     protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
     {
+        $githubRepo = sprintf(
+            'https://github.com/%s/%s',
+            $inputObject->getGithubRepoOwner(),
+            $inputObject->getGithubRepoName()
+        );
         return [
             'MyCompanyForGatoGraphQL' => $inputObject->getPHPNamespaceOwner(),
             'my-company-for-gatographql' => $inputObject->getComposerVendor(),
@@ -48,6 +53,12 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
              * @see ci/scoping/scoper-extensions.inc.php
              */
             preg_quote('my-company-for-gatographql') => preg_quote($inputObject->getComposerVendor()),
+
+            'My Company' => $inputObject->getMyCompanyName(),
+            'name@company.com' => $inputObject->getMyCompanyEmail(),
+            'https://mysite.com' => $inputObject->getMyCompanyWebsite(),
+
+            'https://github.com/GatoGraphQL/ExtensionStarter' => $githubRepo,
         ];
     }
 
@@ -62,7 +73,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             $rootFolder . '/ci',
             $rootFolder . '/layers',
             $rootFolder . '/src/Config/Symplify/MonorepoBuilder/DataSources',
-            $rootFolder . '/webservers/gatographql-extensions',
+            $rootFolder . '/webservers',
         ];
     }
 
@@ -86,6 +97,8 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             ...parent::getFileExtensions(),
             '*.json',
             '*.md',
+            '*.pot',
+            '*.sh',
             '*.yaml',
             '*.yml',
             // File: .lando.upstream.yml
@@ -118,7 +131,26 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
                 $fileExtensions,
                 $ignoreDotFiles
             ),
-            $rootFolder . '/composer.json',
+            ...array_map(
+                fn (string $fileName) => $rootFolder . '/' . $fileName,
+                $this->getRootFolderFileNamesToSearchReplace()
+            ),
+        ];
+    }
+
+    /**
+     * Files in the root folder which may also contain some
+     * string to search/replace
+     *
+     * @return string[]
+     */
+    protected function getRootFolderFileNamesToSearchReplace(): array
+    {
+        return [
+            'composer.json',
+            'CODE_OF_CONDUCT.md',
+            'CONTRIBUTING.md',
+            'README.md',
         ];
     }
 }
