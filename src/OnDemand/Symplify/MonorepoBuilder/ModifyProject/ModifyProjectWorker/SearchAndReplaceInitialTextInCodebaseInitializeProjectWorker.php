@@ -118,6 +118,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             '*.md',
             '*.pot',
             '*.sh',
+            '*.xml.dist',
             '*.yaml',
             '*.yml',
             // File: .lando.upstream.yml
@@ -169,6 +170,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             'composer.json',
             'CODE_OF_CONDUCT.md',
             'CONTRIBUTING.md',
+            'phpunit.xml.dist',
             'README.md',
         ];
     }
