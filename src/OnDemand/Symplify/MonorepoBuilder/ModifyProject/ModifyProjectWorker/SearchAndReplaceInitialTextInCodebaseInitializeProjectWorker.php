@@ -44,6 +44,10 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             $inputObject->getGithubRepoOwner(),
             $inputObject->getGithubRepoName()
         );
+        $landoSubdomain = sprintf(
+            '%s-gatographql-extensions',
+            $inputObject->getComposerVendor()
+        );
         $replacements = [
             'MyCompanyForGatoGraphQL' => $inputObject->getPHPNamespaceOwner(),
             'my-company-for-gatographql' => $inputObject->getComposerVendor(),
@@ -69,20 +73,17 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
 
             'https://github.com/GatoGraphQL/ExtensionStarter' => $githubRepo,
 
-            'gatographql-extensions.lndo.site' => sprintf(
-                '%s-gatographql-extensions.lndo.site',
-                $inputObject->getComposerVendor()
-            ),
-            'gatographql-extensions-for-prod.lndo.site' => sprintf(
-                '%s-gatographql-extensions-for-prod.lndo.site',
-                $inputObject->getComposerVendor()
-            ),
-
-            // This is for .lando.yml in the webservers/
-            'name: gatographql-extensions' => sprintf(
-                'name: %s-gatographql-extensions',
-                $inputObject->getComposerVendor()
-            ),
+            /**
+             * Replace "gatographql-extensions" with "{composer-vendor}-gatographql-extensions".
+             * Because the folder "webservers/gatographql-extensions" is not renamed,
+             * but it is referenced in the config (as "webservers/gatographql-extensions"),
+             * then apply the change for everything and revert it for this case.
+             */
+            'gatographql-extensions' => $landoSubdomain,
+            sprintf(
+                'webservers/%s',
+                $landoSubdomain
+            ) => 'webservers/gatographql-extensions',
         ];
         if ($inputObject->getGitBaseBranch() !== 'main') {
             $replacements['dev-main'] = sprintf('dev-%s', $inputObject->getGitBaseBranch());
