@@ -44,8 +44,10 @@ class PackageOrganizationDataSource extends UpstreamPackageOrganizationDataSourc
      * own GitHub repo, with the package name as repo name,
      * and GitHub account as defined below.
      *
-     * (Eg: package "hello-dolly-schema" could be pushed to
-     * http://github.com/GatoGraphQL/hello-dolly-schema.)
+     * (Eg: by setting the account name for "layers/GatoGraphQLForWP/packages"
+     * to "GatoGraphQL", the package under
+     * layers/GatoGraphQLForWP/packages/hello-dolly-schema will be pushed
+     * to http://github.com/GatoGraphQL/hello-dolly-schema.)
      *
      * @return array<string,string>
      */
