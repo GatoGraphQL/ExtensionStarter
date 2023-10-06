@@ -23,6 +23,8 @@ final class MonorepoMetadata
      * will search for this pattern using a regex, to update the
      * version when creating a new release
      * (i.e. via `composer release-major|minor|patch`).
+     *
+     * @gatographql-readonly-code
      */
     final public const VERSION = '1.1.0-dev';
 
