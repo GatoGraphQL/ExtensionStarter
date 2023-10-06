@@ -15,7 +15,6 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\ValueObject\Option;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\Utils\StringUtils;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
@@ -53,10 +52,14 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Initialize the project, replacing the extension starter data with your own data.');
 
-        $this->addArgument(
+        $this->addOption(
             Option::PHP_NAMESPACE_OWNER,
-            InputArgument::REQUIRED,
-            'PHP namespace owner to use in the codebase. Eg: "MyCompanyName"'
+            null,
+            InputOption::VALUE_REQUIRED,
+            sprintf(
+                'PHP namespace owner to use in the codebase (eg: "MyCompanyName"). If not provided, the value from the "%s" option is used',
+                Option::GITHUB_REPO_OWNER
+            )
         );
         $this->addOption(
             Option::COMPOSER_VENDOR,
