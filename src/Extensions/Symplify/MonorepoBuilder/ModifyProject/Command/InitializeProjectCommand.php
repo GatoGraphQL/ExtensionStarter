@@ -216,6 +216,9 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             }
 
             $phpNamespaceOwner = (string) $input->getArgument(Option::PHP_NAMESPACE_OWNER);
+            if ($phpNamespaceOwner === '') {
+                $phpNamespaceOwner = $githubRepoOwner;
+            }
             // validation
             $this->initializeProjectGuard->guardPHPNamespaceOwner($phpNamespaceOwner);
 
