@@ -44,7 +44,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             $inputObject->getGithubRepoOwner(),
             $inputObject->getGithubRepoName()
         );
-        return [
+        $replacements = [
             'MyCompanyForGatoGraphQL' => $inputObject->getPHPNamespaceOwner(),
             'my-company-for-gatographql' => $inputObject->getComposerVendor(),
             /**
@@ -68,9 +68,11 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             ),
 
             'https://github.com/GatoGraphQL/ExtensionStarter' => $githubRepo,
-
-            'dev-main' => sprintf('dev-%s', $inputObject->getGitBaseBranch()),
         ];
+        if ($inputObject->getGitBaseBranch() !== 'main') {
+            $replacements['dev-main'] = sprintf('dev-%s', $inputObject->getGitBaseBranch());
+        }
+        return $replacements;
     }
 
     /**
