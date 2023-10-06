@@ -214,7 +214,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             if ($docsGithubRepoName === '') {
                 $docsGithubRepoName = $githubRepoName;
             }
-            
+
             $phpNamespaceOwner = (string) $input->getArgument(Option::PHP_NAMESPACE_OWNER);
             // validation
             $this->initializeProjectGuard->guardPHPNamespaceOwner($phpNamespaceOwner);
@@ -242,8 +242,6 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             }
 
             $this->inputObject = new InitializeProjectInputObject(
-                $phpNamespaceOwner,
-                $composerVendor,
                 $initialVersion,
                 $gitBaseBranch,
                 $gitUserName,
@@ -253,6 +251,8 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 $docsGitBaseBranch,
                 $docsGithubRepoOwner,
                 $docsGithubRepoName,
+                $phpNamespaceOwner,
+                $composerVendor,
                 $myCompanyName,
                 $myCompanyEmail,
                 $myCompanyWebsite,

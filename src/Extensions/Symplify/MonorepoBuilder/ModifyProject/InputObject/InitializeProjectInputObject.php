@@ -7,8 +7,6 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 class InitializeProjectInputObject implements InitializeProjectInputObjectInterface
 {
     public function __construct(
-        private string $phpNamespaceOwner,
-        private string $composerVendor,
         private string $initialVersion,
         private string $gitBaseBranch,
         private string $gitUserName,
@@ -18,20 +16,12 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
         private string $docsGitBaseBranch,
         private string $docsGithubRepoOwner,
         private string $docsGithubRepoName,
+        private string $phpNamespaceOwner,
+        private string $composerVendor,
         private string $myCompanyName,
         private string $myCompanyEmail,
         private string $myCompanyWebsite,
     ) {
-    }
-
-    public function getPHPNamespaceOwner(): string
-    {
-        return $this->phpNamespaceOwner;
-    }
-
-    public function getComposerVendor(): string
-    {
-        return $this->composerVendor;
     }
 
     public function getInitialVersion(): string
@@ -77,6 +67,16 @@ class InitializeProjectInputObject implements InitializeProjectInputObjectInterf
     public function getDocsGithubRepoName(): string
     {
         return $this->docsGithubRepoName;
+    }
+
+    public function getPHPNamespaceOwner(): string
+    {
+        return $this->phpNamespaceOwner;
+    }
+
+    public function getComposerVendor(): string
+    {
+        return $this->composerVendor;
     }
 
     public function getMyCompanyName(): string
