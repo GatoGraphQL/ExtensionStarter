@@ -12,7 +12,7 @@ use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\AbstractConv
  * Update the constraint to the Gato GraphQL plugin to its
  * latest PROD version
  */
-class BumpVersionConstraintToGatoGraphQLPluginInPluginMainFileReleaseWorker extends AbstractConvertVersionInPluginMainFileReleaseWorker
+class UpdateVersionConstraintToGatoGraphQLPluginInPluginMainFileReleaseWorker extends AbstractConvertVersionInPluginMainFileReleaseWorker
 {
     public function work(Version $version): void
     {
