@@ -29,28 +29,30 @@ else
     # the one attached to the `generate_plugins` workflow
     # from in GitHub Actions when merging a PR.
     #
-    # However, notice that the version constraint for the
-    # Gato GraphQL plugin will (most likely) fail!
+    # --------------------------------------------------------------------------------
+    #
+    # Warning: The validation of the version constraint for the
+    #          Gato GraphQL plugin might fail!
     #
     # That's because the DEV version is always one step
     # ahead than the PROD version. For instance, the ongoing
-    # DEV version may be `1.1.0-dev`, and the latest PROD
-    # version may be `1.0.10`.
+    # DEV version in the source code may be `1.1.0-dev`, and
+    # the latest PROD version may be `1.0.10`.
     #
     # @see layers/GatoGraphQLForWP/plugins/hello-dolly/gatographql-hello-dolly.php
     #
     # Then, the constraint in the generated DEV plugin will be:
     #
-    #   $mainPluginVersionConstraint = '^1.1';
+    #   $gatoGraphQLPluginVersionConstraint = '^1.1';
     # 
     # And since the Gato GraphQL plugin has version 1.0.10, it will fail.
     # 
-    # To fix this, either edit the plugin's file (in the wp-content/plugins
-    # folder), and adapt the version constraint to something that works:
+    # To fix this, edit the plugin's file (in the wp-content/plugins
+    # folder), and adapt the version constraint to one that works:
     #
-    #   $mainPluginVersionConstraint = '^1.0';
+    #   $gatoGraphQLPluginVersionConstraint = '^1.0';
     # 
-    # Or otherwise, install the latest DEV version of the Gato GraphQL
+    # Otherwise, install the latest DEV version of the Gato GraphQL
     # plugin (plus the "gatographql-testing" and "gatographql-testing-schema"
     # plugins) as these will have the same version.
     #
