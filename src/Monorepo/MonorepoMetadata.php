@@ -31,7 +31,7 @@ final class MonorepoMetadata
     /**
      * @gatographql-project-info
      *
-     * This const is needed to generate the "dev-main" alias
+     * This const is needed to generate the DEV branch alias
      * to install packages locally using Composer,
      * it is the default branch to push code to when
      * doing a "monorepo split", and the branch from which
