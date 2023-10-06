@@ -38,11 +38,8 @@
         "build-server": [
             "Composer\\Config::disableProcessTimeout",
             "lando init --source remote --remote-url https://wordpress.org/latest.tar.gz --recipe wordpress --webroot wordpress --name gatographql-extensions-for-prod",
-            "@update-deps",
             "@start-server",
             "@install-site"
-        ],
-        "update-deps": [
         ],
         "init-server": "@start-server",
         "start-server": [
