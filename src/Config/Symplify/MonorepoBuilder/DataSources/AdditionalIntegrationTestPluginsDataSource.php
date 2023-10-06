@@ -20,7 +20,6 @@ class AdditionalIntegrationTestPluginsDataSource extends UpstreamAdditionalInteg
      */
     public function getAdditionalIntegrationTestPlugins(): array
     {
-        // @todo Complete for Hello Dolly!
         return [];
     }
 }
