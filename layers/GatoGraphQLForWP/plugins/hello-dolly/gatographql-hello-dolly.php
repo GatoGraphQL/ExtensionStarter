@@ -81,6 +81,22 @@ add_action(
         // Unless this extension is included inside a bundle...
         if (!$extensionManager->isExtensionBundled(GatoGraphQLExtension::class))  {
             /**
+             * @gatographql-extension-starter-info
+             * @gatographql-extension-starter-action-required
+             * 
+             * If the extension is an integration for some plugin (eg: WooCommerce,
+             * Yoast SEO or, in this case, Hello Dolly), add below:
+             * 
+             * - the plugin's main file
+             * - the minimum required version (via a Composer version constraint)
+             * 
+             * The code below will check that the plugin, with the needed version,
+             * is installed and activated. If it is not, the extension will not be loaded.
+             *
+             * @see https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
+             *
+             * ------------------------------------------------------------
+             * 
              * Validate the Hello Dolly plugin is active and satisfy
              * the required version constraint
              */
