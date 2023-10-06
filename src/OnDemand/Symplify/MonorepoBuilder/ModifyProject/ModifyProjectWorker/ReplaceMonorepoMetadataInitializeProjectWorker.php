@@ -52,6 +52,7 @@ class ReplaceMonorepoMetadataInitializeProjectWorker extends AbstractReplaceMono
     {
         return [
             'VERSION' => $this->getInitialVersionForDev($inputObject),
+            'LATEST_PROD_VERSION' => '',
             'GIT_BASE_BRANCH' => $inputObject->getGitBaseBranch(),
             'GIT_USER_NAME' => $inputObject->getGitUserName(),
             'GIT_USER_EMAIL' => $inputObject->getGitUserEmail(),
