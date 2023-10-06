@@ -11,7 +11,7 @@ class ConfigureSchemaNamespacingCompilerPass extends AbstractConfigureSchemaName
 {
     protected function getSchemaNamespace(): string
     {
-        return 'MyCompany';
+        return 'MyCompanyForGatoGraphQL';
     }
 
     /**
