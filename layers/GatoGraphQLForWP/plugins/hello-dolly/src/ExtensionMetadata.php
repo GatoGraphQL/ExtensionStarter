@@ -7,15 +7,20 @@ namespace MyCompanyForGatoGraphQL\HelloDolly;
 final class ExtensionMetadata
 {
     /**
-     * @gatographql-extension-starter-info
+     * @gatographql-project-info
      *
-     * This is the default branch to push code to when
-     * doing a "monorepo split".
+     * This is the branch from which to serve images
+     * inside the plugin's documentation (pointing to
+     * raw.githubusercontent.com) for the generated
+     * plugin for DEV.
+     * 
+     * (For the generated plugin for PROD, the {tag}
+     * is used instead of the {branch}.)
      */
     final public const DOCS_GIT_BASE_BRANCH = 'main';
 
     /**
-     * @gatographql-extension-starter-info
+     * @gatographql-project-info
      *
      * GitHub organization account hosting the documentation
      * for this project (by default the project itself),
@@ -25,7 +30,7 @@ final class ExtensionMetadata
     final public const DOCS_GITHUB_REPO_OWNER = 'GatoGraphQL';
 
     /**
-     * @gatographql-extension-starter-info
+     * @gatographql-project-info
      *
      * GitHub repo name hosting hosting the documentation
      * for this project (by default the project itself),

@@ -34,7 +34,7 @@ class PackageOrganizationDataSource extends UpstreamPackageOrganizationDataSourc
     }
 
     /**
-     * @gatographql-extension-starter-info
+     * @gatographql-project-info
      *
      * List of paths to the packages and account names in GitHub where to
      * do the "monorepo split"

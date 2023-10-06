@@ -81,8 +81,7 @@ add_action(
         // Unless this extension is included inside a bundle...
         if (!$extensionManager->isExtensionBundled(GatoGraphQLExtension::class))  {
             /**
-             * @gatographql-extension-starter-info
-             * @gatographql-extension-starter-action-required
+             * @gatographql-extension-info
              * 
              * If the extension is an integration for some plugin (eg: WooCommerce,
              * Yoast SEO or, in this case, Hello Dolly), add below:
