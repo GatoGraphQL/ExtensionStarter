@@ -7,6 +7,11 @@
             "name": "My Company",
             "email": "name@company.com",
             "homepage": "https://mysite.com"
+        },
+        {
+            "name": "Leonardo Losoviz",
+            "email": "leo@getpop.org",
+            "homepage": "https://gatographql.com"
         }
     ],
     "require": {
@@ -51,8 +56,6 @@
     },
     "autoload": {
         "psr-4": {
-            "MyCompanyForGatoGraphQL\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/src",
-            "MyCompanyForGatoGraphQL\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/src",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/src",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/src",
             "GatoGraphQL\\PluginUtils\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/plugin-utils/src",
@@ -61,6 +64,8 @@
             "GraphQLByPoP\\GraphQLEndpointForWP\\": "submodules/GatoGraphQL/layers/GraphQLByPoP/packages/graphql-endpoint-for-wp/src",
             "GraphQLByPoP\\GraphQLRequest\\": "submodules/GatoGraphQL/layers/GraphQLByPoP/packages/graphql-request/src",
             "GraphQLByPoP\\GraphQLServer\\": "submodules/GatoGraphQL/layers/GraphQLByPoP/packages/graphql-server/src",
+            "MyCompanyForGatoGraphQL\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/src",
+            "MyCompanyForGatoGraphQL\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/src",
             "PHPUnitForGatoGraphQL\\DummySchema\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/dummy-schema/src",
             "PHPUnitForGatoGraphQL\\DummyWPSchema\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/dummy-wp-schema/src",
             "PHPUnitForGatoGraphQL\\GatoGraphQLTesting\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/src",
@@ -189,8 +194,6 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "MyCompanyForGatoGraphQL\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/tests",
-            "MyCompanyForGatoGraphQL\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/tests",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/tests",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/tests",
             "GatoGraphQL\\PluginUtils\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/plugin-utils/tests",
@@ -199,6 +202,8 @@
             "GraphQLByPoP\\GraphQLEndpointForWP\\": "submodules/GatoGraphQL/layers/GraphQLByPoP/packages/graphql-endpoint-for-wp/tests",
             "GraphQLByPoP\\GraphQLRequest\\": "submodules/GatoGraphQL/layers/GraphQLByPoP/packages/graphql-request/tests",
             "GraphQLByPoP\\GraphQLServer\\": "submodules/GatoGraphQL/layers/GraphQLByPoP/packages/graphql-server/tests",
+            "MyCompanyForGatoGraphQL\\HelloDollySchema\\": "layers/GatoGraphQLForWP/packages/hello-dolly-schema/tests",
+            "MyCompanyForGatoGraphQL\\HelloDolly\\": "layers/GatoGraphQLForWP/plugins/hello-dolly/tests",
             "PHPUnitForGatoGraphQL\\DummySchema\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/dummy-schema/tests",
             "PHPUnitForGatoGraphQL\\DummyWPSchema\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/dummy-wp-schema/tests",
             "PHPUnitForGatoGraphQL\\GatoGraphQLTesting\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/tests",
@@ -525,8 +530,6 @@
         "install-deps-build-js": "Build all JS packages, blocks and editor scripts from Gato GraphQL - Hello Dolly, installing all dependencies from npm"
     },
     "replace": {
-        "my-company-for-gatographql/hello-dolly": "self.version",
-        "my-company-for-gatographql/hello-dolly-schema": "self.version",
         "gatographql/external-dependency-wrappers": "self.version",
         "gatographql/gatographql": "self.version",
         "gatographql/plugin-utils": "self.version",
@@ -554,6 +557,8 @@
         "graphql-by-pop/graphql-request": "self.version",
         "graphql-by-pop/graphql-server": "self.version",
         "graphql-by-pop/graphql-voyager": "self.version",
+        "my-company-for-gatographql/hello-dolly": "self.version",
+        "my-company-for-gatographql/hello-dolly-schema": "self.version",
         "phpunit-for-gatographql/dummy-schema": "self.version",
         "phpunit-for-gatographql/dummy-wp-schema": "self.version",
         "phpunit-for-gatographql/gatographql": "self.version",
@@ -660,5 +665,7 @@
         "pop-wp-schema/taxonomymeta": "self.version",
         "pop-wp-schema/usermeta": "self.version",
         "pop-wp-schema/users": "self.version"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
