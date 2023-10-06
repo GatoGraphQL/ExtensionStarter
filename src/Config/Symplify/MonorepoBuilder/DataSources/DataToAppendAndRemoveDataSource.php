@@ -44,6 +44,8 @@ class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataS
          * ```
          * composer merge-monorepo
          * ```
+         *
+         * (This will regenerate `composer.json`)
          */
         $dataToRemove['require-dev']['wpackagist-plugin/hello-dolly'] = '*';
         return $dataToRemove;
