@@ -7,21 +7,6 @@ namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 use PoP\PoP\Config\Symplify\MonorepoBuilder\DataSources\PluginDataSource as UpstreamPluginDataSource;
 use PoP\ExtensionStarter\Monorepo\MonorepoMetadata;
 
-/**
- * Please notice: Presently no extension installs a 3rd party
- * package under its vendor/, hence scoping is not executed.
- *
- * If there is, add the following code to the entry:
- *
- *     ```
- *     'scoping' => [
- *         'phpscoper_config' => $this->rootDir . '/ci/scoping/scoper-extensions.inc.php',
- *         'rector_test_config' => $this->rootDir . '/ci/scoping/rector-test-scoping-extensions.php',
- *     ],
- *     ```
- *
- * ...and copy/paste/edit those 2 files, changing their paths to the extension.
- */
 class PluginDataSource extends UpstreamPluginDataSource
 {
     /**
@@ -43,21 +28,40 @@ class PluginDataSource extends UpstreamPluginDataSource
                 'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/hello-dolly/rector.php',
 
                 /**
-                 * @gatographql-project-info
+                 * @gatographql-extension-info
                  *
-                 * Uncomment the lines below to enable publishing
-                 * the generated plugin's code to a GitHub repo,
+                 * Uncomment the lines below to publish the code
+                 * for the generated plugin (done via the `generate_plugins`
+                 * workflow in GitHub Actions) to a GitHub repo,
                  * with the repo name indicated under 'dist_repo_name'
                  * and owner under 'dist_repo_organization'
                  *
                  * (eg: https://github.com/GatoGraphQL/gatographql-hello-dolly-dist).
                  *
-                 * Create the repository if it doesn't exist!
+                 * The repository must be created if it doesn't exist.
                  *
                  * @gatographql-example submodules/GatoGraphQL/src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php
                  */
                 // 'dist_repo_name' => 'gatographql-hello-dolly-dist',
                 // 'dist_repo_organization' => MonorepoMetadata::GITHUB_REPO_OWNER,
+
+                /**
+                 * @gatographql-extension-info
+                 *
+                 * If an extension makes use of 3rd-party dependencies, then these
+                 * must be scoped (as to avoid potential conflicts with other plugins
+                 * installed in the same WordPress site).
+                 *
+                 * For this, uncomment the lines below, and edit those 2 files,
+                 * adding the paths to the corresponding packages that need to be scoped.
+                 * 
+                 * @gatographql-example submodules/GatoGraphQL/src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php
+                 * @see https://github.com/humbug/php-scoper
+                 */
+                // 'scoping' => [
+                //     'phpscoper_config' => $this->rootDir . '/ci/scoping/scoper-extensions.inc.php',
+                //     'rector_test_config' => $this->rootDir . '/ci/scoping/rector-test-scoping-extensions.php',
+                // ],
             ],
         ];
 
