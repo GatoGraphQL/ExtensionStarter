@@ -175,15 +175,6 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getModifyProjectInputObject(InputInterface $input, string $stage): ModifyProjectInputObjectInterface
     {
         if ($this->inputObject === null) {
-            $phpNamespaceOwner = (string) $input->getArgument(Option::PHP_NAMESPACE_OWNER);
-            // validation
-            $this->initializeProjectGuard->guardPHPNamespaceOwner($phpNamespaceOwner);
-
-            $composerVendor = (string) $input->getOption(Option::COMPOSER_VENDOR);
-            if ($composerVendor === '') {
-                $composerVendor = $this->stringUtils->camelToUnderscore($phpNamespaceOwner);
-            }
-
             $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
             if ($initialVersion === '') {
                 $initialVersion = $this->getDefaultInitialVersion();
@@ -222,6 +213,15 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             $docsGithubRepoName = (string) $input->getOption(Option::DOCS_GITHUB_REPO_NAME);
             if ($docsGithubRepoName === '') {
                 $docsGithubRepoName = $githubRepoName;
+            }
+            
+            $phpNamespaceOwner = (string) $input->getArgument(Option::PHP_NAMESPACE_OWNER);
+            // validation
+            $this->initializeProjectGuard->guardPHPNamespaceOwner($phpNamespaceOwner);
+
+            $composerVendor = (string) $input->getOption(Option::COMPOSER_VENDOR);
+            if ($composerVendor === '') {
+                $composerVendor = $this->stringUtils->camelToUnderscore($phpNamespaceOwner);
             }
 
             $myCompanyName = (string) $input->getOption(Option::MY_COMPANY_NAME);
