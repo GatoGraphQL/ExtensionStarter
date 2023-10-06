@@ -68,6 +68,8 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             ),
 
             'https://github.com/GatoGraphQL/ExtensionStarter' => $githubRepo,
+
+            'dev-main' => sprintf('dev-%s', $inputObject->getGitBaseBranch()),
         ];
     }
 
@@ -78,6 +80,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
     {
         $rootFolder = $this->getRootFolder();
         return [
+            $rootFolder . '/.github/workflows',
             $rootFolder . '/.vscode',
             $rootFolder . '/ci',
             $rootFolder . '/layers',
