@@ -50,10 +50,10 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
             self::SCHEMA_HELLO_DOLLY => [
                 /**
                  * @gatographql-extension-info
-                 * 
+                 *
                  * If the extension is an integration for some plugin (eg: WooCommerce,
                  * Yoast SEO or, in this case, Hello Dolly), add below:
-                 * 
+                 *
                  * - the plugin's name
                  * - the plugin's main file
                  * - the minimum required version (via a Composer version constraint)

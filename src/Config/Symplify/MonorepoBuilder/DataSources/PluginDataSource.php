@@ -29,7 +29,7 @@ class PluginDataSource extends UpstreamPluginDataSource
                  *
                  * The files matching the patterns will be excluded from the
                  * generated plugin.
-                 * 
+                 *
                  * In the case of documentation images (i.e. `'docs/images/\*'`),
                  * these are excluded, and instead they are referenced directly
                  * from the GitHub repo (pointing to raw.githubusercontent.com).
@@ -71,7 +71,7 @@ class PluginDataSource extends UpstreamPluginDataSource
                  *
                  * For this, uncomment the lines below, and edit those 2 files,
                  * adding the paths to the corresponding packages that need to be scoped.
-                 * 
+                 *
                  * @gatographql-example submodules/GatoGraphQL/src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php
                  * @see https://github.com/humbug/php-scoper
                  */

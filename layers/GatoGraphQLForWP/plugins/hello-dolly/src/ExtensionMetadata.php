@@ -13,7 +13,7 @@ final class ExtensionMetadata
      * inside the plugin's documentation (pointing to
      * raw.githubusercontent.com) for the generated
      * plugin for DEV.
-     * 
+     *
      * (For the generated plugin for PROD, the {tag}
      * is used instead of the {branch}.)
      */

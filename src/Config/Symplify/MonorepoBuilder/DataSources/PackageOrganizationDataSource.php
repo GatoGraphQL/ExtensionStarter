@@ -48,13 +48,13 @@ class PackageOrganizationDataSource extends UpstreamPackageOrganizationDataSourc
      * to "GatoGraphQL", the package under
      * layers/GatoGraphQLForWP/packages/hello-dolly-schema will be pushed
      * to http://github.com/GatoGraphQL/hello-dolly-schema.)
-     * 
+     *
      * @gatographql-project-action-maybe-required
-     * 
+     *
      * If the "monorepo split" is enabled (i.e. if not disabled in
      * MonorepoSplitPackageDataSource.php), a GitHub repo for each
      * of the packages needs to be created.
-     * 
+     *
      * @see src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php
      *
      * @return array<string,string>

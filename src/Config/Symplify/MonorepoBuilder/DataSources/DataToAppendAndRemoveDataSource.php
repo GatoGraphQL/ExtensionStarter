@@ -32,7 +32,7 @@ class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataS
         $dataToRemove = parent::getDataToRemove();
         /**
          * @gatographql-project-info
-         * 
+         *
          * Avoid all integration plugins from being installed
          * in the monorepo, as there's no need for them.
          *

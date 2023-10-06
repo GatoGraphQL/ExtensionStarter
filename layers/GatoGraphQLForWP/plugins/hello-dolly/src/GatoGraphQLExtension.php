@@ -36,7 +36,7 @@ class GatoGraphQLExtension extends AbstractGatoGraphQLExtension
     {
         /**
          * @gatographql-extension-info
-         * 
+         *
          * If the extension is an integration for some plugin (eg: WooCommerce,
          * Yoast SEO or, in this case, Hello Dolly), add below the plugin's main file
          */

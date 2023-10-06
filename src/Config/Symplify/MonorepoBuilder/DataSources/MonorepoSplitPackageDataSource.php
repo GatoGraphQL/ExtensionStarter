@@ -54,7 +54,7 @@ class MonorepoSplitPackageDataSource extends UpstreamMonorepoSplitPackageDataSou
      * extension plugin (hence all packages are disabled by default).
      *
      * @gatographql-project-action-maybe-required
-     * 
+     *
      * To enable doing "monorepo split", return an empty array below.
      *
      * @return string[]

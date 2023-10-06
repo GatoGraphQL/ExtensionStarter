@@ -27,7 +27,7 @@ class MonorepoDowngradeContainerConfigurationService extends UpstreamMonorepoDow
     {
         /**
          * @gatographql-extension-info
-         * 
+         *
          * Add stubs for all plugins for which there is an extension
          * (eg: WooCommerce, Yoast SEO or, in this case, Hello Dolly).
          *
