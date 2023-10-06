@@ -73,6 +73,10 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
                 '%s-gatographql-extensions.lndo.site',
                 $inputObject->getComposerVendor()
             ),
+            'gatographql-extensions-for-prod.lndo.site' => sprintf(
+                '%s-gatographql-extensions-for-prod.lndo.site',
+                $inputObject->getComposerVendor()
+            ),
         ];
         if ($inputObject->getGitBaseBranch() !== 'main') {
             $replacements['dev-main'] = sprintf('dev-%s', $inputObject->getGitBaseBranch());
