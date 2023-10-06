@@ -28,8 +28,20 @@ return [
             ->notPath([
                 // Exclude all composer.json from own libraries (they get broken!)
                 '#[my\-company\-for\-gatographql]/*/composer.json#',
-                // // Exclude all libraries for WordPress: Packages ending in "-wp"
-                // '#[my\-company\-for\-gatographql]/[a-zA-Z0-9_-]*-wp/#',
+
+                /**
+                 * @gatographql-extension-info
+                 * 
+                 * WordPress packages cannot be scoped, as PHP-Scoper might also
+                 * scope the calls to WordPress methods.
+                 *
+                 * As a convention, packages ending in "-wp" are for WordPress.
+                 *
+                 * @gatographql-example submodules/GatoGraphQL/submodules/GatoGraphQL/ci/scoping/scoper-gatographql.inc.php
+                 */
+                // Exclude all libraries for WordPress: Packages ending in "-wp"
+                '#[my\-company\-for\-gatographql]/[a-zA-Z0-9_-]*-wp/#',
+
                 // ...
                 // Exclude libraries
                 // ...
