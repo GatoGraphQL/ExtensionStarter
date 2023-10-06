@@ -34,6 +34,8 @@ add_action(
     'plugins_loaded',
     function (): void {
         /**
+         * @gatographql-extension-info
+         *
          * Extension's name and version.
          *
          * Use a stability suffix as supported by Composer.
@@ -51,9 +53,12 @@ add_action(
         $extensionVersion = '1.1.0-dev';
         $extensionName = \__('Gato GraphQL - Hello Dolly', 'gatographql-hello-dolly');
         /**
-         * @gatographql-readonly-code
+         * @gatographql-extension-info
+         *
+         * The minimum version required from the Gato GraphQL plugin
+         * to activate the extension.
          */
-        $mainPluginVersionConstraint = '^1.1';
+        $gatoGraphQLPluginVersionConstraint = '^1.1';
         
         /**
          * Validate Gato GraphQL is active
@@ -78,7 +83,7 @@ add_action(
             GatoGraphQLExtension::class,
             $extensionVersion,
             $extensionName,
-            $mainPluginVersionConstraint
+            $gatoGraphQLPluginVersionConstraint
         )) {
             return;
         }
