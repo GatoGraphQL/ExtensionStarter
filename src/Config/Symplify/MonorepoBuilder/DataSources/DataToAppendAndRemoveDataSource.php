@@ -30,6 +30,15 @@ class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataS
     public function getDataToRemove(): array
     {
         $dataToRemove = parent::getDataToRemove();
+        /**
+         * @gatographql-project-info
+         * 
+         * Avoid all integration plugins from being installed
+         * in the monorepo, as there's no need for them.
+         *
+         * (They need only be installed in the Lando sites,
+         * under webservers/, for doing integration tests):
+         */
         $dataToRemove['require-dev']['wpackagist-plugin/hello-dolly'] = '*';
         return $dataToRemove;
     }
