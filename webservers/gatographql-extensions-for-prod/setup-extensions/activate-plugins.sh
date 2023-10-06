@@ -27,39 +27,10 @@ else
     #
     # You can also test the plugin generated for DEV, i.e.
     # the one attached to the `generate_plugins` workflow
-    # from in GitHub Actions when merging a PR.
+    # from in GitHub Actions when merging a PR. Download the
+    # plugin zip file from the "Summary" entry:
     #
-    # --------------------------------------------------------------------------------
-    #
-    # Warning: The validation of the version constraint for the
-    #          Gato GraphQL plugin might fail!
-    #
-    # That's because the DEV version is always one step
-    # ahead than the PROD version. For instance, the ongoing
-    # DEV version in the source code may be `1.1.0-dev`, and
-    # the latest PROD version may be `1.0.10`.
-    #
-    # @see layers/GatoGraphQLForWP/plugins/hello-dolly/gatographql-hello-dolly.php
-    #
-    # Then, the constraint in the generated DEV plugin will be:
-    #
-    #   $gatoGraphQLPluginVersionConstraint = '^1.1';
-    # 
-    # And since the Gato GraphQL plugin has version 1.0.10, it will fail.
-    # 
-    # To fix this, edit the plugin's file (in the wp-content/plugins
-    # folder), and adapt the version constraint to one that works:
-    #
-    #   $gatoGraphQLPluginVersionConstraint = '^1.0';
-    # 
-    # Otherwise, install the latest DEV version of the Gato GraphQL
-    # plugin (plus the "gatographql-testing" and "gatographql-testing-schema"
-    # plugins) as these will have the same version.
-    #
-    # These plugins can be downloaded from the "Summary" item from the
-    # most-recent execution of the `generate_plugins` workflow in the GitHub repo:
-    #
-    # @see https://github.com/GatoGraphQL/GatoGraphQL/actions/workflows/generate_plugins.yml
+    # @see https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml
     #
     ################################################################
     echo "Please download the latest PROD version of the 'Gato GraphQL - Hello Dolly' plugin from your GitHub repo, and install it on this WordPress site"
