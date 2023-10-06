@@ -27,10 +27,10 @@ final class MonorepoMetadata
      * @gatographql-readonly-code
      */
     final public const VERSION = '1.1.0-dev';
-    
+
     /**
      * @gatographql-project-info
-     * 
+     *
      * This const will reflect the latest published tag in GitHub.
      *
      * Important: This code is read-only! A ReleaseWorker

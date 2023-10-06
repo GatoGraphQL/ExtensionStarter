@@ -18,6 +18,7 @@ use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetNextMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateBranchAliasReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateReplaceReleaseWorker;
+use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateVersionConstraintToGatoGraphQLPluginInPluginMainFileReleaseWorker;
 use PoP\PoP\Config\Symplify\MonorepoBuilder\DataSources\ReleaseWorkersDataSource as UpstreamReleaseWorkersDataSource;
 use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\BumpVersionForDevInMonorepoMetadataFileReleaseWorker as UpstreamBumpVersionForDevInMonorepoMetadataFileReleaseWorker;
 use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\BumpVersionForDevInPluginMainFileReleaseWorker as UpstreamBumpVersionForDevInPluginMainFileReleaseWorker;
@@ -104,6 +105,25 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
                 [
                     $downstreamClass
                 ]
+            );
+        }
+
+        /**
+         * Append additional workers
+         */
+        $afterWorkerAppendWorkerClasses = [
+            ConvertVersionForProdInPluginMainFileReleaseWorker::class => [
+                UpdateVersionConstraintToGatoGraphQLPluginInPluginMainFileReleaseWorker::class,
+            ],
+        ];
+        foreach ($afterWorkerAppendWorkerClasses as $workerClass => $additionalWorkerClasses) {
+            /** @var int */
+            $pos = array_search($workerClass, $releaseWorkerClasses);
+            array_splice(
+                $releaseWorkerClasses,
+                $pos + 1,
+                0,
+                $additionalWorkerClasses
             );
         }
 
