@@ -116,6 +116,12 @@ add_action(
                     $requiredPluginFile,
                 ]);
                 \add_action('admin_notices', function () use ($extensionName, $isWordPressPluginActive, $requiredPluginVersion) {
+                    /**
+                     * @gatographql-extension-info
+                     * 
+                     * If the extension is an integration for some plugin (eg: WooCommerce,
+                     * Yoast SEO or, in this case, Hello Dolly), indicate the plugin's name:
+                     */
                     $pluginName = __('Hello Dolly', 'gatographql-hello-dolly');
                     _e(sprintf(
                         '<div class="notice notice-error"><p>%s</p></div>',
