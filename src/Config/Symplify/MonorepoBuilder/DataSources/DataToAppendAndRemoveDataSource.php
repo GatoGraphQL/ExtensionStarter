@@ -37,7 +37,13 @@ class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataS
          * in the monorepo, as there's no need for them.
          *
          * (They need only be installed in the Lando sites,
-         * under webservers/, for doing integration tests):
+         * under webservers/, for doing integration tests)
+         *
+         * Then run in the monorepo root folder:
+         *
+         * ```
+         * composer merge-monorepo
+         * ```
          */
         $dataToRemove['require-dev']['wpackagist-plugin/hello-dolly'] = '*';
         return $dataToRemove;
