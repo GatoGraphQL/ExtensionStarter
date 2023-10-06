@@ -58,6 +58,15 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             'name@company.com' => $inputObject->getMyCompanyEmail(),
             'https://mysite.com' => $inputObject->getMyCompanyWebsite(),
 
+            'Gato GraphQL - Extension Starter' => sprintf(
+                '%s - Gato GraphQL Extensions',
+                $inputObject->getMyCompanyName()
+            ),
+            'GitHub template repository to quickstart your extension for Gato GraphQL.' => sprintf(
+                'Monorepo hosting the Gato GraphQL Extensions for %s',
+                $inputObject->getMyCompanyName()
+            ),
+
             'https://github.com/GatoGraphQL/ExtensionStarter' => $githubRepo,
         ];
     }
