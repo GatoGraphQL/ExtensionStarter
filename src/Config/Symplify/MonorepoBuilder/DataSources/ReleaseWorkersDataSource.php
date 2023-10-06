@@ -117,11 +117,8 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
             ],
         ];
         foreach ($afterWorkerAppendWorkerClasses as $workerClass => $additionalWorkerClasses) {
+            /** @var int */
             $pos = array_search($workerClass, $releaseWorkerClasses);
-            if ($pos === false) {
-                continue;
-            }
-            /** @var int $pos */
             array_splice(
                 $releaseWorkerClasses,
                 $pos + 1,
