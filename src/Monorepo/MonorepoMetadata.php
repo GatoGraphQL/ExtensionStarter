@@ -17,7 +17,7 @@ final class MonorepoMetadata
      *
      * ------------------------------------------------------------
      *
-     * Modify this const when bumping the code to a new version.
+     * This const will reflect the current version of the monorepo.
      *
      * Important: This code is read-only! A ReleaseWorker
      * will search for this pattern using a regex, to update the
