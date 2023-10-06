@@ -59,4 +59,4 @@ composer test
 
 ## Security
 
-If you discover any security related issues, please email name@company.com instead of using the issue tracker.
+If you discover any security related issues, please email name@mycompany.com instead of using the issue tracker.

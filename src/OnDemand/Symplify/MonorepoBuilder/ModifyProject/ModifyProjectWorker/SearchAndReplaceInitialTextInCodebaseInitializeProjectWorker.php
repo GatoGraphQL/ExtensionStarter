@@ -55,7 +55,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             preg_quote('my-company-for-gatographql') => preg_quote($inputObject->getComposerVendor()),
 
             'My Company' => $inputObject->getMyCompanyName(),
-            'name@company.com' => $inputObject->getMyCompanyEmail(),
+            'name@mycompany.com' => $inputObject->getMyCompanyEmail(),
             'https://mysite.com' => $inputObject->getMyCompanyWebsite(),
 
             'Gato GraphQL - Extension Starter' => sprintf(
