@@ -22,10 +22,27 @@ class PluginDataSource extends UpstreamPluginDataSource
                 'path' => 'layers/GatoGraphQLForWP/plugins/hello-dolly',
                 'plugin_slug' => 'gatographql-hello-dolly',
                 'main_file' => 'gatographql-hello-dolly.php',
+                'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/hello-dolly/rector.php',
+
+                /**
+                 * @gatographql-extension-info
+                 *
+                 * The files matching the patterns will be excluded from the
+                 * generated plugin.
+                 * 
+                 * In the case of documentation images (i.e. `'docs/images/\*'`),
+                 * these are excluded, and instead they are referenced directly
+                 * from the GitHub repo (pointing to raw.githubusercontent.com).
+                 *
+                 * @see layers/GatoGraphQLForWP/plugins/hello-dolly/src/ExtensionMetadata.php
+                 *
+                 * Add other entries as needed.
+                 *
+                 * @gatographql-example submodules/GatoGraphQL/src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php
+                 */
                 'exclude_files' => implode(' ', [
                     'docs/images/\*',
                 ]),
-                'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/hello-dolly/rector.php',
 
                 /**
                  * @gatographql-extension-info
