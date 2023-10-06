@@ -53,25 +53,6 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->setDescription('Initialize the project, replacing the extension starter data with your own data.');
 
         $this->addOption(
-            Option::PHP_NAMESPACE_OWNER,
-            null,
-            InputOption::VALUE_REQUIRED,
-            sprintf(
-                'PHP namespace owner to use in the codebase (eg: "MyCompanyName"). If not provided, the value from the "%s" option is used',
-                Option::GITHUB_REPO_OWNER
-            )
-        );
-        $this->addOption(
-            Option::COMPOSER_VENDOR,
-            null,
-            InputOption::VALUE_REQUIRED,
-            sprintf(
-                'Composer vendor to use in the repo. If not provided, it is generated from the "%s" option',
-                Option::PHP_NAMESPACE_OWNER
-            )
-        );
-
-        $this->addOption(
             Option::INITIAL_VERSION,
             null,
             InputOption::VALUE_REQUIRED,
@@ -136,6 +117,25 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
                 'Name of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
                 Option::GITHUB_REPO_NAME
             ),
+        );
+
+        $this->addOption(
+            Option::PHP_NAMESPACE_OWNER,
+            null,
+            InputOption::VALUE_REQUIRED,
+            sprintf(
+                'PHP namespace owner to use in the codebase (eg: "MyCompanyName"). If not provided, the value from the "%s" option is used',
+                Option::GITHUB_REPO_OWNER
+            )
+        );
+        $this->addOption(
+            Option::COMPOSER_VENDOR,
+            null,
+            InputOption::VALUE_REQUIRED,
+            sprintf(
+                'Composer vendor to use in the repo. If not provided, it is generated from the "%s" option',
+                Option::PHP_NAMESPACE_OWNER
+            )
         );
 
         $this->addOption(
