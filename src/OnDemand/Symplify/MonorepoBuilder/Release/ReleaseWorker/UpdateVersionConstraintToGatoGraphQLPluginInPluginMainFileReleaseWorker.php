@@ -29,7 +29,7 @@ class UpdateVersionConstraintToGatoGraphQLPluginInPluginMainFileReleaseWorker ex
     {
         return 'Update the constraint to the Gato GraphQL plugin to its latest PROD version, in the plugin main file';
     }
-    
+
     protected function getPluginDataSource(): PluginDataSource
     {
         return new PluginDataSource(dirname(__DIR__, 6));
