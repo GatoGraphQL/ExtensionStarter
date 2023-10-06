@@ -112,7 +112,7 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
          * Append additional workers
          */
         $afterWorkerAppendWorkerClasses = [
-            BumpVersionForDevInPluginMainFileReleaseWorker::class => [
+            ConvertVersionForProdInPluginMainFileReleaseWorker::class => [
                 UpdateVersionConstraintToGatoGraphQLPluginInPluginMainFileReleaseWorker::class,
             ],
         ];

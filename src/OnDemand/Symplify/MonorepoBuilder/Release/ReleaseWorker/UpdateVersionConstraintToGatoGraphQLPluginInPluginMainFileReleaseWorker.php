@@ -16,7 +16,7 @@ class UpdateVersionConstraintToGatoGraphQLPluginInPluginMainFileReleaseWorker ex
 {
     public function work(Version $version): void
     {
-        $requiredGatoGraphQLPluginVersion = $this->upstreamVersionUtils->getRequiredNextFormat(UpstreamMonorepoMetadata::LATEST_PROD_VERSION);
+        $requiredGatoGraphQLPluginVersion = $this->versionUtils->getRequiredCurrentFormat(UpstreamMonorepoMetadata::LATEST_PROD_VERSION);
 
         $replacements = [
             "/" . preg_quote('$gatoGraphQLPluginVersionConstraint') . " = '[0-9.^]+';/" => "\$gatoGraphQLPluginVersionConstraint = '$requiredGatoGraphQLPluginVersion';",
