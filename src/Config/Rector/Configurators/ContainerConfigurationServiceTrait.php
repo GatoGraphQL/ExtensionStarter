@@ -32,7 +32,10 @@ trait ContainerConfigurationServiceTrait
          *
          * This is to avoid PHPStan producing error from unexisting classes,
          * methods, constants, etc, when analyzing those packages.
-         * (Eg: when calling `hello_dolly_get_lyric()` in the field resolver)
+         * (Eg: when calling `hello_dolly_get_lyric()` in the field resolver).
+         *
+         * It also avoids Rector from producing errors when downgrading
+         * the code.
          *
          * @see layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php
          *

@@ -25,6 +25,14 @@ class MonorepoDowngradeContainerConfigurationService extends UpstreamMonorepoDow
      */
     protected function getBootstrapFiles(): array
     {
+        /**
+         * @gatographql-extension-info
+         * 
+         * Add stubs for all plugins for which there is an extension
+         * (eg: WooCommerce, Yoast SEO or, in this case, Hello Dolly).
+         *
+         * @see src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php
+         */
         return array_merge(
             parent::getBootstrapFiles(),
             [
