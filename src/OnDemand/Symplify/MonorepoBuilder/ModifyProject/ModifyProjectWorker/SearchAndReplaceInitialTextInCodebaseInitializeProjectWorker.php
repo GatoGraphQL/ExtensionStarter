@@ -45,7 +45,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             $inputObject->getGithubRepoName()
         );
         $landoSubdomain = sprintf(
-            '%s-gatographql-extensions',
+            'gatographql-%s-extensions',
             $inputObject->getComposerVendor()
         );
         $replacements = [
