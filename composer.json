@@ -395,8 +395,14 @@
         ],
         "preview-hello-dolly-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/hello-dolly/rector.php --dry-run layers/GatoGraphQLForWP/plugins/hello-dolly \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
         "ssh-server": "composer ssh-server -d webservers/gatographql-extensions",
-        "build-server": "composer build-server -d webservers/gatographql-extensions",
-        "build-server-prod": "composer build-server -d webservers/gatographql-extensions-for-prod",
+        "build-server": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer build-server -d webservers/gatographql-extensions"
+        ],
+        "build-server-prod": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer build-server -d webservers/gatographql-extensions-for-prod"
+        ],
         "init-server": "composer init-server -d webservers/gatographql-extensions",
         "init-server-upstream": "composer init-server -d submodules/GatoGraphQL",
         "init-server-prod": "composer init-server -d webservers/gatographql-extensions-for-prod",
