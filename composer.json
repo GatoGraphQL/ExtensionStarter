@@ -450,6 +450,7 @@
         "purge-cache": "composer purge-cache -d webservers/gatographql-extensions",
         "purge-cache-upstream": "composer purge-cache -d submodules/GatoGraphQL",
         "server-info": "composer server-info -d webservers/gatographql-extensions",
+        "server-info-prod": "composer server-info -d webservers/gatographql-extensions-for-prod",
         "update-monorepo-config": [
             "@merge-monorepo",
             "@merge-phpstan"
@@ -525,6 +526,7 @@
         "delete-settings": "Delete the plugin settings from the DB",
         "purge-cache": "Purge the cache for the 'Gato GraphQL' in DEV",
         "server-info": "Retrieve information from the Lando webserver",
+        "server-info-prod": "Retrieve information from the Lando webserver for PROD",
         "validate-monorepo": "Validate that version constraints for dependencies are the same for all packages",
         "update-monorepo-config": "Update the monorepo's composer.json and phpstan.neon files, with data from all packages",
         "merge-monorepo": "Create the monorepo's composer.json file, containing all dependencies from all packages",
