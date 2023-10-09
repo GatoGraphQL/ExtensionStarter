@@ -439,6 +439,7 @@
             "composer rebuild-app-and-server -d webservers/gatographql-extensions-for-prod"
         ],
         "stop-server": "composer stop-server -d webservers/gatographql-extensions",
+        "stop-server-prod": "composer stop-server -d webservers/gatographql-extensions-for-prod",
         "stop-server-upstream": "composer stop-server -d submodules/GatoGraphQL",
         "enable-caching": "composer enable-caching -d webservers/gatographql-extensions",
         "disable-caching": "composer disable-caching -d webservers/gatographql-extensions",
@@ -515,6 +516,7 @@
         "log-server-warnings": "Show (on real time) the warnings from the Lando webserver",
         "rebuild-app-and-server": "Update the App dependencies (from Composer) and rebuild the Lando webserver",
         "stop-server": "Stop the Lando webserver",
+        "stop-server-prod": "Stop the Lando webserver for PROD",
         "enable-caching": "Enable caching for the 'Gato GraphQL' in DEV",
         "disable-caching": "Disable caching for the 'Gato GraphQL' in DEV",
         "enable-restrictive-defaults": "Use restrictive default values for the Settings",
