@@ -6,10 +6,10 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 
 final class Option
 {
-    /**
-     * @var string
-     */
-    public final const INITIAL_VERSION = 'initial-version';
+    // /**
+    //  * @var string
+    //  */
+    // public final const INITIAL_VERSION = 'initial-version';
     /**
      * @var string
      */

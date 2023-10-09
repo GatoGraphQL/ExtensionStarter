@@ -52,13 +52,13 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Initialize the project, replacing the extension starter data with your own data.');
 
-        $this->addOption(
-            Option::INITIAL_VERSION,
-            null,
-            InputOption::VALUE_REQUIRED,
-            'Initial version to use in the monorepo, in semver format (Major.Minor.Patch)',
-            $this->getDefaultInitialVersion()
-        );
+        // $this->addOption(
+        //     Option::INITIAL_VERSION,
+        //     null,
+        //     InputOption::VALUE_REQUIRED,
+        //     'Initial version to use in the monorepo, in semver format (Major.Minor.Patch)',
+        //     $this->getDefaultInitialVersion()
+        // );
         $this->addOption(
             Option::GIT_BASE_BRANCH,
             null,
@@ -175,10 +175,11 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
     protected function getModifyProjectInputObject(InputInterface $input, string $stage): ModifyProjectInputObjectInterface
     {
         if ($this->inputObject === null) {
-            $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
-            if ($initialVersion === '') {
-                $initialVersion = $this->getDefaultInitialVersion();
-            }
+            $initialVersion = '0.1.0';
+            // $initialVersion = (string) $input->getOption(Option::INITIAL_VERSION);
+            // if ($initialVersion === '') {
+            //     $initialVersion = $this->getDefaultInitialVersion();
+            // }
             // validation
             $this->initializeProjectGuard->guardVersion($initialVersion);
 
@@ -264,10 +265,10 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
         return $this->inputObject;
     }
 
-    protected function getDefaultInitialVersion(): string
-    {
-        return '0.1.0';
-    }
+    // protected function getDefaultInitialVersion(): string
+    // {
+    //     return '0.1.0';
+    // }
 
     protected function getDefaultGitHubRepoOwner(): string
     {
