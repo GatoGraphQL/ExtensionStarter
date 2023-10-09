@@ -87,6 +87,8 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
         ];
         if ($inputObject->getGitBaseBranch() !== 'main') {
             $replacements['dev-main'] = sprintf('dev-%s', $inputObject->getGitBaseBranch());
+            // Branches in GitHub Action Workflows
+            $replacements['- main'] = sprintf('- %s', $inputObject->getGitBaseBranch());
         }
         return $replacements;
     }
