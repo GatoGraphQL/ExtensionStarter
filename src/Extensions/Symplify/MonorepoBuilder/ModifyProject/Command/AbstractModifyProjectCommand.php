@@ -63,7 +63,6 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
         $totalWorkerCount = count($modifyProjectWorkers);
         $i = 0;
         $isDryRun = (bool) $input->getOption(Option::DRY_RUN);
-        // $version = $this->versionResolver->resolveVersion($input, $stage);
 
         foreach ($modifyProjectWorkers as $modifyProjectWorker) {
             $title = sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $modifyProjectWorker->getDescription($inputObject);
@@ -71,7 +70,6 @@ abstract class AbstractModifyProjectCommand extends AbstractSymplifyCommand
             $this->modifyProjectWorkerReporter->printMetadata($modifyProjectWorker);
 
             if (! $isDryRun) {
-                // $modifyProjectWorker->work($version);
                 $modifyProjectWorker->work($inputObject);
             }
         }
