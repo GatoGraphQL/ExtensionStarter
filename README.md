@@ -20,13 +20,22 @@ If these tests are enabled, add the badge code:
 ![Integration tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml/badge.svg)
 -->
 
+## Requirements
+
+- [Lando](https://lando.dev/)
+- [Composer](https://getcomposer.org/)
+
+### Recommended to use
+
+- [XDebug](https://xdebug.org/) (integrated out of the box when using [VSCode](https://code.visualstudio.com/))
+
 ## What are Gato GraphQL Extensions?
 
 Gato GraphQL extensions add functionality and expand the GraphQL schema provided by the [Gato GraphQL](https://gatographql.com) plugin.
 
 Check [gatographql.com/extensions](https://gatographql.com/extensions/) to browse the list of existing (commercial) extensions, to give you ideas of what you can do via them.
 
-## About this Extension Starter
+## Architecture of the Gato GraphQL Extension Starter
 
 `GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
 
@@ -34,7 +43,7 @@ Check [gatographql.com/extensions](https://gatographql.com/extensions/) to brows
 
 The monorepo is managed via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
 
-## Why a multi-monorepo
+## Why a Multi-monorepo
 
 The benefits of using the multi-monorepo approach as a starter project are several.
 
@@ -141,14 +150,9 @@ This is useful for:
 
 - Allowing users to create issues, pinpointing where a problem happens
 
-## Requirements
+## Multi-Monorepo Commands
 
-- [Lando](https://lando.dev/)
-- [Composer](https://getcomposer.org/)
-
-### Recommended to use
-
-- [XDebug](https://xdebug.org/) (integrated out of the box when using [VSCode](https://code.visualstudio.com/))
+The following commands are available, via `composer`:
 
 ## Create and Initialize your Gato GraphQL Extension Project
 
