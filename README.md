@@ -89,9 +89,11 @@ Then, during development, you can add a break at some point in the code, and ana
 
 When generating the extension plugin, images to be displayed in the documentation are excluded from the `.zip` file (thus reducing its size), and referenced directly from the GitHub repo (under `raw.githubusercontent.com`).
 
-## Splitting the monorepo
+## Features
 
-## Downgrading code
+### Monorepo Split
+
+### Code Downgrades (PHP 8.1 during DEV, to PHP 7.1 for PROD)
 
 ## Requirements
 
@@ -102,7 +104,7 @@ When generating the extension plugin, images to be displayed in the documentatio
 
 - [XDebug](https://xdebug.org/) (integrated out of the box when using [VSCode](https://code.visualstudio.com/))
 
-## Create your Gato GraphQL extension project
+## Create and Initialize your Gato GraphQL Extension Project
 
 Follow these steps:
 
