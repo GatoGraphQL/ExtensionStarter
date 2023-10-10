@@ -130,9 +130,13 @@ $ git tag 0.0.0 && git push --tags
 
 This will commit the codebase to your GitHub repo, and tag it with version `0.0.0`. (This tag is needed to start incrementing the version automatically from now on.)
 
-### 2. Clone the project locally
+## Build the Lando webserver for DEV
 
-### 
+Run:
+
+```bash
+composer build-server
+```
 
 ## Architecture of the Extension Starter
 
