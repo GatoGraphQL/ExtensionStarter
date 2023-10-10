@@ -27,7 +27,21 @@ If these tests are enabled, add the badge code:
 
 ## About this Extension Starter
 
+`GatoGraphQL/ExtensionStarter` is a GitHub template repository, from which to easily kickstart a GitHub repository to develop and release extensions for [Gato GraphQL](https://gatographql.com).
 
+`GatoGraphQL/ExtensionStarter` is a monorepo, containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
+
+`GatoGraphQL/ExtensionStarter` is also a multi-monorepo, containing the source code of the main Gato GraphQL plugin, hosted under the [`GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL) monorepo, as a Git submodule.
+
+- It contains not only 1, but multiple extension plugins for Gato GraphQL (and also their packages)
+
+- It contains not only 1, but multiple extension plugins for Gato GraphQL (and also their packages)
+
+The created repository will contain all the tools 
+
+`GatoGraphQL/ExtensionStarter` is a 
+
+[Gato GraphQL](https://github.com/GatoGraphQL/GatoGraphQL).
 
 ## Create your Gato GraphQL extension project
 
@@ -35,9 +49,7 @@ Follow these steps:
 
 ### 1. Create a new repository from this template
 
-`GatoGraphQL/ExtensionStarter` is a GitHub template repository.
-
-Create your own repository from it:
+Create your own repository from the `GatoGraphQL/ExtensionStarter` template:
 
 - Click on "Use this template => Create a new repository"
 - Select the GitHub owner, and choose a proper name for your repository (eg: `youraccount/GatoGraphQLExtensionsForMyCompany`)
