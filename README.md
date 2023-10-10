@@ -204,6 +204,21 @@ From then on, run:
 composer init-server-prod
 ```
 
+## Updating the monorepo
+
+After adding a plugin or package to the monorepo, the configuration must be updated.
+
+Run:
+
+```bash
+composer update-monorepo-config
+```
+
+This command will:
+
+- Update the root `composer.json` with the new packages
+- Update the root `phpstan.neon` with the new packages
+
 ## Architecture of the Extension Starter
 
 `GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
