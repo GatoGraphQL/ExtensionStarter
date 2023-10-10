@@ -20,11 +20,6 @@ If these tests are enabled, add the badge code:
 ![Integration tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml/badge.svg)
 -->
 
-## Requirements
-
-- PHP 8.1+ for development
-- PHP 7.2+ for production
-
 ## About this Extension Starter
 
 `GatoGraphQL/ExtensionStarter` is a GitHub template repository, from which to easily kickstart a GitHub repository to develop and release extensions for [Gato GraphQL](https://gatographql.com).
@@ -42,6 +37,11 @@ The created repository will contain all the tools
 `GatoGraphQL/ExtensionStarter` is a 
 
 [Gato GraphQL](https://github.com/GatoGraphQL/GatoGraphQL).
+
+## Requirements
+
+- [Lando](https://lando.dev/)
+- [Composer](https://getcomposer.org/)
 
 ## Create your Gato GraphQL extension project
 
