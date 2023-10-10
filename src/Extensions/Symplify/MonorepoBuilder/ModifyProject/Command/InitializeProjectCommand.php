@@ -218,7 +218,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
 
             $phpNamespaceOwner = (string) $input->getOption(Option::PHP_NAMESPACE_OWNER);
             if ($phpNamespaceOwner === '') {
-                $phpNamespaceOwner = $this->stringUtils->dashesToCamelCase($githubRepoOwner, true);
+                $phpNamespaceOwner = $this->stringUtils->dashesToCamelCase(str_replace('_', '-', $githubRepoOwner), true);
             }
             // validation
             $this->initializeProjectGuard->guardPHPNamespaceOwner($phpNamespaceOwner);
