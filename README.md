@@ -25,6 +25,10 @@ If these tests are enabled, add the badge code:
 - PHP 8.1+ for development
 - PHP 7.2+ for production
 
+## About this Extension Starter
+
+
+
 ## Create your Gato GraphQL extension project
 
 Follow these steps:
@@ -40,13 +44,15 @@ Create your own repository from it:
 - Choose if to make it Public or Private
 - Click on "Create repository"
 
-This will create a copy of this repo
+### 2. Clone the project locally
 
-Clone the monorepo, with the `--recursive` (to also clone submodule `GatoGraphQL/GatoGraphQL`):
+Once you have created your repository `youraccount/GatoGraphQLExtensionsForMyCompany`, clone it in your local drive using the `--recursive` option (to also clone Git submodule `GatoGraphQL/GatoGraphQL`):
 
 ```bash
-git clone --recursive https://github.com/GatoGraphQL/ExtensionStarter.git
+git clone --recursive https://github.com/youraccount/GatoGraphQLExtensionsForMyCompany
 ```
+
+### 
 
 And then install all the dependencies, via Composer
 
