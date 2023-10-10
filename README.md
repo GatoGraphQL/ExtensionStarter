@@ -131,10 +131,11 @@ This will commit the codebase to your GitHub repo, and tag it with version `0.0.
 
 ## Build the Lando webserver for DEV
 
-This Lando webserver will use:
+This Lando webserver uses:
 
 - The source code on the repo
 - PHP 8.1
+- XDebug enabled
 
 To build the webserver, run:
 
@@ -171,10 +172,11 @@ composer init-server
 
 ## Build the Lando webserver for PROD
 
-This Lando webserver will use:
+This Lando webserver uses:
 
 - The generated plugins for PROD
 - PHP 7.2
+- XDebug not enabled
 
 To build the webserver, run:
 
