@@ -73,10 +73,10 @@ Input your values in the command below, and then run:
 
 ```bash
 composer initialize-project -- \
-  --php-namespace-owner={MyCompanyName} \
-  --my-company-name="{My Company Name}" \
-  --my-company-email={email@mycompany.com} \
-  --my-company-website={https://mycompany.com}
+  --php-namespace-owner=MyCompanyName \
+  --my-company-name="My Company Name" \
+  --my-company-email=email@mycompany.com \
+  --my-company-website=https://www.mycompany.com
 ```
 
 These arguments (and additional ones, see below) are optional. If any of them is not provided, a default value is computed from the configuration in Git and the GitHub repo.
@@ -124,8 +124,7 @@ Review the changes applied to the codebase on the step above. If any value is no
 Once all values are right, run:
 
 ```bash
-$ git add . && git commit -m "Initialized project" && git push origin
-$ git tag 0.0.0 && git push --tags
+git add . && git commit -m "Initialized project" && git push origin && git tag 0.0.0 && git push --tags
 ```
 
 This will commit the codebase to your GitHub repo, and tag it with version `0.0.0`. (This tag is needed to start incrementing the version automatically from now on.)
