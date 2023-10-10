@@ -245,27 +245,23 @@ This is useful when:
 
 ### Re-build the Lando webserver
 
-To rebuild the Lando webserver, run:
+When a plugin or package folder has been renamed, after updating the `overrides` section in the Lando config to the new path, you need to rebuild the Lando webserver.
+
+Run:
 
 ```bash
 composer rebuild-server
 ```
 
-This is needed to:
-
-- Regenerate the `overrides` section in Lando, providing the mapping to the source code (eg: because a plugin or package folder has been renamed)
-
 ### Regenerate the Composer autoload files
 
-To also compile the Composer autoload files for all the plugins installed in the webserver, run:
+When a new extension plugin is added to the monorepo, it must have its Composer autoload file generated, and the plugin must be symlinked to the Lando webserver.
+
+Run:
 
 ```bash
 composer rebuild-app-and-server
 ```
-
-This is needed to:
-
-- Compile the Composer file of any new extension plugin added to the monorepo.
 
 ## Build the Lando webserver for PROD
 
