@@ -58,7 +58,7 @@ git clone --recursive https://github.com/my-account/GatoGraphQLExtensionsForMyCo
 
 ### Install Composer dependencies
 
-Run in the terminal:
+Run:
 
 ```bash
 $ cd {project folder}
@@ -67,7 +67,15 @@ $ cd submodules/GatoGraphQL && composer install && cd ../.. && composer install
 
 ### Initialize the Project
 
+Replace the variables with your own values, and run:
 
+```bash
+composer initialize-project -- \
+    --php-namespace-owner={MyCompanyName} \
+    --my-company-name="{My Company Name}" \
+    --my-company-email={email@mycompany.com} \
+    --my-company-website={https://mycompany.com}
+```
 
 ### 2. Clone the project locally
 
