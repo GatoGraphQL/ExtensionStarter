@@ -1,6 +1,6 @@
 # Gato GraphQL - Extension Starter
 
-GitHub template repository to quickstart your extensions for Gato GraphQL.
+GitHub template repository to develop and release your extensions for Gato GraphQL.
 
 ![Unit tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/unit_tests.yml/badge.svg)
 ![Downgrade PHP tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/downgrade_php_tests.yml/badge.svg)
