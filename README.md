@@ -32,11 +32,51 @@ Check [gatographql.com/extensions](https://gatographql.com/extensions/) to brows
 
 `GatoGraphQL/ExtensionStarter` is also a [multi-monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-4-multi-monorepo), containing the source code of the main Gato GraphQL plugin, hosted under the [`GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL) monorepo, as a Git submodule.
 
-The benefits of using the multi-monorepo approach as a starter project are many:
+## Why a multi-monorepo
 
-- 
+The benefits of using the multi-monorepo approach as a starter project are several.
 
-(This , all extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) are hosted together, on a single repo.
+_Btw, all extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (that is 26 extensions and 4 bundles to date) are hosted on a repo created from `GatoGraphQL/ExtensionStarter`! So you get access to the same tools as the creators of these commercial extensions are themselves using._
+
+### Browse the Gato GraphQL source code
+
+The source code of the Gato GraphQL plugin is always readily-available when developing our extensions, and it is kept up to date just by fetching the Git changes from the upstream repo.
+
+This is important as documentation (mostly when we first start developing with Gato GraphQL) and for debugging (XDebug is integrated out of the box, see below).
+
+### Host the codebase for multiple extensions, and all their packages, all together
+
+By hosting all extensions and their packages together, you avoid [dependency hell](https://en.wikipedia.org/wiki/Dependency_hell).
+
+You are also able to do bulk modifications, such as searching and replacing a piece of code across different plugins, in a single action (and push it to the repo using a single commit).
+
+
+The monorepo is managed via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
+
+
+### Use the same GitHub Actions workflows developed for the Gato GraphQL plugin
+
+The GitHub Actions workflows developed for the Gato GraphQL plugin are readily-available to create and release our extensions. This includes Continuous Integration workflows to:
+
+- Generate the plugin (when merging a PR, or creating a release from a tag)
+- Scope the extension plugin
+- Downgrade the code from PHP 8.1 (for DEV), to PHP 7.2 (for PROD)
+- Run coding standard checks (via PHPCS), unit tests (via PHPUnit) and static code analysis (via PHPStan)
+- Run integration tests via InstaWP (automatically installing the newly-generated extension plugin on the InstaWP instance)
+
+As a consequence, you only need to concentrate on the actual code for your extension, and nothing else. Everything already works, and you can have a plugin ready for distribution within 5 minutes of creating your repo.
+
+### Lando is set-up and configured
+
+Lando is already set-up and configured, making 2 webservers available, to test:
+
+1. The extensions under development, during DEV, using PHP 8.1
+2. The generated extension plugins, for PROD, using PHP 7.2
+
+For the first webserver, for DEV, Lando is also mapped to use the source code from the repo. Hence, changes to the source code will be immediately reflected in the webserver.
+
+XDebug is already integrated, and thoroughly mapped 
+
 
 
 - It contains not only 1, but multiple extension plugins for Gato GraphQL (and also their packages)
@@ -48,6 +88,8 @@ The created repository will contain all the tools
 `GatoGraphQL/ExtensionStarter` is a 
 
 [Gato GraphQL](https://github.com/GatoGraphQL/GatoGraphQL).
+
+### Splitting the monorepo
 
 ## Requirements
 
