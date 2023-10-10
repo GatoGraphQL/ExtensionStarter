@@ -110,7 +110,7 @@ This will print:
 --docs-github-repo-owner=DOCS-GITHUB-REPO-OWNER  Owner of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `github-repo-owner` is used
 --docs-github-repo-name=DOCS-GITHUB-REPO-NAME    Name of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `github-repo-name` is used
 --php-namespace-owner=PHP-NAMESPACE-OWNER        PHP namespace owner to use in the codebase (eg: "MyCompanyName"). If not provided, the value from the "github-repo-owner" option is used
---composer-vendor=COMPOSER-VENDOR                Composer vendor to use in the repo. If not provided, it is generated from the "php-namespace-owner" option
+--composer-vendor=COMPOSER-VENDOR                Composer vendor to distribute the packages in the repo. If not provided, it is generated from the "php-namespace-owner" option
 --my-company-name=MY-COMPANY-NAME                Name of the person or company owning the extension. If not provided, the value for option `git-user-name` is used
 --my-company-email=MY-COMPANY-EMAIL              Email of the person or company owning the extension. If not provided, the value for option `git-user-email` is used
 --my-company-website=MY-COMPANY-WEBSITE          Website of the person or company owning the extension. If not provided, the GitHub repo for this project is used
@@ -145,6 +145,8 @@ composer build-server
 ```
 
 After a few minutes, the website will be available under `https://gatographql-{composer-vendor}-extensions.lndo.site`.
+
+(`{composer-vendor}` is an argument to the `initialize-project` command above; its default value is generated from the `php-namespace-owner` option.)
 
 The URL is printed on the console under "APPSERVER URLS" (you will need to scroll up):
 
