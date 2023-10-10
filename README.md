@@ -28,11 +28,16 @@ Check [gatographql.com/extensions](https://gatographql.com/extensions/) to brows
 
 ## About this Extension Starter
 
-`GatoGraphQL/ExtensionStarter` is a template repository, from which you can easily kickstart a GitHub repo to develop and release your own extensions for [Gato GraphQL](https://gatographql.com).
+`GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
 
-`GatoGraphQL/ExtensionStarter` is a monorepo, containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
+`GatoGraphQL/ExtensionStarter` is also a [multi-monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-4-multi-monorepo), containing the source code of the main Gato GraphQL plugin, hosted under the [`GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL) monorepo, as a Git submodule.
 
-`GatoGraphQL/ExtensionStarter` is also a multi-monorepo, containing the source code of the main Gato GraphQL plugin, hosted under the [`GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL) monorepo, as a Git submodule.
+The benefits of using the multi-monorepo approach as a starter project are many:
+
+- 
+
+(This , all extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) are hosted together, on a single repo.
+
 
 - It contains not only 1, but multiple extension plugins for Gato GraphQL (and also their packages)
 
