@@ -218,7 +218,7 @@ The GraphQL schema is composed via services. Some examples are:
 
 ### Re-installing the WordPress site
 
-You can at any moment re-install the WordPress site, and install the initial data set.
+You can at any moment re-install the WordPress site (and import the initial dataset).
 
 Run:
 
