@@ -79,7 +79,11 @@ Lando is already set-up and configured, making 2 webservers available:
 
 The first Lando webserver (for DEV) maps the source code from the repo to be used within the container. Hence, changes to the source code will be immediately reflected in the webserver.
 
-In addition, XDebug is already integrated (when using VSCode), mapping both to the extension's source code, and the main Gato GraphQL plugin's source code. Then, during development, you can add a break at some point in the code, and analyze the full stack trace to see how the code and logic works.
+### XDebug is ready
+
+XDebug is already integrated (when using VSCode), mapping both to the extension's source code, and the main Gato GraphQL plugin's source code.
+
+Then, during development, you can add a break at some point in the code, and analyze the full stack trace to see how the code and logic works.
 
 ## Splitting the monorepo
 
