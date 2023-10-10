@@ -25,14 +25,14 @@ final class StringUtils
     /**
      * @see https://stackoverflow.com/a/2792045/14402031
      */
-    public function dashesToCamelCase(string $string, bool $capitalizeFirstCharacter = false): string 
-    {    
+    public function dashesToCamelCase(string $string, bool $capitalizeFirstCharacter = false): string
+    {
         $str = str_replace('-', '', ucwords($string, '-'));
-    
+
         if (!$capitalizeFirstCharacter) {
             $str = lcfirst($str);
         }
-    
+
         return $str;
     }
 }
