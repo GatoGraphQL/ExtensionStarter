@@ -216,7 +216,19 @@ The GraphQL schema is composed via services. Some examples are:
 
 </details>
 
-### Re-installing the WordPress site
+## Start the Lando webserver for DEV
+
+Building the webserver (above) is needed only the first time.
+
+From then on, run:
+
+```bash
+composer init-server
+```
+
+## Manage the Lando webserver for DEV
+
+### Re-install the WordPress site
 
 You can at any moment re-install the WordPress site (and import the initial dataset).
 
@@ -231,7 +243,7 @@ This is useful when:
 - The installation when doing `build-server` was halted midway (or failed for some reason)
 - Running the integration tests was not completed (modifying the DB data to a different state, so that running the tests again will fail)
 
-### Re-building Lando
+### Re-build the Lando webserver
 
 To rebuild the Lando webserver, run:
 
@@ -243,7 +255,7 @@ This is needed to:
 
 - Regenerate the `overrides` section in Lando, providing the mapping to the source code (eg: because a plugin or package folder has been renamed)
 
-#### Re-compiling Composer
+### Regenerate the Composer autoload files
 
 To also compile the Composer autoload files for all the plugins installed in the webserver, run:
 
@@ -254,16 +266,6 @@ composer rebuild-app-and-server
 This is needed to:
 
 - Compile the Composer file of any new extension plugin added to the monorepo.
-
-## Start the Lando webserver for DEV
-
-Building the webserver (above) is needed only the first time.
-
-From then on, run:
-
-```bash
-composer init-server
-```
 
 ## Build the Lando webserver for PROD
 
