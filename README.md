@@ -119,7 +119,16 @@ This will print:
 
 ### Commit, Push and Tag the Initial Project
 
-Review the changes applied to the codebase on the step above. If any value needs
+Review the changes applied to the codebase on the step above. If any value is not correct (eg: if the PHP namespace should be a different one), you can undo all changes, and run `composer initialize-project` again providing the right values.
+
+Once all values are right, run:
+
+```bash
+$ git add . && git commit -m "Initialized project" && git push origin
+$ git tag 0.0.0 && git push --tags
+```
+
+This will commit the codebase to your GitHub repo, and tag it with version `0.0.0`. (This tag is needed to start incrementing the version automatically from now on.)
 
 ### 2. Clone the project locally
 
