@@ -85,6 +85,10 @@ XDebug is already integrated (when using VSCode), mapping both to the extension'
 
 Then, during development, you can add a break at some point in the code, and analyze the full stack trace to see how the code and logic works.
 
+### Documentation images in the extension are served from the repo
+
+When generating the extension plugin, images to be displayed in the documentation are excluded from the `.zip` file (thus reducing its size), and referenced directly from the GitHub repo (under `raw.githubusercontent.com`).
+
 ## Splitting the monorepo
 
 ## Downgrading code
