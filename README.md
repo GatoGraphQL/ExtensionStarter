@@ -87,7 +87,7 @@ composer initialize-project -- --dry-run
 
 <details>
 
-<summary>All command arguments</summary>
+<summary>All <code>initialize-project</code> command arguments</summary>
 
 To print all the arguments for the `initialize-project` command, run:
 
