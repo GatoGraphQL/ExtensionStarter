@@ -149,9 +149,8 @@ To print the URL again, run:
 composer server-info
 ```
 
-Login credentials:
+`wp-admin` login credentials:
 
-- URL: https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin/
 - Username: `admin`
 - Password: `admin`
 
