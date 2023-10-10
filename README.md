@@ -22,6 +22,7 @@ If these tests are enabled, add the badge code:
 
 ## Requirements
 
+- PHP 8.1
 - [Lando](https://lando.dev/)
 - [Composer](https://getcomposer.org/)
 
