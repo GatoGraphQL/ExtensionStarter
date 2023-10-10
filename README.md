@@ -20,9 +20,15 @@ If these tests are enabled, add the badge code:
 ![Integration tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml/badge.svg)
 -->
 
+## What are Gato GraphQL Extensions?
+
+Gato GraphQL extensions add functionality and expand the GraphQL schema provided by the [Gato GraphQL](https://gatographql.com) plugin.
+
+Check [gatographql.com/extensions](https://gatographql.com/extensions/) to browse the list of existing (commercial) extensions, to give you ideas of what you can do via them.
+
 ## About this Extension Starter
 
-`GatoGraphQL/ExtensionStarter` is a GitHub template repository, from which to easily kickstart a GitHub repository to develop and release extensions for [Gato GraphQL](https://gatographql.com).
+`GatoGraphQL/ExtensionStarter` is a template repository, from which you can easily kickstart a GitHub repo to develop and release your own extensions for [Gato GraphQL](https://gatographql.com).
 
 `GatoGraphQL/ExtensionStarter` is a monorepo, containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
 
