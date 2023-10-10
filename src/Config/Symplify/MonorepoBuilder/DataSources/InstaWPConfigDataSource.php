@@ -32,6 +32,10 @@ class InstaWPConfigDataSource extends UpstreamInstaWPConfigDataSource
              *
              * @see https://github.com/InstaWP/wordpress-testing-automation
              * @see https://instawp.com/how-to-integrate-wordpress-with-git/
+             *
+             * You can provide many entries for InstaWP,
+             * to execute tests against different environments
+             * (eg: using different versions of PHP, and/or WordPress)
              */
             // [
             //     'templateSlug' => '{ INSTAWP_TEMPLATE_SLUG }',
