@@ -108,9 +108,13 @@ As such, changes to the source code will be immediately reflected in the webserv
 
 ### XDebug is already configured
 
-XDebug is already integrated (when using VSCode), mapping both to the extension's source code, and the main Gato GraphQL plugin's source code.
+XDebug is already integrated (when using VSCode), supporting:
 
-Then, during development, you can add a break at some point in the code, and analyze the full stack trace to see how the code and logic works.
+- The extension's source code
+- The main Gato GraphQL plugin's source code (accessible via the Git submodule)
+- The WordPress core files
+
+This allows you to add breakpoints in the code, and analyze the full stack trace to see how the code and logic works, anywhere.
 
 ### Documentation images in the extension are served from the repo
 
