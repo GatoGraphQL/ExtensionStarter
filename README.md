@@ -122,14 +122,14 @@ When generating the extension plugin, images to be displayed in the documentatio
 
 ### Monorepo Split
 
-Even though the code for all plugins and packages is hosted in a monorepo, we can optionally also deploy their code to a separate repo of their own.
-
-This is called a "monorepo split": When pushing code to the monorepo, the code for each of the modified plugins and packages is copied into their own GitHub repo.
+Even though the code for all plugins and packages is hosted all together in a monorepo, we can optionally also deploy their code to a separate repo of their own.
 
 This is useful for:
 
 - Distributing them via Composer
 - Exploring their source code outside of the monorepo
+
+This is achieved via a "monorepo split": When pushing code to the monorepo, the code for each of the modified plugins and packages is copied into their own GitHub repo.
 
 This feature is disabled by default. To enable it, return an empty array in method `getExtensionSkipMonorepoSplitPackagePaths` from class [`MonorepoSplitPackageDataSource`](src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php).
 
