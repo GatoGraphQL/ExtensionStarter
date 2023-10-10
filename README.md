@@ -158,6 +158,21 @@ To print the URL again, run:
 composer server-info
 ```
 
+<details>
+
+<summary>Additional plugins installed in the webserver</summary>
+
+In addition to the main Gato GraphQL plugin, 2 other plugins are installed:
+
+- [Gato GraphQL - Testing](submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/gatographql-testing.php)
+- [Gato GraphQL - Testing Schema](submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema/gatographql-testing-schema.php)
+
+These are utilities to run integration tests for Gato GraphQL (for instance, to install the "Dummy CPT" to test field `Root.customPosts`, and others).
+
+Besides, some initial configuration has been applied on the Gato GraphQL plugin Settings. That's why the single endpoint is enabled (otherwise, it will be disabled by default).
+
+</details>
+
 ### `wp-admin` login credentials
 
 - Username: `admin`
