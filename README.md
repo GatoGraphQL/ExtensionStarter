@@ -91,9 +91,23 @@ When generating the extension plugin, images to be displayed in the documentatio
 
 ## Features
 
+The extension starter offers the following features:
+
+### Code Downgrades (PHP 8.1 during DEV, to PHP 7.2 for PROD)
+
+The source code for the main Gato GraphQL plugin, and its extensions, is PHP 8.1.
+
+The plugin for distribution, though, uses PHP 7.2, thanks to a "downgrade" process of its code via [Rector](https://github.com/rectorphp/rector/).
+
+Downgrading code provides the best trade-off between availability of PHP features (during development), and the size of the potential userbase (when releasing the plugin):
+
+- Use the strict typing features from PHP 8.1 (typed properties, union types, and others) to develop the plugin, reducing the possibility it will contain bugs
+- Increase the potential number of users who can use your plugin, in production, by releasing it with PHP 7.2
+
+Please notice that not all PHP 8.1 features are available, but only those ones that are "downgradeable" via Rector. Check the list of [Supported PHP features in `GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/docs/supported-php-features.md).
+
 ### Monorepo Split
 
-### Code Downgrades (PHP 8.1 during DEV, to PHP 7.1 for PROD)
 
 ## Requirements
 
