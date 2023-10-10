@@ -137,6 +137,24 @@ Run:
 composer build-server
 ```
 
+After a few minutes, the website will be available under `https://gatographql-{composer-vendor}-extensions.lndo.site`.
+
+The URL is printed on the console (you will need to scroll up), under "APPSERVER URLS":
+
+![Lando webserver URL](assets/img/lando-webserver-url.png)
+
+To print the URL again, run:
+
+```bash
+composer server-info
+```
+
+Login credentials:
+
+- URL: https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin/
+- Username: `admin`
+- Password: `admin`
+
 ## Architecture of the Extension Starter
 
 `GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
