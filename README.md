@@ -131,7 +131,12 @@ This will commit the codebase to your GitHub repo, and tag it with version `0.0.
 
 ## Build the Lando webserver for DEV
 
-Run:
+This Lando webserver will use:
+
+- The source code on the repo
+- PHP 8.1
+
+To build the webserver, run:
 
 ```bash
 composer build-server
@@ -139,7 +144,7 @@ composer build-server
 
 After a few minutes, the website will be available under `https://gatographql-{composer-vendor}-extensions.lndo.site`.
 
-The URL is printed on the console (you will need to scroll up), under "APPSERVER URLS":
+The URL is printed on the console under "APPSERVER URLS" (you will need to scroll up):
 
 ![Lando webserver URL](assets/img/lando-webserver-url.png)
 
@@ -149,7 +154,35 @@ To print the URL again, run:
 composer server-info
 ```
 
-`wp-admin` login credentials:
+### `wp-admin` login credentials
+
+- Username: `admin`
+- Password: `admin`
+
+### Build the Lando webserver for PROD
+
+This Lando webserver will use:
+
+- The generated plugins for PROD
+- PHP 7.2
+
+To build the webserver, run:
+
+```bash
+composer build-server-prod
+```
+
+After a few minutes, the website will be available under `https://gatographql-{composer-vendor}-extensions-for-prod.lndo.site`.
+
+(The URL is the same one as for DEV above, plus appending `-for-prod` to the domain name.)
+
+To print the URL again, run:
+
+```bash
+composer server-info-prod
+```
+
+### `wp-admin` login credentials
 
 - Username: `admin`
 - Password: `admin`
