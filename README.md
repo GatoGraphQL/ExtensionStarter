@@ -60,7 +60,7 @@ By hosting all extensions and their packages together, you avoid [dependency hel
 
 You are also able to do bulk modifications, such as searching and replacing a piece of code across different plugins, in a single action (and push it to the repo using a single commit).
 
-### Use the same GitHub Actions workflows developed for the Gato GraphQL plugin
+### Use the GitHub Actions workflows developed for the Gato GraphQL plugin
 
 The GitHub Actions workflows developed for the Gato GraphQL plugin are readily-available to create and release our extensions.
 
