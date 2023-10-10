@@ -120,9 +120,11 @@ This allows you to add breakpoints in the code, and analyze the full stack trace
 
 When generating the extension plugin, images to be displayed in the documentation are excluded from the `.zip` file (thus reducing its size), and referenced directly from the GitHub repo (under `raw.githubusercontent.com`).
 
-### Split the code out of the Monorepo
+### Monorepo Split
 
-When pushing code to the monorepo, the "monorepo split" feature copies the code for each of the modified plugins and packages into their own GitHub repo.
+Even though the code for all plugins and packages is hosted in a monorepo, we can optionally also deploy their code to a separate repo of their own.
+
+This is called a "monorepo split": When pushing code to the monorepo, the code for each of the modified plugins and packages is copied into their own GitHub repo.
 
 This is useful for:
 
