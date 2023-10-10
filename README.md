@@ -289,6 +289,12 @@ composer server-info-prod
 
 The `wp-admin` login credentials are the same ones as for DEV.
 
+To re-install the WordPress site, run:
+
+```bash
+composer reset-db-prod
+```
+
 ## Start the Lando webserver for PROD
 
 Building the webserver (above) is needed only the first time.
