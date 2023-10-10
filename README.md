@@ -159,7 +159,17 @@ composer server-info
 - Username: `admin`
 - Password: `admin`
 
-### Build the Lando webserver for PROD
+## Start the Lando webserver for DEV
+
+Building the webserver (above) is needed only the first time.
+
+From then on, run:
+
+```bash
+composer init-server
+```
+
+## Build the Lando webserver for PROD
 
 This Lando webserver will use:
 
@@ -186,6 +196,16 @@ composer server-info-prod
 
 - Username: `admin`
 - Password: `admin`
+
+## Start the Lando webserver for PROD
+
+Building the webserver (above) is needed only the first time.
+
+From then on, run:
+
+```bash
+composer init-server-prod
+```
 
 ## Architecture of the Extension Starter
 
