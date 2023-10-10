@@ -133,11 +133,13 @@ This is achieved via a "monorepo split": When pushing code to the monorepo, the 
 
 This feature is disabled by default. To enable it, return an empty array in method `getExtensionSkipMonorepoSplitPackagePaths` from class [`MonorepoSplitPackageDataSource`](src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php).
 
-### Distribute PROD code on deployment (Optional)
+### Distribute PROD code to its own repo
 
-As a combination 
+Similar to the monorepo split, when generating the plugin for PROD, we can deploy its code (scoped, downgraded, with the Composer autoload generated, etc) into its own repo.
 
+This is useful for:
 
+- Allowing users to create issues, pinpointing where a problem happens
 
 ## Requirements
 
