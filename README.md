@@ -68,16 +68,16 @@ The GitHub Actions workflows developed for the Gato GraphQL plugin are readily-a
 - Run coding standard checks (via PHPCS), unit tests (via PHPUnit) and static code analysis (via PHPStan)
 - Run integration tests via InstaWP (automatically installing the newly-generated extension plugin on the InstaWP instance)
 
-### Lando is set-up and configured
+### Lando is ready
 
-Lando is already set-up and configured, making 2 webservers available, to test:
+Lando is already set-up and configured, making 2 webservers available:
 
-1. The extensions under development, during DEV, using PHP 8.1
-2. The generated extension plugins, for PROD, using PHP 7.2
+1. A webserver to develop the extensions, using PHP 8.1
+2. A webserver to test the generated extension plugins, using PHP 7.2
 
-For the first webserver, for DEV, Lando is also mapped to use the source code from the repo. Hence, changes to the source code will be immediately reflected in the webserver.
+The first Lando webserver (for DEV) maps the source code from the repo to be used within the container. Hence, changes to the source code will be immediately reflected in the webserver.
 
-XDebug is already integrated, and thoroughly mapped 
+In addition, XDebug is already integrated, mapping both to the extension's source code, and the main Gato GraphQL plugin's source code. Then, you can play with th
 
 
 
@@ -97,6 +97,10 @@ The created repository will contain all the tools
 
 - [Lando](https://lando.dev/)
 - [Composer](https://getcomposer.org/)
+
+### Recommended to use
+
+- [XDebug](https://xdebug.org/) (integrated out of the box when using [VSCode](https://code.visualstudio.com/))
 
 ## Create your Gato GraphQL extension project
 
