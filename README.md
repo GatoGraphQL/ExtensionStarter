@@ -62,13 +62,28 @@ You are also able to do bulk modifications, such as searching and replacing a pi
 
 ### Use the same GitHub Actions workflows developed for the Gato GraphQL plugin
 
-The GitHub Actions workflows developed for the Gato GraphQL plugin are readily-available to create and release our extensions. This includes Continuous Integration workflows to:
+The GitHub Actions workflows developed for the Gato GraphQL plugin are readily-available to create and release our extensions.
+
+This includes Continuous Integration workflows to:
 
 - Generate the plugin (when merging a PR, or creating a release from a tag)
 - Scope the extension plugin
 - Downgrade the code from PHP 8.1 (for DEV), to PHP 7.2 (for PROD)
 - Run coding standard checks (via PHPCS), unit tests (via PHPUnit) and static code analysis (via PHPStan)
 - Run integration tests via InstaWP (automatically installing the newly-generated extension plugin on the InstaWP instance)
+
+### Code Downgrades (PHP 8.1 during DEV, converted to PHP 7.2 for PROD)
+
+The source code for the main Gato GraphQL plugin, and any of its extensions, is PHP 8.1.
+
+For distribution, though, the plugin and extensions use PHP 7.2, thanks to a "downgrade" process of its code via [Rector](https://github.com/rectorphp/rector/).
+
+Downgrading code provides the best trade-off between availability of PHP features (during development), and the size of the potential userbase (when releasing the plugin):
+
+- Use the strict typing features from PHP 8.1 (typed properties, union types, and others) to develop the plugin, reducing the possibility it will contain bugs
+- Increase the potential number of users who can use your plugin, in production, by releasing it with PHP 7.2
+
+**Heads up!** Not all PHP 8.1 features are available, but only those ones that are "downgradeable" via Rector. Check the list of [Supported PHP features in `GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/docs/supported-php-features.md).
 
 ### Lando is ready
 
@@ -89,24 +104,7 @@ Then, during development, you can add a break at some point in the code, and ana
 
 When generating the extension plugin, images to be displayed in the documentation are excluded from the `.zip` file (thus reducing its size), and referenced directly from the GitHub repo (under `raw.githubusercontent.com`).
 
-## Features
-
-The extension starter offers the following features:
-
-### Code Downgrades (PHP 8.1 during DEV, to PHP 7.2 for PROD)
-
-The source code for the main Gato GraphQL plugin, and its extensions, is PHP 8.1.
-
-The plugin for distribution, though, uses PHP 7.2, thanks to a "downgrade" process of its code via [Rector](https://github.com/rectorphp/rector/).
-
-Downgrading code provides the best trade-off between availability of PHP features (during development), and the size of the potential userbase (when releasing the plugin):
-
-- Use the strict typing features from PHP 8.1 (typed properties, union types, and others) to develop the plugin, reducing the possibility it will contain bugs
-- Increase the potential number of users who can use your plugin, in production, by releasing it with PHP 7.2
-
-Please notice that not all PHP 8.1 features are available, but only those ones that are "downgradeable" via Rector. Check the list of [Supported PHP features in `GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/docs/supported-php-features.md).
-
-### Monorepo Split
+### Split the code out of the Monorepo
 
 When pushing code to the monorepo, the "monorepo split" feature copies the code for each of the modified plugins and packages into their own GitHub repo.
 
@@ -117,24 +115,11 @@ This is useful for:
 
 This feature is disabled by default. To enable it, return an empty array in method `getExtensionSkipMonorepoSplitPackagePaths` from class [`MonorepoSplitPackageDataSource`](src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php).
 
+### Distribute PROD code on deployment (Optional)
+
+As a combination 
 
 
-* Partial paths to the packages for which to disable doing a
-* "monorepo split"
-*
-
-*
-* (Eg: package "hello-dolly-schema" could be pushed to
-* http://github.com/GatoGraphQL/hello-dolly-schema.)
-*
-* This feature:
-*
-* Otherwise, it is not needed for creating a Gato GraphQL
-* extension plugin (hence all packages are disabled by default).
-*
-* @gatographql-project-action-maybe-required
-*
-* 
 
 ## Requirements
 
