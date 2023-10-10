@@ -299,11 +299,15 @@ To release version `1.0.0`, run:
 composer release-major
 ```
 
-Executing any of these commands will:
+Executing any of these commands will first prepare the repo for PROD:
 
 - Update the version (in the plugin file's header, readme.txt's Stable tag, others) for all the extension plugins in the monorepo
+- Update the documentation image URLs to point to that tag, under `raw.githubusercontent.com`
 - Commit and push
 - Git tag with the version, and push tag to GitHub
+
+And then, it will prepare the repo for DEV again:
+
 - Update the version to the next DEV version (next number + `-dev`)
 - Commit and push
 
