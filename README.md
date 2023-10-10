@@ -231,6 +231,30 @@ This is useful when:
 - The installation when doing `build-server` was halted midway (or failed for some reason)
 - Running the integration tests was not completed (modifying the DB data to a different state, so that running the tests again will fail)
 
+### Re-building Lando
+
+To rebuild the Lando webserver, run:
+
+```bash
+composer rebuild-server
+```
+
+This is needed to:
+
+- Regenerate the `overrides` section in Lando, providing the mapping to the source code (eg: because a plugin or package folder has been renamed)
+
+#### Re-compiling Composer
+
+To also compile the Composer autoload files for all the plugins installed in the webserver, run:
+
+```bash
+composer rebuild-app-and-server
+```
+
+This is needed to:
+
+- Compile the Composer file of any new extension plugin added to the monorepo.
+
 ## Start the Lando webserver for DEV
 
 Building the webserver (above) is needed only the first time.
