@@ -67,7 +67,9 @@ $ cd submodules/GatoGraphQL && composer install && cd ../.. && composer install
 
 ### Initialize the Project
 
-Replace the variables with your own values, and run:
+This step will replace all the generic strings in the extension starter (the PHP namespace `MyCompanyForGatoGraphQL`, company name `My Company`, and others) with the values corresponding to your project.
+
+Input your values in the command below, and then run:
 
 ```bash
 composer initialize-project -- \
@@ -77,7 +79,7 @@ composer initialize-project -- \
   --my-company-website={https://mycompany.com}
 ```
 
-These arguments (and additional ones, see below) are optional. If not provided, default values are computed from the configuration in Git and the GitHub repo.
+These arguments (and additional ones, see below) are optional. If any of them is not provided, a default value is computed from the configuration in Git and the GitHub repo.
 
 To see the default values, run:
 
@@ -114,6 +116,10 @@ This will print:
 ```
 
 </details>
+
+### Commit, Push and Tag the Initial Project
+
+Review the changes applied to the codebase on the step above. If any value needs
 
 ### 2. Clone the project locally
 
