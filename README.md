@@ -115,7 +115,7 @@ This is useful for:
 - Distributing them via Composer
 - Exploring their source code outside of the monorepo
 
-This feature is disabled by default. To enable it, return an empty array in `getExtensionSkipMonorepoSplitPackagePaths()` in [`src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php`](src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php).
+This feature is disabled by default. To enable it, return an empty array in method [`getExtensionSkipMonorepoSplitPackagePaths` from class `MonorepoSplitPackageDataSource`](https://github.com/GatoGraphQL/ExtensionStarter/blob/32ab3434c161de89d231f1999327f19434c66587/src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php#L62).
 
 
 
