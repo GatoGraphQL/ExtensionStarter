@@ -35,6 +35,38 @@ Gato GraphQL extensions add functionality and expand the GraphQL schema provided
 
 Check [gatographql.com/extensions](https://gatographql.com/extensions/) to browse the list of existing (commercial) extensions, to give you ideas of what you can do via them.
 
+## Create and Initialize your Gato GraphQL Extension Project
+
+Follow these steps:
+
+### 1. Create a new repository from this template
+
+Create your own repository from the `GatoGraphQL/ExtensionStarter` template:
+
+- Click on "Use this template => Create a new repository"
+- Select the GitHub owner, and choose a proper name for your repository (eg: `youraccount/GatoGraphQLExtensionsForMyCompany`)
+- Choose if to make it Public or Private
+- Click on "Create repository"
+
+### 2. Clone the project locally
+
+Once you have created your repository `youraccount/GatoGraphQLExtensionsForMyCompany`, clone it in your local drive using the `--recursive` option (to also clone Git submodule `GatoGraphQL/GatoGraphQL`):
+
+```bash
+git clone --recursive https://github.com/youraccount/GatoGraphQLExtensionsForMyCompany
+```
+
+### 
+
+And then install all the dependencies, via Composer
+
+```bash
+$ cd {project folder}
+$ composer install
+$ cd submodules/GatoGraphQL
+$ composer install
+```
+
 ## Architecture of the Extension Starter
 
 `GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
@@ -89,7 +121,7 @@ This includes Continuous Integration workflows to:
 - Run coding standard checks (via PHPCS), unit tests (via PHPUnit) and static code analysis (via PHPStan)
 - Run integration tests via InstaWP (automatically installing the newly-generated extension plugin on the InstaWP instance)
 
-### Code Downgrades (PHP 8.1 during DEV, converted to PHP 7.2 for PROD)
+### Downgrade Code - PHP 8.1 (during DEV) is converted to PHP 7.2 (for PROD)
 
 The source code for the main Gato GraphQL plugin, and any of its extensions, is PHP 8.1.
 
@@ -161,38 +193,6 @@ This is useful for:
 ## Multi-Monorepo Commands
 
 The following commands are available, via `composer`:
-
-## Create and Initialize your Gato GraphQL Extension Project
-
-Follow these steps:
-
-### 1. Create a new repository from this template
-
-Create your own repository from the `GatoGraphQL/ExtensionStarter` template:
-
-- Click on "Use this template => Create a new repository"
-- Select the GitHub owner, and choose a proper name for your repository (eg: `youraccount/GatoGraphQLExtensionsForMyCompany`)
-- Choose if to make it Public or Private
-- Click on "Create repository"
-
-### 2. Clone the project locally
-
-Once you have created your repository `youraccount/GatoGraphQLExtensionsForMyCompany`, clone it in your local drive using the `--recursive` option (to also clone Git submodule `GatoGraphQL/GatoGraphQL`):
-
-```bash
-git clone --recursive https://github.com/youraccount/GatoGraphQLExtensionsForMyCompany
-```
-
-### 
-
-And then install all the dependencies, via Composer
-
-```bash
-$ cd {project folder}
-$ composer install
-$ cd submodules/GatoGraphQL
-$ composer install
-```
 
 ## Synchronizing the downstream extension project with the upstream Gato GraphQL repo
 
