@@ -192,10 +192,7 @@ To print the URL again, run:
 composer server-info-prod
 ```
 
-### `wp-admin` login credentials
-
-- Username: `admin`
-- Password: `admin`
+The `wp-admin` login credentials are the same ones as for DEV.
 
 ## Start the Lando webserver for PROD
 
