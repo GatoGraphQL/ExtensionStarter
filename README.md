@@ -273,6 +273,56 @@ Run:
 composer rebuild-app-and-server
 ```
 
+## Release your extension plugins
+
+Follow these steps:
+
+### Tag the monorepo as "patch", "minor" or "major"
+
+(Given that the current version is `0.0.0`...)
+
+To release version `0.0.1`, run:
+
+```bash
+composer release-patch
+```
+
+To release version `0.1.0`, run:
+
+```bash
+composer release-minor
+```
+
+To release version `1.0.0`, run:
+
+```bash
+composer release-major
+```
+
+Executing any of these commands will:
+
+- Update the version (in the plugin file's header, readme.txt's Stable tag, others) for all the extension plugins in the monorepo
+- Commit and push
+- Git tag with the version, and push tag to GitHub
+- Update the version to the next DEV version (next number + `-dev`)
+- Commit and push
+
+To preview running the command without actually executing it, append `-- --dry-run`:
+
+```bash
+composer release-patch -- --dry-run
+```
+
+### Create release from tag in GitHub
+
+To generate the release plugin for PROD, head over to tags page in your GitHub repo (eg: `https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags`), and click on the new tag (eg: `0.1.0`).
+
+On the tag page, click on "Create release from tag".
+
+This will trigger the `generate_plugins` workflow, which will generate the extension plugins and attach them as assets to the tag page.
+
+For instance, after tagging Gato GraphQL with `1.0.9`, assets `gatographql-1.0.9.zip`, `gatographql-testing-1.0.9.zip` and `gatographql-testing-schema-1.0.9.zip` were attached to [GatoGraphQL/GatoGraphQL/releases/tag/1.0.9](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/1.0.9)
+
 ## Build the Lando webserver for PROD
 
 This Lando webserver uses:
