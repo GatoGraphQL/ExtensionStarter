@@ -35,7 +35,7 @@ Gato GraphQL extensions add functionality and expand the GraphQL schema provided
 
 Check [gatographql.com/extensions](https://gatographql.com/extensions/) to browse the list of existing (commercial) extensions, to give you ideas of what you can do via them.
 
-## Architecture of the Gato GraphQL Extension Starter
+## Architecture of the Extension Starter
 
 `GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
 
