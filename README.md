@@ -49,6 +49,16 @@ Create your own repository from the `GatoGraphQL/ExtensionStarter` template:
 - Choose if to make it Public or Private
 - Click on "Create repository"
 
+### Disable unused GitHub Actions workflows
+
+The following GitHub Actions workflows are not initially needed:
+
+- [`integration_tests.yml`](.github/workflows/integration_tests.yml): You need to configure InstaWP first
+- [`split_monorepo_tagged.yml`](.github/workflows/split_monorepo_tagged.yml): The "Monorepo Split" is not enabled by default (see section "Monorepo Split" below)
+- [`split_monorepo.yml`](.github/workflows/split_monorepo.yml): Same as above
+
+As such, you can [disable these workflows](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) so they don't run unnecessarily.
+
 ### Clone your repo locally
 
 Once you have created your repository, clone it in your local drive using the `--recursive` option (needed to clone Git submodule `GatoGraphQL/GatoGraphQL`):
