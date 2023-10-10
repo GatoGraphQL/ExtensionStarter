@@ -108,6 +108,33 @@ Please notice that not all PHP 8.1 features are available, but only those ones t
 
 ### Monorepo Split
 
+When pushing code to the monorepo, the "monorepo split" feature copies the code for each of the modified plugins and packages into their own GitHub repo.
+
+This is useful for:
+
+- Distributing them via Composer
+- Exploring their source code outside of the monorepo
+
+This feature is disabled by default. To enable it, return an empty array in `getExtensionSkipMonorepoSplitPackagePaths()` in [`src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php`](src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php).
+
+
+
+* Partial paths to the packages for which to disable doing a
+* "monorepo split"
+*
+
+*
+* (Eg: package "hello-dolly-schema" could be pushed to
+* http://github.com/GatoGraphQL/hello-dolly-schema.)
+*
+* This feature:
+*
+* Otherwise, it is not needed for creating a Gato GraphQL
+* extension plugin (hence all packages are disabled by default).
+*
+* @gatographql-project-action-maybe-required
+*
+* 
 
 ## Requirements
 
