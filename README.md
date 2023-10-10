@@ -160,6 +160,12 @@ composer server-info
 - Username: `admin`
 - Password: `admin`
 
+### Using XDebug
+
+XDebug is enabled but inactive.
+
+To activate XDebug for a request, append parameter `?XDEBUG_TRIGGER=1` to the URL (for any page on the Gato GraphQL plugin, including any page in the wp-admin, the GraphiQL or Interactive Schema public clients, or other).
+
 ## Start the Lando webserver for DEV
 
 Building the webserver (above) is needed only the first time.
