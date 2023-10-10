@@ -178,21 +178,6 @@ Besides, some initial configuration has been applied on the Gato GraphQL plugin 
 - Username: `admin`
 - Password: `admin`
 
-### Re-installing the WordPress site
-
-You can at any moment re-install the WordPress site, and install the initial data set.
-
-Run:
-
-```bash
-composer reset-db
-```
-
-This is useful when:
-
-- The installation when doing `build-server` was halted midway (or failed for some reason)
-- Running the integration tests was not completed (modifying the DB data to a different state, so that running the tests again will fail)
-
 ### Using XDebug
 
 XDebug is enabled but inactive.
@@ -230,6 +215,21 @@ The GraphQL schema is composed via services. Some examples are:
 - Directive resolvers (eg: [`SkipFieldDirectiveResolver`](submodules/GatoGraphQL/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php))
 
 </details>
+
+### Re-installing the WordPress site
+
+You can at any moment re-install the WordPress site, and install the initial data set.
+
+Run:
+
+```bash
+composer reset-db
+```
+
+This is useful when:
+
+- The installation when doing `build-server` was halted midway (or failed for some reason)
+- Running the integration tests was not completed (modifying the DB data to a different state, so that running the tests again will fail)
 
 ## Start the Lando webserver for DEV
 
