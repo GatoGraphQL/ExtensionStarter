@@ -273,6 +273,48 @@ Run:
 composer rebuild-app-and-server
 ```
 
+## Build the Lando webserver for PROD
+
+This Lando webserver uses:
+
+- The generated plugins for PROD
+- PHP 7.2
+- XDebug not enabled
+
+To build the webserver, run:
+
+```bash
+composer build-server-prod
+```
+
+After a few minutes, the website will be available under `https://gatographql-{composer-vendor}-extensions-for-prod.lndo.site`.
+
+(The URL is the same one as for DEV above, plus appending `-for-prod` to the domain name.)
+
+To print the URL again, run:
+
+```bash
+composer server-info-prod
+```
+
+The `wp-admin` login credentials are the same ones as for DEV.
+
+To re-install the WordPress site, run:
+
+```bash
+composer reset-db-prod
+```
+
+## Start the Lando webserver for PROD
+
+Building the webserver (above) is needed only the first time.
+
+From then on, run:
+
+```bash
+composer init-server-prod
+```
+
 ## Release your extension plugins
 
 Follow these steps:
@@ -332,48 +374,6 @@ For instance, after tagging Gato GraphQL with `1.0.9`, assets `gatographql-1.0.9
 Once the extension plugin has been generated, ...
 
 cd webservers/gatographql-extensions-for-prod && lando wp plugin install https://github.com/EffectPoP/LeoGatoExtensions/releases/latest/download/gatographql-hello-dolly-1.0.0.zip --force --activate --path=/app/wordpress && cd ../..
-
-## Build the Lando webserver for PROD
-
-This Lando webserver uses:
-
-- The generated plugins for PROD
-- PHP 7.2
-- XDebug not enabled
-
-To build the webserver, run:
-
-```bash
-composer build-server-prod
-```
-
-After a few minutes, the website will be available under `https://gatographql-{composer-vendor}-extensions-for-prod.lndo.site`.
-
-(The URL is the same one as for DEV above, plus appending `-for-prod` to the domain name.)
-
-To print the URL again, run:
-
-```bash
-composer server-info-prod
-```
-
-The `wp-admin` login credentials are the same ones as for DEV.
-
-To re-install the WordPress site, run:
-
-```bash
-composer reset-db-prod
-```
-
-## Start the Lando webserver for PROD
-
-Building the webserver (above) is needed only the first time.
-
-From then on, run:
-
-```bash
-composer init-server-prod
-```
 
 ## Updating the monorepo
 
