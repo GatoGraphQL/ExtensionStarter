@@ -35,37 +35,41 @@ Gato GraphQL extensions add functionality and expand the GraphQL schema provided
 
 Check [gatographql.com/extensions](https://gatographql.com/extensions/) to browse the list of existing (commercial) extensions, to give you ideas of what you can do via them.
 
-## Create and Initialize your Gato GraphQL Extension Project
+## Install
 
 Follow these steps:
 
-### 1. Create a new repository from this template
+### Create your repo from this template
 
 Create your own repository from the `GatoGraphQL/ExtensionStarter` template:
 
 - Click on "Use this template => Create a new repository"
-- Select the GitHub owner, and choose a proper name for your repository (eg: `youraccount/GatoGraphQLExtensionsForMyCompany`)
+- Select the GitHub owner, and choose a proper name for your repository (eg: `my-account/GatoGraphQLExtensionsForMyCompany`)
 - Choose if to make it Public or Private
 - Click on "Create repository"
 
-### 2. Clone the project locally
+### Clone your repo locally
 
-Once you have created your repository `youraccount/GatoGraphQLExtensionsForMyCompany`, clone it in your local drive using the `--recursive` option (to also clone Git submodule `GatoGraphQL/GatoGraphQL`):
+Once you have created your repository, clone it in your local drive using the `--recursive` option (needed to clone Git submodule `GatoGraphQL/GatoGraphQL`):
 
 ```bash
-git clone --recursive https://github.com/youraccount/GatoGraphQLExtensionsForMyCompany
+git clone --recursive https://github.com/my-account/GatoGraphQLExtensionsForMyCompany
 ```
 
-### 
-
-And then install all the dependencies, via Composer
+### Install Composer dependencies
 
 ```bash
 $ cd {project folder}
-$ composer install
-$ cd submodules/GatoGraphQL
-$ composer install
+$ cd submodules/GatoGraphQL && composer install && cd ../.. && composer install
 ```
+
+### Initialize the Project
+
+
+
+### 2. Clone the project locally
+
+### 
 
 ## Architecture of the Extension Starter
 
