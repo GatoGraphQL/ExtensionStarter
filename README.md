@@ -369,11 +369,17 @@ This will trigger the `generate_plugins` workflow, which will generate the exten
 
 For instance, after tagging Gato GraphQL with `1.0.9`, assets `gatographql-1.0.9.zip`, `gatographql-testing-1.0.9.zip` and `gatographql-testing-schema-1.0.9.zip` were attached to [GatoGraphQL/GatoGraphQL/releases/tag/1.0.9](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/1.0.9)
 
-### Download extension and test it in the PROD webserver
+### Install the extension in the PROD webserver
 
-Once the extension plugin has been generated, ...
+Once the extension plugin has been generated, install it on the PROD webserver to test it.
 
-cd webservers/gatographql-extensions-for-prod && lando wp plugin install https://github.com/EffectPoP/LeoGatoExtensions/releases/latest/download/gatographql-hello-dolly-1.0.0.zip --force --activate --path=/app/wordpress && cd ../..
+For instance, if your repo is `my-account/GatoGraphQLExtensionsForMyCompany` and you have released version `0.1.0`, run:
+
+```bash
+$ cd webservers/gatographql-extensions-for-prod
+$ lando wp plugin install https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/releases/latest/download/gatographql-hello-dolly-0.1.0.zip --force --activate --path=/app/wordpress
+$ cd ../..
+```
 
 ## Updating the monorepo
 
