@@ -16,21 +16,27 @@ class InstaWPConfigDataSource extends UpstreamInstaWPConfigDataSource
         return [
             /**
              * @gatographql-project-info
+             * 
+             * Configuration for executing integration tests
+             * using InstaWP
+             * 
+             * @gatographql-project-action-maybe-required
              *
              * If executing integration tests in PROD using InstaWP
-             * (via workflow `integration_tests`), provide the
-             * template slug and repo ID to spin a new InstaWP instance
-             * via GitHub Action `instawp/wordpress-testing-automation`.
+             * (via workflow `integration_tests`), uncomment the lines
+             * below, and provide the template slug and repo ID to
+             * spin a new InstaWP instance via GitHub Action
+             * `instawp/wordpress-testing-automation`.
              *
              * Also configure the `INSTAWP_TOKEN` secret in your repo.
              *
              * @see https://github.com/InstaWP/wordpress-testing-automation
              * @see https://instawp.com/how-to-integrate-wordpress-with-git/
              */
-            [
-                'templateSlug' => '{ INSTAWP_TEMPLATE_SLUG }',
-                'repoID' => 0,
-            ],
+            // [
+            //     'templateSlug' => '{ INSTAWP_TEMPLATE_SLUG }',
+            //     'repoID' => 0,
+            // ],
         ];
     }
 }
