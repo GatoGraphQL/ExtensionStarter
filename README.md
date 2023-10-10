@@ -54,6 +54,8 @@ This is important as documentation (mostly when we first start developing with G
 
 ### Host the codebase for multiple extensions, and all their packages, all together
 
+The repo contains the source code for not only 1, but multiple extension plugins for Gato GraphQL, and also for all their packages.
+
 By hosting all extensions and their packages together, you avoid [dependency hell](https://en.wikipedia.org/wiki/Dependency_hell).
 
 You are also able to do bulk modifications, such as searching and replacing a piece of code across different plugins, in a single action (and push it to the repo using a single commit).
@@ -77,21 +79,11 @@ Lando is already set-up and configured, making 2 webservers available:
 
 The first Lando webserver (for DEV) maps the source code from the repo to be used within the container. Hence, changes to the source code will be immediately reflected in the webserver.
 
-In addition, XDebug is already integrated, mapping both to the extension's source code, and the main Gato GraphQL plugin's source code. Then, you can play with th
+In addition, XDebug is already integrated (when using VSCode), mapping both to the extension's source code, and the main Gato GraphQL plugin's source code. Then, during development, you can add a break at some point in the code, and analyze the full stack trace to see how the code and logic works.
 
+## Splitting the monorepo
 
-
-- It contains not only 1, but multiple extension plugins for Gato GraphQL (and also their packages)
-
-- It contains not only 1, but multiple extension plugins for Gato GraphQL (and also their packages)
-
-The created repository will contain all the tools 
-
-`GatoGraphQL/ExtensionStarter` is a 
-
-[Gato GraphQL](https://github.com/GatoGraphQL/GatoGraphQL).
-
-### Splitting the monorepo
+## Downgrading code
 
 ## Requirements
 
