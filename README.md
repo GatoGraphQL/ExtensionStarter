@@ -49,7 +49,7 @@ The benefits of using the multi-monorepo approach as a starter project are sever
 
 **Heads up!** All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (that is 26 extensions and 4 bundles to date) are hosted on a repo created from `GatoGraphQL/ExtensionStarter`! So you get access to the same tools as the creators of these commercial extensions are themselves using.
 
-### Everything is automated
+### Automation
 
 There are scripts and workflows to automate (as much as possible) the whole process of creating an extension plugin, from developing it, to testing it, to releasing it.
 
@@ -68,6 +68,14 @@ The repo contains the source code for not only 1, but multiple extension plugins
 By hosting all extensions and their packages together, you avoid [dependency hell](https://en.wikipedia.org/wiki/Dependency_hell).
 
 You are also able to do bulk modifications, such as searching and replacing a piece of code across different plugins, in a single action (and push it to the repo using a single commit).
+
+### Continuously access newly-developed code
+
+Once we create a new repository from a GitHub template, the repository and the template are two separate entities. From that moment on, when the template is updated, these changes are not reflected in the repository.
+
+The Gato GraphQL monorepo deals with this issue by providing tools that copy content (code, scripts, workflows, etc) from the Gato GraphQL repo (available as a Git submodule) to the extension project repo. This enables the extension project to be updated when there are changes to the main plugin.
+
+See section "Synchronizing the downstream extension project with the upstream Gato GraphQL repo" to learn more.
 
 ### Use the GitHub Actions workflows developed for the Gato GraphQL plugin
 
@@ -185,6 +193,14 @@ $ composer install
 $ cd submodules/GatoGraphQL
 $ composer install
 ```
+
+## Synchronizing the downstream extension project with the upstream Gato GraphQL repo
+
+@todo
+
+For instance, the Lando webserver for DEV (see below) configures the container to use the source code from the main Gato GraphQL plugin (as to reflect changes on the source code immediately on the webserver), using the mapping from the "upstream" file [`.lando.upstream.yml`](submodules/GatoGraphQL/webservers/gatographql/.lando.upstream.yml).
+
+When the Gato GraphQL plugin incorporates a new package, and a new mapping entry is added to that file, ...
 
 ## Standards
 
