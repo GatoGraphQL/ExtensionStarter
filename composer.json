@@ -1,6 +1,6 @@
 {
     "name": "gatographql/extension-starter-monorepo",
-    "description": "GitHub template repository to quickstart your extension for Gato GraphQL.",
+    "description": "GitHub template repository to quickstart your extensions for Gato GraphQL.",
     "homepage": "https://github.com/GatoGraphQL/ExtensionStarter",
     "authors": [
         {
