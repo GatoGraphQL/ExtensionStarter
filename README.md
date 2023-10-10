@@ -93,16 +93,20 @@ This is needed to prevent potential conflicts from other plugins installed in th
 
 [PHP-Scoper](https://github.com/humbug/php-scoper) is already integrated in this monorepo (ready to be used whenever needed).
 
-### Lando is ready
+### Lando webservers are ready
 
 Lando is already set-up and configured, making 2 webservers available:
 
 1. A webserver to develop the extensions, using PHP 8.1
 2. A webserver to test the generated extension plugins, using PHP 7.2
 
-The first Lando webserver (for DEV) maps the source code from the repo to be used within the container. Hence, changes to the source code will be immediately reflected in the webserver.
+### The source code is mapped to Lando's DEV webserver
 
-### XDebug is ready
+The Lando webserver for DEV (on PHP 8.1) overrides the code deployed within the container, mapping the source code from the repo instead.
+
+As such, changes to the source code will be immediately reflected in the webserver.
+
+### XDebug is already configured
 
 XDebug is already integrated (when using VSCode), mapping both to the extension's source code, and the main Gato GraphQL plugin's source code.
 
