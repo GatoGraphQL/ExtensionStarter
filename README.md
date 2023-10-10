@@ -166,6 +166,38 @@ XDebug is enabled but inactive.
 
 To activate XDebug for a request, append parameter `?XDEBUG_TRIGGER=1` to the URL (for any page on the Gato GraphQL plugin, including any page in the wp-admin, the GraphiQL or Interactive Schema public clients, or other).
 
+### Purging the cache
+
+When developing an extension and testing it in the DEV webserver, whenever we create a new PHP service or modify the signature of an existing one (such as the PHP classname), we need to purge the container cache.
+
+Run:
+
+```bash
+composer purge-cache
+```
+
+<details>
+
+<summary>Container services in Gato GraphQL</summary>
+
+The Gato GraphQL plugin uses a service container (via the [Symfony DependencyInjection](https://symfony.com/doc/current/components/dependency_injection.html) library), to manage all services in PHP.
+
+Services are PHP classes, and must be defined in configuration files `services.yaml` and `schema-services.yaml` to be injected into the container.
+
+The first time the application is invoked, the container gathers all injected services and compiles them, generating a single PHP file that is loaded in the application.
+
+Generating this file can take several seconds. To avoid waiting for this time on each request, the Gato GraphQL plugin caches this file after it has been generated the first time.
+
+The container needs to be purged whenever a service is created, or an existing one updated or removed.
+
+The GraphQL schema is composed via services. Some examples are:
+
+- Type resolvers (eg: [`StringScalarTypeResolver`](submodules/GatoGraphQL/layers/Engine/packages/component-model/src/TypeResolvers/ScalarType/StringScalarTypeResolver.php))
+- Field resolvers (eg: [`UserObjectTypeFieldResolver`](submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php))
+- Directive resolvers (eg: [`SkipFieldDirectiveResolver`](submodules/GatoGraphQL/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php))
+
+</details>
+
 ## Start the Lando webserver for DEV
 
 Building the webserver (above) is needed only the first time.
