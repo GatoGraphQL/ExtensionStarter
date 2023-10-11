@@ -375,11 +375,11 @@
             "phpunit --filter='Integration' --log-junit=phpunit-test-results.xml --order-by=defects --stop-on-error --stop-on-failure",
             "@deoptimize-autoloader"
         ],
-        "prod-integration-test": [
+        "integration-test-prod": [
             "Composer\\Config::disableProcessTimeout",
             "composer integration-test -d webservers/gatographql-extensions-for-prod"
         ],
-        "stopping-prod-integration-test": [
+        "stopping-integration-test-prod": [
             "Composer\\Config::disableProcessTimeout",
             "composer stopping-integration-test -d webservers/gatographql-extensions-for-prod"
         ],
@@ -395,6 +395,7 @@
         ],
         "preview-hello-dolly-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/hello-dolly/rector.php --dry-run layers/GatoGraphQLForWP/plugins/hello-dolly \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
         "ssh-server": "composer ssh-server -d webservers/gatographql-extensions",
+        "ssh-server-prod": "composer ssh-server -d webservers/gatographql-extensions-for-prod",
         "build-server": [
             "Composer\\Config::disableProcessTimeout",
             "composer build-server -d webservers/gatographql-extensions"
@@ -407,6 +408,7 @@
         "init-server-upstream": "composer init-server -d submodules/GatoGraphQL",
         "init-server-prod": "composer init-server -d webservers/gatographql-extensions-for-prod",
         "start-server": "composer start-server -d webservers/gatographql-extensions",
+        "start-server-prod": "composer start-server -d webservers/gatographql-extensions-for-prod",
         "destroy-server": "composer destroy-server -d webservers/gatographql-extensions",
         "destroy-server-prod": "composer destroy-server -d webservers/gatographql-extensions-for-prod",
         "reset-db": [
@@ -436,13 +438,13 @@
             "Composer\\Config::disableProcessTimeout",
             "composer rebuild-server -d webservers/gatographql-extensions"
         ],
+        "rebuild-server-prod": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer rebuild-server -d webservers/gatographql-extensions-for-prod"
+        ],
         "rebuild-app-and-server": [
             "Composer\\Config::disableProcessTimeout",
             "composer rebuild-app-and-server -d webservers/gatographql-extensions"
-        ],
-        "rebuild-app-and-server-prod": [
-            "Composer\\Config::disableProcessTimeout",
-            "composer rebuild-app-and-server -d webservers/gatographql-extensions-for-prod"
         ],
         "stop-server": "composer stop-server -d webservers/gatographql-extensions",
         "stop-server-prod": "composer stop-server -d webservers/gatographql-extensions-for-prod",
@@ -495,8 +497,8 @@
         "test": "Execute PHPUnit tests",
         "unit-test": "Execute unit tests (PHPUnit)",
         "integration-test": "Execute integration tests (PHPUnit)",
-        "prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver",
-        "stopping-prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure",
+        "integration-test-prod": "Execute integration tests (PHPUnit) against the PROD webserver",
+        "stopping-integration-test-prod": "Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure",
         "debug": "Run and debug PHPUnit tests",
         "check-style": "Validate PSR-12 coding standards (via phpcs)",
         "fix-style": "Fix PSR-12 coding standards (via phpcbf)",
@@ -505,10 +507,12 @@
         "preview-vendor-downgrade": "Run Rector in 'dry-run' mode to preview how the vendor/ folder will be downgraded to PHP 7.2",
         "preview-code-downgrade": "Run Rector in 'dry-run' mode to preview how the all code (i.e. src/ + vendor/ folders) will be downgraded to PHP 7.2",
         "ssh-server": "SSH into the Lando webserver with the 'Gato GraphQL' demo site",
+        "ssh-server-prod": "SSH into the Lando webserver for PROD with the 'Gato GraphQL' demo site",
         "build-server": "Initialize the Lando webserver with the 'Gato GraphQL' demo site, for development. To be executed only the first time",
         "build-server-prod": "Initialize the Lando webserver with the 'Gato GraphQL' demo site, for production. To be executed only the first time",
         "init-server": "Alias of 'start-server",
         "start-server": "Start the Lando webserver with the 'Gato GraphQL' demo site, for development",
+        "start-server-prod": "Start the Lando webserver for PROD with the 'Gato GraphQL' demo site, for development",
         "destroy-server": "Destroy the Lando webserver with the 'Gato GraphQL' demo site",
         "destroy-server-prod": "Destroy the Lando webserver with the 'Gato GraphQL' demo site for PROD",
         "reset-db": "Resets the WordPress database",
@@ -522,6 +526,8 @@
         "log-server-errors": "Show (on real time) the errors from the Lando webserver",
         "log-server-warnings": "Show (on real time) the warnings from the Lando webserver",
         "rebuild-app-and-server": "Update the App dependencies (from Composer) and rebuild the Lando webserver",
+        "rebuild-server": "Rebuild the Lando webserver",
+        "rebuild-server-prod": "Rebuild the Lando webserver for PROD",
         "stop-server": "Stop the Lando webserver",
         "stop-server-prod": "Stop the Lando webserver for PROD",
         "enable-caching": "Enable caching for the 'Gato GraphQL' in DEV",

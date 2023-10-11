@@ -693,6 +693,7 @@ composer list
 | `install-site` | Installs the WordPress site |
 | `install-site-prod` | Installs the WordPress site in the PROD server |
 | `integration-test` | Execute integration tests (PHPUnit) |
+| `integration-test-prod` | Execute integration tests (PHPUnit) against the PROD webserver |
 | `log-server-errors` | Show (on real time) the errors from the Lando webserver |
 | `log-server-warnings` | Show (on real time) the warnings from the Lando webserver |
 | `merge-monorepo` | Create the monorepo's composer.json file, containing all dependencies from all packages |
@@ -701,13 +702,12 @@ composer list
 | `preview-hello-dolly-downgrade` | Runs the preview-hello-dolly-downgrade script as defined in composer.json |
 | `preview-src-downgrade` | Run Rector in 'dry-run' mode to preview how the src/ folder will be downgraded to PHP 7.2 |
 | `preview-vendor-downgrade` | Run Rector in 'dry-run' mode to preview how the vendor/ folder will be downgraded to PHP 7.2 |
-| `prod-integration-test` | Execute integration tests (PHPUnit) against the PROD webserver |
 | `propagate-monorepo` | Propagate versions from the monorepo's composer.json file to all packages |
 | `purge-cache` | Purge the cache for the 'Gato GraphQL' in DEV |
 | `purge-cache-upstream` | Runs the purge-cache-upstream script as defined in composer.json |
 | `rebuild-app-and-server` | Update the App dependencies (from Composer) and rebuild the Lando webserver |
-| `rebuild-app-and-server-prod` | Runs the rebuild-app-and-server-prod script as defined in composer.json |
-| `rebuild-server` | Runs the rebuild-server script as defined in composer.json |
+| `rebuild-server` | Rebuild the Lando webserver |
+| `rebuild-server-prod` | Rebuild the Lando webserver for PROD |
 | `release-major` | Release a new 'major' version (MAJOR.xx.xx) (bump version, commit, push, tag, revert to 'dev-master', commit, push) |
 | `release-minor` | Release a new 'minor' version (xx.MINOR.xx) (bump version, commit, push, tag, revert to 'dev-master', commit, push) |
 | `release-patch` | Release a new 'patch' version (xx.xx.PATCH) (bump version, commit, push, tag, revert to 'dev-master', commit, push) |
@@ -717,12 +717,14 @@ composer list
 | `server-info` | Retrieve information from the Lando webserver |
 | `server-info-prod` | Retrieve information from the Lando webserver for PROD |
 | `ssh-server` | SSH into the Lando webserver with the 'Gato GraphQL' demo site |
+| `ssh-server-prod` | SSH into the Lando webserver for PROD with the 'Gato GraphQL' demo site |
 | `start-server` | Start the Lando webserver with the 'Gato GraphQL' demo site, for development |
+| `start-server-prod` | Start the Lando webserver for PROD with the 'Gato GraphQL' demo site, for development |
 | `status` | Shows a list of locally modified packages |
 | `stop-server-prod` | Stop the Lando webserver for PROD |
 | `stop-server-upstream` | Runs the stop-server-upstream script as defined in composer.json |
 | `stopping-integration-test` | Runs the stopping-integration-test script as defined in composer.json |
-| `stopping-prod-integration-test` | Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure |
+| `stopping-integration-test-prod` | Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure |
 | `stopping-unit-test` | Runs the stopping-unit-test script as defined in composer.json |
 | `unit-test` | Execute unit tests (PHPUnit) |
 | `update-deps` | Update the Composer dependencies for the 'Gato GraphQL' plugins |
