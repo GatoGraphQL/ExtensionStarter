@@ -497,7 +497,7 @@
         "integration-test": "Execute integration tests (PHPUnit)",
         "prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver",
         "stopping-prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure",
-        "debug": "Debug PHPUnit tests",
+        "debug": "Run and debug PHPUnit tests",
         "check-style": "Validate PSR-12 coding standards (via phpcs)",
         "fix-style": "Fix PSR-12 coding standards (via phpcbf)",
         "analyse": "Run PHPStan static analysis of the code",
