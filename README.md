@@ -208,7 +208,7 @@ If the installation of the starter was successful, you will receive a response:
 
 !["Hello Dolly" in GraphQL](assets/img/graphiql-hello-dolly.png)
 
-### Start the Lando webserver for DEV
+## Start the Lando webserver for DEV
 
 Building the webserver (above) is needed only the first time.
 
@@ -218,9 +218,9 @@ From then on, run:
 composer init-server
 ```
 
-### Manage the Lando webserver for DEV
+## Manage the Lando webserver for DEV
 
-#### Re-install the WordPress site
+### Re-install the WordPress site
 
 You can at any moment re-install the WordPress site (and import the initial dataset).
 
@@ -235,7 +235,7 @@ This is useful when:
 - The installation when doing `build-server` was halted midway (or failed for some reason)
 - Running the integration tests was not completed (modifying the DB data to a different state, so that running the tests again will fail)
 
-#### Re-build the Lando webserver
+### Re-build the Lando webserver
 
 When a plugin or package folder has been renamed, you need to update the path in the `overrides` section of the [`.lando.upstream.yml`](webservers/gatographql-extensions/.lando.upstream.yml) Lando config file, and then rebuild the Lando webserver to reflect these changes.
 
@@ -245,7 +245,7 @@ Run:
 composer rebuild-server
 ```
 
-#### Regenerate the Composer autoload files
+### Regenerate the Composer autoload files
 
 When a new extension plugin is added to the monorepo, it must have its Composer autoload file generated, and the plugin must be symlinked to the Lando webserver.
 
