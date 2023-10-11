@@ -59,7 +59,7 @@ Follow these steps:
 - Click on `Use this template` → `Create a new repository`
 - Select the GitHub owner, and choose a proper name for your repository (eg: `my-account/GatoGraphQLExtensionsForMyCompany`)
 - Choose if to make it Public or Private
-- Click on "Create repository"
+- Click on `Create repository`
 
 ### Disable unused GitHub Actions workflows
 
@@ -214,7 +214,7 @@ Credentials for `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-a
 
 XDebug is already integrated when using VSCode.
 
-Add a breakpoint in the source code and then, in the "Run and Debug" tab, press on "Start Debugging" with the corresponding configuration (defined in [`.vscode/launch.json`](.vscode/launch.json)):
+Add a breakpoint in the source code and then, in the `Run and Debug` tab, press on `Start Debugging` with the corresponding configuration (defined in [`.vscode/launch.json`](.vscode/launch.json)):
 
 - `[Lando webserver] Listen for Xdebug`: For debugging the source code while running the Lando webserver for DEV
 - `[PHPUnit] Listen for Xdebug`: For debugging PHPUnit tests
@@ -373,7 +373,7 @@ The monorepo includes scripts that completely automate the process of releasing 
 
 Follow these steps:
 
-### Tag the monorepo as "patch", "minor" or "major"
+### Tag the monorepo as `patch`, `minor` or `major`
 
 (Given that the current version is `0.0.0`...)
 
@@ -419,7 +419,7 @@ composer release-patch -- --dry-run
 
 To generate the release plugin for PROD, head over to tags page in your GitHub repo ([github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags](https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags)), and click on the new tag (eg: `0.1.0`).
 
-On the tag page, click on "Create release from tag".
+On the tag page, click on `Create release from tag`.
 
 ![Create release from tag](assets/img/create-release-from-tag.png)
 
