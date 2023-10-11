@@ -375,11 +375,11 @@
             "phpunit --filter='Integration' --log-junit=phpunit-test-results.xml --order-by=defects --stop-on-error --stop-on-failure",
             "@deoptimize-autoloader"
         ],
-        "prod-integration-test": [
+        "integration-test-prod": [
             "Composer\\Config::disableProcessTimeout",
             "composer integration-test -d webservers/gatographql-extensions-for-prod"
         ],
-        "stopping-prod-integration-test": [
+        "stopping-integration-test-prod": [
             "Composer\\Config::disableProcessTimeout",
             "composer stopping-integration-test -d webservers/gatographql-extensions-for-prod"
         ],
@@ -495,8 +495,8 @@
         "test": "Execute PHPUnit tests",
         "unit-test": "Execute unit tests (PHPUnit)",
         "integration-test": "Execute integration tests (PHPUnit)",
-        "prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver",
-        "stopping-prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure",
+        "integration-test-prod": "Execute integration tests (PHPUnit) against the PROD webserver",
+        "stopping-integration-test-prod": "Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure",
         "debug": "Run and debug PHPUnit tests",
         "check-style": "Validate PSR-12 coding standards (via phpcs)",
         "fix-style": "Fix PSR-12 coding standards (via phpcbf)",

@@ -693,6 +693,7 @@ composer list
 | `install-site` | Installs the WordPress site |
 | `install-site-prod` | Installs the WordPress site in the PROD server |
 | `integration-test` | Execute integration tests (PHPUnit) |
+| `integration-test-prod` | Execute integration tests (PHPUnit) against the PROD webserver |
 | `log-server-errors` | Show (on real time) the errors from the Lando webserver |
 | `log-server-warnings` | Show (on real time) the warnings from the Lando webserver |
 | `merge-monorepo` | Create the monorepo's composer.json file, containing all dependencies from all packages |
@@ -701,7 +702,6 @@ composer list
 | `preview-hello-dolly-downgrade` | Runs the preview-hello-dolly-downgrade script as defined in composer.json |
 | `preview-src-downgrade` | Run Rector in 'dry-run' mode to preview how the src/ folder will be downgraded to PHP 7.2 |
 | `preview-vendor-downgrade` | Run Rector in 'dry-run' mode to preview how the vendor/ folder will be downgraded to PHP 7.2 |
-| `prod-integration-test` | Execute integration tests (PHPUnit) against the PROD webserver |
 | `propagate-monorepo` | Propagate versions from the monorepo's composer.json file to all packages |
 | `purge-cache` | Purge the cache for the 'Gato GraphQL' in DEV |
 | `purge-cache-upstream` | Runs the purge-cache-upstream script as defined in composer.json |
@@ -722,7 +722,7 @@ composer list
 | `stop-server-prod` | Stop the Lando webserver for PROD |
 | `stop-server-upstream` | Runs the stop-server-upstream script as defined in composer.json |
 | `stopping-integration-test` | Runs the stopping-integration-test script as defined in composer.json |
-| `stopping-prod-integration-test` | Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure |
+| `stopping-integration-test-prod` | Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure |
 | `stopping-unit-test` | Runs the stopping-unit-test script as defined in composer.json |
 | `unit-test` | Execute unit tests (PHPUnit) |
 | `update-deps` | Update the Composer dependencies for the 'Gato GraphQL' plugins |
