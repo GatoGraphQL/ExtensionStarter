@@ -1,6 +1,6 @@
 {
     "name": "gatographql-extensions-dev/gatographql-extensions-for-prod",
-    "description": "Gato GraphQL - Extensions for PROD (PHP 7.2 + Generated .zip plugins)",
+    "description": "Gato GraphQL - Extensions for PROD",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
