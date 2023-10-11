@@ -205,7 +205,7 @@ Besides, some initial configuration has been applied on the Gato GraphQL plugin 
 
 ### Log-in to the `wp-admin`
 
-Credentials for `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`:
+Credentials for `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin/`:
 
 - Username: `admin`
 - Password: `admin`
