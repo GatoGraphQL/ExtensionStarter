@@ -212,19 +212,33 @@ Credentials for `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-a
 
 ### Using XDebug
 
-XDebug is enabled but inactive.
+Add a breakpoint in the source code and then, in the "Run and Debug" tab, press on "Start Debugging" with the corresponding configuration.
 
-To activate XDebug for a request, append parameter `?XDEBUG_TRIGGER=1` to the URL (for any page on the Gato GraphQL plugin, including any page in the wp-admin, the GraphiQL or Interactive Schema public clients, or other).
+XDebug is already integrated when using VSCode, via configurations (defined in [`.vscode/launch.json`](.vscode/launch.json)):
+
+- `[Lando webserver] Listen for Xdebug`: For debugging the source code while running the Lando webserver for DEV
+- `[PHPUnit] Listen for Xdebug`: For debugging PHPUnit tests
+
+XDebug is enabled but inactive; it must be activated when requesting the webpage (see below).
+
+#### Debugging in the Lando webserver for DEV
+
+Activate XDebug for a request by appending parameter `?XDEBUG_TRIGGER=1` to the URL (for any page on the Gato GraphQL plugin, including any page in the wp-admin, the GraphiQL or Interactive Schema public clients, or other).
 
 For instance:
 
 - `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin/edit.php?page=gatographql&action=execute_query&XDEBUG_TRIGGER=1`
 - `https://gatographql-{composer-vendor}-extensions.lndo.site/graphiql/?XDEBUG_TRIGGER=1`
 
-XDebug is already integrated when using VSCode. Add a breakpoint in the source code and then, in the "Run and Debug" tab, press on "Start Debugging" with configuration:
+#### Debugging PHPUnit tests
 
-- `[Lando webserver] Listen for Xdebug`: For debugging the source code while running the Lando webserver for DEV
-- `[PHPUnit] Listen for Xdebug`: For debugging PHPUnit tests
+Activate XDebug by prepending `XDEBUG_TRIGGER=1` before the `phpunit` command to run the unit tests.
+
+For instance:
+
+```bash
+XDEBUG_TRIGGER=1 vendor/bin/phpunit submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Unit/Faker/WPFakerFixtureQueryExecutionGraphQLServerTest.php
+```
 
 ### Purging the cache
 
