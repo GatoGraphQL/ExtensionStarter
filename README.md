@@ -541,9 +541,7 @@ _Not all PHP 8.1 features are available, but only those ones that are "downgrade
 
 ### Scope 3rd-party libraries
 
-When the extension uses 3rd-party libraries (loaded via Composer), these must be "scoped" by prepending a custom PHP namespace on their source code.
-
-This is needed to prevent potential conflicts from other plugins installed in the same WordPress site referencing a different version of the same library.
+When the extension uses 3rd-party libraries (loaded via Composer), these must be "scoped" by prepending a custom PHP namespace on their source code. This is needed to prevent potential conflicts from other plugins installed in the same WordPress site referencing a different version of the same library.
 
 [PHP-Scoper](https://github.com/humbug/php-scoper) is already integrated in this monorepo (ready to be used whenever needed).
 
