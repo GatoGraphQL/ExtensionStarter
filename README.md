@@ -61,6 +61,10 @@ Follow these steps:
 - Choose if to make it Public or Private
 - Click on `Create repository`
 
+As a result, a copy of this template will have been created under your GitHub repo:
+
+![GitHub repo from template](assets/img/repo-from-template.png)
+
 ### Disable unused GitHub Actions workflows
 
 The following GitHub Actions workflows are not initially needed:
