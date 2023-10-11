@@ -206,7 +206,7 @@ Click on the Gato GraphQL link on the menu to open the GraphiQL client, and exec
 
 If the installation of the starter was successful, you will receive a response:
 
-!["Hello Dolly" in GraphQL](assets/img/graphiql-hello-dolly.png)
+!["Hello Dolly" in the webserver](assets/img/graphiql-hello-dolly.png)
 
 ## Start the Lando webserver for DEV
 
@@ -391,7 +391,7 @@ Once you've installed the release on the Lando webserver for PROD, log-in to the
 
 If the release was generated successfully, you will receive a response:
 
-!["Hello Dolly" in GraphQL](assets/img/graphiql-hello-dolly.png)
+!["Hello Dolly" in the webserver for PROD](assets/img/graphiql-hello-dolly-prod.png)
 
 ## Continuous Integration
 
