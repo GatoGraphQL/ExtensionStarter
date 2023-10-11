@@ -122,7 +122,7 @@ If this this not your license, remove/replace this file.
 
 ### Commit, Push and Tag the Initial Project
 
-Review the changes applied to the codebase on the step above. If any value is not correct (eg: if the PHP namespace should be a different one), you can undo all changes, and run `composer initialize-project` again providing the right values.
+Review the changes applied to the codebase on the step above. If any value is not correct (eg: if the PHP namespace should be a different one), you can undo all changes (`git reset --hard HEAD`), and run `composer initialize-project` again providing the right values.
 
 Once all values are right, run:
 
