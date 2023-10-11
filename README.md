@@ -192,70 +192,6 @@ Credentials for `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-a
 - Username: `admin`
 - Password: `admin`
 
-### Using XDebug (with VSCode)
-
-XDebug is already integrated when using VSCode.
-
-Add a breakpoint in the source code and then, in the `Run and Debug` tab, press on `Start Debugging` with the corresponding configuration (defined in [`.vscode/launch.json`](.vscode/launch.json)):
-
-- `[Lando webserver] Listen for Xdebug`: For debugging the source code while running the Lando webserver for DEV
-- `[PHPUnit] Listen for Xdebug`: For debugging PHPUnit tests
-
-XDebug is enabled but inactive; it must be activated when requesting the webpage (see below).
-
-#### Debugging in the Lando webserver for DEV
-
-Activate XDebug for a request by appending parameter `?XDEBUG_TRIGGER=1` to the URL (for any page on the Gato GraphQL plugin, including any page in the wp-admin, the GraphiQL or Interactive Schema public clients, or other).
-
-For instance:
-
-- `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin/edit.php?page=gatographql&action=execute_query&XDEBUG_TRIGGER=1`
-- `https://gatographql-{composer-vendor}-extensions.lndo.site/graphiql/?XDEBUG_TRIGGER=1`
-
-#### Debugging PHPUnit tests
-
-Activate XDebug by prepending `XDEBUG_TRIGGER=1` before the `phpunit` command to run the unit tests.
-
-For instance:
-
-```bash
-XDEBUG_TRIGGER=1 vendor/bin/phpunit submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Unit/Faker/WPFakerFixtureQueryExecutionGraphQLServerTest.php
-```
-
-### Purging the cache
-
-When developing an extension and testing it in the DEV webserver, whenever we create a new PHP service or modify the signature of an existing one (such as the PHP classname), we need to purge the container cache.
-
-Run:
-
-```bash
-composer purge-cache
-```
-
-<details>
-
-<summary>Container services in Gato GraphQL</summary>
-
-The Gato GraphQL plugin uses a service container (via the [Symfony DependencyInjection](https://symfony.com/doc/current/components/dependency_injection.html) library), to manage all services in PHP.
-
-Services are PHP classes, and must be defined in configuration files `services.yaml` and `schema-services.yaml` to be injected into the container.
-
-The first time the application is invoked, the container gathers all injected services and compiles them, generating a single PHP file that is loaded in the application.
-
-Generating this file can take several seconds. To avoid waiting for this time on each request, the Gato GraphQL plugin caches this file after it has been generated the first time.
-
-The container needs to be purged whenever a service is created, or an existing one updated or removed. On the plugin for PROD, this is done whenever a new extension plugin is activated, or updating the plugin Settings. In the Lando webserver for DEV, it must be done manually, by running `composer purge-cache`.
-
-That is the case for resolvers (type resolvers, field resolvers, directive resolvers, and any other resolver that gives shape to the GraphQL schema). Whenever a resolver is added or removed, or is updated in such a way that modifies the GraphQL schema, the cached container must be purged.
-
-Some example PHP services for resolvers are:
-
-- `String` type: [`StringScalarTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/component-model/src/TypeResolvers/ScalarType/StringScalarTypeResolver.php)
-- Field `User.name` (and others): [`UserObjectTypeFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php)
-- `@skip` directive: [`SkipFieldDirectiveResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php)
-
-</details>
-
 ### Start the Lando webserver for DEV
 
 Building the webserver (above) is needed only the first time.
@@ -439,7 +375,71 @@ Most likely, the following GitHub Actions workflows are not initially needed:
 
 If this is the case, you can [disable these workflows](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) so they don't run unnecessarily.
 
+## Debugging
+
+XDebug is already integrated when using VSCode.
+
+Add a breakpoint in the source code and then, in the `Run and Debug` tab, press on `Start Debugging` with the corresponding configuration (defined in [`.vscode/launch.json`](.vscode/launch.json)):
+
+- `[Lando webserver] Listen for Xdebug`: For debugging the source code while running the Lando webserver for DEV
+- `[PHPUnit] Listen for Xdebug`: For debugging PHPUnit tests
+
+XDebug is enabled but inactive; it must be activated when requesting the webpage (see below).
+
+### Debugging in the Lando webserver for DEV
+
+Activate XDebug for a request by appending parameter `?XDEBUG_TRIGGER=1` to the URL (for any page on the Gato GraphQL plugin, including any page in the wp-admin, the GraphiQL or Interactive Schema public clients, or other).
+
+For instance:
+
+- `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin/edit.php?page=gatographql&action=execute_query&XDEBUG_TRIGGER=1`
+- `https://gatographql-{composer-vendor}-extensions.lndo.site/graphiql/?XDEBUG_TRIGGER=1`
+
+### Debugging PHPUnit tests
+
+Activate XDebug by prepending `XDEBUG_TRIGGER=1` before the `phpunit` command to run the unit tests.
+
+For instance:
+
+```bash
+XDEBUG_TRIGGER=1 vendor/bin/phpunit submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Unit/Faker/WPFakerFixtureQueryExecutionGraphQLServerTest.php
+```
+
 ## Development
+
+### Purging the cache
+
+When developing an extension and testing it in the DEV webserver, whenever we create a new PHP service or modify the signature of an existing one (such as the PHP classname), we need to purge the container cache.
+
+Run:
+
+```bash
+composer purge-cache
+```
+
+<details>
+
+<summary>Container services in Gato GraphQL</summary>
+
+The Gato GraphQL plugin uses a service container (via the [Symfony DependencyInjection](https://symfony.com/doc/current/components/dependency_injection.html) library), to manage all services in PHP.
+
+Services are PHP classes, and must be defined in configuration files `services.yaml` and `schema-services.yaml` to be injected into the container.
+
+The first time the application is invoked, the container gathers all injected services and compiles them, generating a single PHP file that is loaded in the application.
+
+Generating this file can take several seconds. To avoid waiting for this time on each request, the Gato GraphQL plugin caches this file after it has been generated the first time.
+
+The container needs to be purged whenever a service is created, or an existing one updated or removed. On the plugin for PROD, this is done whenever a new extension plugin is activated, or updating the plugin Settings. In the Lando webserver for DEV, it must be done manually, by running `composer purge-cache`.
+
+That is the case for resolvers (type resolvers, field resolvers, directive resolvers, and any other resolver that gives shape to the GraphQL schema). Whenever a resolver is added or removed, or is updated in such a way that modifies the GraphQL schema, the cached container must be purged.
+
+Some example PHP services for resolvers are:
+
+- `String` type: [`StringScalarTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/component-model/src/TypeResolvers/ScalarType/StringScalarTypeResolver.php)
+- Field `User.name` (and others): [`UserObjectTypeFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php)
+- `@skip` directive: [`SkipFieldDirectiveResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php)
+
+</details>
 
 ### Updating the monorepo
 
