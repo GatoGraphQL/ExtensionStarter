@@ -212,11 +212,11 @@ Credentials for `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-a
 - Username: `admin`
 - Password: `admin`
 
-### Using XDebug
+### Using XDebug (with VSCode)
 
-Add a breakpoint in the source code and then, in the "Run and Debug" tab, press on "Start Debugging" with the corresponding configuration.
+XDebug is already integrated when using VSCode.
 
-XDebug is already integrated when using VSCode, via configurations (defined in [`.vscode/launch.json`](.vscode/launch.json)):
+Add a breakpoint in the source code and then, in the "Run and Debug" tab, press on "Start Debugging" with the corresponding configuration (defined in [`.vscode/launch.json`](.vscode/launch.json)):
 
 - `[Lando webserver] Listen for Xdebug`: For debugging the source code while running the Lando webserver for DEV
 - `[PHPUnit] Listen for Xdebug`: For debugging PHPUnit tests
