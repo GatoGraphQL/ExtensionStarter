@@ -52,6 +52,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
              * @see ci/scoping/scoper-extensions.inc.php
              */
             preg_quote('my-company-for-gatographql') => preg_quote($inputObject->getComposerVendor()),
+            '{composer-vendor}' => $inputObject->getComposerVendor(),
 
             'My Company' => $inputObject->getMyCompanyName(),
             'name@mycompany.com' => $inputObject->getMyCompanyEmail(),
@@ -82,7 +83,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             ),
 
             /**
-             * Replace "gatographql-extensions" with "{composer-vendor}-gatographql-extensions".
+             * Replace "gatographql-extensions" with "gatographql-{composer-vendor}-extensions".
              * Because the folder "webservers/gatographql-extensions" is not renamed,
              * but it is referenced in the config (as "webservers/gatographql-extensions"),
              * then apply the change for everything and revert it for this case.
