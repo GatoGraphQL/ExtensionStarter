@@ -1,6 +1,6 @@
 # Gato GraphQL - Extension Starter
 
-Gato GraphQL extensions add functionality and expand the GraphQL schema provided by the [Gato GraphQL](https://gatographql.com) plugin.
+Gato GraphQL extensions add functionality and expand the GraphQL schema provided by [Gato GraphQL](https://gatographql.com).
 
 This template repository helps you kickstart a GitHub repo, to develop, test and release your own extensions for Gato GraphQL.
 
