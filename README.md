@@ -406,7 +406,7 @@ Executing these commands will first prepare the repo for PROD:
 
 And then, it will prepare the repo for DEV again:
 
-- Update the version to the next DEV version (next number + `-dev`)
+- Update the version to the next DEV version (next semver + `-dev`)
 - Commit and push
 
 To preview running the command without actually executing it, append `-- --dry-run`:
