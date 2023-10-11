@@ -133,7 +133,7 @@ final class InitializeProjectCommand extends AbstractModifyProjectCommand
             null,
             InputOption::VALUE_REQUIRED,
             sprintf(
-                'Composer vendor to use in the repo. If not provided, it is generated from the "%s" option',
+                'Composer vendor to distribute the packages in the repo. If not provided, it is generated from the "%s" option',
                 Option::PHP_NAMESPACE_OWNER
             )
         );

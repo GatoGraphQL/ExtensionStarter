@@ -39,11 +39,6 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
      */
     protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
     {
-        $githubRepo = sprintf(
-            'https://github.com/%s/%s',
-            $inputObject->getGithubRepoOwner(),
-            $inputObject->getGithubRepoName()
-        );
         $landoSubdomain = sprintf(
             'gatographql-%s-extensions',
             $inputObject->getComposerVendor()
@@ -66,12 +61,25 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
                 '%s - Gato GraphQL Extensions',
                 $inputObject->getMyCompanyName()
             ),
-            'GitHub template repository to quickstart your extension for Gato GraphQL.' => sprintf(
-                'Monorepo hosting the Gato GraphQL Extensions for %s',
+            'GitHub template repository to develop and release your extensions for Gato GraphQL.' => sprintf(
+                'Monorepo hosting the Gato GraphQL extensions for %s',
                 $inputObject->getMyCompanyName()
             ),
 
-            'https://github.com/GatoGraphQL/ExtensionStarter' => $githubRepo,
+            'https://github.com/GatoGraphQL/ExtensionStarter' => sprintf(
+                'https://github.com/%s/%s',
+                $inputObject->getGithubRepoOwner(),
+                $inputObject->getGithubRepoName()
+            ),
+            'my-account/GatoGraphQLExtensionsForMyCompany' => sprintf(
+                '%s/%s',
+                $inputObject->getGithubRepoOwner(),
+                $inputObject->getGithubRepoName()
+            ),
+            'https://github.com/GatoGraphQL/hello-dolly' => sprintf(
+                'https://github.com/%s/hello-dolly',
+                $inputObject->getGithubRepoOwner()
+            ),
 
             /**
              * Replace "gatographql-extensions" with "{composer-vendor}-gatographql-extensions".

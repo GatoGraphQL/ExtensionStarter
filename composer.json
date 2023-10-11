@@ -1,6 +1,6 @@
 {
     "name": "gatographql/extension-starter-monorepo",
-    "description": "GitHub template repository to quickstart your extension for Gato GraphQL.",
+    "description": "GitHub template repository to develop and release your extensions for Gato GraphQL.",
     "homepage": "https://github.com/GatoGraphQL/ExtensionStarter",
     "authors": [
         {
@@ -497,7 +497,7 @@
         "integration-test": "Execute integration tests (PHPUnit)",
         "prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver",
         "stopping-prod-integration-test": "Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure",
-        "debug": "Debug PHPUnit tests",
+        "debug": "Run and debug PHPUnit tests",
         "check-style": "Validate PSR-12 coding standards (via phpcs)",
         "fix-style": "Fix PSR-12 coding standards (via phpcbf)",
         "analyse": "Run PHPStan static analysis of the code",
@@ -548,8 +548,8 @@
         "copy-folders-from-upstream-monorepo": "[multi-monorepo] Copy all files in specific folders to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
         "copy-files-from-upstream-monorepo": "[multi-monorepo] Copy specific files to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
         "copy-upstream-files": "[multi-monorepo] Copy both specific files, and all files in specific folders, to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
-        "build-js": "Build all JS packages, blocks and editor scripts from Gato GraphQL - Hello Dolly",
-        "install-deps-build-js": "Build all JS packages, blocks and editor scripts from Gato GraphQL - Hello Dolly, installing all dependencies from npm"
+        "build-js": "Build all JS packages, blocks and editor scripts for all plugins in the Gato GraphQL - Extension Starter repo",
+        "install-deps-build-js": "Install all dependencies from npm to build the JS packages, blocks and editor scripts for all plugins in the Gato GraphQL - Extension Starter repo"
     },
     "replace": {
         "gatographql/external-dependency-wrappers": "self.version",

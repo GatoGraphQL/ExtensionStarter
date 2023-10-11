@@ -16,10 +16,10 @@ class InstaWPConfigDataSource extends UpstreamInstaWPConfigDataSource
         return [
             /**
              * @gatographql-project-info
-             * 
+             *
              * Configuration for executing integration tests
              * using InstaWP
-             * 
+             *
              * @gatographql-project-action-maybe-required
              *
              * If executing integration tests in PROD using InstaWP
