@@ -128,6 +128,12 @@ This will print:
 
 </details>
 
+### Review the License
+
+The [license in the monorepo](LICENSE) is GPL v2.
+
+If this this not your license, remove/replace this file.
+
 ### Commit, Push and Tag the Initial Project
 
 Review the changes applied to the codebase on the step above. If any value is not correct (eg: if the PHP namespace should be a different one), you can undo all changes, and run `composer initialize-project` again providing the right values.
