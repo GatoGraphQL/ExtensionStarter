@@ -148,7 +148,7 @@ This will commit the codebase to your GitHub repo, and tag it with version `0.0.
 
 ## Build the Lando webserver for DEV
 
-This Lando webserver uses:
+The Lando webserver for DEV is used to develop the extensions. It uses:
 
 - The source code on the repo
 - PHP 8.1
@@ -281,9 +281,9 @@ composer rebuild-app-and-server
 
 ## Build the Lando webserver for PROD
 
-This Lando webserver uses:
+The Lando webserver for PROD is used to test the generated extension plugins. It uses:
 
-- The generated plugins for PROD
+- The generated plugins for PROD (from GitHub Actions)
 - PHP 7.2
 - XDebug not enabled
 
