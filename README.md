@@ -36,6 +36,16 @@ Gato GraphQL extensions add functionality and expand the GraphQL schema provided
 
 Check [gatographql.com/extensions](https://gatographql.com/extensions/) to browse the list of existing (commercial) extensions, to give you ideas of what you can do via them.
 
+## Architecture of the Extension Starter
+
+`GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
+
+`GatoGraphQL/ExtensionStarter` is also a [multi-monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-4-multi-monorepo), containing the source code of the main Gato GraphQL plugin, hosted under the [`GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL) monorepo, as a Git submodule.
+
+The monorepo is managed via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
+
+Read about the benefits of using the multi-monorepo approach on section [Why a Multi-monorepo](#why-a-multi-monorepo) below.
+
 ## Install
 
 Follow these steps:
@@ -401,16 +411,6 @@ This command will:
 
 - Update the root `composer.json` with the new packages
 - Update the root `phpstan.neon` with the new packages
-
-## Architecture of the Extension Starter
-
-`GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
-
-`GatoGraphQL/ExtensionStarter` is also a [multi-monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-4-multi-monorepo), containing the source code of the main Gato GraphQL plugin, hosted under the [`GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL) monorepo, as a Git submodule.
-
-The monorepo is managed via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
-
-Read about the benefits of using the multi-monorepo approach on section [Why a Multi-monorepo](#why-a-multi-monorepo) below.
 
 ## Why a Multi-monorepo
 
