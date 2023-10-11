@@ -375,36 +375,6 @@ Most likely, the following GitHub Actions workflows are not initially needed:
 
 If this is the case, you can [disable these workflows](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) so they don't run unnecessarily.
 
-## Debugging
-
-XDebug is already integrated when using VSCode.
-
-Add a breakpoint in the source code and then, in the `Run and Debug` tab, press on `Start Debugging` with the corresponding configuration (defined in [`.vscode/launch.json`](.vscode/launch.json)):
-
-- `[Lando webserver] Listen for Xdebug`: For debugging the source code while running the Lando webserver for DEV
-- `[PHPUnit] Listen for Xdebug`: For debugging PHPUnit tests
-
-XDebug is enabled but inactive; it must be activated when requesting the webpage (see below).
-
-### Debugging in the Lando webserver for DEV
-
-Activate XDebug for a request by appending parameter `?XDEBUG_TRIGGER=1` to the URL (for any page on the Gato GraphQL plugin, including any page in the wp-admin, the GraphiQL or Interactive Schema public clients, or other).
-
-For instance:
-
-- `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin/edit.php?page=gatographql&action=execute_query&XDEBUG_TRIGGER=1`
-- `https://gatographql-{composer-vendor}-extensions.lndo.site/graphiql/?XDEBUG_TRIGGER=1`
-
-### Debugging PHPUnit tests
-
-Activate XDebug by prepending `XDEBUG_TRIGGER=1` before the `phpunit` command to run the unit tests.
-
-For instance:
-
-```bash
-XDEBUG_TRIGGER=1 vendor/bin/phpunit submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Unit/Faker/WPFakerFixtureQueryExecutionGraphQLServerTest.php
-```
-
 ## Development
 
 ### Purging the cache
@@ -456,29 +426,35 @@ This command will:
 - Update the root `composer.json` with the new packages
 - Update the root `phpstan.neon` with the new packages
 
-### Synchronizing files from the upstream Gato GraphQL repo
+## Debugging
 
-Run:
+XDebug is already integrated when using VSCode.
+
+Add a breakpoint in the source code and then, in the `Run and Debug` tab, press on `Start Debugging` with the corresponding configuration (defined in [`.vscode/launch.json`](.vscode/launch.json)):
+
+- `[Lando webserver] Listen for Xdebug`: For debugging the source code while running the Lando webserver for DEV
+- `[PHPUnit] Listen for Xdebug`: For debugging PHPUnit tests
+
+XDebug is enabled but inactive; it must be activated when requesting the webpage (see below).
+
+### Debugging in the Lando webserver for DEV
+
+Activate XDebug for a request by appending parameter `?XDEBUG_TRIGGER=1` to the URL (for any page on the Gato GraphQL plugin, including any page in the wp-admin, the GraphiQL or Interactive Schema public clients, or other).
+
+For instance:
+
+- `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin/edit.php?page=gatographql&action=execute_query&XDEBUG_TRIGGER=1`
+- `https://gatographql-{composer-vendor}-extensions.lndo.site/graphiql/?XDEBUG_TRIGGER=1`
+
+### Debugging PHPUnit tests
+
+Activate XDebug by prepending `XDEBUG_TRIGGER=1` before the `phpunit` command to run the unit tests.
+
+For instance:
 
 ```bash
-composer copy-upstream-files
+XDEBUG_TRIGGER=1 vendor/bin/phpunit submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Unit/Faker/WPFakerFixtureQueryExecutionGraphQLServerTest.php
 ```
-
-<details>
-
-<summary>What files does <code>copy-upstream-files</code> copy?</summary>
-
-Executing `composer copy-upstream-files` will copy files from the "upstream" `GatoGraphQL/GatoGraphQL` repo (which is a Git submodule), to the "downstream" `my-account/GatoGraphQLExtensionsForMyCompany` repo.
-
-These files include GitHub Actions workflows and Lando config files.
-
-For instance, the Lando webserver for DEV (see above) uses the source code files from the main Gato GraphQL plugin, via the mapping defined in the upstream file [`.lando.upstream.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/webservers/gatographql/.lando.upstream.yml).
-
-Whenever that file is updated in the Gato GraphQL repo, by executing `composer copy-upstream-files` we will fetch that updated file and copy it as the downstream [`.lando.base.yml`](webservers/gatographql-extensions/.lando.base.yml) file (it is renamed in the process, and the paths are adapted to point to `submodules/GatoGraphQL/...`).
-
-Then we execute `composer rebuild-server`, and the new mapping will take effect.
-
-</details>
 
 ## Multi-Monorepo (Architecture of the Extension Starter)
 
@@ -602,6 +578,32 @@ Similar to the monorepo split, when generating the plugin for PROD, we can deplo
 This is useful for:
 
 - Allowing users to create issues, pinpointing where a problem happens
+
+## Multi-Monorepo Tools
+
+### Synchronizing files from the upstream Gato GraphQL repo
+
+Run:
+
+```bash
+composer copy-upstream-files
+```
+
+<details>
+
+<summary>What files does <code>copy-upstream-files</code> copy?</summary>
+
+Executing `composer copy-upstream-files` will copy files from the "upstream" `GatoGraphQL/GatoGraphQL` repo (which is a Git submodule), to the "downstream" `my-account/GatoGraphQLExtensionsForMyCompany` repo.
+
+These files include GitHub Actions workflows and Lando config files.
+
+For instance, the Lando webserver for DEV (see above) uses the source code files from the main Gato GraphQL plugin, via the mapping defined in the upstream file [`.lando.upstream.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/webservers/gatographql/.lando.upstream.yml).
+
+Whenever that file is updated in the Gato GraphQL repo, by executing `composer copy-upstream-files` we will fetch that updated file and copy it as the downstream [`.lando.base.yml`](webservers/gatographql-extensions/.lando.base.yml) file (it is renamed in the process, and the paths are adapted to point to `submodules/GatoGraphQL/...`).
+
+Then we execute `composer rebuild-server`, and the new mapping will take effect.
+
+</details>
 
 ## Multi-Monorepo Commands
 
