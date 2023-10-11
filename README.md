@@ -692,10 +692,26 @@ composer fix-style
 
 ## Testing
 
-To execute [PHPUnit](https://phpunit.de/), run:
+### Unit Tests
+
+Execute unit tests via [PHPUnit](https://phpunit.de/):
 
 ``` bash
-composer test
+composer unit-test
+```
+
+### Integration Tests
+
+Execute integration tests against the Lando webserver for DEV:
+
+``` bash
+composer integration-test
+```
+
+Execute against the Lando webserver for PROD:
+
+``` bash
+composer integration-test-prod
 ```
 
 ## Static analysis
