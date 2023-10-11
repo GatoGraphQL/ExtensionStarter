@@ -442,7 +442,7 @@ Once we create a new repository from a GitHub template, the repository and the t
 
 The Gato GraphQL monorepo deals with this issue by providing tools that copy content (code, scripts, workflows, etc) from the Gato GraphQL repo (available as a Git submodule) to the extension project repo. This enables the extension project to be updated when there are changes to the main plugin.
 
-See section "Synchronizing the downstream extension project with the upstream Gato GraphQL repo" to learn more.
+See section "Synchronizing files from the upstream Gato GraphQL repo" to learn more.
 
 ### Use the GitHub Actions workflows developed for the Gato GraphQL plugin
 
@@ -531,7 +531,7 @@ The following commands are available, via `composer`:
 
 @todo
 
-## Synchronizing the downstream extension project with the upstream Gato GraphQL repo
+## Synchronizing files from the upstream Gato GraphQL repo
 
 Run:
 
@@ -539,11 +539,11 @@ Run:
 composer copy-upstream-files
 ```
 
-This command will copy the GitHub Actions workflows, Lando config files, and others, from the upstream `GatoGraphQL/GatoGraphQL` repo, to the downstream `my-account/GatoGraphQLExtensionsForMyCompany` repo.
+This command will copy files (including GitHub Actions workflows and Lando config files) from the "upstream" `GatoGraphQL/GatoGraphQL` repo (which is a Git submodule), to the "downstream" `my-account/GatoGraphQLExtensionsForMyCompany` repo.
 
-For instance, the Lando webserver for DEV (see below) configures the container to use the source code from the main Gato GraphQL plugin (as to reflect changes on the source code immediately on the webserver), using the mapping from the "upstream" file [`.lando.upstream.yml`](submodules/GatoGraphQL/webservers/gatographql/.lando.upstream.yml).
+For instance, the Lando webserver for DEV (see above) uses the source code files from the main Gato GraphQL plugin, via the mapping defined in the upstream file [`.lando.upstream.yml`](submodules/GatoGraphQL/webservers/gatographql/.lando.upstream.yml).
 
-When the Gato GraphQL plugin incorporates a new package, and a new mapping entry is added to that file, ...
+Wheneven that file is updated in the Gato GraphQL repo, by executing `composer copy-upstream-files` we will fetch that updated file and copy it as the downstream [`.lando.base.yml`](webservers/gatographql-extensions/.lando.base.yml) file. Then we execute `composer rebuild-server`, and the new mapping will take effect.
 
 ## Standards
 
