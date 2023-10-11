@@ -305,9 +305,7 @@ This is useful when:
 
 #### Re-build the Lando webserver
 
-When a plugin or package folder has been renamed, after updating the `overrides` section in the Lando config to the new path, you need to rebuild the Lando webserver.
-
-Run:
+When a plugin or package folder has been renamed, you need to update the path in the `overrides` section of the [`.lando.upstream.yml`](webservers/gatographql-extensions/.lando.upstream.yml) Lando config file, and then rebuild the Lando webserver to reflect these changes:
 
 ```bash
 composer rebuild-server
