@@ -347,11 +347,15 @@ composer init-server-prod
 
 ## Release your extension plugins
 
+The monorepo includes scripts that completely automate the process of releasing the extension plugins in the monorepo.
+
 Follow these steps:
 
 ### Tag the monorepo as "patch", "minor" or "major"
 
 (Given that the current version is `0.0.0`...)
+
+Choose which version you will be releasing. The same version will be applied to all plugins in the monorepo.
 
 To release version `0.0.1`, run:
 
