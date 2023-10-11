@@ -393,7 +393,9 @@ composer release-patch -- --dry-run
 
 ### Create release from tag in GitHub
 
-To generate the release plugin for PROD, head over to tags page in your GitHub repo ([github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags](https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags)), and click on the new tag (eg: `0.1.0`).
+After tagging the repo on the step above, we can create a release from the tag, which will generate the extension plugins for production.
+
+To create the release, head over to the `tags` page in your GitHub repo ([github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags](https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags)), and click on the new tag (eg: `0.1.0`).
 
 On the tag page, click on `Create release from tag`.
 
