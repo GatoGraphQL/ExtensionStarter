@@ -484,7 +484,7 @@ Then we execute `composer rebuild-server`, and the new mapping will take effect.
 
 The benefits of using the multi-monorepo approach as a starter project are several.
 
-**Heads up!** All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (that is 26 extensions and 4 bundles to date) are hosted on a repo created from `GatoGraphQL/ExtensionStarter`! So you get access to the same tools as the creators of these commercial extensions are themselves using.
+_All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (that is 26 extensions and 4 bundles to date) are hosted on a repo created from `GatoGraphQL/ExtensionStarter`! So you get access to the same tools as the creators of these commercial extensions are themselves using._
 
 ### Automation
 
@@ -537,7 +537,7 @@ Downgrading code provides the best trade-off between availability of PHP feature
 - Use the strict typing features from PHP 8.1 (typed properties, union types, and others) to develop the plugin, reducing the possibility it will contain bugs
 - Increase the potential number of users who can use your plugin, in production, by releasing it with PHP 7.2
 
-**Heads up!** Not all PHP 8.1 features are available, but only those ones that are "downgradeable" via Rector. Check the list of [Supported PHP features in `GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/docs/supported-php-features.md).
+_Not all PHP 8.1 features are available, but only those ones that are "downgradeable" via Rector. Check the list of [Supported PHP features in `GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/docs/supported-php-features.md)._
 
 ### Scope 3rd-party libraries
 
