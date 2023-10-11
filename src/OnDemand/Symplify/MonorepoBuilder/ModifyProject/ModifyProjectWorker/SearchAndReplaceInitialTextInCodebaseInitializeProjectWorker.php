@@ -72,6 +72,10 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             ),
 
             'https://github.com/GatoGraphQL/ExtensionStarter' => $githubRepo,
+            'https://github.com/GatoGraphQL/hello-dolly' => sprintf(
+                'https://github.com/%s/hello-dolly',
+                $inputObject->getGithubRepoOwner()
+            ),
 
             /**
              * Replace "gatographql-extensions" with "{composer-vendor}-gatographql-extensions".
