@@ -46,7 +46,7 @@ The monorepo is managed via the [Monorepo Builder](https://github.com/symplify/m
 
 Read about the benefits of using the multi-monorepo approach on section [Why a Multi-monorepo](#why-a-multi-monorepo) below.
 
-## Install
+## Create your Extension Project
 
 Follow these steps:
 
