@@ -496,7 +496,7 @@ As a consequence, you only need to concentrate on the actual code for your exten
 
 The source code of the Gato GraphQL plugin is always readily-available when developing our extensions, and it is kept up to date just by fetching the Git changes from the upstream repo.
 
-This is important as documentation (mostly when we first start developing with Gato GraphQL) and for debugging (XDebug is integrated out of the box, see below).
+This is important as documentation (mostly when we first start developing with Gato GraphQL) and for debugging (XDebug is integrated out of the box).
 
 ### Host the codebase for multiple extensions, and all their packages, all together
 
