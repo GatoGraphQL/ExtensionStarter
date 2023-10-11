@@ -527,13 +527,13 @@ This is useful for:
 
 ## Multi-Monorepo Commands
 
-To retrieve the list of all Composer commands available in the monorepo, run:
+Retrieve the list of all Composer commands available in the monorepo:
 
 ```bash
 composer list
 ```
 
-This will print:
+This will print the monorepo commands (among other ones):
 
 ```
 analyse                              Run PHPStan static analysis of the code
