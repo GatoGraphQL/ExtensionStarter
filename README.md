@@ -379,6 +379,20 @@ $ lando wp plugin install https://github.com/my-account/GatoGraphQLExtensionsFor
 $ cd ../..
 ```
 
+### Query the extension in the `wp-admin`
+
+Once you've installed the release on the Lando webserver for PROD, log-in to the `wp-admin`, access the GraphiQL client, and execute the following GraphQL query:
+
+```graphql
+{
+  helloDolly
+}
+```
+
+If the release was generated successfully, you will receive a response:
+
+!["Hello Dolly" in GraphQL](assets/img/graphiql-hello-dolly.png)
+
 ## Continuous Integration
 
 Review the GitHub Actions workflows that you need for your project.
