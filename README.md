@@ -351,9 +351,9 @@ Follow these steps:
 
 ### Tag the monorepo as `patch`, `minor` or `major`
 
-(Given that the current version is `0.0.0`...)
-
 Choose which version you will be releasing. The same version will be applied to all plugins in the monorepo.
+
+_(Given that the current version is `0.0.0`...)_
 
 To release version `0.0.1`, run:
 
