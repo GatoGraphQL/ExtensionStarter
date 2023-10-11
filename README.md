@@ -57,11 +57,11 @@ Follow these steps:
 ### Create your repo from this GitHub template
 
 - Click on `Use this template` → `Create a new repository`
-- Select the GitHub owner, and choose a proper name for your repository (eg: `my-account/GatoGraphQLExtensionsForMyCompany`)
+- Select the GitHub owner, and choose a proper name for your repository
 - Choose if to make it Public or Private
 - Click on `Create repository`
 
-As a result, a copy of this template will have been created under your GitHub repo:
+As a result, a copy of this template will have been created under your GitHub repo `my-account/GatoGraphQLExtensionsForMyCompany`:
 
 ![GitHub repo from template](assets/img/repo-from-template.png)
 
