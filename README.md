@@ -595,9 +595,11 @@ Retrieve the list of all Composer commands available in the monorepo:
 composer list
 ```
 
-This will print the monorepo commands (among other ones):
+<details>
 
-| Composer command | Description |
+<summary>All monorepo commands</summary>
+
+| `composer` command | Description |
 | --- | --- |
 | `analyse` | Run PHPStan static analysis of the code |
 | `build-js` | Build all JS packages, blocks and editor scripts for all plugins in the Gato GraphQL - Extension Starter repo |
@@ -663,6 +665,8 @@ This will print the monorepo commands (among other ones):
 | `update-monorepo-config` | Update the monorepo's composer.json and phpstan.neon files, with data from all packages |
 | `use-default-restrictive-defaults` | Remove the set value, use the default one |
 | `validate-monorepo` | Validate that version constraints for dependencies are the same for all packages |
+
+</details>
 
 ## Standards
 
