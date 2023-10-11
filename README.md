@@ -61,9 +61,9 @@ Follow these steps:
 
 The following GitHub Actions workflows are not initially needed:
 
-- [`integration_tests.yml`](.github/workflows/integration_tests.yml): You need to configure InstaWP first
-- [`split_monorepo_tagged.yml`](.github/workflows/split_monorepo_tagged.yml): The "Monorepo Split" is not enabled by default (see section [Monorepo Split](#monorepo-split) below)
-- [`split_monorepo.yml`](.github/workflows/split_monorepo.yml): Same as above
+- [`integration_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml): You need to configure InstaWP first
+- [`split_monorepo_tagged.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo_tagged.yml): The "Monorepo Split" is not enabled by default (see section [Monorepo Split](#monorepo-split) below)
+- [`split_monorepo.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo.yml): Same as above
 
 As such, you can [disable these workflows](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) so they don't run unnecessarily.
 
