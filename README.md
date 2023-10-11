@@ -49,7 +49,7 @@ As a result, a copy of this template will have been created under your GitHub re
 
 ### Clone your repo locally
 
-Once you have created your repository, clone it in your local drive using the `--recursive` option (needed to clone Git submodule `GatoGraphQL/GatoGraphQL`):
+Clone your repository in your local drive using the `--recursive` option (needed to clone Git submodule `GatoGraphQL/GatoGraphQL`):
 
 ```bash
 git clone --recursive https://github.com/my-account/GatoGraphQLExtensionsForMyCompany
