@@ -264,13 +264,15 @@ The first time the application is invoked, the container gathers all injected se
 
 Generating this file can take several seconds. To avoid waiting for this time on each request, the Gato GraphQL plugin caches this file after it has been generated the first time.
 
-The container needs to be purged whenever a service is created, or an existing one updated or removed.
+The container needs to be purged whenever a service is created, or an existing one updated or removed. On the plugin for PROD, this is done whenever a new extension plugin is activated, or updating the plugin Settings. In the Lando webserver for DEV, it must be done manually, by running `composer purge-cache`.
 
-The GraphQL schema is composed via services. Some examples are:
+That is the case for resolvers (type resolvers, field resolvers, directive resolvers, and any other resolver that gives shape to the GraphQL schema). Whenever a resolver is added or removed, or is updated in such a way that modifies the GraphQL schema, the cached container must be purged.
 
-- Type resolvers (eg: [`StringScalarTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/component-model/src/TypeResolvers/ScalarType/StringScalarTypeResolver.php))
-- Field resolvers (eg: [`UserObjectTypeFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php))
-- Directive resolvers (eg: [`SkipFieldDirectiveResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php))
+Some example PHP services for resolvers are:
+
+- `String` type: [`StringScalarTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/component-model/src/TypeResolvers/ScalarType/StringScalarTypeResolver.php)
+- Field `User.name` (and others): [`UserObjectTypeFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php)
+- `@skip` directive: [`SkipFieldDirectiveResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php)
 
 </details>
 
