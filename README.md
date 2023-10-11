@@ -38,7 +38,7 @@ Check [gatographql.com/extensions](https://gatographql.com/extensions/) to brows
 
 ## Architecture of the Extension Starter
 
-`GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only 1, but multiple extension plugins for Gato GraphQL (and also their packages).
+`GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only one, but multiple extension plugins for Gato GraphQL (and also their packages).
 
 ![Monorepo architecture](assets/img/monorepo.webp)
 
