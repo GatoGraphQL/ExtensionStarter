@@ -180,7 +180,7 @@ After a few minutes, the website will be available under `https://gatographql-{c
 
 (`{composer-vendor}` is an argument to the `initialize-project` command above; its default value is generated from the `php-namespace-owner` option.)
 
-The URL is printed on the console under "APPSERVER URLS" (you will need to scroll up):
+The URL is printed on the console under `APPSERVER URLS` (you will need to scroll up):
 
 ![Lando webserver URL](assets/img/lando-webserver-url.png)
 
