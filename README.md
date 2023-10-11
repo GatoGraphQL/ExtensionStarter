@@ -529,9 +529,17 @@ This is useful for:
 
 The following commands are available, via `composer`:
 
+@todo
+
 ## Synchronizing the downstream extension project with the upstream Gato GraphQL repo
 
-@todo
+Run:
+
+```bash
+composer copy-upstream-files
+```
+
+This command will copy the GitHub Actions workflows, Lando config files, and others, from the upstream `GatoGraphQL/GatoGraphQL` repo, to the downstream `my-account/GatoGraphQLExtensionsForMyCompany` repo.
 
 For instance, the Lando webserver for DEV (see below) configures the container to use the source code from the main Gato GraphQL plugin (as to reflect changes on the source code immediately on the webserver), using the mapping from the "upstream" file [`.lando.upstream.yml`](submodules/GatoGraphQL/webservers/gatographql/.lando.upstream.yml).
 

@@ -39,11 +39,6 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
      */
     protected function getReplacements(InitializeProjectInputObjectInterface $inputObject): array
     {
-        $githubRepo = sprintf(
-            'https://github.com/%s/%s',
-            $inputObject->getGithubRepoOwner(),
-            $inputObject->getGithubRepoName()
-        );
         $landoSubdomain = sprintf(
             'gatographql-%s-extensions',
             $inputObject->getComposerVendor()
@@ -71,7 +66,16 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
                 $inputObject->getMyCompanyName()
             ),
 
-            'https://github.com/GatoGraphQL/ExtensionStarter' => $githubRepo,
+            'https://github.com/GatoGraphQL/ExtensionStarter' => sprintf(
+                'https://github.com/%s/%s',
+                $inputObject->getGithubRepoOwner(),
+                $inputObject->getGithubRepoName()
+            ),
+            'my-account/GatoGraphQLExtensionsForMyCompany' => sprintf(
+                '%s/%s',
+                $inputObject->getGithubRepoOwner(),
+                $inputObject->getGithubRepoName()
+            ),
             'https://github.com/GatoGraphQL/hello-dolly' => sprintf(
                 'https://github.com/%s/hello-dolly',
                 $inputObject->getGithubRepoOwner()
