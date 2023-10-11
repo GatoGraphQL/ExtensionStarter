@@ -291,7 +291,7 @@ To re-install the WordPress site, run:
 composer reset-db-prod
 ```
 
-### Start the Lando webserver for PROD
+## Start the Lando webserver for PROD
 
 Building the webserver (above) is needed only the first time.
 
