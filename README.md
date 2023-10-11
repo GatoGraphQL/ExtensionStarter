@@ -401,7 +401,7 @@ Then, on the tag page, click on `Create release from tag`.
 
 ![Create release from tag](assets/img/create-release-from-tag.png)
 
-This will trigger the [`generate_plugins`](.github/workflows/generate_plugins.yml) workflow, which will generate the extension plugins and attach them as assets to the tag page.
+This will trigger the [`generate_plugins`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml) workflow, which will generate the extension plugins and attach them as assets to the tag page.
 
 For instance, after tagging Gato GraphQL with `1.0.9`, assets `gatographql-1.0.9.zip`, `gatographql-testing-1.0.9.zip` and `gatographql-testing-schema-1.0.9.zip` were attached to [GatoGraphQL/GatoGraphQL/releases/tag/1.0.9](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/1.0.9)
 
