@@ -706,7 +706,6 @@ composer list
 | `purge-cache` | Purge the cache for the 'Gato GraphQL' in DEV |
 | `purge-cache-upstream` | Runs the purge-cache-upstream script as defined in composer.json |
 | `rebuild-app-and-server` | Update the App dependencies (from Composer) and rebuild the Lando webserver |
-| `rebuild-app-and-server-prod` | Runs the rebuild-app-and-server-prod script as defined in composer.json |
 | `rebuild-server` | Runs the rebuild-server script as defined in composer.json |
 | `release-major` | Release a new 'major' version (MAJOR.xx.xx) (bump version, commit, push, tag, revert to 'dev-master', commit, push) |
 | `release-minor` | Release a new 'minor' version (xx.MINOR.xx) (bump version, commit, push, tag, revert to 'dev-master', commit, push) |
