@@ -36,20 +36,6 @@ Gato GraphQL extensions add functionality and expand the GraphQL schema provided
 
 Check [gatographql.com/extensions](https://gatographql.com/extensions/) to browse the list of existing (commercial) extensions, to give you ideas of what you can do via them.
 
-## Architecture of the Extension Starter
-
-`GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only one, but multiple extension plugins for Gato GraphQL (and also their packages).
-
-![Monorepo architecture](assets/img/monorepo.webp)
-
-`GatoGraphQL/ExtensionStarter` is also a [multi-monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-4-multi-monorepo), including the main Gato GraphQL plugin (hosted under the [`GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL) monorepo) as its upstream, via a Git submodule under `submodules/GatoGraphQL`.
-
-![Multi-Monorepo architecture](assets/img/multi-monorepo.webp)
-
-The monorepo is managed via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
-
-Read about the benefits of using the multi-monorepo approach for a starter project, on section [Why a Multi-monorepo](#why-a-multi-monorepo) below.
-
 ## Create your Extension Project
 
 Follow these steps:
@@ -484,11 +470,21 @@ Then we execute `composer rebuild-server`, and the new mapping will take effect.
 
 </details>
 
-## Why a Multi-monorepo
+## Architecture of the Extension Starter
+
+`GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only one, but multiple extension plugins for Gato GraphQL (and also their packages).
+
+![Monorepo architecture](assets/img/monorepo.webp)
+
+`GatoGraphQL/ExtensionStarter` is also a [multi-monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-4-multi-monorepo), including the main Gato GraphQL plugin (hosted under the [`GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL) monorepo) as its upstream, via a Git submodule under `submodules/GatoGraphQL`.
+
+![Multi-Monorepo architecture](assets/img/multi-monorepo.webp)
+
+The monorepo is managed via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
 
 The benefits of using the multi-monorepo approach as a starter project are several.
 
-_All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (that is 26 extensions and 4 bundles to date) are hosted on a repo created from `GatoGraphQL/ExtensionStarter`! So you get access to the same tools as the creators of these commercial extensions are themselves using._
+_All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (that is 26 extensions and 4 bundles to date) are hosted on a repo created from `GatoGraphQL/ExtensionStarter`!_
 
 ### Automation
 
