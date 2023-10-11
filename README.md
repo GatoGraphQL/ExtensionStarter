@@ -407,9 +407,9 @@ For instance, after tagging Gato GraphQL with `1.0.9`, assets `gatographql-1.0.9
 
 ### Install the extension in the PROD webserver
 
-Once the extension plugin has been generated, install it on the PROD webserver to test it.
+Once the extension plugin has been generated, install it on the PROD webserver to test it, whether manually or using WP-CLI.
 
-For instance, if your repo is `my-account/GatoGraphQLExtensionsForMyCompany` and you have released version `0.1.0`, run:
+Using WP-CLI, if your repo is `my-account/GatoGraphQLExtensionsForMyCompany` and you have released version `0.1.0`, run:
 
 ```bash
 $ cd webservers/gatographql-extensions-for-prod
