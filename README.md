@@ -464,11 +464,19 @@ Run:
 composer copy-upstream-files
 ```
 
-This command will copy files (including GitHub Actions workflows and Lando config files) from the "upstream" `GatoGraphQL/GatoGraphQL` repo (which is a Git submodule), to the "downstream" `my-account/GatoGraphQLExtensionsForMyCompany` repo.
+<details>
+
+<summary>What files does <code>copy-upstream-files</code> copy?</summary>
+
+Executing `composer copy-upstream-files` will copy files from the "upstream" `GatoGraphQL/GatoGraphQL` repo (which is a Git submodule), to the "downstream" `my-account/GatoGraphQLExtensionsForMyCompany` repo.
+
+These files include GitHub Actions workflows and Lando config files.
 
 For instance, the Lando webserver for DEV (see above) uses the source code files from the main Gato GraphQL plugin, via the mapping defined in the upstream file [`.lando.upstream.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/webservers/gatographql/.lando.upstream.yml).
 
-Wheneven that file is updated in the Gato GraphQL repo, by executing `composer copy-upstream-files` we will fetch that updated file and copy it as the downstream [`.lando.base.yml`](webservers/gatographql-extensions/.lando.base.yml) file. Then we execute `composer rebuild-server`, and the new mapping will take effect.
+Whenever that file is updated in the Gato GraphQL repo, by executing `composer copy-upstream-files` we will fetch that updated file and copy it as the downstream [`.lando.base.yml`](webservers/gatographql-extensions/.lando.base.yml) file (it is renamed in the process). Then we execute `composer rebuild-server`, and the new mapping will take effect.
+
+</details>
 
 ## Why a Multi-monorepo
 
