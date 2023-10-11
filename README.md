@@ -415,7 +415,9 @@ $ lando wp plugin install https://github.com/my-account/GatoGraphQLExtensionsFor
 $ cd ../..
 ```
 
-## Updating the monorepo
+## Development
+
+### Updating the monorepo
 
 After adding a plugin or package to the monorepo, the configuration must be updated.
 
