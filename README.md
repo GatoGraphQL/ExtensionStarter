@@ -500,7 +500,7 @@ This is important as documentation (mostly when we first start developing with G
 
 ### Host the codebase for multiple extensions, and all their packages, all together
 
-The repo contains the source code for not only 1, but multiple extension plugins for Gato GraphQL, and also for all their packages.
+The repo contains the source code for not only one, but multiple extension plugins for Gato GraphQL, and also for all their packages.
 
 By hosting all extensions and their packages together, you avoid [dependency hell](https://en.wikipedia.org/wiki/Dependency_hell).
 
