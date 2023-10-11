@@ -470,7 +470,7 @@ Then we execute `composer rebuild-server`, and the new mapping will take effect.
 
 </details>
 
-## Architecture of the Extension Starter
+## Multi-Monorepo (Architecture of the Extension Starter)
 
 `GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only one, but multiple extension plugins for Gato GraphQL (and also their packages).
 
