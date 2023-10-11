@@ -54,7 +54,7 @@ Create your own repository from the `GatoGraphQL/ExtensionStarter` template:
 The following GitHub Actions workflows are not initially needed:
 
 - [`integration_tests.yml`](.github/workflows/integration_tests.yml): You need to configure InstaWP first
-- [`split_monorepo_tagged.yml`](.github/workflows/split_monorepo_tagged.yml): The "Monorepo Split" is not enabled by default (see section "Monorepo Split" below)
+- [`split_monorepo_tagged.yml`](.github/workflows/split_monorepo_tagged.yml): The "Monorepo Split" is not enabled by default (see section [Monorepo Split](#monorepo-split) below)
 - [`split_monorepo.yml`](.github/workflows/split_monorepo.yml): Same as above
 
 As such, you can [disable these workflows](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) so they don't run unnecessarily.
@@ -410,6 +410,8 @@ This command will:
 
 The monorepo is managed via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
 
+Read about the benefits of using the multi-monorepo approach on section [Why a Multi-monorepo](#why-a-multi-monorepo) below.
+
 ## Why a Multi-monorepo
 
 The benefits of using the multi-monorepo approach as a starter project are several.
@@ -442,7 +444,7 @@ Once we create a new repository from a GitHub template, the repository and the t
 
 The Gato GraphQL monorepo deals with this issue by providing tools that copy content (code, scripts, workflows, etc) from the Gato GraphQL repo (available as a Git submodule) to the extension project repo. This enables the extension project to be updated when there are changes to the main plugin.
 
-See section "Synchronizing files from the upstream Gato GraphQL repo" to learn more.
+See section [Synchronizing files from the upstream Gato GraphQL repo](#synchronizing-files-from-the-upstream-gato-graphql-repo) to learn more.
 
 ### Use the GitHub Actions workflows developed for the Gato GraphQL plugin
 
