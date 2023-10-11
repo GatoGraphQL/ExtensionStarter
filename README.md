@@ -48,7 +48,7 @@ Check [gatographql.com/extensions](https://gatographql.com/extensions/) to brows
 
 The monorepo is managed via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
 
-Read about the benefits of using the multi-monorepo approach on section [Why a Multi-monorepo](#why-a-multi-monorepo) below.
+Read about the benefits of using the multi-monorepo approach for a starter project, on section [Why a Multi-monorepo](#why-a-multi-monorepo) below.
 
 ## Create your Extension Project
 
