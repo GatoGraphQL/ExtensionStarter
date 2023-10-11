@@ -1,6 +1,8 @@
 # Gato GraphQL - Extension Starter
 
-GitHub template repository to develop and release your extensions for Gato GraphQL.
+Gato GraphQL extensions add functionality and expand the GraphQL schema provided by the [Gato GraphQL](https://gatographql.com) plugin.
+
+This template repository helps you kickstart a GitHub repo, to develop, test and release your own extensions for Gato GraphQL.
 
 ![Unit tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/unit_tests.yml/badge.svg)
 ![Downgrade PHP tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/downgrade_php_tests.yml/badge.svg)
@@ -29,12 +31,6 @@ If these tests are enabled, add the badge code:
 ### Recommended to use
 
 - [XDebug](https://xdebug.org/) (integrated out of the box when using [VSCode](https://code.visualstudio.com/))
-
-## What are Gato GraphQL Extensions?
-
-Gato GraphQL extensions add functionality and expand the GraphQL schema provided by the [Gato GraphQL](https://gatographql.com) plugin.
-
-Check [gatographql.com/extensions](https://gatographql.com/extensions/) to browse the list of existing (commercial) extensions, to give you ideas of what you can do via them.
 
 ## Create your Extension Project
 
