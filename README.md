@@ -375,7 +375,7 @@ To release version `1.0.0`, run:
 composer release-major
 ```
 
-Executing any of these commands will first prepare the repo for PROD:
+Executing these commands will first prepare the repo for PROD:
 
 - Update the version (in the plugin file's header, readme.txt's Stable tag, others) for all the extension plugins in the monorepo
 - Update the documentation image URLs to point to that tag, under `raw.githubusercontent.com`
