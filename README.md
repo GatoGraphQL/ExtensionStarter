@@ -110,17 +110,15 @@ To see the default values, run:
 composer initialize-project -- --dry-run
 ```
 
-<details>
-
-<summary>All <code>initialize-project</code> command arguments</summary>
-
 To print all the arguments for the `initialize-project` command, run:
 
 ```bash
 composer initialize-project -- --help
 ```
 
-This will print:
+<details>
+
+<summary>All <code>initialize-project</code> command arguments</summary>
 
 | Option | Description |
 | --- | --- |
