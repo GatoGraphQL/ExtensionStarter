@@ -548,8 +548,8 @@
         "copy-folders-from-upstream-monorepo": "[multi-monorepo] Copy all files in specific folders to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
         "copy-files-from-upstream-monorepo": "[multi-monorepo] Copy specific files to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
         "copy-upstream-files": "[multi-monorepo] Copy both specific files, and all files in specific folders, to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo",
-        "build-js": "Build all JS packages, blocks and editor scripts from Gato GraphQL - Extension Starter",
-        "install-deps-build-js": "Build all JS packages, blocks and editor scripts from Gato GraphQL - Extension Starter, installing all dependencies from npm"
+        "build-js": "Build all JS packages, blocks and editor scripts for all plugins in the Gato GraphQL - Extension Starter repo",
+        "install-deps-build-js": "Install all dependencies from npm to build the JS packages, blocks and editor scripts for all plugins in the Gato GraphQL - Extension Starter repo"
     },
     "replace": {
         "gatographql/external-dependency-wrappers": "self.version",

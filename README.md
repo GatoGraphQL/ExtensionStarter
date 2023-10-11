@@ -527,6 +527,12 @@ This is useful for:
 
 ## Multi-Monorepo Commands
 
+To retrieve the list of all Composer commands available in the monorepo, run:
+
+```bash
+composer list
+```
+
 The following commands are available, via `composer`:
 
 @todo
