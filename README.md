@@ -180,8 +180,8 @@ composer server-info
 
 In addition to the main Gato GraphQL plugin, 2 other plugins are installed:
 
-- [Gato GraphQL - Testing](submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/gatographql-testing.php)
-- [Gato GraphQL - Testing Schema](submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema/gatographql-testing-schema.php)
+- [Gato GraphQL - Testing](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/gatographql-testing.php)
+- [Gato GraphQL - Testing Schema](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/GatoGraphQLForWP/plugins/testing-schema/gatographql-testing-schema.php)
 
 These are utilities to run integration tests for Gato GraphQL (for instance, to install the "Dummy CPT" to test field `Root.customPosts`, and others).
 
@@ -226,9 +226,9 @@ The container needs to be purged whenever a service is created, or an existing o
 
 The GraphQL schema is composed via services. Some examples are:
 
-- Type resolvers (eg: [`StringScalarTypeResolver`](submodules/GatoGraphQL/layers/Engine/packages/component-model/src/TypeResolvers/ScalarType/StringScalarTypeResolver.php))
-- Field resolvers (eg: [`UserObjectTypeFieldResolver`](submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php))
-- Directive resolvers (eg: [`SkipFieldDirectiveResolver`](submodules/GatoGraphQL/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php))
+- Type resolvers (eg: [`StringScalarTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/component-model/src/TypeResolvers/ScalarType/StringScalarTypeResolver.php))
+- Field resolvers (eg: [`UserObjectTypeFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php))
+- Directive resolvers (eg: [`SkipFieldDirectiveResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php))
 
 </details>
 
@@ -612,7 +612,7 @@ composer copy-upstream-files
 
 This command will copy files (including GitHub Actions workflows and Lando config files) from the "upstream" `GatoGraphQL/GatoGraphQL` repo (which is a Git submodule), to the "downstream" `my-account/GatoGraphQLExtensionsForMyCompany` repo.
 
-For instance, the Lando webserver for DEV (see above) uses the source code files from the main Gato GraphQL plugin, via the mapping defined in the upstream file [`.lando.upstream.yml`](submodules/GatoGraphQL/webservers/gatographql/.lando.upstream.yml).
+For instance, the Lando webserver for DEV (see above) uses the source code files from the main Gato GraphQL plugin, via the mapping defined in the upstream file [`.lando.upstream.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/webservers/gatographql/.lando.upstream.yml).
 
 Wheneven that file is updated in the Gato GraphQL repo, by executing `composer copy-upstream-files` we will fetch that updated file and copy it as the downstream [`.lando.base.yml`](webservers/gatographql-extensions/.lando.base.yml) file. Then we execute `composer rebuild-server`, and the new mapping will take effect.
 
