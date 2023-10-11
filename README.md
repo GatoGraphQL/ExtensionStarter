@@ -432,6 +432,20 @@ This command will:
 - Update the root `composer.json` with the new packages
 - Update the root `phpstan.neon` with the new packages
 
+### Synchronizing files from the upstream Gato GraphQL repo
+
+Run:
+
+```bash
+composer copy-upstream-files
+```
+
+This command will copy files (including GitHub Actions workflows and Lando config files) from the "upstream" `GatoGraphQL/GatoGraphQL` repo (which is a Git submodule), to the "downstream" `my-account/GatoGraphQLExtensionsForMyCompany` repo.
+
+For instance, the Lando webserver for DEV (see above) uses the source code files from the main Gato GraphQL plugin, via the mapping defined in the upstream file [`.lando.upstream.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/webservers/gatographql/.lando.upstream.yml).
+
+Wheneven that file is updated in the Gato GraphQL repo, by executing `composer copy-upstream-files` we will fetch that updated file and copy it as the downstream [`.lando.base.yml`](webservers/gatographql-extensions/.lando.base.yml) file. Then we execute `composer rebuild-server`, and the new mapping will take effect.
+
 ## Why a Multi-monorepo
 
 The benefits of using the multi-monorepo approach as a starter project are several.
@@ -623,20 +637,6 @@ This will print the monorepo commands (among other ones):
 | `update-monorepo-config` | Update the monorepo's composer.json and phpstan.neon files, with data from all packages |
 | `use-default-restrictive-defaults` | Remove the set value, use the default one |
 | `validate-monorepo` | Validate that version constraints for dependencies are the same for all packages |
-
-## Synchronizing files from the upstream Gato GraphQL repo
-
-Run:
-
-```bash
-composer copy-upstream-files
-```
-
-This command will copy files (including GitHub Actions workflows and Lando config files) from the "upstream" `GatoGraphQL/GatoGraphQL` repo (which is a Git submodule), to the "downstream" `my-account/GatoGraphQLExtensionsForMyCompany` repo.
-
-For instance, the Lando webserver for DEV (see above) uses the source code files from the main Gato GraphQL plugin, via the mapping defined in the upstream file [`.lando.upstream.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/webservers/gatographql/.lando.upstream.yml).
-
-Wheneven that file is updated in the Gato GraphQL repo, by executing `composer copy-upstream-files` we will fetch that updated file and copy it as the downstream [`.lando.base.yml`](webservers/gatographql-extensions/.lando.base.yml) file. Then we execute `composer rebuild-server`, and the new mapping will take effect.
 
 ## Standards
 
