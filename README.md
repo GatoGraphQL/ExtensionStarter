@@ -576,6 +576,8 @@ When generating the extension plugin, images to be displayed in the documentatio
 
 Even though the code for all plugins and packages is hosted all together in a monorepo, we can optionally also deploy their code to a separate repo of their own.
 
+![Monorepo Split](assets/img/monorepo-split.webp)
+
 This is useful for:
 
 - Distributing them via Composer
