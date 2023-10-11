@@ -533,9 +533,74 @@ To retrieve the list of all Composer commands available in the monorepo, run:
 composer list
 ```
 
-The following commands are available, via `composer`:
+This will print:
 
-@todo
+```
+analyse                              Run PHPStan static analysis of the code
+build-js                             Build all JS packages, blocks and editor scripts for all plugins in the Gato GraphQL - Extension Starter repo
+build-server                         Initialize the Lando webserver with the 'Gato GraphQL' demo site, for development. To be executed only the first time
+build-server-prod                    Initialize the Lando webserver with the 'Gato GraphQL' demo site, for production. To be executed only the first time
+check-style                          Validate PSR-12 coding standards (via phpcs)
+copy-files-from-upstream-monorepo    [multi-monorepo] Copy specific files to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo
+copy-folders-from-upstream-monorepo  [multi-monorepo] Copy all files in specific folders to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo
+copy-upstream-files                  [multi-monorepo] Copy both specific files, and all files in specific folders, to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo
+debug                                Run and debug PHPUnit tests
+delete-settings                      Delete the plugin settings from the DB
+deoptimize-autoloader                Removes the optimization of the Composer autoloaders for all the plugins installed in the webserver
+destroy-server                       Destroy the Lando webserver with the 'Gato GraphQL' demo site
+destroy-server-prod                  Destroy the Lando webserver with the 'Gato GraphQL' demo site for PROD
+disable-caching                      Disable caching for the 'Gato GraphQL' in DEV
+disable-restrictive-defaults         Do not use restrictive default values for the Settings
+enable-caching                       Enable caching for the 'Gato GraphQL' in DEV
+enable-restrictive-defaults          Use restrictive default values for the Settings
+fix-style                            Fix PSR-12 coding standards (via phpcbf)
+import-data                          Imports pre-defined data into the DB (posts, users, CPTs, etc)
+improve-code-quality                 Improve code quality (via Rector)
+init-server                          Alias of 'start-server
+init-server-prod                     Runs the init-server-prod script as defined in composer.json
+init-server-upstream                 Runs the init-server-upstream script as defined in composer.json
+initialize-project                   Initialize the project, replacing the extension starter data with your own data
+install-deps-build-js                Install all dependencies from npm to build the JS packages, blocks and editor scripts for all plugins in the Gato GraphQL - Extension Starter repo
+install-site                         Installs the WordPress site
+install-site-prod                    Installs the WordPress site in the PROD server
+integration-test                     Execute integration tests (PHPUnit)
+log-server-errors                    Show (on real time) the errors from the Lando webserver
+log-server-warnings                  Show (on real time) the warnings from the Lando webserver
+merge-monorepo                       Create the monorepo's composer.json file, containing all dependencies from all packages
+merge-phpstan                        Generate a single PHPStan config for the monorepo, invoking the config for the PHPStan config for all packages
+preview-code-downgrade               Run Rector in 'dry-run' mode to preview how the all code (i.e. src/ + vendor/ folders) will be downgraded to PHP 7.2
+preview-hello-dolly-downgrade        Runs the preview-hello-dolly-downgrade script as defined in composer.json
+preview-src-downgrade                Run Rector in 'dry-run' mode to preview how the src/ folder will be downgraded to PHP 7.2
+preview-vendor-downgrade             Run Rector in 'dry-run' mode to preview how the vendor/ folder will be downgraded to PHP 7.2
+prod-integration-test                Execute integration tests (PHPUnit) against the PROD webserver
+propagate-monorepo                   Propagate versions from the monorepo's composer.json file to all packages
+purge-cache                          Purge the cache for the 'Gato GraphQL' in DEV
+purge-cache-upstream                 Runs the purge-cache-upstream script as defined in composer.json
+rebuild-app-and-server               Update the App dependencies (from Composer) and rebuild the Lando webserver
+rebuild-app-and-server-prod          Runs the rebuild-app-and-server-prod script as defined in composer.json
+rebuild-server                       Runs the rebuild-server script as defined in composer.json
+release-major                        Release a new 'major' version (MAJOR.xx.xx) (bump version, commit, push, tag, revert to 'dev-master', commit, push)
+release-minor                        Release a new 'minor' version (xx.MINOR.xx) (bump version, commit, push, tag, revert to 'dev-master', commit, push)
+release-patch                        Release a new 'patch' version (xx.xx.PATCH) (bump version, commit, push, tag, revert to 'dev-master', commit, push)
+remove-unused-imports                Remove unused `use` imports
+reset-db                             Resets the WordPress database
+reset-db-prod                        Resets the WordPress database in the PROD server
+server-info                          Retrieve information from the Lando webserver
+server-info-prod                     Retrieve information from the Lando webserver for PROD
+ssh-server                           SSH into the Lando webserver with the 'Gato GraphQL' demo site
+start-server                         Start the Lando webserver with the 'Gato GraphQL' demo site, for development
+status                               Shows a list of locally modified packages
+stop-server-prod                     Stop the Lando webserver for PROD
+stop-server-upstream                 Runs the stop-server-upstream script as defined in composer.json
+stopping-integration-test            Runs the stopping-integration-test script as defined in composer.json
+stopping-prod-integration-test       Execute integration tests (PHPUnit) against the PROD webserver, stopping as soon as there's an error or failure
+stopping-unit-test                   Runs the stopping-unit-test script as defined in composer.json
+unit-test                            Execute unit tests (PHPUnit)
+update-deps                          Update the Composer dependencies for the 'Gato GraphQL' plugins
+update-monorepo-config               Update the monorepo's composer.json and phpstan.neon files, with data from all packages
+use-default-restrictive-defaults     Remove the set value, use the default one
+validate-monorepo                    Validate that version constraints for dependencies are the same for all packages
+```
 
 ## Synchronizing files from the upstream Gato GraphQL repo
 
