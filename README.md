@@ -47,16 +47,6 @@ As a result, a copy of this template will have been created under your GitHub re
 
 ![GitHub repo from template](assets/img/repo-from-template.png)
 
-### Disable unused GitHub Actions workflows
-
-The following GitHub Actions workflows are not initially needed:
-
-- [`integration_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml): You need to configure InstaWP first
-- [`split_monorepo_tagged.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo_tagged.yml): The "Monorepo Split" is not enabled by default (see section [Monorepo Split](#monorepo-split) below)
-- [`split_monorepo.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo.yml): Same as above
-
-As such, you can [disable these workflows](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) so they don't run unnecessarily.
-
 ### Clone your repo locally
 
 Once you have created your repository, clone it in your local drive using the `--recursive` option (needed to clone Git submodule `GatoGraphQL/GatoGraphQL`):
@@ -424,6 +414,18 @@ $ cd webservers/gatographql-extensions-for-prod
 $ lando wp plugin install https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/releases/latest/download/gatographql-hello-dolly-0.1.0.zip --force --activate --path=/app/wordpress
 $ cd ../..
 ```
+
+## Continuous Integration
+
+Review the GitHub Actions workflows that you need for your project.
+
+Most likely, the following GitHub Actions workflows are not initially needed:
+
+- [`integration_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml): You need to configure InstaWP first
+- [`split_monorepo_tagged.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo_tagged.yml): The "Monorepo Split" is not enabled by default (see section [Monorepo Split](#monorepo-split) below)
+- [`split_monorepo.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo.yml): Same as above
+
+If this is the case, you can [disable these workflows](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) so they don't run unnecessarily.
 
 ## Development
 
