@@ -717,6 +717,7 @@ composer list
 | `server-info` | Retrieve information from the Lando webserver |
 | `server-info-prod` | Retrieve information from the Lando webserver for PROD |
 | `ssh-server` | SSH into the Lando webserver with the 'Gato GraphQL' demo site |
+| `ssh-server-prod` | SSH into the Lando webserver for PROD with the 'Gato GraphQL' demo site |
 | `start-server` | Start the Lando webserver with the 'Gato GraphQL' demo site, for development |
 | `status` | Shows a list of locally modified packages |
 | `stop-server-prod` | Stop the Lando webserver for PROD |

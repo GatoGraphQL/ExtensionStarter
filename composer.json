@@ -395,6 +395,7 @@
         ],
         "preview-hello-dolly-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/hello-dolly/rector.php --dry-run layers/GatoGraphQLForWP/plugins/hello-dolly \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
         "ssh-server": "composer ssh-server -d webservers/gatographql-extensions",
+        "ssh-server-prod": "composer ssh-server -d webservers/gatographql-extensions-for-prod",
         "build-server": [
             "Composer\\Config::disableProcessTimeout",
             "composer build-server -d webservers/gatographql-extensions"
@@ -505,6 +506,7 @@
         "preview-vendor-downgrade": "Run Rector in 'dry-run' mode to preview how the vendor/ folder will be downgraded to PHP 7.2",
         "preview-code-downgrade": "Run Rector in 'dry-run' mode to preview how the all code (i.e. src/ + vendor/ folders) will be downgraded to PHP 7.2",
         "ssh-server": "SSH into the Lando webserver with the 'Gato GraphQL' demo site",
+        "ssh-server-prod": "SSH into the Lando webserver for PROD with the 'Gato GraphQL' demo site",
         "build-server": "Initialize the Lando webserver with the 'Gato GraphQL' demo site, for development. To be executed only the first time",
         "build-server-prod": "Initialize the Lando webserver with the 'Gato GraphQL' demo site, for production. To be executed only the first time",
         "init-server": "Alias of 'start-server",
