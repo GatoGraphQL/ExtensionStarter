@@ -221,6 +221,11 @@ For instance:
 - `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin/edit.php?page=gatographql&action=execute_query&XDEBUG_TRIGGER=1`
 - `https://gatographql-{composer-vendor}-extensions.lndo.site/graphiql/?XDEBUG_TRIGGER=1`
 
+XDebug is already integrated when using VSCode. Add a breakpoint in the source code and then, in the "Run and Debug" tab, press on "Start Debugging" with configuration:
+
+- `[Lando webserver] Listen for Xdebug`: For debugging the source code while running the Lando webserver for DEV
+- `[PHPUnit] Listen for Xdebug`: For debugging PHPUnit tests
+
 ### Purging the cache
 
 When developing an extension and testing it in the DEV webserver, whenever we create a new PHP service or modify the signature of an existing one (such as the PHP classname), we need to purge the container cache.
