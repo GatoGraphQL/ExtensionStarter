@@ -1,6 +1,6 @@
 # Gato GraphQL - Extension Starter
 
-Gato GraphQL extensions add functionality and expand the GraphQL schema provided by [Gato GraphQL](https://gatographql.com).
+Gato GraphQL extensions add functionality and expand the GraphQL schema provided by [Gato GraphQL](https://github.com/GatoGraphQL/GatoGraphQL).
 
 **This template repository helps you kickstart a GitHub repo, to develop, test and release your own extensions for Gato GraphQL.**
 
@@ -191,6 +191,22 @@ Credentials for `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-a
 
 - Username: `admin`
 - Password: `admin`
+
+### Open the Gato GraphQL plugin in the `wp-admin`
+
+Click on the Gato GraphQL link on the menu to open the GraphiQL client, and execute the following GraphQL query:
+
+```graphql
+{
+  helloDolly
+}
+```
+
+(Field `Root.helloDolly` is provided via the extension plugin `gatographql-hello-dolly` hosted in this monorepo.)
+
+If the installation of the starter was successful, you will receive a response:
+
+!["Hello Dolly" in GraphQL](assets/img/graphiql-hello-dolly.png)
 
 ### Start the Lando webserver for DEV
 
