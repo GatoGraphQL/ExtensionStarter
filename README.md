@@ -56,7 +56,7 @@ Follow these steps:
 
 ### Create your repo from this GitHub template
 
-- Click on "Use this template => Create a new repository"
+- Click on `Use this template` → `Create a new repository`
 - Select the GitHub owner, and choose a proper name for your repository (eg: `my-account/GatoGraphQLExtensionsForMyCompany`)
 - Choose if to make it Public or Private
 - Click on "Create repository"
