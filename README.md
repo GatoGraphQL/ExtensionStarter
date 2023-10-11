@@ -50,9 +50,7 @@ Read about the benefits of using the multi-monorepo approach on section [Why a M
 
 Follow these steps:
 
-### Create your repo from this template
-
-Create your own repository from the `GatoGraphQL/ExtensionStarter` template:
+### Create your repo from this GitHub template
 
 - Click on "Use this template => Create a new repository"
 - Select the GitHub owner, and choose a proper name for your repository (eg: `my-account/GatoGraphQLExtensionsForMyCompany`)
