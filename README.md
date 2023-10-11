@@ -110,21 +110,21 @@ composer initialize-project -- --help
 
 This will print:
 
-```
---git-base-branch=GIT-BASE-BRANCH                Base branch of the GitHub repository where this project is hosted. If not provided, this value is retrieved using `git`
---git-user-name=GIT-USER-NAME                    Git user name, to "split" code and push it to a different repo when merging a PR. If not provided, this value is retrieved from the global `git` config
---git-user-email=GIT-USER-EMAIL                  Git user email, to "split" code and push it to a different repo when merging a PR. If not provided, this value is retrieved from the global `git` config
---github-repo-owner=GITHUB-REPO-OWNER            Owner of the GitHub repository where this project is hosted (eg: "GatoGraphQL" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`
---github-repo-name=GITHUB-REPO-NAME              Name of the GitHub repository where this project is hosted (eg: "ExtensionStarter" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`
---docs-git-base-branch=DOCS-GIT-BASE-BRANCH      Base branch of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `git-base-branch` is used
---docs-github-repo-owner=DOCS-GITHUB-REPO-OWNER  Owner of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `github-repo-owner` is used
---docs-github-repo-name=DOCS-GITHUB-REPO-NAME    Name of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `github-repo-name` is used
---php-namespace-owner=PHP-NAMESPACE-OWNER        PHP namespace owner to use in the codebase (eg: "MyCompanyName"). If not provided, the value from the "github-repo-owner" option is used
---composer-vendor=COMPOSER-VENDOR                Composer vendor to distribute the packages in the repo. If not provided, it is generated from the "php-namespace-owner" option
---my-company-name=MY-COMPANY-NAME                Name of the person or company owning the extension. If not provided, the value for option `git-user-name` is used
---my-company-email=MY-COMPANY-EMAIL              Email of the person or company owning the extension. If not provided, the value for option `git-user-email` is used
---my-company-website=MY-COMPANY-WEBSITE          Website of the person or company owning the extension. If not provided, the GitHub repo for this project is used
-```
+| Option | Description |
+| --- | --- |
+| `--git-base-branch` | Base branch of the GitHub repository where this project is hosted. If not provided, this value is retrieved using `git` |
+| `--git-user-name` | Git user name, to "split" code and push it to a different repo when merging a PR. If not provided, this value is retrieved from the global `git` config |
+| `--git-user-email` | Git user email, to "split" code and push it to a different repo when merging a PR. If not provided, this value is retrieved from the global `git` config |
+| `--github-repo-owner` | Owner of the GitHub repository where this project is hosted (eg: "GatoGraphQL" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git` |
+| `--github-repo-name` | Name of the GitHub repository where this project is hosted (eg: "ExtensionStarter" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git` |
+| `--docs-git-base-branch` | Base branch of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `git-base-branch` is used |
+| `--docs-github-repo-owner` | Owner of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `github-repo-owner` is used |
+| `--docs-github-repo-name` | Name of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `github-repo-name` is used |
+| `--php-namespace-owner` | PHP namespace owner to use in the codebase (eg: "MyCompanyName"). If not provided, the value from the "github-repo-owner" option is used |
+| `--composer-vendor` | Composer vendor to distribute the packages in the repo. If not provided, it is generated from the "php-namespace-owner" option |
+| `--my-company-name` | Name of the person or company owning the extension. If not provided, the value for option `git-user-name` is used |
+| `--my-company-email` | Email of the person or company owning the extension. If not provided, the value for option `git-user-email` is used |
+| `--my-company-website` | Website of the person or company owning the extension. If not provided, the GitHub repo for this project is used |
 
 </details>
 
