@@ -526,7 +526,7 @@ Some example resolvers are:
 
 ### Regenerating the monorepo configuration
 
-After adding a plugin or package to the monorepo, the configuration must be updated.
+After adding a plugin or package to the monorepo, the configuration (containing all the packages) must be regenerated.
 
 Run:
 
@@ -536,8 +536,8 @@ composer update-monorepo-config
 
 This command will:
 
-- Update the root `composer.json` with the new packages
-- Update the root `phpstan.neon` with the new packages
+- Regenerate the root `composer.json`, adding the new packages
+- Regenerate the root `phpstan.neon`, adding the new packages
 
 ## Debugging
 
