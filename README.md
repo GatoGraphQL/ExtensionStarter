@@ -426,7 +426,7 @@ Run:
 composer integration-test-prod
 ```
 
-## Creating a new Extension Plugin
+## Creating your Extension Plugin
 
 Describe the "Hello Dolly" demo
 
