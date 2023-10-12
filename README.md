@@ -716,7 +716,7 @@ Then we execute `composer rebuild-server`, and the new mapping will take effect.
 
 </details>
 
-## Multi-Monorepo Commands
+## Monorepo Commands
 
 Retrieve the list of all Composer commands available in the monorepo:
 
