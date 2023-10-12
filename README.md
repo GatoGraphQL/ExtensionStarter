@@ -500,7 +500,7 @@ composer purge-cache
 
 <details>
 
-<summary>How does Gato GraphQL use container services? 🤔</summary>
+<summary>How does Gato GraphQL use a service container? 🤔</summary>
 
 The Gato GraphQL plugin uses a service container (via the [Symfony DependencyInjection](https://symfony.com/doc/current/components/dependency_injection.html) library), to manage all services in PHP.
 
