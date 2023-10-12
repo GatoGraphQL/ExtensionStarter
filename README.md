@@ -699,6 +699,7 @@ Then, workflow [`integration_tests.yml`](https://github.com/GatoGraphQL/Extensio
 
 To use it, you need to:
 
+- Expose the artifacts in your repo via [nightly.link](https://nightly.link/) (so these can be installed by InstaWP without being logged-in using a GitHub account)
 - Have an account on [InstaWP](https://instawp.com/) with access to SSH + WP-CLI
 - Prepare a template in InstaWP, and import the needed dataset to run the tests, via WP-CLI
 - Provide the template slug and repo ID from InstaWP via file [`InstaWPConfigDataSource.php`](src/Config/Symplify/MonorepoBuilder/DataSources/InstaWPConfigDataSource.php)
