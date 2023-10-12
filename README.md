@@ -509,7 +509,7 @@ The `update-monorepo-config` command will:
 
 ## Development Tools
 
-### Accessing error logs
+### Error logs
 
 Access the error logs from the Lando webserver:
 
@@ -517,13 +517,13 @@ Access the error logs from the Lando webserver:
 composer log-server-errors
 ```
 
-On the Lando webserver for PROD:
+For PROD:
 
 ```bash
 composer log-server-errors-prod
 ```
 
-### SSH into the webserver
+### SSH
 
 SSH into the Lando webserver:
 
@@ -531,7 +531,7 @@ SSH into the Lando webserver:
 composer ssh-server
 ```
 
-Into the Lando webserver for PROD:
+For PROD:
 
 ```bash
 composer ssh-server-prod
