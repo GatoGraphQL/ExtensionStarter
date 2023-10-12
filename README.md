@@ -448,35 +448,7 @@ Describe the "Hello Dolly" demo
 
 @todo
 
-## Development Tools
-
-### Accessing error logs
-
-Access the error logs from the Lando webserver:
-
-```bash
-composer log-server-errors
-```
-
-On the Lando webserver for PROD:
-
-```bash
-composer log-server-errors-prod
-```
-
-### SSH into the webserver
-
-SSH into the Lando webserver:
-
-```bash
-composer ssh-server
-```
-
-Into the Lando webserver for PROD:
-
-```bash
-composer ssh-server-prod
-```
+## Development Process
 
 ### Purging the cache
 
@@ -528,6 +500,36 @@ This command will:
 
 - Regenerate the root `composer.json`, adding the new packages
 - Regenerate the root `phpstan.neon`, adding the new packages
+
+## Development Tools
+
+### Accessing error logs
+
+Access the error logs from the Lando webserver:
+
+```bash
+composer log-server-errors
+```
+
+On the Lando webserver for PROD:
+
+```bash
+composer log-server-errors-prod
+```
+
+### SSH into the webserver
+
+SSH into the Lando webserver:
+
+```bash
+composer ssh-server
+```
+
+Into the Lando webserver for PROD:
+
+```bash
+composer ssh-server-prod
+```
 
 ## Debugging
 
