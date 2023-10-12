@@ -460,6 +460,12 @@ If this is the case, you can [disable these workflows](https://docs.github.com/e
 
 ## Development
 
+### Creating Unit Tests
+
+### Creating Integration Tests
+
+## Development Tools
+
 ### Accessing error logs
 
 Access the error logs from the Lando webserver:
