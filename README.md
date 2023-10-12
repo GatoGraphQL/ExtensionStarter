@@ -434,6 +434,8 @@ composer integration-test-prod
 
 Describe the "Hello Dolly" demo
 
+Search for "dolly" and "Dolly" in the codebase.
+
 <details>
 
 <summary>Browse the documentation within the codebase</summary>
@@ -492,6 +494,18 @@ Because of scoping!
 		So these must be referenced under hello-gato-schema
 		never under hello-gato-schema-wp, because it has WP code, and it can't be scoped
 
+Document:
+
+// Exclude all libraries for WordPress
+// 1. Exclude libraries ending in "-wp" from general packages
+
+Also:
+
+Finder::create()->append([
+  convertRelativeToFullPath('vendor/getpop/root-wp/src/Module.php'),
+  convertRelativeToFullPath('vendor/getpop/root-wp/src/Hooks/SetupCortexRoutingHookSet.php'),
+])
+
 ### Creating Internal Packages
 
 Input all these in:
@@ -538,6 +552,20 @@ Modifying Field and Directive Resolvers:
 ### Creating Integration Tests
 
 @todo
+
+Point to a .gql test
+Point to a .gql test when disabling the plugin
+Point to a .gql test when disabling the module
+
+Run hello-dolly tests:
+  phpunit layers/GatoGraphQLForWP/plugins/hello-dolly/tests/Integration/SchemaFixtureWebserverRequestTest.php
+  phpunit layers/GatoGraphQLForWP/plugins/hello-dolly/tests/Integration/EnableDisablePluginFixtureWordPressAuthenticatedUserWebserverRequestTest.php
+  phpunit layers/GatoGraphQLForWP/plugins/hello-dolly/tests/Integration/FixtureThirdPartyPluginDependencyWordPressAuthenticatedUserWebserverRequestTest.php
+Indicate the "enabled.json" and "only-one-enabled.json" items fail because of the random nature of the test
+  But I kept them only for documentation, for your own tests
+  alternatively with regex, could use test:
+    submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Integration/AccessPrivatePersistedQuerySourceByAdminQueryExecutionFixtureWebserverRequestTest.php
+Explain what each of them does!
 
 ## Development Process
 
