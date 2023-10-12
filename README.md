@@ -6,7 +6,13 @@ Gato GraphQL extensions add functionality and expand the GraphQL schema provided
 
 To learn about the features provided by the multi-monorepo architecture on this starter project, jump to section [Multi-Monorepo (Architecture of the Extension Starter)](#multi-monorepo-architecture-of-the-extension-starter)
 
-_**Trivia fact:** All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (26 extensions and 4 bundles to date) are hosted on a monorepo created from `GatoGraphQL/ExtensionStarter` 🚀_
+<details>
+
+<summary>Trivia fact 🤔</summary>
+
+_All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (26 extensions and 4 bundles to date) are hosted on a monorepo created from `GatoGraphQL/ExtensionStarter` 🚀_
+
+</details>
 
 ---
 
