@@ -426,38 +426,6 @@ Run:
 composer integration-test-prod
 ```
 
-## Continuous Integration
-
-### Executing Integration Tests against InstaWP
-
-When a PR is merged, all extension plugins in the monorepo are generated for DEV, and attached to workflow [`generate_plugins.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml) (in its Summary tab).
-
-Then, workflow [`integration_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml) is triggered. This workflow installs the generated plugins in an InstaWP instance, and executes the integration tests against this instance.
-
-To use it, you need to:
-
-- Have an account on [InstaWP](https://instawp.com/) with access to SSH + WP-CLI
-- Prepare a template in InstaWP, and import the needed dataset to run the tests, via WP-CLI
-- Provide the template slug and repo ID from InstaWP via file [`InstaWPConfigDataSource.php`](src/Config/Symplify/MonorepoBuilder/DataSources/InstaWPConfigDataSource.php)
-
-To import the dataset, you must run the following bash scripts in your InstaWP instance:
-
-- [setup/setup.sh](webservers/gatographql-extensions/setup/setup.sh)
-- [setup-extensions/setup.sh](webservers/gatographql-extensions/setup-extensions/setup.sh)
-
-### Disable unneeded workflows
-
-Review the GitHub Actions workflows that you need for your project.
-
-Most likely, the following GitHub Actions workflows are not initially needed:
-
-- [`integration_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml): You first need to have InstaWP and configure the template accordingly
-- [`scoping_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/scoping_tests.yml): Initially there are no packages to scope in the starter
-- [`split_monorepo_tagged.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo_tagged.yml): The "Monorepo Split" is not enabled by default (see section [Monorepo Split](#monorepo-split) below)
-- [`split_monorepo.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo.yml): Same as above
-
-If this is the case, you can [disable these workflows](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) so they don't run unnecessarily.
-
 ## Creating a new Extension Plugin
 
 Describe the "Hello Dolly" demo
@@ -590,6 +558,38 @@ For instance:
 ```bash
 XDEBUG_TRIGGER=1 vendor/bin/phpunit submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Unit/Faker/WPFakerFixtureQueryExecutionGraphQLServerTest.php
 ```
+
+## Continuous Integration
+
+### Executing Integration Tests against InstaWP
+
+When a PR is merged, all extension plugins in the monorepo are generated for DEV, and attached to workflow [`generate_plugins.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml) (in its Summary tab).
+
+Then, workflow [`integration_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml) is triggered. This workflow installs the generated plugins in an InstaWP instance, and executes the integration tests against this instance.
+
+To use it, you need to:
+
+- Have an account on [InstaWP](https://instawp.com/) with access to SSH + WP-CLI
+- Prepare a template in InstaWP, and import the needed dataset to run the tests, via WP-CLI
+- Provide the template slug and repo ID from InstaWP via file [`InstaWPConfigDataSource.php`](src/Config/Symplify/MonorepoBuilder/DataSources/InstaWPConfigDataSource.php)
+
+To import the dataset, you must run the following bash scripts in your InstaWP instance:
+
+- [setup/setup.sh](webservers/gatographql-extensions/setup/setup.sh)
+- [setup-extensions/setup.sh](webservers/gatographql-extensions/setup-extensions/setup.sh)
+
+### Disable unneeded workflows
+
+Review the GitHub Actions workflows that you need for your project.
+
+Most likely, the following GitHub Actions workflows are not initially needed:
+
+- [`integration_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml): You first need to have InstaWP and configure the template accordingly
+- [`scoping_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/scoping_tests.yml): Initially there are no packages to scope in the starter
+- [`split_monorepo_tagged.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo_tagged.yml): The "Monorepo Split" is not enabled by default (see section [Monorepo Split](#monorepo-split) below)
+- [`split_monorepo.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo.yml): Same as above
+
+If this is the case, you can [disable these workflows](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) so they don't run unnecessarily.
 
 ## Multi-Monorepo (Architecture of the Extension Starter)
 
