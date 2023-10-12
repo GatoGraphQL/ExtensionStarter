@@ -192,6 +192,10 @@ All plugins hosted on this "downstream" starter monorepo:
 
 - [Gato GraphQL - Hello Dolly](https://github.com/GatoGraphQL/ExtensionStarter/blob/main/layers/GatoGraphQLForWP/plugins/hello-dolly/gatographql-hello-dolly.php)
 
+All the integration plugins, required by the extensions
+
+- [Hello Dolly](https://wordpress.org/plugins/hello-dolly/)
+
 Besides, some initial configuration is applied to the Gato GraphQL plugin Settings. For instance, the single endpoint is enabled (it is disabled by default).
 
 </details>
