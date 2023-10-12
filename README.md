@@ -451,7 +451,7 @@ Review the GitHub Actions workflows that you need for your project.
 
 Most likely, the following GitHub Actions workflows are not initially needed:
 
-- [`integration_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml): You first need to have InstaWP and configure the template accordingly (see above)
+- [`integration_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml): You first need to have InstaWP and configure the template accordingly
 - [`scoping_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/scoping_tests.yml): Initially there are no packages to scope in the starter
 - [`split_monorepo_tagged.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo_tagged.yml): The "Monorepo Split" is not enabled by default (see section [Monorepo Split](#monorepo-split) below)
 - [`split_monorepo.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/split_monorepo.yml): Same as above
@@ -708,7 +708,7 @@ Executing `composer copy-upstream-files` will copy files from the "upstream" `Ga
 
 These files include GitHub Actions workflows and Lando config files.
 
-For instance, the Lando webserver for DEV (see above) uses the source code files from the main Gato GraphQL plugin, via the mapping defined in the upstream file [`.lando.upstream.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/webservers/gatographql/.lando.upstream.yml).
+For instance, the Lando webserver for DEV uses the source code files from the main Gato GraphQL plugin, via the mapping defined in the upstream file [`.lando.upstream.yml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/webservers/gatographql/.lando.upstream.yml).
 
 Whenever that file is updated in the Gato GraphQL repo, by executing `composer copy-upstream-files` we will fetch that updated file and copy it as the downstream [`.lando.base.yml`](webservers/gatographql-extensions/.lando.base.yml) file (it is renamed in the process, and the paths are adapted to point to `submodules/GatoGraphQL/...`).
 
