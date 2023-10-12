@@ -423,6 +423,20 @@ If this is the case, you can [disable these workflows](https://docs.github.com/e
 
 ## Development
 
+### Accessing error logs
+
+Access the error logs from the Lando webserver:
+
+```bash
+composer log-server-errors
+```
+
+On the Lando webserver for PROD:
+
+```bash
+composer log-server-errors-prod
+```
+
 ### Purging the cache
 
 When developing an extension and testing it in the DEV webserver, whenever we create a new PHP service or modify the signature of an existing one (such as the PHP classname), we need to purge the container cache.
