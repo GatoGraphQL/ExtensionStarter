@@ -510,10 +510,9 @@ The first time the application is invoked, the container gathers all injected se
 
 Generating this file can take several seconds. To avoid waiting for this time on each request, the Gato GraphQL plugin caches this file after it has been generated the first time.
 
-The container needs to be purged whenever a service is created, or an existing one updated or removed:
+The container needs to be purged whenever a service is created, or an existing one updated or removed.
 
-- On the plugin for PROD, this is done whenever a new extension plugin is activated, or updating the plugin Settings
-- In the Lando webserver for DEV, it must be done manually, by running `composer purge-cache`
+(In production, the Gato GraphQL plugin purges the cache whenever a new extension plugin is activated, or when the plugin Settings are updated. During development, it can in addition be triggered manually, by running `composer purge-cache`.)
 
 This applies to resolvers (type resolvers, field resolvers, directive resolvers, and any other resolver that gives shape to the GraphQL schema), as these are PHP services. Whenever a resolver is added or removed, or is updated in such a way that modifies the GraphQL schema, the cached container must be purged.
 
