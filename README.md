@@ -496,10 +496,16 @@ Run:
 composer update-monorepo-config
 ```
 
-This command will:
+<details>
+
+<summary>What does command <code>update-monorepo-config</code> do? 🤔</summary>
+
+The `update-monorepo-config` command will:
 
 - Regenerate the root `composer.json`, adding the new packages
 - Regenerate the root `phpstan.neon`, adding the new packages
+
+</details>
 
 ## Development Tools
 
