@@ -505,7 +505,7 @@ Some example PHP services for resolvers are:
 
 </details>
 
-### Updating the monorepo
+### Regenerating the monorepo configuration
 
 After adding a plugin or package to the monorepo, the configuration must be updated.
 
