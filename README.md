@@ -508,6 +508,9 @@ Finder::create()->append([
 
 ### Creating Internal Packages
 
+Explain why we manage them with packages
+  Create 2 modules, 1 for mutations
+
 Input all these in:
 	.vscode/launch.json
 	.lando.base.yml
@@ -720,7 +723,7 @@ If this is the case, you can [disable these workflows](https://docs.github.com/e
 
 ## Multi-Monorepo (Architecture of the Extension Starter)
 
-`GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only one, but multiple extension plugins for Gato GraphQL (and also their packages).
+`GatoGraphQL/ExtensionStarter` is a [monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/#aa-stage-3-monorepo), containing the codebase for not only one, but multiple extension plugins for Gato GraphQL (and also their composing packages).
 
 ![Monorepo architecture](assets/img/monorepo.webp)
 
@@ -731,6 +734,16 @@ If this is the case, you can [disable these workflows](https://docs.github.com/e
 The monorepo is managed via the [Monorepo Builder](https://github.com/symplify/monorepo-builder).
 
 The benefits of using the multi-monorepo approach as a starter project are several.
+
+<details>
+
+<summary>Do packages need to be published to Packagist? 🤔</summary>
+
+No. The packages are internal, and the Monorepo Builder can symlink to the internal packages, hence these are not retrieved from [Packagist](https://packagist.org/).
+
+However, as an advanced use case, you do have the option to distribute packages via Packagist (or any other directory). For that, the "Monorepo Split" feature must be enabled (see section [Monorepo Split](#monorepo-split) below), and then you can link to the package on its own repo.
+
+</details>
 
 ### Automation
 
