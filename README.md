@@ -180,14 +180,19 @@ composer server-info
 
 <summary>What plugins are installed in the webserver? 🤔</summary>
 
-In addition to the main Gato GraphQL plugin, 2 other plugins are installed:
+All plugins hosted on the "upstream" monorepo:
 
+- [Gato GraphQL](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/GatoGraphQLForWP/plugins/gatographql/gatographql.php)
 - [Gato GraphQL - Testing](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/gatographql-testing.php)
 - [Gato GraphQL - Testing Schema](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/GatoGraphQLForWP/plugins/testing-schema/gatographql-testing-schema.php)
 
-These are utilities to run integration tests for Gato GraphQL (for instance, to install the "Dummy CPT" to test field `Root.customPosts`, and others).
+(The last two are utilities to run integration tests for Gato GraphQL. Among others, they provide CPT "dummy-cpt" and custom taxonomies "dummy-category" and "dummy-tag").
 
-Besides, some initial configuration has been applied on the Gato GraphQL plugin Settings. That's why the single endpoint is enabled (otherwise, it is disabled by default).
+All plugins hosted on this "downstream" starter monorepo:
+
+- [Gato GraphQL - Hello Dolly](https://github.com/GatoGraphQL/ExtensionStarter/blob/main/layers/GatoGraphQLForWP/plugins/hello-dolly/gatographql-hello-dolly.php)
+
+Besides, some initial configuration is applied to the Gato GraphQL plugin Settings. For instance, the single endpoint is enabled (it is disabled by default).
 
 </details>
 
