@@ -432,6 +432,32 @@ composer integration-test-prod
 
 ## Creating your Extension Plugin
 
+This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
+
+<details>
+
+<summary>What does "Gato GraphQL - Hello Dolly" do? 🤔</summary>
+
+This extension adds field `Root.helloDolly`, which returns any quote from the Hello Dolly song. The following query:
+
+```graphql
+{
+  helloDolly
+}
+```
+
+may return:
+
+```json
+{
+  "data": {
+    "helloDolly": "Dolly, never go away again"
+  }
+}
+```
+
+</details>
+
 Describe the "Hello Dolly" demo
 
 Search for "dolly" and "Dolly" in the codebase.
