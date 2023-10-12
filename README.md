@@ -458,11 +458,27 @@ Most likely, the following GitHub Actions workflows are not initially needed:
 
 If this is the case, you can [disable these workflows](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) so they don't run unnecessarily.
 
-## Development
+## Creating a new Extension Plugin
+
+Describe the "Hello Dolly" demo
+
+@todo
+
+### Duplicating the "Hello Dolly" Demo
+
+@todo
+
+### Creating Resolvers to Extend the GraphQL Schema
+
+@todo
 
 ### Creating Unit Tests
 
+@todo
+
 ### Creating Integration Tests
+
+@todo
 
 ## Development Tools
 
