@@ -459,6 +459,18 @@ Declare the steps to add yet another extension:
 
 @todo
 
+### Adding Dependencies
+
+3rd-party plugins, Composer packages.
+
+```json
+{
+  "replace": {
+    "pop-schema/schema-commons": "self.version"
+  }
+}    
+```
+
 ### Creating Resolvers to Extend the GraphQL Schema
 
 @todo
