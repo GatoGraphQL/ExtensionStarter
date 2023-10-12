@@ -430,13 +430,28 @@ composer integration-test-prod
 
 Describe the "Hello Dolly" demo
 
-Search for phpdoc tags in the codebase:
+<details>
+
+<summary>Browse the documentation within the codebase</summary>
+
+The codebase contains snippets of documentation, to explain some feature or configuration.
+
+Search for the following PHPDoc tags in the codebase:
 
 - `@gatographql-project-info`: Information on some aspect of the monorepo setup
 - `@gatographql-project-action-maybe-required`: Indicates if some feature can be enabled/disabled and how
 - `@gatographql-extension-info`: Information on some aspect of the extension setup
 - `@gatographql-example`: Provides an example from the upstream monorepo
 - `@gatographql-readonly-code`: Indicates that the code must not be changed, as it is automatically modified via some script
+
+</details>
+
+Declare the steps to add yet another extension:
+
+- duplicate this folder
+- Add this entry on .vscode/launch.json
+- Add this entry on .lando.yml
+- etc
 
 @todo
 
