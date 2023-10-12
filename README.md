@@ -722,7 +722,6 @@ composer list
 | `ssh-server-prod` | SSH into the Lando webserver for PROD with the 'Gato GraphQL' demo site |
 | `start-server` | Start the Lando webserver with the 'Gato GraphQL' demo site, for development |
 | `start-server-prod` | Start the Lando webserver for PROD with the 'Gato GraphQL' demo site, for development |
-| `status` | Shows a list of locally modified packages |
 | `stop-server-prod` | Stop the Lando webserver for PROD |
 | `stop-server-upstream` | Runs the stop-server-upstream script as defined in composer.json |
 | `stopping-integration-test` | Runs the stopping-integration-test script as defined in composer.json |
