@@ -320,7 +320,7 @@ Run:
 composer rebuild-app-and-server
 ```
 
-## Release your extension plugins
+## Release your extension plugins for PROD
 
 The monorepo includes scripts that completely automate the process of releasing the extension plugins in the monorepo.
 
