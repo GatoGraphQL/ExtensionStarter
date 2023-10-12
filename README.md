@@ -367,7 +367,7 @@ Then, on the tag page, click on `Create release from tag`.
 
 ![Create release from tag](assets/img/create-release-from-tag.png)
 
-This will trigger the [`generate_plugins`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml) workflow, which will generate the extension plugins and attach them as assets to the tag page.
+This will trigger the [`generate_plugins.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml) workflow, which will generate the extension plugins and attach them as assets to the tag page.
 
 For instance, after tagging Gato GraphQL with `1.0.9`, the tag page [GatoGraphQL/GatoGraphQL/releases/tag/1.0.9](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/1.0.9) had the following assets attached to it:
 
@@ -413,7 +413,7 @@ composer integration-test-prod
 
 ### Executing Integration Tests against InstaWP
 
-When a PR is merged, all extension plugins in the monorepo are generated for DEV, and attached to workflow [`generate_plugins`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml) (in the Summary tab).
+When a PR is merged, all extension plugins in the monorepo are generated for DEV, and attached to workflow [`generate_plugins.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml) (in its Summary tab).
 
 Then, workflow [`integration_tests.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml) is triggered. This workflow installs the generated plugins in an InstaWP instance, and executes the integration tests against this instance.
 
