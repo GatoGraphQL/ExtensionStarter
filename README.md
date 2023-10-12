@@ -1,20 +1,4 @@
-# Gato GraphQL - Extension Starter
-
-Gato GraphQL extensions add functionality and expand the GraphQL schema provided by [Gato GraphQL](https://github.com/GatoGraphQL/GatoGraphQL).
-
-**This template repository helps you kickstart a GitHub repo, to develop, test and release your own extensions for Gato GraphQL.**
-
-To learn about the features provided by the multi-monorepo architecture on this starter project, jump to section [Multi-Monorepo (Architecture of the Extension Starter)](#multi-monorepo-architecture-of-the-extension-starter)
-
-<details>
-
-<summary>Trivia fact 🤔</summary>
-
-_All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (26 extensions and 4 bundles to date) are hosted on a monorepo created from `GatoGraphQL/ExtensionStarter` 🚀_
-
-</details>
-
----
+<p align="center"><img src="https://raw.githubusercontent.com/GatoGraphQL/GatoGraphQL/master/assets/GatoGraphQL-logo.png"/></p>
 
 ![Unit tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/unit_tests.yml/badge.svg)
 ![Downgrade PHP tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/downgrade_php_tests.yml/badge.svg)
@@ -33,6 +17,22 @@ If these tests are enabled, add the badge code:
 
 ![Integration tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/integration_tests.yml/badge.svg)
 -->
+
+# Gato GraphQL - Extension Starter
+
+Gato GraphQL extensions add functionality and expand the GraphQL schema provided by [Gato GraphQL](https://github.com/GatoGraphQL/GatoGraphQL).
+
+**This template repository helps you kickstart a GitHub repo, to develop, test and release your own extensions for Gato GraphQL.**
+
+To learn about the features provided by the multi-monorepo architecture on this starter project, jump to section [Multi-Monorepo (Architecture of the Extension Starter)](#multi-monorepo-architecture-of-the-extension-starter)
+
+<details>
+
+<summary>Trivia fact 🤔</summary>
+
+_All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (26 extensions and 4 bundles to date) are hosted on a monorepo created from `GatoGraphQL/ExtensionStarter` 🚀_
+
+</details>
 
 ## Requirements
 
