@@ -494,9 +494,38 @@ Input all these in:
 	.vscode/launch.json
 	.lando.base.yml
 
-### Creating Resolvers to Extend the GraphQL Schema
+### Extending the GraphQL Schema
 
 @todo
+
+General to GraphQL:
+    creating-a-type
+    adding-fields-to-a-type
+    adding-mutations
+    creating-a-custom-scalar
+    creating-an-enum
+    creating-an-union-type
+    creating-an-interface
+    creating-an-input-object
+    creating-a-oneof-input-object
+    creating-a-directive
+
+Specific to Gato GraphQL:
+    adding-global-fields
+    adding-nested-mutations
+    creating-an-enum-string
+    creating-an-error-payload-type
+    creating-a-composable-directive
+
+Specific for WordPress:
+    creating-a-custom-post-type
+    adding-a-field-to-all-custom-post-types
+
+Modifying Field and Directive Resolvers:
+    filtering-results-from-a-field
+    validating-constraints-for-field-and-directive-arguments
+    versioning-fields-and-directives
+
 
 ### Creating Unit Tests
 
