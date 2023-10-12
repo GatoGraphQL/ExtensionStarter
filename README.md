@@ -106,7 +106,7 @@ composer initialize-project -- --help
 
 <details>
 
-<summary>All <code>initialize-project</code> command arguments</summary>
+<summary>View all <code>initialize-project</code> command arguments</summary>
 
 | Option | Description |
 | --- | --- |
@@ -178,7 +178,7 @@ composer server-info
 
 <details>
 
-<summary>Additional plugins installed in the webserver</summary>
+<summary>What plugins are installed in the webserver? 🤔</summary>
 
 In addition to the main Gato GraphQL plugin, 2 other plugins are installed:
 
@@ -187,7 +187,7 @@ In addition to the main Gato GraphQL plugin, 2 other plugins are installed:
 
 These are utilities to run integration tests for Gato GraphQL (for instance, to install the "Dummy CPT" to test field `Root.customPosts`, and others).
 
-Besides, some initial configuration has been applied on the Gato GraphQL plugin Settings. That's why the single endpoint is enabled (otherwise, it will be disabled by default).
+Besides, some initial configuration has been applied on the Gato GraphQL plugin Settings. That's why the single endpoint is enabled (otherwise, it is disabled by default).
 
 </details>
 
@@ -345,6 +345,10 @@ To release version `1.0.0`, run:
 composer release-major
 ```
 
+<details>
+
+<summary>What do these commands do? 🤔</summary>
+
 Executing these commands will first prepare the repo for PROD:
 
 - Update the version (in the plugin file's header, readme.txt's Stable tag, others) for all the extension plugins in the monorepo
@@ -356,6 +360,8 @@ And then, it will prepare the repo for DEV again:
 
 - Update the version to the next DEV version (next semver + `-dev`)
 - Commit and push
+
+</details>
 
 To preview running the command without actually executing it, append `-- --dry-run`:
 
@@ -489,7 +495,7 @@ composer purge-cache
 
 <details>
 
-<summary>Container services in Gato GraphQL</summary>
+<summary>How does Gato GraphQL use container services? 🤔</summary>
 
 The Gato GraphQL plugin uses a service container (via the [Symfony DependencyInjection](https://symfony.com/doc/current/components/dependency_injection.html) library), to manage all services in PHP.
 
@@ -499,11 +505,14 @@ The first time the application is invoked, the container gathers all injected se
 
 Generating this file can take several seconds. To avoid waiting for this time on each request, the Gato GraphQL plugin caches this file after it has been generated the first time.
 
-The container needs to be purged whenever a service is created, or an existing one updated or removed. On the plugin for PROD, this is done whenever a new extension plugin is activated, or updating the plugin Settings. In the Lando webserver for DEV, it must be done manually, by running `composer purge-cache`.
+The container needs to be purged whenever a service is created, or an existing one updated or removed:
 
-That is the case for resolvers (type resolvers, field resolvers, directive resolvers, and any other resolver that gives shape to the GraphQL schema). Whenever a resolver is added or removed, or is updated in such a way that modifies the GraphQL schema, the cached container must be purged.
+- On the plugin for PROD, this is done whenever a new extension plugin is activated, or updating the plugin Settings
+- In the Lando webserver for DEV, it must be done manually, by running `composer purge-cache`
 
-Some example PHP services for resolvers are:
+This applies to resolvers (type resolvers, field resolvers, directive resolvers, and any other resolver that gives shape to the GraphQL schema), as these are PHP services. Whenever a resolver is added or removed, or is updated in such a way that modifies the GraphQL schema, the cached container must be purged.
+
+Some example resolvers are:
 
 - `String` type: [`StringScalarTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/Engine/packages/component-model/src/TypeResolvers/ScalarType/StringScalarTypeResolver.php)
 - Field `User.name` (and others): [`UserObjectTypeFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/1.0.0/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php)
@@ -689,7 +698,7 @@ composer copy-upstream-files
 
 <details>
 
-<summary>What files does <code>copy-upstream-files</code> copy?</summary>
+<summary>What files does <code>copy-upstream-files</code> copy? 🤔</summary>
 
 Executing `composer copy-upstream-files` will copy files from the "upstream" `GatoGraphQL/GatoGraphQL` repo (which is a Git submodule), to the "downstream" `my-account/GatoGraphQLExtensionsForMyCompany` repo.
 
@@ -713,7 +722,7 @@ composer list
 
 <details>
 
-<summary>All monorepo commands</summary>
+<summary>View all monorepo commands</summary>
 
 | `composer` command | Description |
 | --- | --- |
