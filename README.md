@@ -437,6 +437,20 @@ On the Lando webserver for PROD:
 composer log-server-errors-prod
 ```
 
+### SSH into the webserver
+
+SSH into the Lando webserver:
+
+```bash
+composer ssh-server
+```
+
+Into the Lando webserver for PROD:
+
+```bash
+composer ssh-server-prod
+```
+
 ### Purging the cache
 
 When developing an extension and testing it in the DEV webserver, whenever we create a new PHP service or modify the signature of an existing one (such as the PHP classname), we need to purge the container cache.
