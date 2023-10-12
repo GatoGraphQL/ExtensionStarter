@@ -695,6 +695,7 @@ composer list
 | `integration-test` | Execute integration tests (PHPUnit) |
 | `integration-test-prod` | Execute integration tests (PHPUnit) against the PROD webserver |
 | `log-server-errors` | Show (on real time) the errors from the Lando webserver |
+| `log-server-errors-prod` | Show (on real time) the errors from the Lando webserver for PROD |
 | `log-server-warnings` | Show (on real time) the warnings from the Lando webserver |
 | `merge-monorepo` | Create the monorepo's composer.json file, containing all dependencies from all packages |
 | `merge-phpstan` | Generate a single PHPStan config for the monorepo, invoking the config for the PHPStan config for all packages |
