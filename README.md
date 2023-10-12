@@ -446,6 +446,10 @@ Search for the following PHPDoc tags in the codebase:
 
 </details>
 
+@todo
+
+### Duplicating the "Hello Dolly" Extension Demo
+
 Declare the steps to add yet another extension:
 
 - duplicate this folder
@@ -455,13 +459,11 @@ Declare the steps to add yet another extension:
 
 @todo
 
-### Duplicating the "Hello Dolly" Demo
+### Defining an Integration Plugin
 
 @todo
 
-### Adding Dependencies
-
-3rd-party plugins, Composer packages.
+### Adding 3rd-party Composer Dependencies
 
 ```json
 {
@@ -470,6 +472,27 @@ Declare the steps to add yet another extension:
   }
 }    
 ```
+
+@todo
+
+#### Scoping
+
+Fix everything 4 packages:
+	hello-gato-schema
+	hello-gato-schema-wp
+	hello-gato-schema-mutations
+	hello-gato-schema-mutations-wp
+Because of scoping!
+	Indicate in instructions
+	i.e. If the plugin needs 3rd-party libraries, these must be scoped
+		So these must be referenced under hello-gato-schema
+		never under hello-gato-schema-wp, because it has WP code, and it can't be scoped
+
+### Creating Internal Packages
+
+Input all these in:
+	.vscode/launch.json
+	.lando.base.yml
 
 ### Creating Resolvers to Extend the GraphQL Schema
 
