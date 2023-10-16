@@ -865,9 +865,11 @@ Input all these in:
 
 ## Extending the GraphQL Schema
 
-⚠️ We plan to [add commands to automatically generate the PHP code](https://github.com/GatoGraphQL/ExtensionStarter/issues/74) inside the extension.
+⚠️ We are working on [adding commands to automatically generate the PHP code](https://github.com/GatoGraphQL/ExtensionStarter/issues/74) inside the extension.
 
-Until then, we will provide with examples of how this is done in the upstream `GatoGraphQL/GatoGraphQL` monorepo, so that you can follow the links, copy/paste the files, and adapt them to your needs.
+For the time being, we will provide with examples of how this is done in the upstream `GatoGraphQL/GatoGraphQL` monorepo.
+
+Please follow the links, copy/paste the code and files, and adapt them to your needs.
 
 General to GraphQL:
     creating-a-type
