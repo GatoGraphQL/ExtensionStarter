@@ -534,7 +534,7 @@ Edit files:
 {
   "require-dev": {
     "wpackagist-plugin/your-extension": "^1.7"
-  },
+  }
 }
 ```
 
