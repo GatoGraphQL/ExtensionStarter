@@ -979,7 +979,9 @@ composer create-union-type-resolver
 
 #### Create an Input Object Resolver
 
-@todo
+Input Object `UserSortInput`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserSortInputObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserSortInputObjectTypeResolver.php)
 
 <!--
 Run:
