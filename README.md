@@ -476,7 +476,9 @@ composer integration-test-prod
 
 ## Creating your Extension Plugin
 
-📢 We are [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate the process of creating the extension and configuring it in the monorepo. Until then, you will need to manually follow the steps below.
+This section explains all the steps needed to add an extension plugin to the monorepo.
+
+Doing this process manually is tedious and error-prone. We are already [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate this process, and it should be ready before the end of October 2023.
 
 ### Creating the extension manually
 
