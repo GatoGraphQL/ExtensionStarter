@@ -467,30 +467,39 @@ Duplicate folders:
 - `layers/GatoGraphQLForWP/packages/hello-dolly-schema` into `layers/GatoGraphQLForWP/packages/your-extension-schema`
 - `layers/GatoGraphQLForWP/plugins/hello-dolly` into `layers/GatoGraphQLForWP/packages/your-extension`
 
-Within these two folders, search and replace all occurrences of:
+Duplicate files:
+
+- `config/rector/downgrade/hello-dolly/rector.php` into `config/rector/downgrade/your-extension/rector.php`
+
+Within the duplicated folders and files above, search and replace all occurrences of:
 
 - `Hello Dolly` => `Your Extension`
 - `HelloDolly` => `YourExtension`
 - `hello-dolly` => `your-extension`
 
-Also rename files in these two new folders:
+Also rename some files in the duplicated folders:
 
 - `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-hello-dolly.php` into `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`
 - `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-hello-dolly.pot` into `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-your-extension.pot`
 
 Edit file `.vscode/launch.json` and, under entry `pathMappings` in the first item in `configurations`, add the following 2 lines:
 
-```
+```json
 "/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/my-company-for-gatographql/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
 "/app/wordpress/wp-content/plugins/gatographql-your-extension": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/your-extension"
 ```
 
+i.e. it will look like this:
+
 ```json
 {
+  // ...
   "configurations": [
     {
       "name": "[Lando webserver] Listen for Xdebug",
+      // ...
       "pathMappings": {
+        // ...
         "/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/my-company-for-gatographql/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
         "/app/wordpress/wp-content/plugins/gatographql-your-extension": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/your-extension"
       }
@@ -498,12 +507,7 @@ Edit file `.vscode/launch.json` and, under entry `pathMappings` in the first ite
   ]
 }
 ```
-  13:                 "/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/my-company-for-gatographql/hello-dolly-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/hello-dolly-schema",
-  14:                 "/app/wordpress/wp-content/plugins/gatographql-hello-dolly": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/hello-dolly",
 
-`config/rector/downgrade/hello-dolly/rector.php`
-  5: use PoP\ExtensionStarter\Config\Rector\Downgrade\Configurators\HelloDollyContainerConfigurationService;
-  9:     $containerConfigurationService = new HelloDollyContainerConfigurationService(
 
 `src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php`
   40:          * @see layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php
