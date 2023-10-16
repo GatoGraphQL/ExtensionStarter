@@ -1114,7 +1114,9 @@ Mutation `Post.update`:
 
 #### Filtering Results from a Field
 
-@todo
+Field `Root.comments`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
 
 #### Validating Constraints for Field and Directive Arguments
 
