@@ -126,6 +126,22 @@ composer initialize-project -- --help
 
 </details>
 
+<details>
+
+<summary>Browse documentation within the codebase</summary>
+
+The codebase contains snippets of documentation, to explain some feature or configuration.
+
+Search for the following PHPDoc tags in the codebase:
+
+- `@gatographql-project-info`: Information on some aspect of the monorepo setup
+- `@gatographql-project-action-maybe-required`: Indicates if some feature can be enabled/disabled and how
+- `@gatographql-extension-info`: Information on some aspect of the extension setup
+- `@gatographql-example`: Provides an example from the upstream monorepo
+- `@gatographql-readonly-code`: Indicates that the code must not be changed, as it is automatically modified via some script
+
+</details>
+
 ### Review the License
 
 The [license in the monorepo](LICENSE) is GPL v2.
@@ -194,7 +210,7 @@ All plugins hosted on this "downstream" starter monorepo:
 
 - [Gato GraphQL - Hello Dolly](https://github.com/GatoGraphQL/ExtensionStarter/blob/main/layers/GatoGraphQLForWP/plugins/hello-dolly/gatographql-hello-dolly.php)
 
-All the integration plugins, required by the extensions
+All the WordPress integration plugins, required by the extensions
 
 - [Hello Dolly](https://wordpress.org/plugins/hello-dolly/)
 
@@ -219,7 +235,33 @@ Click on the Gato GraphQL link on the menu to open the GraphiQL client, and exec
 }
 ```
 
-(Field `Root.helloDolly` is provided via the extension plugin `gatographql-hello-dolly` hosted in this monorepo.)
+<details>
+
+<summary>Where does field <code>helloDolly</code> come from? 🤔</summary>
+
+Field `Root.helloDolly` is added to the GraphQL schema by the "Gato GraphQL - Hello Dolly" demo extension hosted in this monorepo.
+
+This field returns any quote from the Hello Dolly song. The following query:
+
+```graphql
+{
+  helloDolly
+}
+```
+
+will return:
+
+```json
+{
+  "data": {
+    "helloDolly": "Dolly, never go away again"
+  }
+}
+```
+
+...or any of the other lines in that song.
+
+</details>
 
 If the installation of the starter was successful, you will receive a response:
 
@@ -434,70 +476,348 @@ composer integration-test-prod
 
 ## Creating your Extension Plugin
 
+⚠️ We are [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate the process of creating the extension and configuring it in the monorepo.
+
+Until then, you will need to manually follow the steps below.
+
+### Creating the extension manually
+
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
 
-<details>
+You will need to duplicate the files and folders for this extension, search for the `"Hello Dolly"` name (and variants `HelloDolly` and `hello-dolly`), and replace it with your extension's name (using `"Your Extension"` in the instructions below, replace this value with your own).
 
-<summary>What does "Gato GraphQL - Hello Dolly" do? 🤔</summary>
+Duplicate folders:
 
-This extension adds field `Root.helloDolly`, which returns any quote from the Hello Dolly song. The following query:
+- `layers/GatoGraphQLForWP/packages/hello-dolly-schema` into `layers/GatoGraphQLForWP/packages/your-extension-schema`
+- `layers/GatoGraphQLForWP/plugins/hello-dolly` into `layers/GatoGraphQLForWP/packages/your-extension`
 
-```graphql
-{
-  helloDolly
-}
+Duplicate files:
+
+- `config/rector/downgrade/hello-dolly/rector.php` into `config/rector/downgrade/your-extension/rector.php`
+- `src/Config/Rector/Downgrade/Configurators/HelloDollyContainerConfigurationService.php` into `src/Config/Rector/Downgrade/Configurators/YourExtensionContainerConfigurationService.php`
+
+Within the duplicated folders and files above, search and replace all occurrences of:
+
+- `Hello Dolly` => `Your Extension`
+- `HelloDolly` => `YourExtension`
+- `hello-dolly` => `your-extension`
+- `HELLO_DOLLY` => `YOUR_EXTENSION`
+
+Also rename the following files in a duplicate folder:
+
+- `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-hello-dolly.php` into `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`
+- `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-hello-dolly.pot` into `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-your-extension.pot`
+
+Edit file `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`, and adapt this PHP code:
+
+```php
+$requiredPluginFile = 'your-extension/hello.php';
+$requiredPluginVersion = '^1.7';
 ```
 
-may return:
+...with the main file for the WordPress integration plugin, and the version constraint needed for that plugin.
+
+For instance, for an extension for WooCommerce `v8` and above:
+
+```php
+$requiredPluginFile = 'woocommerce/woocommerce.php';
+$requiredPluginVersion = '^8';
+```
+
+Edit file `layers/GatoGraphQLForWP/plugins/your-extension/src/GatoGraphQLExtension.php`, and (similar to above) replace:
+
+```php
+return [
+  'your-extension/hello.php'
+];
+```
+
+...with your integration plugin's main file, such as:
+
+```php
+return [
+  'woocommerce/woocommerce.php'
+];
+```
+
+And likewise, edit file `layers/GatoGraphQLForWP/plugins/your-extension/src/ModuleResolvers/SchemaTypeModuleResolver.php` and adapt the main file and version constraint here:
+
+```php
+new DependedOnActiveWordPressPlugin(
+  \__('Your Extension', 'gatographql-your-extension'),
+  'your-extension/hello.php',
+  '^1.7',
+),
+```
+
+Edit files:
+
+- `layers/GatoGraphQLForWP/packages/your-extension-schema/composer.json`
+- `layers/GatoGraphQLForWP/plugins/your-extension/composer.json`
+
+...and update entry `"wpackagist-plugin/your-extension"` under `require-dev`:
 
 ```json
 {
-  "data": {
-    "helloDolly": "Dolly, never go away again"
+  "require-dev": {
+    "wpackagist-plugin/your-extension": "^1.7"
   }
 }
 ```
 
-</details>
+...like this:
 
-Describe the "Hello Dolly" demo
+- Rename entry `"wpackagist-plugin/your-extension"` to `"wpackagist-plugin/your-wordpress-integration-plugin"`, where `your-wordpress-integration-plugin` is the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc)
+- Replace the version constraint `"^1.7"` to the one needed for that integration plugin
 
-Search for "dolly" and "Dolly" in the codebase.
+Edit file `layers/GatoGraphQLForWP/packages/your-extension-schema/phpstan.neon.dist`, replacing:
+
+```yaml
+- %currentWorkingDirectory%/stubs/wpackagist-plugin/your-extension/stubs.php
+```
+
+...with:
+
+```yaml
+- %currentWorkingDirectory%/stubs/wpackagist-plugin/your-wordpress-integration-plugin/stubs.php
+```
+
+Edit file `.vscode/launch.json` and, under entry `pathMappings` in the first item in `configurations`, add the following 2 lines (notice that `composer-vendor` will be the same value used when executing the `initialize-project` command):
+
+```json
+"/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/composer-vendor/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
+"/app/wordpress/wp-content/plugins/gatographql-your-extension": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/your-extension"
+```
+
+i.e. it will look like this:
+
+```json
+{
+  // ...
+  "configurations": [
+    {
+      "name": "[Lando webserver] Listen for Xdebug",
+      // ...
+      "pathMappings": {
+        "/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/composer-vendor/hello-dolly-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/hello-dolly-schema",
+        "/app/wordpress/wp-content/plugins/gatographql-hello-dolly": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/hello-dolly",
+
+        "/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/composer-vendor/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
+        "/app/wordpress/wp-content/plugins/gatographql-your-extension": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/your-extension"
+
+        // ...
+      }
+    }
+  ]
+}
+```
+
+Create empty file `stubs/wpackagist-plugin/your-extension/stubs.php`, to be filled with stubs for all classes/functions/constants invoked on your WordPress integration plugin (eg: WooCommerce, Yoast SEO, etc).
 
 <details>
 
-<summary>Browse the documentation within the codebase</summary>
+<summary>What are stubs needed for? And how to generate them? 🤔</summary>
 
-The codebase contains snippets of documentation, to explain some feature or configuration.
+Stubs are placeholders to "load" a functionality that is otherwise missing (because the plugin that contains it is not loaded when running unit tests and static analysis).
 
-Search for the following PHPDoc tags in the codebase:
+Stubs avoid PHPStan producing an error when analyzing packages which invoke classes, methods, constants, etc, from 3rd-party WordPress plugins. (Eg: [the stubs file for `hello-dolly`](stubs/wpackagist-plugin/hello-dolly/stubs.php) avoids an error from [calling `hello_dolly_get_lyric()` in the field resolver](layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)).
 
-- `@gatographql-project-info`: Information on some aspect of the monorepo setup
-- `@gatographql-project-action-maybe-required`: Indicates if some feature can be enabled/disabled and how
-- `@gatographql-extension-info`: Information on some aspect of the extension setup
-- `@gatographql-example`: Provides an example from the upstream monorepo
-- `@gatographql-readonly-code`: Indicates that the code must not be changed, as it is automatically modified via some script
+It also avoids Rector from producing errors when downgrading the code.
+
+Stubs must be added for all the WordPress integration plugins for which there is an extension in the monorepo (eg: WooCommerce, Yoast SEO, etc).
+
+The stub files, if not already available for that WordPress plugin, can be generated using [`php-stubs/generator`](https://github.com/php-stubs/generator) (check also [`php-stubs/wordpress-stubs`](https://github.com/php-stubs/wordpress-stubs)).
 
 </details>
 
-@todo
+Edit files:
 
-### Duplicating the "Hello Dolly" Extension Demo
+- `src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php`
+- `src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
 
-Declare the steps to add yet another extension:
+...adding the following line of PHP code:
 
-- duplicate this folder
-- Add this entry on .vscode/launch.json
-- Add this entry on .lando.yml
-- etc
+```php
+$this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
+```
 
-@todo
+i.e. they will look like this:
 
-### Defining an Integration Plugin
+```php
+return array_merge(
+  parent::getBootstrapFiles(),
+  [
+    $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+    $this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
+  ]
+);
+```
 
-@todo
+Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc):
 
-### Adding 3rd-party Composer Dependencies
+```php
+$dataToRemove['require-dev']['wpackagist-plugin/your-wordpress-integration-plugin'] = '*';
+```
+
+i.e. it will look like this:
+
+```php
+public function getDataToRemove(): array
+{
+  $dataToRemove = parent::getDataToRemove();
+  $dataToRemove['require-dev']['wpackagist-plugin/hello-dolly'] = '*';
+  $dataToRemove['require-dev']['wpackagist-plugin/your-wordpress-integration-plugin'] = '*';
+  return $dataToRemove;
+}
+```
+
+Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php` and add a new entry under `$pluginConfigEntries` with the configuration for your extension:
+
+```php
+[
+  'path' => 'layers/GatoGraphQLForWP/plugins/your-extension',
+  'plugin_slug' => 'gatographql-your-extension',
+  'main_file' => 'gatographql-your-extension.php',
+  'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/your-extension/rector.php',
+  'exclude_files' => implode(' ', [
+      'docs/images/\*',
+  ]),
+],
+```
+
+Edit file `webservers/gatographql-extensions/.lando.upstream.yml` and add the following lines:
+
+```yaml
+- ../../layers/GatoGraphQLForWP/plugins/your-extension:/app/wordpress/wp-content/plugins/gatographql-your-extension
+- ../../layers/GatoGraphQLForWP/packages/your-extension-schema:/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/composer-vendor/your-extension-schema
+```
+
+i.e. it will look like this:
+
+```yaml
+services:
+  appserver:
+    overrides:
+      volumes:
+        - >-
+          ../../layers/GatoGraphQLForWP/plugins/hello-dolly:/app/wordpress/wp-content/plugins/gatographql-hello-dolly
+        - >-
+          ../../layers/GatoGraphQLForWP/packages/hello-dolly-schema:/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/composer-vendor/hello-dolly-schema
+        - >-
+          ../../layers/GatoGraphQLForWP/plugins/your-extension:/app/wordpress/wp-content/plugins/gatographql-your-extension
+        - >-
+          ../../layers/GatoGraphQLForWP/packages/your-extension-schema:/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/composer-vendor/your-extension-schema
+```
+
+Edit file `webservers/gatographql-extensions/composer.json` and add the following script `symlink-vendor-for-gatographql-your-extension-plugin` (which is a duplicate of script `symlink-vendor-for-gatographql-hello-dolly-plugin`):
+
+```json
+{
+  "scripts": {
+    // Add this entry:
+    "symlink-vendor-for-gatographql-your-extension-plugin": [
+      "php -r \"copy('../../layers/GatoGraphQLForWP/plugins/your-extension/composer.json', '../../layers/GatoGraphQLForWP/plugins/your-extension/composer.local.json');\"",
+      "cd ../../ && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/your-extension/composer.local.json",
+      "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../layers/GatoGraphQLForWP/plugins/your-extension"
+    ]
+  }
+}
+```
+
+...also add a line calling `@symlink-vendor-for-gatographql-your-extension-plugin` in the `update-deps` script:
+
+```json
+{
+  "scripts": {
+    "update-deps": [
+      "@symlink-vendor-for-gatographql-plugin",
+      "@symlink-vendor-for-gatographql-testing-schema-plugin",
+      "@symlink-vendor-for-gatographql-testing-plugin",
+      "@symlink-vendor-for-gatographql-hello-dolly-plugin",
+      // Add this entry below:
+      "@symlink-vendor-for-gatographql-your-extension-plugin"
+    ]
+  }
+}
+```
+
+...and add entries for `your-extension` (as duplicates as the entries for `hello-dolly`) under the `optimize-autoloader` and `deoptimize-autoloader` scripts:
+
+```json
+{
+  "scripts": {
+    "optimize-autoloader": [
+        "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql",
+        "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing",
+        "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema",
+        "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly",
+        // Add this entry below:
+        "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../layers/GatoGraphQLForWP/plugins/your-extension"
+    ],
+    "deoptimize-autoloader": [
+        "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql",
+        "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing",
+        "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema",
+        "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly",
+        // Add this entry below:
+        "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../layers/GatoGraphQLForWP/plugins/your-extension"
+    ]
+  }
+}
+```
+
+Edit file `webservers/gatographql-extensions/setup-extensions/activate-plugins.sh` and add the following code, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc):
+
+```bash
+if wp plugin is-installed your-wordpress-integration-plugin --path=/app/wordpress; then
+    wp plugin activate your-wordpress-integration-plugin --path=/app/wordpress
+else
+    wp plugin install your-wordpress-integration-plugin --activate --path=/app/wordpress
+fi
+
+wp plugin activate gatographql-your-extension --path=/app/wordpress
+```
+
+Edit file `webservers/gatographql-extensions-for-prod/setup-extensions/activate-plugins.sh` and add the following code:
+
+```bash
+if wp plugin is-installed your-wordpress-integration-plugin --path=/app/wordpress; then
+    wp plugin activate your-wordpress-integration-plugin --path=/app/wordpress
+else
+    wp plugin install your-wordpress-integration-plugin --activate --path=/app/wordpress
+fi
+
+# Activate own plugins
+if wp plugin is-installed gatographql-your-extension --path=/app/wordpress; then
+    wp plugin activate gatographql-your-extension --path=/app/wordpress
+else
+    echo "Please download the latest PROD version of the 'Gato GraphQL - Your Extension' plugin from your GitHub repo, and install it on this WordPress site"
+fi
+```
+
+That's it with the editing.
+
+---
+
+Then regenerate the monorepo configuration, by running:
+
+```bash
+composer update-monorepo-config
+```
+
+And regenerate the mapping for the Lando webserver for DEV, by running:
+
+```bash
+composer rebuild-app-and-server
+```
+
+Now, when loading the Lando webserver for DEV (under `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`), the new extension should be loaded and working (even though it doesn't contain any resolver yet).
+
+<!-- ### Defining an Integration Plugin
+
+@todo -->
+
+<!-- ### Adding 3rd-party Composer Dependencies
 
 ```json
 {
@@ -541,40 +861,165 @@ Explain why we manage them with packages
 
 Input all these in:
 	.vscode/launch.json
-	.lando.base.yml
+	.lando.base.yml -->
 
-### Extending the GraphQL Schema
+## Extending the GraphQL Schema
+
+⚠️ We are working on [adding commands to automatically generate the PHP code](https://github.com/GatoGraphQL/ExtensionStarter/issues/74) inside the extension.
+
+For the time being, we will provide with examples of how this is done in the upstream `GatoGraphQL/GatoGraphQL` monorepo.
+
+Please follow the links, copy/paste the code and files, and adapt them to your needs.
+
+### General to GraphQL
+
+#### Create a Type Resolver
 
 @todo
 
-General to GraphQL:
-    creating-a-type
-    adding-fields-to-a-type
-    adding-mutations
-    creating-a-custom-scalar
-    creating-an-enum
-    creating-an-union-type
-    creating-an-interface
-    creating-an-input-object
-    creating-a-oneof-input-object
-    creating-a-directive
+<!-- ```bash
+composer create-type-resolver
+``` -->
 
-Specific to Gato GraphQL:
-    adding-global-fields
-    adding-nested-mutations
-    creating-an-enum-string
-    creating-an-error-payload-type
-    creating-a-composable-directive
+#### Create a Field Resolver
 
-Specific for WordPress:
-    creating-a-custom-post-type
-    adding-a-field-to-all-custom-post-types
+@todo
 
-Modifying Field and Directive Resolvers:
-    filtering-results-from-a-field
-    validating-constraints-for-field-and-directive-arguments
-    versioning-fields-and-directives
+<!-- ```bash
+composer create-field-resolver
+``` -->
 
+#### Create a Mutation Resolver
+
+@todo
+
+<!-- ```bash
+composer create-mutation-resolver
+``` -->
+
+#### Create a Custom Scalar Resolver
+
+@todo
+
+<!-- ```bash
+composer create-custom-scalar-resolver
+``` -->
+
+#### Create an Enum Resolver
+
+@todo
+
+<!-- ```bash
+composer create-enum-resolver
+``` -->
+
+#### Create a Union Type-Resolver
+
+@todo
+
+<!-- ```bash
+composer create-union-type-resolver
+``` -->
+
+#### Create an Interface Resolver
+
+@todo
+
+<!-- ```bash
+composer create-interface-resolver
+``` -->
+
+#### Create an Input Object Resolver
+
+@todo
+
+<!-- ```bash
+composer create-input-object-resolver
+``` -->
+
+#### Create a Oneof Input Object Resolver
+
+@todo
+
+<!-- ```bash
+composer create-oneof-input-object-resolver
+``` -->
+
+#### Create a Directive Resolver
+
+@todo
+
+<!-- ```bash
+composer create-directive-resolver
+``` -->
+
+### Specific to Gato GraphQL
+
+#### Create a Global Field Resolver
+
+@todo
+
+<!-- ```bash
+composer create-global-field-resolver
+``` -->
+
+#### Create an Enum String Resolver
+
+@todo
+
+<!-- ```bash
+composer create-enum-string-resolver
+``` -->
+
+#### Create an Error Payload Type Resolver
+
+@todo
+
+<!-- ```bash
+composer create-error-payload-type-resolver
+``` -->
+
+#### Create a Composable Directive Resolver
+
+@todo
+
+<!-- ```bash
+composer create-composable-directive-resolver
+``` -->
+
+### Specific for WordPress
+
+#### Create a Custom Post Type Resolver
+
+<!-- ```bash
+composer create-custom-post-type-resolver
+``` -->
+
+#### Create a Custom Post Type Field Resolver
+
+<!-- ```bash
+composer create-custom-post-type-field-resolver
+``` -->
+
+### Modifying Field and Directive Resolvers
+
+#### Adding Nested Mutations
+
+@todo
+
+#### Filtering Results from a Field
+
+@todo
+
+#### Validating Constraints for Field and Directive Arguments
+
+@todo
+
+#### Versioning Fields and Directives
+
+@todo
+
+## Creating Tests
 
 ### Creating Unit Tests
 
@@ -584,7 +1029,7 @@ Modifying Field and Directive Resolvers:
 
 @todo
 
-Point to a .gql test
+<!-- Point to a .gql test
 Point to a .gql test when disabling the plugin
 Point to a .gql test when disabling the module
 
@@ -596,7 +1041,7 @@ Indicate the "enabled.json" and "only-one-enabled.json" items fail because of th
   But I kept them only for documentation, for your own tests
   alternatively with regex, could use test:
     submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Integration/AccessPrivatePersistedQuerySourceByAdminQueryExecutionFixtureWebserverRequestTest.php
-Explain what each of them does!
+Explain what each of them does! -->
 
 ## Development Process
 
