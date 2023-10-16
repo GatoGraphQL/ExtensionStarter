@@ -460,17 +460,104 @@ To create the extension manually:
 
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
 
-You will need to duplicate the files and folders for this extension, and search/replace its name with your extension's name:
+You will need to duplicate the files and folders for this extension, and search/replace its name with your extension's name (assigned as `Your Extension` below):
 
-Duplicate folder `layers/GatoGraphQLForWP/packages/hello-dolly-schema` into `layers/GatoGraphQLForWP/packages/{your-extension-name}-schema`
+Duplicate folders:
 
-Duplicate folder `layers/GatoGraphQLForWP/plugins/hello-dolly` into `layers/GatoGraphQLForWP/packages/{your-extension-name}`
+- `layers/GatoGraphQLForWP/packages/hello-dolly-schema` into `layers/GatoGraphQLForWP/packages/your-extension-schema`
+- `layers/GatoGraphQLForWP/plugins/hello-dolly` into `layers/GatoGraphQLForWP/packages/your-extension`
 
 Within these two folders, search and replace all occurrences of:
 
-- `hello-dolly` => `your-extension-name`
-- `Hello Dolly` => `Your Extension Name`
-- `HelloDolly` => `YourExtensionName`
+- `Hello Dolly` => `Your Extension`
+- `HelloDolly` => `YourExtension`
+- `hello-dolly` => `your-extension`
+
+Also rename files in these two new folders:
+
+- `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-hello-dolly.php` into `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`
+- `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-hello-dolly.pot` into `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-your-extension.pot`
+
+Edit file `.vscode/launch.json` and add the following lines:
+
+```json
+
+
+```
+  13:                 "/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/my-company-for-gatographql/hello-dolly-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/hello-dolly-schema",
+  14:                 "/app/wordpress/wp-content/plugins/gatographql-hello-dolly": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/hello-dolly",
+
+`config/rector/downgrade/hello-dolly/rector.php`
+  5: use PoP\ExtensionStarter\Config\Rector\Downgrade\Configurators\HelloDollyContainerConfigurationService;
+  9:     $containerConfigurationService = new HelloDollyContainerConfigurationService(
+
+`src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php`
+  40:          * @see layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php
+  51:                 $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+
+`src/Config/Rector/Downgrade/Configurators/HelloDollyContainerConfigurationService.php`
+   9: class HelloDollyContainerConfigurationService extends AbstractExtensionDowngradeContainerConfigurationService
+  13:         return 'layers/GatoGraphQLForWP/plugins/hello-dolly';
+
+`src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
+  32:          * (eg: WooCommerce, Yoast SEO or, in this case, Hello Dolly).
+  39:                 $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+
+`src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php`
+  50:         $dataToRemove['require-dev']['wpackagist-plugin/hello-dolly'] = '*';
+
+`src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php`
+  45:      * (Eg: package "hello-dolly-schema" could be pushed to
+  46:      * http://github.com/GatoGraphQL/hello-dolly-schema.)
+
+`src/Config/Symplify/MonorepoBuilder/DataSources/PackageOrganizationDataSource.php`
+  49:      * layers/GatoGraphQLForWP/packages/hello-dolly-schema will be pushed
+  50:      * to http://github.com/GatoGraphQL/hello-dolly-schema.)
+
+`src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php`
+  20:             // Gato GraphQL - Hello Dolly
+  22:                 'path' => 'layers/GatoGraphQLForWP/plugins/hello-dolly',
+  23:                 'plugin_slug' => 'gatographql-hello-dolly',
+  24:                 'main_file' => 'gatographql-hello-dolly.php',
+  25:                 'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/hello-dolly/rector.php',
+  37:                  * @see layers/GatoGraphQLForWP/plugins/hello-dolly/src/ExtensionMetadata.php
+  56:                  * (eg: https://github.com/GatoGraphQL/gatographql-hello-dolly-dist).
+  62:                 // 'dist_repo_name' => 'gatographql-hello-dolly-dist',
+
+`src/OnDemand/Symplify/MonorepoBuilder/ModifyProject/ModifyProjectWorker/SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker.php`
+  80:             'https://github.com/GatoGraphQL/hello-dolly' => sprintf(
+  81:                 'https://github.com/%s/hello-dolly',
+
+`stubs/wpackagist-plugin/hello-dolly/stubs.php`
+  3: function hello_dolly_get_lyric() {}
+
+`webservers/gatographql-extensions/.lando.upstream.yml`
+  6:           ../../layers/GatoGraphQLForWP/plugins/hello-dolly:/app/wordpress/wp-content/plugins/gatographql-hello-dolly
+  8:           ../../layers/GatoGraphQLForWP/packages/hello-dolly-schema:/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/my-company-for-gatographql/hello-dolly-schema
+
+`webservers/gatographql-extensions/composer.json`
+   71:             "@symlink-vendor-for-gatographql-hello-dolly-plugin"
+  100:         "symlink-vendor-for-gatographql-hello-dolly-plugin": [
+  101:             "php -r \"copy('../../layers/GatoGraphQLForWP/plugins/hello-dolly/composer.json', '../../layers/GatoGraphQLForWP/plugins/hello-dolly/composer.local.json');\"",
+  102:             "cd ../../ && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/hello-dolly/composer.local.json",
+  103:             "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly"
+  109:             "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly"
+  115:             "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly"
+
+`webservers/gatographql-extensions/setup-extensions/activate-plugins.sh`
+   3: if wp plugin is-installed hello-dolly --path=/app/wordpress; then
+   4:     wp plugin activate hello-dolly --path=/app/wordpress
+   6:     wp plugin install hello-dolly --activate --path=/app/wordpress
+  10: wp plugin activate gatographql-hello-dolly --path=/app/wordpress
+
+`webservers/gatographql-extensions-for-prod/setup-extensions/activate-plugins.sh`
+   3: if wp plugin is-installed hello-dolly --path=/app/wordpress; then
+   4:     wp plugin activate hello-dolly --path=/app/wordpress
+   6:     wp plugin install hello-dolly --activate --path=/app/wordpress
+  10: if wp plugin is-installed gatographql-hello-dolly --path=/app/wordpress; then
+  11:     wp plugin activate gatographql-hello-dolly --path=/app/wordpress
+  24:     #   wp plugin install https://github.com/GatoGraphQL/ExtensionStarter/releases/latest/download/gatographql-hello-dolly-{MAJOR.MINOR.PATCH}.zip --force --activate --path=/app/wordpress
+  36:     echo "Please download the latest PROD version of the 'Gato GraphQL - Hello Dolly' plugin from your GitHub repo, and install it on this WordPress site"
 
 <!-- <details>
 
