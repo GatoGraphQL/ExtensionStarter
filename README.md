@@ -42,7 +42,7 @@ _All extensions from [gatographql.com/extensions](https://gatographql.com/extens
 
 ### Recommended to use
 
-- [XDebug](https://xdebug.org/) (integrated out of the box when using [VSCode](https://code.visualstudio.com/))
+- [XDebug](https://xdebug.org/) (integrated out of the box when using [VSCode](https://code.visualstudio.com/) and the [PHP Debug](https://marketplace.visualstudio.com/items?itemName=xdebug.php-debug) addon for VSCode)
 
 ## Create your Extension Project
 
@@ -478,7 +478,7 @@ composer integration-test-prod
 
 This section explains all the steps needed to add an extension plugin to the monorepo.
 
-Doing this process manually is tedious and error-prone. We are already [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate this process, and it should be ready before the end of October 2023.
+_Doing this process manually is tedious and error-prone. We are already [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate this process, and it should be ready before the end of October 2023._
 
 ### Creating the extension manually
 
@@ -867,157 +867,264 @@ Input all these in:
 
 This section provides examples from the codebase in the upstream `GatoGraphQL/GatoGraphQL` monorepo, demonstrating how to create the resolvers to extend the GraphQL schema.
 
-Please follow the links, copy/paste the code and files, and adapt them to your needs.
+In your code editor, copy the example file and paste it inside your extension folder (under the original folder structure), and adapt it to your needs:
 
-In the future, we expect to have [commands to automatically generate the PHP code inside the extension](https://github.com/GatoGraphQL/ExtensionStarter/issues/74).
+- Adapt its content accordingly
+- Inspect all services referenced inside the class, and verify if any of them must too be duplicated and adapted
+- Similarly, find all references to the original class (eg: using the [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client) addon for VSCode), and verify if any of them must also be duplicated and adapted
+
+You must also have those services injected into the service container, by defining them in file `schema-services.yaml`. Check [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/config/schema-services.yaml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/config/schema-services.yaml) for an example.
+
+<!-- _In the future, we expect to have [commands to automatically generate the PHP code inside the extension](https://github.com/GatoGraphQL/ExtensionStarter/issues/74)._ -->
 
 ### General to GraphQL
 
 #### Create a Type Resolver
 
-@todo
+`User` type:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-type-resolver
-``` -->
+```
+-->
 
 #### Create a Field Resolver
 
-@todo
+Fields `name`, `displayName`, and others, for the `User` type:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-field-resolver
-``` -->
+```
+-->
 
 #### Create a Mutation Resolver
 
-@todo
+Mutation `createPost`:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-mutation-resolver
-``` -->
+```
+-->
 
 #### Create a Custom Scalar Resolver
 
-@todo
+Custom scalar `Email`:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/Schema/packages/schema-commons/src/TypeResolvers/ScalarType/EmailScalarTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/Schema/packages/schema-commons/src/TypeResolvers/ScalarType/EmailScalarTypeResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-custom-scalar-resolver
-``` -->
+```
+-->
 
 #### Create an Enum Resolver
 
-@todo
+Enum `CommentTypeEnum`:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/TypeResolvers/EnumType/CommentTypeEnumTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/TypeResolvers/EnumType/CommentTypeEnumTypeResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-enum-resolver
-``` -->
-
-#### Create a Union Type-Resolver
-
-@todo
-
-<!-- ```bash
-composer create-union-type-resolver
-``` -->
+```
+-->
 
 #### Create an Interface Resolver
 
-@todo
+Interface `CustomPostInterfaceTypeResolver`:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/InterfaceType/CustomPostInterfaceTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/InterfaceType/CustomPostInterfaceTypeResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-interface-resolver
-``` -->
+```
+-->
+
+#### Create a Union Type-Resolver
+
+Union type `CustomPostUnionTypeResolver`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/UnionType/CustomPostUnionTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/UnionType/CustomPostUnionTypeResolver.php)
+
+<!--
+Run:
+
+```bash
+composer create-union-type-resolver
+```
+-->
 
 #### Create an Input Object Resolver
 
-@todo
+Input Object `UserSortInput`:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserSortInputObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserSortInputObjectTypeResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-input-object-resolver
-``` -->
+```
+-->
 
 #### Create a Oneof Input Object Resolver
 
-@todo
+Oneof Input Object `UserByInput`:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserByOneofInputObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserByOneofInputObjectTypeResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-oneof-input-object-resolver
-``` -->
+```
+-->
 
 #### Create a Directive Resolver
 
-@todo
+Directive `@skip`:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-directive-resolver
-``` -->
+```
+-->
 
 ### Specific to Gato GraphQL
 
 #### Create a Global Field Resolver
 
-@todo
+Field `__typename`:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/GraphQLByPoP/packages/graphql-server/src/FieldResolvers/ObjectType/GlobalObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/GraphQLByPoP/packages/graphql-server/src/FieldResolvers/ObjectType/GlobalObjectTypeFieldResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-global-field-resolver
-``` -->
+```
+-->
 
 #### Create an Enum String Resolver
 
-@todo
+Enum String `CustomPostEnumString`:
 
-<!-- ```bash
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/EnumType/CustomPostEnumStringScalarTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/EnumType/CustomPostEnumStringScalarTypeResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-enum-string-resolver
-``` -->
+```
+-->
 
-#### Create an Error Payload Type Resolver
+#### Create an Error Payload Union Type Resolver
+
+Error Payload Union Type `RootAddCommentToCustomPostMutationErrorPayloadUnion`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comment-mutations/src/TypeResolvers/UnionType/RootAddCommentToCustomPostMutationErrorPayloadUnionTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comment-mutations/src/TypeResolvers/UnionType/RootAddCommentToCustomPostMutationErrorPayloadUnionTypeResolver.php)
+
+<!--
+Run:
+
+```bash
+composer create-error-payload-union-type-resolver
+```
+-->
+
+<!-- #### Create a Composable Directive Resolver
 
 @todo
 
-<!-- ```bash
-composer create-error-payload-type-resolver
-``` -->
+Run:
 
-#### Create a Composable Directive Resolver
-
-@todo
-
-<!-- ```bash
+```bash
 composer create-composable-directive-resolver
-``` -->
+```
+-->
 
 ### Specific for WordPress
 
 #### Create a Custom Post Type Resolver
 
-<!-- ```bash
+Custom Post Type `Page`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/pages/src/TypeResolvers/ObjectType/PageObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/pages/src/TypeResolvers/ObjectType/PageObjectTypeResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-custom-post-type-resolver
-``` -->
+```
+-->
 
 #### Create a Custom Post Type Field Resolver
 
-<!-- ```bash
+Field `CustomPost.author`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/ConditionalOnModule/CustomPosts/FieldResolvers/ObjectType/CustomPostObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/ConditionalOnModule/CustomPosts/FieldResolvers/ObjectType/CustomPostObjectTypeFieldResolver.php)
+
+<!--
+Run:
+
+```bash
 composer create-custom-post-type-field-resolver
-``` -->
+```
+-->
 
 ### Modifying Field and Directive Resolvers
 
 #### Adding Nested Mutations
 
-@todo
+Mutation `Post.update`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php`](submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php)
 
 #### Filtering Results from a Field
 
-@todo
+Field `Root.comments`:
 
-#### Validating Constraints for Field and Directive Arguments
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
 
-@todo
+<!-- #### Validating Constraints for Field and Directive Arguments
 
-#### Versioning Fields and Directives
+@todo -->
 
-@todo
+<!-- #### Versioning Fields and Directives
+
+@todo -->
 
 ## Creating Tests
 
