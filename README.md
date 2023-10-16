@@ -817,7 +817,7 @@ Now, when loading the Lando webserver for DEV (under `https://gatographql-{compo
 
 @todo -->
 
-### Adding 3rd-party Composer Dependencies
+<!-- ### Adding 3rd-party Composer Dependencies
 
 ```json
 {
@@ -861,7 +861,7 @@ Explain why we manage them with packages
 
 Input all these in:
 	.vscode/launch.json
-	.lando.base.yml
+	.lando.base.yml -->
 
 ### Extending the GraphQL Schema
 
