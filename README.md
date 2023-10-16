@@ -507,7 +507,12 @@ Also rename the following files in a duplicate folder:
 - `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-hello-dolly.php` into `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`
 - `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-hello-dolly.pot` into `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-your-extension.pot`
 
-Edit file `layers/GatoGraphQLForWP/packages/your-extension-schema/composer.json`, and update entry `"wpackagist-plugin/your-extension"` under `require-dev`:
+Edit files:
+
+- `layers/GatoGraphQLForWP/packages/your-extension-schema/composer.json`
+- `layers/GatoGraphQLForWP/plugins/your-extension/composer.json`
+
+...and update entry `"wpackagist-plugin/your-extension"` under `require-dev`:
 
 ```json
 {
