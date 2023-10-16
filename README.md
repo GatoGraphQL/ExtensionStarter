@@ -219,7 +219,33 @@ Click on the Gato GraphQL link on the menu to open the GraphiQL client, and exec
 }
 ```
 
-(Field `Root.helloDolly` is provided via the extension plugin `gatographql-hello-dolly` hosted in this monorepo.)
+<details>
+
+<summary>Where does field <code>helloDolly</code> come from? 🤔</summary>
+
+Field `Root.helloDolly` is added to the GraphQL schema by the "Gato GraphQL - Hello Dolly" demo extension hosted in this monorepo.
+
+This field returns any quote from the Hello Dolly song. The following query:
+
+```graphql
+{
+  helloDolly
+}
+```
+
+will return:
+
+```json
+{
+  "data": {
+    "helloDolly": "Dolly, never go away again"
+  }
+}
+```
+
+...or any of the other lines in that song.
+
+</details>
 
 If the installation of the starter was successful, you will receive a response:
 
@@ -693,30 +719,6 @@ else
     echo "Please download the latest PROD version of the 'Gato GraphQL - Your Extension' plugin from your GitHub repo, and install it on this WordPress site"
 fi
 ```
-
-<!-- <details>
-
-<summary>What does "Gato GraphQL - Hello Dolly" do? 🤔</summary>
-
-This extension adds field `Root.helloDolly`, which returns any quote from the Hello Dolly song. The following query:
-
-```graphql
-{
-  helloDolly
-}
-```
-
-may return:
-
-```json
-{
-  "data": {
-    "helloDolly": "Dolly, never go away again"
-  }
-}
-```
-
-</details> -->
 
 ### Duplicating the "Hello Dolly" Extension Demo
 
