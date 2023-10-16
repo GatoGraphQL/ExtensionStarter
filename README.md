@@ -1092,6 +1092,10 @@ composer create-custom-post-type-resolver
 
 #### Create a Custom Post Type Field Resolver
 
+Field `CustomPost.author`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/ConditionalOnModule/CustomPosts/FieldResolvers/ObjectType/CustomPostObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/ConditionalOnModule/CustomPosts/FieldResolvers/ObjectType/CustomPostObjectTypeFieldResolver.php)
+
 <!--
 Run:
 
