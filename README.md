@@ -42,7 +42,7 @@ _All extensions from [gatographql.com/extensions](https://gatographql.com/extens
 
 ### Recommended to use
 
-- [XDebug](https://xdebug.org/) (integrated out of the box when using [VSCode](https://code.visualstudio.com/))
+- [XDebug](https://xdebug.org/) (integrated out of the box when using [VSCode](https://code.visualstudio.com/) and the [PHP Debug](https://marketplace.visualstudio.com/items?itemName=xdebug.php-debug) addon for VSCode)
 
 ## Create your Extension Project
 
