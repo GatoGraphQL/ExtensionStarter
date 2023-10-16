@@ -513,24 +513,6 @@ i.e. it will look like this:
 }
 ```
 
-Edit file `src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php` and add the following line of PHP code:
-
-```php
-$this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
-```
-
-i.e. it will look like this:
-
-```php
-return array_merge(
-  parent::getBootstrapFiles(),
-  [
-    $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
-    $this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
-  ]
-);
-```
-
 Create empty file `stubs/wpackagist-plugin/your-extension/stubs.php`, to be filled with stubs for all classes/functions/constants invoked on your integration plugin.
 
 <details>
@@ -547,9 +529,28 @@ The stub files, if not already available for that WordPress plugin, can be gener
 
 </details>
 
-`src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
-  32:          * (eg: WooCommerce, Yoast SEO or, in this case, Hello Dolly).
-  39:                 $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+Edit files:
+
+- `src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php`
+- `src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
+
+...adding the following line of PHP code:
+
+```php
+$this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
+```
+
+i.e. they will look like this:
+
+```php
+return array_merge(
+  parent::getBootstrapFiles(),
+  [
+    $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+    $this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
+  ]
+);
+```
 
 `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php`
   50:         $dataToRemove['require-dev']['wpackagist-plugin/hello-dolly'] = '*';
