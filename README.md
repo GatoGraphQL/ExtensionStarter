@@ -887,7 +887,7 @@ composer create-type-resolver
 
 #### Create a Field Resolver
 
-@todo
+Fields `name`, `displayName`, and others, for the `User` type: [`UserObjectTypeFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php)
 
 <!--
 Run:
