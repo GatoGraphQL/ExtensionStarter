@@ -911,7 +911,7 @@ composer create-mutation-resolver
 
 #### Create a Custom Scalar Resolver
 
-@todo
+Custom scalar `Email`: [`EmailScalarTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/Schema/packages/schema-commons/src/TypeResolvers/ScalarType/EmailScalarTypeResolver.php)
 
 <!--
 Run:
