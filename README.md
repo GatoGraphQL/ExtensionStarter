@@ -501,6 +501,7 @@ Within the duplicated folders and files above, search and replace all occurrence
 - `Hello Dolly` => `Your Extension`
 - `HelloDolly` => `YourExtension`
 - `hello-dolly` => `your-extension`
+- `HELLO_DOLLY` => `YOUR_EXTENSION`
 
 Also rename the following files in a duplicate folder:
 
