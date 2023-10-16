@@ -434,7 +434,7 @@ composer integration-test-prod
 
 ## Creating your Extension Plugin
 
-⚠️ This is a work in progress. We are working on creating a `create-extension` command to automate this functionality. For the time, you will need to do this manually.
+⚠️ We are working on a `create-extension` command to automate this functionality. For the time being, you will need to do create the extension manually, as explained below.
 
 See:
 
@@ -443,6 +443,15 @@ See:
 To create the extension manually:
 
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
+
+You will need to duplicate the files and folders for this extension, and search/replace its name with your extension's name:
+
+- Duplicate folder `layers/GatoGraphQLForWP/packages/hello-dolly-schema` into `layers/GatoGraphQLForWP/packages/{your-extension-name}-schema`
+- Duplicate folder `layers/GatoGraphQLForWP/plugins/hello-dolly` into `layers/GatoGraphQLForWP/packages/{your-extension-name}`
+- Within these two folders, search and replace all occurrences of:
+  - `hello-dolly` => `your-extension-name`
+  - `Hello Dolly` => `Your Extension Name`
+  - `HelloDolly` => `YourExtensionName`
 
 <details>
 
