@@ -522,6 +522,18 @@ Edit file `layers/GatoGraphQLForWP/packages/your-extension-schema/composer.json`
 - Rename entry `"wpackagist-plugin/your-extension"` to `"wpackagist-plugin/your-wordpress-integration-plugin"`, where `your-wordpress-integration-plugin` is the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo`, etc)
 - Replace the version constraint `"^1.7"` to the one needed for that integration plugin:
 
+Edit file `layers/GatoGraphQLForWP/packages/your-extension-schema/phpstan.neon.dist`, replacing:
+
+```yaml
+- %currentWorkingDirectory%/stubs/wpackagist-plugin/your-extension/stubs.php
+```
+
+...with:
+
+```yaml
+- %currentWorkingDirectory%/stubs/wpackagist-plugin/your-wordpress-integration-plugin/stubs.php
+```
+
 Edit file `.vscode/launch.json` and, under entry `pathMappings` in the first item in `configurations`, add the following 2 lines (notice that `composer-vendor` will be the same value used when executing the `initialize-project` command):
 
 ```json
