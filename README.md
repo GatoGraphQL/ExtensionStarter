@@ -531,6 +531,22 @@ return array_merge(
 );
 ```
 
+Create empty file `stubs/wpackagist-plugin/your-extension/stubs.php`, to be filled with stubs for all classes/functions/constants invoked on your integration plugin.
+
+<details>
+
+<summary>What are stubs needed for? And how to generate them? 🤔</summary>
+
+Add stubs for all plugins for which there is an extension (eg: WooCommerce, Yoast SEO or, in this case, Hello Dolly).
+
+Stubs avoid PHPStan producing an error when analyzing packages which invoke classes, methods, constants, etc, from 3rd-party WordPress plugins, as these are not loaded by the application. (Eg: [the stubs file for `hello-dolly`](stubs/wpackagist-plugin/hello-dolly/stubs.php) avoids an error from [calling `hello_dolly_get_lyric()` in the field resolver](layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)).
+
+It also avoids Rector from producing errors when downgrading the code.
+
+The stub files, if not already available for that WordPress plugin, can be generated using [`php-stubs/generator`](https://github.com/php-stubs/generator) (check also [`php-stubs/wordpress-stubs`](https://github.com/php-stubs/wordpress-stubs)).
+
+</details>
+
 `src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
   32:          * (eg: WooCommerce, Yoast SEO or, in this case, Hello Dolly).
   39:                 $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
