@@ -526,13 +526,27 @@ $requiredPluginVersion = '^8';
 Edit file `layers/GatoGraphQLForWP/plugins/your-extension/src/GatoGraphQLExtension.php`, and (similar to above) replace:
 
 ```php
-'your-extension/hello.php'
+return [
+  'your-extension/hello.php'
+];
 ```
 
 ...with your integration plugin's main file, such as:
 
 ```php
-'woocommerce/woocommerce.php'
+return [
+  'woocommerce/woocommerce.php'
+];
+```
+
+And likewise, edit file `layers/GatoGraphQLForWP/plugins/your-extension/src/ModuleResolvers/SchemaTypeModuleResolver.php` and adapt the main file and version constraint here:
+
+```php
+new DependedOnActiveWordPressPlugin(
+  \__('Your Extension', 'gatographql-your-extension'),
+  'your-extension/hello.php',
+  '^1.7',
+),
 ```
 
 Edit files:
