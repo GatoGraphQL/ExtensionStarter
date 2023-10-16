@@ -483,10 +483,10 @@ Also rename some files in the duplicated folders:
 - `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-hello-dolly.php` into `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`
 - `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-hello-dolly.pot` into `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-your-extension.pot`
 
-Edit file `.vscode/launch.json` and, under entry `pathMappings` in the first item in `configurations`, add the following 2 lines:
+Edit file `.vscode/launch.json` and, under entry `pathMappings` in the first item in `configurations`, add the following 2 lines (notice that `composer-vendor` will be the same value used when executing the `initialize-project` command):
 
 ```json
-"/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/my-company-for-gatographql/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
+"/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/composer-vendor/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
 "/app/wordpress/wp-content/plugins/gatographql-your-extension": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/your-extension"
 ```
 
@@ -500,10 +500,10 @@ i.e. it will look like this:
       "name": "[Lando webserver] Listen for Xdebug",
       // ...
       "pathMappings": {
-        "/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/my-company-for-gatographql/hello-dolly-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/hello-dolly-schema",
+        "/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/composer-vendor/hello-dolly-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/hello-dolly-schema",
         "/app/wordpress/wp-content/plugins/gatographql-hello-dolly": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/hello-dolly",
 
-        "/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/my-company-for-gatographql/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
+        "/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/composer-vendor/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
         "/app/wordpress/wp-content/plugins/gatographql-your-extension": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/your-extension"
 
         // ...
@@ -584,16 +584,29 @@ Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php`
 ],
 ```
 
-`src/OnDemand/Symplify/MonorepoBuilder/ModifyProject/ModifyProjectWorker/SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker.php`
-  80:             'https://github.com/GatoGraphQL/hello-dolly' => sprintf(
-  81:                 'https://github.com/%s/hello-dolly',
+Edit file `webservers/gatographql-extensions/.lando.upstream.yml` and add the following lines:
 
-`stubs/wpackagist-plugin/hello-dolly/stubs.php`
-  3: function hello_dolly_get_lyric() {}
+```yaml
+- ../../layers/GatoGraphQLForWP/plugins/your-extension:/app/wordpress/wp-content/plugins/gatographql-your-extension
+- ../../layers/GatoGraphQLForWP/packages/your-extension-schema:/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/composer-vendor/your-extension-schema
+```
 
-`webservers/gatographql-extensions/.lando.upstream.yml`
-  6:           ../../layers/GatoGraphQLForWP/plugins/hello-dolly:/app/wordpress/wp-content/plugins/gatographql-hello-dolly
-  8:           ../../layers/GatoGraphQLForWP/packages/hello-dolly-schema:/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/my-company-for-gatographql/hello-dolly-schema
+i.e. it will look like this:
+
+```yaml
+services:
+  appserver:
+    overrides:
+      volumes:
+        - >-
+          ../../layers/GatoGraphQLForWP/plugins/hello-dolly:/app/wordpress/wp-content/plugins/gatographql-hello-dolly
+        - >-
+          ../../layers/GatoGraphQLForWP/packages/hello-dolly-schema:/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/composer-vendor/hello-dolly-schema
+        - >-
+          ../../layers/GatoGraphQLForWP/plugins/your-extension:/app/wordpress/wp-content/plugins/gatographql-your-extension
+        - >-
+          ../../layers/GatoGraphQLForWP/packages/your-extension-schema:/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/composer-vendor/your-extension-schema
+```
 
 `webservers/gatographql-extensions/composer.json`
    71:             "@symlink-vendor-for-gatographql-hello-dolly-plugin"
