@@ -507,15 +507,20 @@ Also rename the following files in a duplicate folder:
 - `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-hello-dolly.php` into `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`
 - `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-hello-dolly.pot` into `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-your-extension.pot`
 
-Edit file `layers/GatoGraphQLForWP/packages/your-extension-schema/composer.json`, and under `require-dev`, replace entry `"wpackagist-plugin/hello-dolly"` with `"wpackagist-plugin/your-wordpress-integration-plugin"`, where `your-wordpress-integration-plugin` is the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo`, etc), and the version constraint needed for that plugin:
+Edit file `layers/GatoGraphQLForWP/packages/your-extension-schema/composer.json`, and update entry `"wpackagist-plugin/your-extension"` under `require-dev`:
 
 ```json
 {
   "require-dev": {
-    "wpackagist-plugin/hello-dolly": "^1.7"
+    "wpackagist-plugin/your-extension": "^1.7"
   },
 }
 ```
+
+...like this:
+
+- Rename entry `"wpackagist-plugin/your-extension"` to `"wpackagist-plugin/your-wordpress-integration-plugin"`, where `your-wordpress-integration-plugin` is the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo`, etc)
+- Replace the version constraint `"^1.7"` to the one needed for that integration plugin:
 
 Edit file `.vscode/launch.json` and, under entry `pathMappings` in the first item in `configurations`, add the following 2 lines (notice that `composer-vendor` will be the same value used when executing the `initialize-project` command):
 
