@@ -863,9 +863,11 @@ Input all these in:
 	.vscode/launch.json
 	.lando.base.yml -->
 
-### Extending the GraphQL Schema
+## Extending the GraphQL Schema
 
-@todo
+⚠️ We plan to [add commands to automatically generate the PHP code](https://github.com/GatoGraphQL/ExtensionStarter/issues/74) inside the extension.
+
+Until then, we will provide with examples of how this is done in the upstream `GatoGraphQL/GatoGraphQL` monorepo, so that you can follow the links, copy/paste the files, and adapt them to your needs.
 
 General to GraphQL:
     creating-a-type
