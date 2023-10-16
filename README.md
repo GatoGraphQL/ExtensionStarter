@@ -875,7 +875,7 @@ In the future, we expect to have [commands to automatically generate the PHP cod
 
 #### Create a Type Resolver
 
-@todo
+`User` type: [`UserObjectTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php)
 
 <!-- ```bash
 composer create-type-resolver
