@@ -877,9 +877,11 @@ You must also have those services injected into the service container, by defini
 
 <!-- _In the future, we expect to have [commands to automatically generate the PHP code inside the extension](https://github.com/GatoGraphQL/ExtensionStarter/issues/74)._ -->
 
-### General to GraphQL
+<!-- ### General to GraphQL -->
 
-#### Create a Type Resolver
+### Create a Type Resolver
+
+_(From this section downwards, these features are general to GraphQL.)_
 
 `User` type:
 
@@ -893,7 +895,7 @@ composer create-type-resolver
 ```
 -->
 
-#### Create a Field Resolver
+### Create a Field Resolver
 
 Fields `name`, `displayName`, and others, for the `User` type:
 
@@ -907,7 +909,7 @@ composer create-field-resolver
 ```
 -->
 
-#### Create a Mutation Resolver
+### Create a Mutation Resolver
 
 Mutation `createPost`:
 
@@ -921,7 +923,7 @@ composer create-mutation-resolver
 ```
 -->
 
-#### Create a Custom Scalar Resolver
+### Create a Custom Scalar Resolver
 
 Custom scalar `Email`:
 
@@ -935,7 +937,7 @@ composer create-custom-scalar-resolver
 ```
 -->
 
-#### Create an Enum Resolver
+### Create an Enum Resolver
 
 Enum `CommentTypeEnum`:
 
@@ -949,7 +951,7 @@ composer create-enum-resolver
 ```
 -->
 
-#### Create an Interface Resolver
+### Create an Interface Resolver
 
 Interface `CustomPostInterfaceTypeResolver`:
 
@@ -963,7 +965,7 @@ composer create-interface-resolver
 ```
 -->
 
-#### Create a Union Type-Resolver
+### Create a Union Type-Resolver
 
 Union type `CustomPostUnionTypeResolver`:
 
@@ -977,7 +979,7 @@ composer create-union-type-resolver
 ```
 -->
 
-#### Create an Input Object Resolver
+### Create an Input Object Resolver
 
 Input Object `UserSortInput`:
 
@@ -991,7 +993,7 @@ composer create-input-object-resolver
 ```
 -->
 
-#### Create a Oneof Input Object Resolver
+### Create a Oneof Input Object Resolver
 
 Oneof Input Object `UserByInput`:
 
@@ -1005,7 +1007,7 @@ composer create-oneof-input-object-resolver
 ```
 -->
 
-#### Create a Directive Resolver
+### Create a Directive Resolver
 
 Directive `@skip`:
 
@@ -1019,9 +1021,11 @@ composer create-directive-resolver
 ```
 -->
 
-### Specific to Gato GraphQL
+<!-- ### Specific to Gato GraphQL -->
 
-#### Create a Global Field Resolver
+### Create a Global Field Resolver
+
+_(From this section downwards, these features are specific to Gato GraphQL.)_
 
 Field `__typename`:
 
@@ -1035,7 +1039,7 @@ composer create-global-field-resolver
 ```
 -->
 
-#### Create an Enum String Resolver
+### Create an Enum String Resolver
 
 Enum String `CustomPostEnumString`:
 
@@ -1049,7 +1053,7 @@ composer create-enum-string-resolver
 ```
 -->
 
-#### Create an Error Payload Union Type Resolver
+### Create an Error Payload Union Type Resolver
 
 Error Payload Union Type `RootAddCommentToCustomPostMutationErrorPayloadUnion`:
 
@@ -1063,7 +1067,7 @@ composer create-error-payload-union-type-resolver
 ```
 -->
 
-<!-- #### Create a Composable Directive Resolver
+<!-- ### Create a Composable Directive Resolver
 
 @todo
 
@@ -1074,9 +1078,11 @@ composer create-composable-directive-resolver
 ```
 -->
 
-### Specific for WordPress
+<!-- ### Specific for WordPress -->
 
-#### Create a Custom Post Type Resolver
+### Create a Custom Post Type Resolver
+
+_(From this section downwards, these features are specific to WordPress.)_
 
 Custom Post Type `Page`:
 
@@ -1090,7 +1096,7 @@ composer create-custom-post-type-resolver
 ```
 -->
 
-#### Create a Custom Post Type Field Resolver
+### Create a Custom Post Type Field Resolver
 
 Field `CustomPost.author`:
 
@@ -1106,23 +1112,23 @@ composer create-custom-post-type-field-resolver
 
 ### Modifying Field and Directive Resolvers
 
-#### Adding Nested Mutations
+### Adding Nested Mutations
 
 Mutation `Post.update`:
 
 - [`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php`](submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php)
 
-#### Filtering Results from a Field
+### Filtering Results from a Field
 
 Field `Root.comments`:
 
 - [`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
 
-<!-- #### Validating Constraints for Field and Directive Arguments
+<!-- ### Validating Constraints for Field and Directive Arguments
 
 @todo -->
 
-<!-- #### Versioning Fields and Directives
+<!-- ### Versioning Fields and Directives
 
 @todo -->
 
