@@ -899,7 +899,7 @@ composer create-field-resolver
 
 #### Create a Mutation Resolver
 
-@todo
+Mutation `createPost`: [`RootObjectTypeFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
 
 <!--
 Run:
