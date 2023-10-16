@@ -484,7 +484,7 @@ Until then, you will need to manually follow the steps below.
 
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
 
-You will need to duplicate the files and folders for this extension, search for the `"Hello Dolly"` name (and variants), and replace it with your extension's name (using `"Your Extension"` below, replace this with your own).
+You will need to duplicate the files and folders for this extension, search for the `"Hello Dolly"` name (and variants `HelloDolly` and `hello-dolly`), and replace it with your extension's name (using `"Your Extension"` in the instructions below, replace this value with your own).
 
 Duplicate folders:
 
