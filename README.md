@@ -608,7 +608,64 @@ services:
           ../../layers/GatoGraphQLForWP/packages/your-extension-schema:/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/composer-vendor/your-extension-schema
 ```
 
-`webservers/gatographql-extensions/composer.json`
+Edit file `webservers/gatographql-extensions/composer.json`, duplicating script `@symlink-vendor-for-gatographql-hello-dolly-plugin` into `@symlink-vendor-for-gatographql-your-extension-plugin`:
+
+```json
+{
+  "scripts": {
+    // Add this entry below:
+    "symlink-vendor-for-gatographql-your-extension-plugin": [
+      "php -r \"copy('../../layers/GatoGraphQLForWP/plugins/your-extension/composer.json', '../../layers/GatoGraphQLForWP/plugins/your-extension/composer.local.json');\"",
+      "cd ../../ && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/your-extension/composer.local.json",
+      "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../layers/GatoGraphQLForWP/plugins/your-extension"
+    ]
+  }
+}
+```
+
+...also calling `@symlink-vendor-for-gatographql-your-extension-plugin` in the `update-deps` script:
+
+```json
+{
+  "scripts": {
+    "update-deps": [
+      "@symlink-vendor-for-gatographql-plugin",
+      "@symlink-vendor-for-gatographql-testing-schema-plugin",
+      "@symlink-vendor-for-gatographql-testing-plugin",
+      "@symlink-vendor-for-gatographql-hello-dolly-plugin",
+      // Add this entry below:
+      "@symlink-vendor-for-gatographql-your-extension-plugin"
+    ]
+  }
+}
+```
+
+...and adding entries under the `optimize-autoloader` and `deoptimize-autoloader` scripts:
+
+```json
+{
+  "scripts": {
+    "optimize-autoloader": [
+        "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql",
+        "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing",
+        "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema",
+        "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly",
+        // Add this entry below:
+        "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../layers/GatoGraphQLForWP/plugins/your-extension"
+    ],
+    "deoptimize-autoloader": [
+        "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql",
+        "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing",
+        "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema",
+        "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly",
+        // Add this entry below:
+        "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../layers/GatoGraphQLForWP/plugins/your-extension"
+    ]
+  }
+}
+```
+
+
    71:             "@symlink-vendor-for-gatographql-hello-dolly-plugin"
   100:         "symlink-vendor-for-gatographql-hello-dolly-plugin": [
   101:             "php -r \"copy('../../layers/GatoGraphQLForWP/plugins/hello-dolly/composer.json', '../../layers/GatoGraphQLForWP/plugins/hello-dolly/composer.local.json');\"",
