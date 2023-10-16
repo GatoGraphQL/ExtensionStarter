@@ -460,7 +460,7 @@ To create the extension manually:
 
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
 
-You will need to duplicate the files and folders for this extension, and search/replace its name with your extension's name (assigned as `Your Extension` below):
+You will need to duplicate the files and folders for this extension, search for the `"Hello Dolly"` name (and variants), and replace it with your extension's name (using `"Your Extension"` below, replace this with your own).
 
 Duplicate folders:
 
@@ -478,11 +478,25 @@ Also rename files in these two new folders:
 - `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-hello-dolly.php` into `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`
 - `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-hello-dolly.pot` into `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-your-extension.pot`
 
-Edit file `.vscode/launch.json` and add the following lines:
+Edit file `.vscode/launch.json` and, under entry `pathMappings` in the first item in `configurations`, add the following 2 lines:
+
+```
+"/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/my-company-for-gatographql/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
+"/app/wordpress/wp-content/plugins/gatographql-your-extension": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/your-extension"
+```
 
 ```json
-
-
+{
+  "configurations": [
+    {
+      "name": "[Lando webserver] Listen for Xdebug",
+      "pathMappings": {
+        "/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/my-company-for-gatographql/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
+        "/app/wordpress/wp-content/plugins/gatographql-your-extension": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/your-extension"
+      }
+    }
+  ]
+}
 ```
   13:                 "/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/my-company-for-gatographql/hello-dolly-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/hello-dolly-schema",
   14:                 "/app/wordpress/wp-content/plugins/gatographql-hello-dolly": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/hello-dolly",
