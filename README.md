@@ -877,81 +877,121 @@ In the future, we expect to have [commands to automatically generate the PHP cod
 
 `User` type: [`UserObjectTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php)
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-type-resolver
-``` -->
+```
+-->
 
 #### Create a Field Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-field-resolver
-``` -->
+```
+-->
 
 #### Create a Mutation Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-mutation-resolver
-``` -->
+```
+-->
 
 #### Create a Custom Scalar Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-custom-scalar-resolver
-``` -->
+```
+-->
 
 #### Create an Enum Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-enum-resolver
-``` -->
+```
+-->
 
 #### Create a Union Type-Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-union-type-resolver
-``` -->
+```
+-->
 
 #### Create an Interface Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-interface-resolver
-``` -->
+```
+-->
 
 #### Create an Input Object Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-input-object-resolver
-``` -->
+```
+-->
 
 #### Create a Oneof Input Object Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-oneof-input-object-resolver
-``` -->
+```
+-->
 
 #### Create a Directive Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-directive-resolver
-``` -->
+```
+-->
 
 ### Specific to Gato GraphQL
 
@@ -959,47 +999,71 @@ composer create-directive-resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-global-field-resolver
-``` -->
+```
+-->
 
 #### Create an Enum String Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-enum-string-resolver
-``` -->
+```
+-->
 
 #### Create an Error Payload Type Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-error-payload-type-resolver
-``` -->
+```
+-->
 
 #### Create a Composable Directive Resolver
 
 @todo
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-composable-directive-resolver
-``` -->
+```
+-->
 
 ### Specific for WordPress
 
 #### Create a Custom Post Type Resolver
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-custom-post-type-resolver
-``` -->
+```
+-->
 
 #### Create a Custom Post Type Field Resolver
 
-<!-- ```bash
+<!--
+Run:
+
+```bash
 composer create-custom-post-type-field-resolver
-``` -->
+```
+-->
 
 ### Modifying Field and Directive Resolvers
 
