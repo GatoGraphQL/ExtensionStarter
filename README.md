@@ -947,7 +947,9 @@ composer create-enum-resolver
 
 #### Create an Interface Resolver
 
-@todo
+Interface `CustomPostInterfaceTypeResolver`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/InterfaceType/CustomPostInterfaceTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/InterfaceType/CustomPostInterfaceTypeResolver.php)
 
 <!--
 Run:
