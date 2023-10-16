@@ -514,13 +514,25 @@ $requiredPluginFile = 'your-extension/hello.php';
 $requiredPluginVersion = '^1.7';
 ```
 
-...with the file that loads the WordPress integration plugin for the extension, and the version constraint needed for that integration plugin.
+...with the main file for the WordPress integration plugin, and the version constraint needed for that plugin.
 
 For instance, for an extension for WooCommerce `v8` and above:
 
 ```php
 $requiredPluginFile = 'woocommerce/woocommerce.php';
 $requiredPluginVersion = '^8';
+```
+
+Edit file `layers/GatoGraphQLForWP/plugins/your-extension/src/GatoGraphQLExtension.php`, and (similar to above) replace:
+
+```php
+'your-extension/hello.php'
+```
+
+...with your integration plugin's main file, such as:
+
+```php
+'woocommerce/woocommerce.php'
 ```
 
 Edit files:
