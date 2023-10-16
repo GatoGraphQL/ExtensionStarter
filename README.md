@@ -993,7 +993,9 @@ composer create-input-object-resolver
 
 #### Create a Oneof Input Object Resolver
 
-@todo
+Oneof Input Object `UserByInput`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserByOneofInputObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserByOneofInputObjectTypeResolver.php)
 
 <!--
 Run:
