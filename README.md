@@ -877,7 +877,9 @@ _In the future, we expect to have [commands to automatically generate the PHP co
 
 #### Create a Type Resolver
 
-`User` type: [`UserObjectTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php)
+`User` type:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php)
 
 <!--
 Run:
@@ -889,7 +891,9 @@ composer create-type-resolver
 
 #### Create a Field Resolver
 
-Fields `name`, `displayName`, and others, for the `User` type: [`UserObjectTypeFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php)
+Fields `name`, `displayName`, and others, for the `User` type:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php)
 
 <!--
 Run:
@@ -901,7 +905,9 @@ composer create-field-resolver
 
 #### Create a Mutation Resolver
 
-Mutation `createPost`: [`RootObjectTypeFieldResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
+Mutation `createPost`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
 
 <!--
 Run:
@@ -913,7 +919,9 @@ composer create-mutation-resolver
 
 #### Create a Custom Scalar Resolver
 
-Custom scalar `Email`: [`EmailScalarTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/Schema/packages/schema-commons/src/TypeResolvers/ScalarType/EmailScalarTypeResolver.php)
+Custom scalar `Email`:
+
+- [`submodules/GatoGraphQL/layers/Schema/packages/schema-commons/src/TypeResolvers/ScalarType/EmailScalarTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/Schema/packages/schema-commons/src/TypeResolvers/ScalarType/EmailScalarTypeResolver.php)
 
 <!--
 Run:
@@ -925,7 +933,9 @@ composer create-custom-scalar-resolver
 
 #### Create an Enum Resolver
 
-Enum `CommentTypeEnum`: [`CommentTypeEnumTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/TypeResolvers/EnumType/CommentTypeEnumTypeResolver.php)
+Enum `CommentTypeEnum`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/TypeResolvers/EnumType/CommentTypeEnumTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/TypeResolvers/EnumType/CommentTypeEnumTypeResolver.php)
 
 <!--
 Run:
