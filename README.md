@@ -507,6 +507,22 @@ Also rename the following files in a duplicate folder:
 - `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-hello-dolly.php` into `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`
 - `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-hello-dolly.pot` into `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-your-extension.pot`
 
+Edit file `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`, and replace this PHP code:
+
+```php
+$requiredPluginFile = 'your-extension/hello.php';
+$requiredPluginVersion = '^1.7';
+```
+
+...with the file that loads the WordPress integration plugin for the extension, and the version constraint needed for that integration plugin.
+
+For instance, for an extension for WooCommerce `v8` and above:
+
+```php
+$requiredPluginFile = 'woocommerce/woocommerce.php';
+$requiredPluginVersion = '^8';
+```
+
 Edit files:
 
 - `layers/GatoGraphQLForWP/packages/your-extension-schema/composer.json`
@@ -524,7 +540,7 @@ Edit files:
 
 ...like this:
 
-- Rename entry `"wpackagist-plugin/your-extension"` to `"wpackagist-plugin/your-wordpress-integration-plugin"`, where `your-wordpress-integration-plugin` is the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo`, etc)
+- Rename entry `"wpackagist-plugin/your-extension"` to `"wpackagist-plugin/your-wordpress-integration-plugin"`, where `your-wordpress-integration-plugin` is the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc)
 - Replace the version constraint `"^1.7"` to the one needed for that integration plugin:
 
 Edit file `layers/GatoGraphQLForWP/packages/your-extension-schema/phpstan.neon.dist`, replacing:
@@ -610,7 +626,7 @@ return array_merge(
 );
 ```
 
-Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo`, etc):
+Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc):
 
 ```php
 $dataToRemove['require-dev']['wpackagist-plugin/your-wordpress-integration-plugin'] = '*';
@@ -723,7 +739,7 @@ Edit file `webservers/gatographql-extensions/composer.json` and add the followin
 }
 ```
 
-Edit file `webservers/gatographql-extensions/setup-extensions/activate-plugins.sh` and add the following code, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo`, etc):
+Edit file `webservers/gatographql-extensions/setup-extensions/activate-plugins.sh` and add the following code, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc):
 
 ```bash
 if wp plugin is-installed your-wordpress-integration-plugin --path=/app/wordpress; then
