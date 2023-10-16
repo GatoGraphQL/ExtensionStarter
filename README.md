@@ -947,7 +947,9 @@ composer create-enum-resolver
 
 #### Create a Union Type-Resolver
 
-@todo
+Union type `CustomPostUnionTypeResolver`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/UnionType/CustomPostUnionTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/UnionType/CustomPostUnionTypeResolver.php)
 
 <!--
 Run:
