@@ -434,6 +434,22 @@ composer integration-test-prod
 
 ## Creating your Extension Plugin
 
+<details>
+
+<summary>Browse documentation within the codebase</summary>
+
+The codebase contains snippets of documentation, to explain some feature or configuration.
+
+Search for the following PHPDoc tags in the codebase:
+
+- `@gatographql-project-info`: Information on some aspect of the monorepo setup
+- `@gatographql-project-action-maybe-required`: Indicates if some feature can be enabled/disabled and how
+- `@gatographql-extension-info`: Information on some aspect of the extension setup
+- `@gatographql-example`: Provides an example from the upstream monorepo
+- `@gatographql-readonly-code`: Indicates that the code must not be changed, as it is automatically modified via some script
+
+</details>
+
 ⚠️ We are working on a `create-extension` command to automate this functionality. For the time being, you will need to do create the extension manually, as explained below.
 
 See:
@@ -446,14 +462,17 @@ This starter project includes one fully-working extension plugin as demo: "Gato 
 
 You will need to duplicate the files and folders for this extension, and search/replace its name with your extension's name:
 
-- Duplicate folder `layers/GatoGraphQLForWP/packages/hello-dolly-schema` into `layers/GatoGraphQLForWP/packages/{your-extension-name}-schema`
-- Duplicate folder `layers/GatoGraphQLForWP/plugins/hello-dolly` into `layers/GatoGraphQLForWP/packages/{your-extension-name}`
-- Within these two folders, search and replace all occurrences of:
-  - `hello-dolly` => `your-extension-name`
-  - `Hello Dolly` => `Your Extension Name`
-  - `HelloDolly` => `YourExtensionName`
+Duplicate folder `layers/GatoGraphQLForWP/packages/hello-dolly-schema` into `layers/GatoGraphQLForWP/packages/{your-extension-name}-schema`
 
-<details>
+Duplicate folder `layers/GatoGraphQLForWP/plugins/hello-dolly` into `layers/GatoGraphQLForWP/packages/{your-extension-name}`
+
+Within these two folders, search and replace all occurrences of:
+
+- `hello-dolly` => `your-extension-name`
+- `Hello Dolly` => `Your Extension Name`
+- `HelloDolly` => `YourExtensionName`
+
+<!-- <details>
 
 <summary>What does "Gato GraphQL - Hello Dolly" do? 🤔</summary>
 
@@ -475,29 +494,7 @@ may return:
 }
 ```
 
-</details>
-
-Describe the "Hello Dolly" demo
-
-Search for "dolly" and "Dolly" in the codebase.
-
-<details>
-
-<summary>Browse the documentation within the codebase</summary>
-
-The codebase contains snippets of documentation, to explain some feature or configuration.
-
-Search for the following PHPDoc tags in the codebase:
-
-- `@gatographql-project-info`: Information on some aspect of the monorepo setup
-- `@gatographql-project-action-maybe-required`: Indicates if some feature can be enabled/disabled and how
-- `@gatographql-extension-info`: Information on some aspect of the extension setup
-- `@gatographql-example`: Provides an example from the upstream monorepo
-- `@gatographql-readonly-code`: Indicates that the code must not be changed, as it is automatically modified via some script
-
-</details>
-
-@todo
+</details> -->
 
 ### Duplicating the "Hello Dolly" Extension Demo
 
