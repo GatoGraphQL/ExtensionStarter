@@ -1037,7 +1037,9 @@ composer create-global-field-resolver
 
 #### Create an Enum String Resolver
 
-@todo
+Enum String `CustomPostEnumString`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/EnumType/CustomPostEnumStringScalarTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/EnumType/CustomPostEnumStringScalarTypeResolver.php)
 
 <!--
 Run:
