@@ -665,29 +665,34 @@ Edit file `webservers/gatographql-extensions/composer.json`, duplicating script 
 }
 ```
 
+Edit file `webservers/gatographql-extensions/setup-extensions/activate-plugins.sh` and add the following code, replacing `your-wordpress-integration-plugin` with the slug of the integration plugin for the extension (eg: `woocommerce`, `yoast-seo` or `hello-dolly`):
 
-   71:             "@symlink-vendor-for-gatographql-hello-dolly-plugin"
-  100:         "symlink-vendor-for-gatographql-hello-dolly-plugin": [
-  101:             "php -r \"copy('../../layers/GatoGraphQLForWP/plugins/hello-dolly/composer.json', '../../layers/GatoGraphQLForWP/plugins/hello-dolly/composer.local.json');\"",
-  102:             "cd ../../ && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/hello-dolly/composer.local.json",
-  103:             "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly"
-  109:             "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly"
-  115:             "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly"
+```bash
+if wp plugin is-installed your-wordpress-integration-plugin --path=/app/wordpress; then
+    wp plugin activate your-wordpress-integration-plugin --path=/app/wordpress
+else
+    wp plugin install your-wordpress-integration-plugin --activate --path=/app/wordpress
+fi
 
-`webservers/gatographql-extensions/setup-extensions/activate-plugins.sh`
-   3: if wp plugin is-installed hello-dolly --path=/app/wordpress; then
-   4:     wp plugin activate hello-dolly --path=/app/wordpress
-   6:     wp plugin install hello-dolly --activate --path=/app/wordpress
-  10: wp plugin activate gatographql-hello-dolly --path=/app/wordpress
+wp plugin activate gatographql-your-extension --path=/app/wordpress
+```
 
-`webservers/gatographql-extensions-for-prod/setup-extensions/activate-plugins.sh`
-   3: if wp plugin is-installed hello-dolly --path=/app/wordpress; then
-   4:     wp plugin activate hello-dolly --path=/app/wordpress
-   6:     wp plugin install hello-dolly --activate --path=/app/wordpress
-  10: if wp plugin is-installed gatographql-hello-dolly --path=/app/wordpress; then
-  11:     wp plugin activate gatographql-hello-dolly --path=/app/wordpress
-  24:     #   wp plugin install https://github.com/GatoGraphQL/ExtensionStarter/releases/latest/download/gatographql-hello-dolly-{MAJOR.MINOR.PATCH}.zip --force --activate --path=/app/wordpress
-  36:     echo "Please download the latest PROD version of the 'Gato GraphQL - Hello Dolly' plugin from your GitHub repo, and install it on this WordPress site"
+Edit file `webservers/gatographql-extensions-for-prod/setup-extensions/activate-plugins.sh` and add the following code:
+
+```bash
+if wp plugin is-installed your-wordpress-integration-plugin --path=/app/wordpress; then
+    wp plugin activate your-wordpress-integration-plugin --path=/app/wordpress
+else
+    wp plugin install your-wordpress-integration-plugin --activate --path=/app/wordpress
+fi
+
+# Activate own plugins
+if wp plugin is-installed gatographql-your-extension --path=/app/wordpress; then
+    wp plugin activate gatographql-your-extension --path=/app/wordpress
+else
+    echo "Please download the latest PROD version of the 'Gato GraphQL - Your Extension' plugin from your GitHub repo, and install it on this WordPress site"
+fi
+```
 
 <!-- <details>
 
