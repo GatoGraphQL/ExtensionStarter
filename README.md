@@ -1118,13 +1118,13 @@ Field `Root.comments`:
 
 - [`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
 
-#### Validating Constraints for Field and Directive Arguments
+<!-- #### Validating Constraints for Field and Directive Arguments
 
-@todo
+@todo -->
 
-#### Versioning Fields and Directives
+<!-- #### Versioning Fields and Directives
 
-@todo
+@todo -->
 
 ## Creating Tests
 
