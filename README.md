@@ -1063,11 +1063,10 @@ composer create-error-payload-union-type-resolver
 ```
 -->
 
-#### Create a Composable Directive Resolver
+<!-- #### Create a Composable Directive Resolver
 
 @todo
 
-<!--
 Run:
 
 ```bash
