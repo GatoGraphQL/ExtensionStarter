@@ -923,7 +923,7 @@ composer create-custom-scalar-resolver
 
 #### Create an Enum Resolver
 
-@todo
+Enum `CommentTypeEnum`: [`CommentTypeEnumTypeResolver`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/TypeResolvers/EnumType/CommentTypeEnumTypeResolver.php)
 
 <!--
 Run:
