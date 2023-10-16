@@ -1007,7 +1007,9 @@ composer create-oneof-input-object-resolver
 
 #### Create a Directive Resolver
 
-@todo
+Directive `@skip`:
+
+- [`submodules/GatoGraphQL/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php)
 
 <!--
 Run:
