@@ -945,6 +945,18 @@ composer create-enum-resolver
 ```
 -->
 
+#### Create an Interface Resolver
+
+@todo
+
+<!--
+Run:
+
+```bash
+composer create-interface-resolver
+```
+-->
+
 #### Create a Union Type-Resolver
 
 Union type `CustomPostUnionTypeResolver`:
@@ -956,18 +968,6 @@ Run:
 
 ```bash
 composer create-union-type-resolver
-```
--->
-
-#### Create an Interface Resolver
-
-@todo
-
-<!--
-Run:
-
-```bash
-composer create-interface-resolver
 ```
 -->
 
