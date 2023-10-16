@@ -797,6 +797,8 @@ fi
 
 That's it with the editing.
 
+---
+
 Then regenerate the monorepo configuration, by running:
 
 ```bash
