@@ -552,8 +552,23 @@ return array_merge(
 );
 ```
 
-`src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php`
-  50:         $dataToRemove['require-dev']['wpackagist-plugin/hello-dolly'] = '*';
+Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the integration plugin for the extension (eg: `woocommerce`, `yoast-seo` or `hello-dolly`):
+
+```php
+$dataToRemove['require-dev']['wpackagist-plugin/your-wordpress-integration-plugin'] = '*';
+```
+
+i.e. it will look like this:
+
+```php
+public function getDataToRemove(): array
+{
+  $dataToRemove = parent::getDataToRemove();
+  $dataToRemove['require-dev']['wpackagist-plugin/hello-dolly'] = '*';
+  $dataToRemove['require-dev']['wpackagist-plugin/your-wordpress-integration-plugin'] = '*';
+  return $dataToRemove;
+}
+```
 
 `src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php`
   45:      * (Eg: package "hello-dolly-schema" could be pushed to
