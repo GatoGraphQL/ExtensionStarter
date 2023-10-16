@@ -784,17 +784,6 @@ composer rebuild-app-and-server
 
 Now, when loading the Lando webserver for DEV (under `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`), the new extension should be loaded and working (even though it doesn't contain any resolver yet).
 
-### Duplicating the "Hello Dolly" Extension Demo
-
-Declare the steps to add yet another extension:
-
-- duplicate this folder
-- Add this entry on .vscode/launch.json
-- Add this entry on .lando.yml
-- etc
-
-@todo
-
 ### Defining an Integration Plugin
 
 @todo
