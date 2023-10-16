@@ -578,7 +578,7 @@ return array_merge(
 );
 ```
 
-Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the integration plugin for the extension (eg: `woocommerce`, `yoast-seo` or `hello-dolly`):
+Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo` or `hello-dolly`):
 
 ```php
 $dataToRemove['require-dev']['wpackagist-plugin/your-wordpress-integration-plugin'] = '*';
@@ -634,12 +634,12 @@ services:
           ../../layers/GatoGraphQLForWP/packages/your-extension-schema:/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/composer-vendor/your-extension-schema
 ```
 
-Edit file `webservers/gatographql-extensions/composer.json`, duplicating script `@symlink-vendor-for-gatographql-hello-dolly-plugin` into `@symlink-vendor-for-gatographql-your-extension-plugin`:
+Edit file `webservers/gatographql-extensions/composer.json` and add the following script `symlink-vendor-for-gatographql-your-extension-plugin` (which is a duplicate of script `symlink-vendor-for-gatographql-hello-dolly-plugin`):
 
 ```json
 {
   "scripts": {
-    // Add this entry below:
+    // Add this entry:
     "symlink-vendor-for-gatographql-your-extension-plugin": [
       "php -r \"copy('../../layers/GatoGraphQLForWP/plugins/your-extension/composer.json', '../../layers/GatoGraphQLForWP/plugins/your-extension/composer.local.json');\"",
       "cd ../../ && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/your-extension/composer.local.json",
