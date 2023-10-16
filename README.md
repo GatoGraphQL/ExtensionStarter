@@ -500,19 +500,36 @@ i.e. it will look like this:
       "name": "[Lando webserver] Listen for Xdebug",
       // ...
       "pathMappings": {
-        // ...
+        "/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/my-company-for-gatographql/hello-dolly-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/hello-dolly-schema",
+        "/app/wordpress/wp-content/plugins/gatographql-hello-dolly": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/hello-dolly",
+
         "/app/wordpress/wp-content/plugins/gatographql-your-extension/vendor/my-company-for-gatographql/your-extension-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/your-extension-schema",
         "/app/wordpress/wp-content/plugins/gatographql-your-extension": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/your-extension"
+
+        // ...
       }
     }
   ]
 }
 ```
 
+Edit file `src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php` and add the following line of PHP code:
 
-`src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php`
-  40:          * @see layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php
-  51:                 $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+```php
+$this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
+```
+
+i.e. it will look like this:
+
+```php
+return array_merge(
+  parent::getBootstrapFiles(),
+  [
+    $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+    $this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
+  ]
+);
+```
 
 `src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
   32:          * (eg: WooCommerce, Yoast SEO or, in this case, Hello Dolly).
