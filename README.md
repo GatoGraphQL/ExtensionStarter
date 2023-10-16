@@ -470,6 +470,7 @@ Duplicate folders:
 Duplicate files:
 
 - `config/rector/downgrade/hello-dolly/rector.php` into `config/rector/downgrade/your-extension/rector.php`
+- `src/Config/Rector/Downgrade/Configurators/HelloDollyContainerConfigurationService.php` into `src/Config/Rector/Downgrade/Configurators/YourExtensionContainerConfigurationService.php`
 
 Within the duplicated folders and files above, search and replace all occurrences of:
 
@@ -512,10 +513,6 @@ i.e. it will look like this:
 `src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php`
   40:          * @see layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php
   51:                 $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
-
-`src/Config/Rector/Downgrade/Configurators/HelloDollyContainerConfigurationService.php`
-   9: class HelloDollyContainerConfigurationService extends AbstractExtensionDowngradeContainerConfigurationService
-  13:         return 'layers/GatoGraphQLForWP/plugins/hello-dolly';
 
 `src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
   32:          * (eg: WooCommerce, Yoast SEO or, in this case, Hello Dolly).
