@@ -867,9 +867,11 @@ Input all these in:
 
 This section provides examples from the codebase in the upstream `GatoGraphQL/GatoGraphQL` monorepo, demonstrating how to create the resolvers to extend the GraphQL schema.
 
-Please follow the links, copy/paste the code and files, and adapt them to your needs.
+Please follow the links in your code editor, copy/paste the files to your extension folder, and adapt them to your needs.
 
-In the future, we expect to have [commands to automatically generate the PHP code inside the extension](https://github.com/GatoGraphQL/ExtensionStarter/issues/74).
+You must also have those services injected into the service container, by defining them in file `schema-services.yaml`. Check [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/config/schema-services.yaml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/config/schema-services.yaml) for an example.
+
+_In the future, we expect to have [commands to automatically generate the PHP code inside the extension](https://github.com/GatoGraphQL/ExtensionStarter/issues/74)._
 
 ### General to GraphQL
 
