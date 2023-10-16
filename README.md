@@ -1108,7 +1108,9 @@ composer create-custom-post-type-field-resolver
 
 #### Adding Nested Mutations
 
-@todo
+Mutation `Post.update`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php`](submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php)
 
 #### Filtering Results from a Field
 
