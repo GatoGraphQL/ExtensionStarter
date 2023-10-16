@@ -720,6 +720,22 @@ else
 fi
 ```
 
+That's it with the editing.
+
+Then regenerate the monorepo configuration, by running:
+
+```bash
+composer update-monorepo-config
+```
+
+And regenerate the mapping for the Lando webserver for DEV, by running:
+
+```bash
+composer rebuild-app-and-server
+```
+
+Now, when loading the Lando webserver for DEV (under `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`), the new extension should be loaded and working (even though it doesn't contain any resolver yet).
+
 ### Duplicating the "Hello Dolly" Extension Demo
 
 Declare the steps to add yet another extension:
