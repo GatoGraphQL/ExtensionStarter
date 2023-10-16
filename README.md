@@ -1078,6 +1078,28 @@ composer create-composable-directive-resolver
 ```
 -->
 
+<!-- ### Modifying Field and Directive Resolvers -->
+
+### Adding Nested Mutations
+
+Mutation `Post.update`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php`](submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php)
+
+### Filtering Results from a Field
+
+Field `Root.comments`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
+
+<!-- ### Validating Constraints for Field and Directive Arguments
+
+@todo -->
+
+<!-- ### Versioning Fields and Directives
+
+@todo -->
+
 <!-- ### Specific for WordPress -->
 
 ### Create a Custom Post Type Resolver
@@ -1109,28 +1131,6 @@ Run:
 composer create-custom-post-type-field-resolver
 ```
 -->
-
-### Modifying Field and Directive Resolvers
-
-### Adding Nested Mutations
-
-Mutation `Post.update`:
-
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php`](submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php)
-
-### Filtering Results from a Field
-
-Field `Root.comments`:
-
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
-
-<!-- ### Validating Constraints for Field and Directive Arguments
-
-@todo -->
-
-<!-- ### Versioning Fields and Directives
-
-@todo -->
 
 ## Creating Tests
 
