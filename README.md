@@ -871,34 +871,155 @@ For the time being, we will provide with examples of how this is done in the ups
 
 Please follow the links, copy/paste the code and files, and adapt them to your needs.
 
-General to GraphQL:
-    creating-a-type
-    adding-fields-to-a-type
-    adding-mutations
-    creating-a-custom-scalar
-    creating-an-enum
-    creating-an-union-type
-    creating-an-interface
-    creating-an-input-object
-    creating-a-oneof-input-object
-    creating-a-directive
+### General to GraphQL
 
-Specific to Gato GraphQL:
-    adding-global-fields
-    adding-nested-mutations
-    creating-an-enum-string
-    creating-an-error-payload-type
-    creating-a-composable-directive
+#### Create a Type Resolver
 
-Specific for WordPress:
-    creating-a-custom-post-type
-    adding-a-field-to-all-custom-post-types
+@todo
 
-Modifying Field and Directive Resolvers:
-    filtering-results-from-a-field
-    validating-constraints-for-field-and-directive-arguments
-    versioning-fields-and-directives
+<!-- ```bash
+composer create-type-resolver
+``` -->
 
+#### Create a Field Resolver
+
+@todo
+
+<!-- ```bash
+composer create-field-resolver
+``` -->
+
+#### Create a Mutation Resolver
+
+@todo
+
+<!-- ```bash
+composer create-mutation-resolver
+``` -->
+
+#### Create a Custom Scalar Resolver
+
+@todo
+
+<!-- ```bash
+composer create-custom-scalar-resolver
+``` -->
+
+#### Create an Enum Resolver
+
+@todo
+
+<!-- ```bash
+composer create-enum-resolver
+``` -->
+
+#### Create a Union Type-Resolver
+
+@todo
+
+<!-- ```bash
+composer create-union-type-resolver
+``` -->
+
+#### Create an Interface Resolver
+
+@todo
+
+<!-- ```bash
+composer create-interface-resolver
+``` -->
+
+#### Create an Input Object Resolver
+
+@todo
+
+<!-- ```bash
+composer create-input-object-resolver
+``` -->
+
+#### Create a Oneof Input Object Resolver
+
+@todo
+
+<!-- ```bash
+composer create-oneof-input-object-resolver
+``` -->
+
+#### Create a Directive Resolver
+
+@todo
+
+<!-- ```bash
+composer create-directive-resolver
+``` -->
+
+### Specific to Gato GraphQL
+
+#### Create a Global Field Resolver
+
+@todo
+
+<!-- ```bash
+composer create-global-field-resolver
+``` -->
+
+#### Create an Enum String Resolver
+
+@todo
+
+<!-- ```bash
+composer create-enum-string-resolver
+``` -->
+
+#### Create an Error Payload Type Resolver
+
+@todo
+
+<!-- ```bash
+composer create-error-payload-type-resolver
+``` -->
+
+#### Create a Composable Directive Resolver
+
+@todo
+
+<!-- ```bash
+composer create-composable-directive-resolver
+``` -->
+
+### Specific for WordPress
+
+#### Create a Custom Post Type Resolver
+
+<!-- ```bash
+composer create-custom-post-type-resolver
+``` -->
+
+#### Create a Custom Post Type Field Resolver
+
+<!-- ```bash
+composer create-custom-post-type-field-resolver
+``` -->
+
+### Modifying Field and Directive Resolvers
+
+#### Adding Nested Mutations
+
+@todo
+
+#### Filtering Results from a Field
+
+@todo
+
+#### Validating Constraints for Field and Directive Arguments
+
+@todo
+
+#### Versioning Fields and Directives
+
+@todo
+
+## Creating Tests
 
 ### Creating Unit Tests
 
@@ -908,7 +1029,7 @@ Modifying Field and Directive Resolvers:
 
 @todo
 
-Point to a .gql test
+<!-- Point to a .gql test
 Point to a .gql test when disabling the plugin
 Point to a .gql test when disabling the module
 
@@ -920,7 +1041,7 @@ Indicate the "enabled.json" and "only-one-enabled.json" items fail because of th
   But I kept them only for documentation, for your own tests
   alternatively with regex, could use test:
     submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Integration/AccessPrivatePersistedQuerySourceByAdminQueryExecutionFixtureWebserverRequestTest.php
-Explain what each of them does!
+Explain what each of them does! -->
 
 ## Development Process
 
