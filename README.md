@@ -210,7 +210,7 @@ All plugins hosted on this "downstream" starter monorepo:
 
 - [Gato GraphQL - Hello Dolly](https://github.com/GatoGraphQL/ExtensionStarter/blob/main/layers/GatoGraphQLForWP/plugins/hello-dolly/gatographql-hello-dolly.php)
 
-All the integration plugins, required by the extensions
+All the WordPress integration plugins, required by the extensions
 
 - [Hello Dolly](https://wordpress.org/plugins/hello-dolly/)
 
@@ -507,6 +507,16 @@ Also rename the following files in a duplicate folder:
 - `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-hello-dolly.php` into `layers/GatoGraphQLForWP/plugins/your-extension/gatographql-your-extension.php`
 - `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-hello-dolly.pot` into `layers/GatoGraphQLForWP/plugins/your-extension/languages/gatographql-your-extension.pot`
 
+Edit file `layers/GatoGraphQLForWP/packages/your-extension-schema/composer.json`, and under `require-dev`, replace entry `"wpackagist-plugin/hello-dolly"` with `"wpackagist-plugin/your-wordpress-integration-plugin"`, where `your-wordpress-integration-plugin` is the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo`, etc), and the version constraint needed for that plugin:
+
+```json
+{
+  "require-dev": {
+    "wpackagist-plugin/hello-dolly": "^1.7"
+  },
+}
+```
+
 Edit file `.vscode/launch.json` and, under entry `pathMappings` in the first item in `configurations`, add the following 2 lines (notice that `composer-vendor` will be the same value used when executing the `initialize-project` command):
 
 ```json
@@ -578,7 +588,7 @@ return array_merge(
 );
 ```
 
-Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo` or `hello-dolly`):
+Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo`, etc):
 
 ```php
 $dataToRemove['require-dev']['wpackagist-plugin/your-wordpress-integration-plugin'] = '*';
@@ -691,7 +701,7 @@ Edit file `webservers/gatographql-extensions/composer.json` and add the followin
 }
 ```
 
-Edit file `webservers/gatographql-extensions/setup-extensions/activate-plugins.sh` and add the following code, replacing `your-wordpress-integration-plugin` with the slug of the integration plugin for the extension (eg: `woocommerce`, `yoast-seo` or `hello-dolly`):
+Edit file `webservers/gatographql-extensions/setup-extensions/activate-plugins.sh` and add the following code, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `yoast-seo`, etc):
 
 ```bash
 if wp plugin is-installed your-wordpress-integration-plugin --path=/app/wordpress; then
