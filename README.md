@@ -434,6 +434,14 @@ composer integration-test-prod
 
 ## Creating your Extension Plugin
 
+⚠️ This is a work in progress. We are working on creating a `create-extension` command to automate this functionality. For the time, you will need to do this manually.
+
+See:
+
+- https://github.com/GatoGraphQL/ExtensionStarter/issues/73
+
+To create the extension manually:
+
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
 
 <details>
