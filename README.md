@@ -1023,7 +1023,9 @@ composer create-directive-resolver
 
 #### Create a Global Field Resolver
 
-@todo
+Field `__typename`:
+
+- [`submodules/GatoGraphQL/layers/GraphQLByPoP/packages/graphql-server/src/FieldResolvers/ObjectType/GlobalObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/GraphQLByPoP/packages/graphql-server/src/FieldResolvers/ObjectType/GlobalObjectTypeFieldResolver.php)
 
 <!--
 Run:
