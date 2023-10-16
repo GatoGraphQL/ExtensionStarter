@@ -476,9 +476,7 @@ composer integration-test-prod
 
 ## Creating your Extension Plugin
 
-⚠️ We are [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate the process of creating the extension and configuring it in the monorepo.
-
-Until then, you will need to manually follow the steps below.
+📢 We are [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate the process of creating the extension and configuring it in the monorepo. Until then, you will need to manually follow the steps below.
 
 ### Creating the extension manually
 
@@ -865,11 +863,11 @@ Input all these in:
 
 ## Extending the GraphQL Schema
 
-⚠️ We are working on [adding commands to automatically generate the PHP code](https://github.com/GatoGraphQL/ExtensionStarter/issues/74) inside the extension.
-
-For the time being, we will provide with examples of how this is done in the upstream `GatoGraphQL/GatoGraphQL` monorepo.
+This section provides examples from the codebase in the upstream `GatoGraphQL/GatoGraphQL` monorepo, demonstrating how to create the resolvers to extend the GraphQL schema.
 
 Please follow the links, copy/paste the code and files, and adapt them to your needs.
+
+In the future, we expect to have [commands to automatically generate the PHP code inside the extension](https://github.com/GatoGraphQL/ExtensionStarter/issues/74).
 
 ### General to GraphQL
 
