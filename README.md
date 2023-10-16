@@ -649,7 +649,7 @@ Edit file `webservers/gatographql-extensions/composer.json` and add the followin
 }
 ```
 
-...also calling `@symlink-vendor-for-gatographql-your-extension-plugin` in the `update-deps` script:
+...also add a line calling `@symlink-vendor-for-gatographql-your-extension-plugin` in the `update-deps` script:
 
 ```json
 {
@@ -666,7 +666,7 @@ Edit file `webservers/gatographql-extensions/composer.json` and add the followin
 }
 ```
 
-...and adding entries under the `optimize-autoloader` and `deoptimize-autoloader` scripts:
+...and add entries for `your-extension` (as duplicates as the entries for `hello-dolly`) under the `optimize-autoloader` and `deoptimize-autoloader` scripts:
 
 ```json
 {
