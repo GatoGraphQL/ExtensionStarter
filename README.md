@@ -570,23 +570,19 @@ public function getDataToRemove(): array
 }
 ```
 
-`src/Config/Symplify/MonorepoBuilder/DataSources/MonorepoSplitPackageDataSource.php`
-  45:      * (Eg: package "hello-dolly-schema" could be pushed to
-  46:      * http://github.com/GatoGraphQL/hello-dolly-schema.)
+Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php` and add a new entry under `$pluginConfigEntries` with the configuration for your extension:
 
-`src/Config/Symplify/MonorepoBuilder/DataSources/PackageOrganizationDataSource.php`
-  49:      * layers/GatoGraphQLForWP/packages/hello-dolly-schema will be pushed
-  50:      * to http://github.com/GatoGraphQL/hello-dolly-schema.)
-
-`src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php`
-  20:             // Gato GraphQL - Hello Dolly
-  22:                 'path' => 'layers/GatoGraphQLForWP/plugins/hello-dolly',
-  23:                 'plugin_slug' => 'gatographql-hello-dolly',
-  24:                 'main_file' => 'gatographql-hello-dolly.php',
-  25:                 'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/hello-dolly/rector.php',
-  37:                  * @see layers/GatoGraphQLForWP/plugins/hello-dolly/src/ExtensionMetadata.php
-  56:                  * (eg: https://github.com/GatoGraphQL/gatographql-hello-dolly-dist).
-  62:                 // 'dist_repo_name' => 'gatographql-hello-dolly-dist',
+```php
+[
+  'path' => 'layers/GatoGraphQLForWP/plugins/your-extension',
+  'plugin_slug' => 'gatographql-your-extension',
+  'main_file' => 'gatographql-your-extension.php',
+  'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/your-extension/rector.php',
+  'exclude_files' => implode(' ', [
+      'docs/images/\*',
+  ]),
+],
+```
 
 `src/OnDemand/Symplify/MonorepoBuilder/ModifyProject/ModifyProjectWorker/SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker.php`
   80:             'https://github.com/GatoGraphQL/hello-dolly' => sprintf(
