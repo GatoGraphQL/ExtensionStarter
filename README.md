@@ -176,6 +176,8 @@ To print the URL again, run:
 composer server-info
 ```
 
+_(This command also prints other useful data, including the port to connect to the MySql database, so you can visualize and edit the data in the DB using an external client, such as MySQLWorkbench.)_
+
 <details>
 
 <summary>What plugins are installed in the webserver? 🤔</summary>
