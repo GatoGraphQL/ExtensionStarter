@@ -126,6 +126,22 @@ composer initialize-project -- --help
 
 </details>
 
+<details>
+
+<summary>Browse documentation within the codebase</summary>
+
+The codebase contains snippets of documentation, to explain some feature or configuration.
+
+Search for the following PHPDoc tags in the codebase:
+
+- `@gatographql-project-info`: Information on some aspect of the monorepo setup
+- `@gatographql-project-action-maybe-required`: Indicates if some feature can be enabled/disabled and how
+- `@gatographql-extension-info`: Information on some aspect of the extension setup
+- `@gatographql-example`: Provides an example from the upstream monorepo
+- `@gatographql-readonly-code`: Indicates that the code must not be changed, as it is automatically modified via some script
+
+</details>
+
 ### Review the License
 
 The [license in the monorepo](LICENSE) is GPL v2.
@@ -459,22 +475,6 @@ composer integration-test-prod
 ```
 
 ## Creating your Extension Plugin
-
-<details>
-
-<summary>Browse documentation within the codebase</summary>
-
-The codebase contains snippets of documentation, to explain some feature or configuration.
-
-Search for the following PHPDoc tags in the codebase:
-
-- `@gatographql-project-info`: Information on some aspect of the monorepo setup
-- `@gatographql-project-action-maybe-required`: Indicates if some feature can be enabled/disabled and how
-- `@gatographql-extension-info`: Information on some aspect of the extension setup
-- `@gatographql-example`: Provides an example from the upstream monorepo
-- `@gatographql-readonly-code`: Indicates that the code must not be changed, as it is automatically modified via some script
-
-</details>
 
 ⚠️ We are working on a `create-extension` command to automate this functionality. For the time being, you will need to do create the extension manually, as explained below.
 
