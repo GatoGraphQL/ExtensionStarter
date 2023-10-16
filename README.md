@@ -1049,15 +1049,17 @@ composer create-enum-string-resolver
 ```
 -->
 
-#### Create an Error Payload Type Resolver
+#### Create an Error Payload Union Type Resolver
 
-@todo
+Error Payload Union Type `RootAddCommentToCustomPostMutationErrorPayloadUnion`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comment-mutations/src/TypeResolvers/UnionType/RootAddCommentToCustomPostMutationErrorPayloadUnionTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comment-mutations/src/TypeResolvers/UnionType/RootAddCommentToCustomPostMutationErrorPayloadUnionTypeResolver.php)
 
 <!--
 Run:
 
 ```bash
-composer create-error-payload-type-resolver
+composer create-error-payload-union-type-resolver
 ```
 -->
 
