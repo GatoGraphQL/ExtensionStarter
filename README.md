@@ -1078,6 +1078,10 @@ composer create-composable-directive-resolver
 
 #### Create a Custom Post Type Resolver
 
+Custom Post Type `Page`:
+
+- [`submodules/GatoGraphQL/layers/CMSSchema/packages/pages/src/TypeResolvers/ObjectType/PageObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/pages/src/TypeResolvers/ObjectType/PageObjectTypeResolver.php)
+
 <!--
 Run:
 
