@@ -1,14 +1,14 @@
 #!/bin/sh
 # Download and maybe activate external plugins
-if wp plugin is-installed hello-dolly --path=/app/wordpress; then
-    wp plugin activate hello-dolly --path=/app/wordpress
+if wp plugin is-installed hello-dolly; then
+    wp plugin activate hello-dolly
 else
-    wp plugin install hello-dolly --activate --path=/app/wordpress
+    wp plugin install hello-dolly --activate
 fi
 
 # Activate own plugins
-if wp plugin is-installed gatographql-hello-dolly --path=/app/wordpress; then
-    wp plugin activate gatographql-hello-dolly --path=/app/wordpress
+if wp plugin is-installed gatographql-hello-dolly; then
+    wp plugin activate gatographql-hello-dolly
 else
     ################################################################
     # @gatographql-extension-info
@@ -21,7 +21,7 @@ else
     # as artifact in the Release page), download it and install
     # it in this server, either manually or via WP-CLI:
     #
-    #   wp plugin install https://github.com/GatoGraphQL/ExtensionStarter/releases/latest/download/gatographql-hello-dolly-{MAJOR.MINOR.PATCH}.zip --force --activate --path=/app/wordpress
+    #   wp plugin install https://github.com/GatoGraphQL/ExtensionStarter/releases/latest/download/gatographql-hello-dolly-{MAJOR.MINOR.PATCH}.zip --force --activate
     #
     # (Replace "{MAJOR.MINOR.PATCH}" with the plugin version, eg: "1.10.0")
     #

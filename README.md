@@ -448,7 +448,7 @@ Using WP-CLI, if your repo is `my-account/GatoGraphQLExtensionsForMyCompany` and
 
 ```bash
 $ cd webservers/gatographql-extensions-for-prod
-$ lando wp plugin install https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/releases/latest/download/gatographql-hello-dolly-0.1.0.zip --force --activate --path=/app/wordpress
+$ lando wp plugin install https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/releases/latest/download/gatographql-hello-dolly-0.1.0.zip --force --activate
 $ cd ../..
 ```
 
@@ -769,27 +769,27 @@ Edit file `webservers/gatographql-extensions/composer.json` and add the followin
 Edit file `webservers/gatographql-extensions/setup-extensions/activate-plugins.sh` and add the following code, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc):
 
 ```bash
-if wp plugin is-installed your-wordpress-integration-plugin --path=/app/wordpress; then
-    wp plugin activate your-wordpress-integration-plugin --path=/app/wordpress
+if wp plugin is-installed your-wordpress-integration-plugin; then
+    wp plugin activate your-wordpress-integration-plugin
 else
-    wp plugin install your-wordpress-integration-plugin --activate --path=/app/wordpress
+    wp plugin install your-wordpress-integration-plugin --activate
 fi
 
-wp plugin activate gatographql-your-extension --path=/app/wordpress
+wp plugin activate gatographql-your-extension
 ```
 
 Edit file `webservers/gatographql-extensions-for-prod/setup-extensions/activate-plugins.sh` and add the following code:
 
 ```bash
-if wp plugin is-installed your-wordpress-integration-plugin --path=/app/wordpress; then
-    wp plugin activate your-wordpress-integration-plugin --path=/app/wordpress
+if wp plugin is-installed your-wordpress-integration-plugin; then
+    wp plugin activate your-wordpress-integration-plugin
 else
-    wp plugin install your-wordpress-integration-plugin --activate --path=/app/wordpress
+    wp plugin install your-wordpress-integration-plugin --activate
 fi
 
 # Activate own plugins
-if wp plugin is-installed gatographql-your-extension --path=/app/wordpress; then
-    wp plugin activate gatographql-your-extension --path=/app/wordpress
+if wp plugin is-installed gatographql-your-extension; then
+    wp plugin activate gatographql-your-extension
 else
     echo "Please download the latest PROD version of the 'Gato GraphQL - Your Extension' plugin from your GitHub repo, and install it on this WordPress site"
 fi
