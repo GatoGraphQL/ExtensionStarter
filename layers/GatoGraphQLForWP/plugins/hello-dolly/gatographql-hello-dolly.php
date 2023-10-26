@@ -65,14 +65,14 @@ add_action(
          */
         if (!class_exists(Plugin::class)) {
             \add_action('admin_notices', function () use ($extensionName) {
-                _e(sprintf(
+                printf(
                     '<div class="notice notice-error"><p>%s</p></div>',
                     sprintf(
                         __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-hello-dolly'),
                         __('Gato GraphQL', 'gatographql-hello-dolly'),
                         $extensionName
                     )
-                ));
+                );
             });
             return;
         }
@@ -133,7 +133,7 @@ add_action(
                      * Yoast SEO or, in this case, Hello Dolly), indicate the plugin's name:
                      */
                     $pluginName = __('Hello Dolly', 'gatographql-hello-dolly');
-                    _e(sprintf(
+                    printf(
                         '<div class="notice notice-error"><p>%s</p></div>',
                         $isWordPressPluginActive
                             ? sprintf(
@@ -147,7 +147,7 @@ add_action(
                                 $pluginName,
                                 $extensionName
                             )
-                    ));
+                    );
                 });
                 return;
             }
