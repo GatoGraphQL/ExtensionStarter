@@ -102,12 +102,12 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
             // validation
             $this->createExtensionGuard->guardExtensionSlug($extensionSlug);
 
-            $extensionClassname = (string) $input->getOption(Option::EXTENSION_CLASSNAME);
-            if ($extensionClassname === '') {
-                $extensionClassname = $this->stringUtils->dashesToCamelCase($extensionSlug);
+            $extensionClassName = (string) $input->getOption(Option::EXTENSION_CLASSNAME);
+            if ($extensionClassName === '') {
+                $extensionClassName = $this->stringUtils->dashesToCamelCase($extensionSlug);
             }
             // validation
-            $this->createExtensionGuard->guardExtensionClassname($extensionClassname);
+            $this->createExtensionGuard->guardExtensionClassName($extensionClassName);
 
             // Calculate the module name
             $extensionModuleName = strtoupper(str_replace('-', '_', $extensionSlug));
@@ -116,7 +116,7 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
                 // @todo Review Options for the CreateExtension command
                 $extensionName,
                 $extensionSlug,
-                $extensionClassname,
+                $extensionClassName,
                 $extensionModuleName,
             );
         }

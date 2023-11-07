@@ -53,12 +53,12 @@ final class CreateExtensionGuard extends AbstractModifyProjectGuard implements C
         }
     }
 
-    public function guardExtensionClassname(string $extensionClassname): void
+    public function guardExtensionClassName(string $extensionClassName): void
     {
-        if (!$this->isPHPClassOrNamespaceNameValid($extensionClassname)) {
+        if (!$this->isPHPClassOrNamespaceNameValid($extensionClassName)) {
             throw new ConfigurationException(sprintf(
                 'Extension classname "%s" is not valid',
-                $extensionClassname
+                $extensionClassName
             ));
         }
     }

@@ -10,7 +10,7 @@ class CreateExtensionInputObject implements CreateExtensionInputObjectInterface
         // @todo Review Options for the CreateExtension command
         private string $extensionName,
         private string $extensionSlug,
-        private string $extensionClassname,
+        private string $extensionClassName,
         private string $extensionModuleName,
     ) {
     }
@@ -26,9 +26,9 @@ class CreateExtensionInputObject implements CreateExtensionInputObjectInterface
         return $this->extensionSlug;
     }
 
-    public function getExtensionClassname(): string
+    public function getExtensionClassName(): string
     {
-        return $this->extensionClassname;
+        return $this->extensionClassName;
     }
 
     public function getExtensionModuleName(): string
