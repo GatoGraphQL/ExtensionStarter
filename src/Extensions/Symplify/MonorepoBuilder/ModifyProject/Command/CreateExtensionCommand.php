@@ -24,18 +24,11 @@ use Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class CreateExtensionCommand extends AbstractModifyProjectCommand
 {
     protected ?CreateExtensionInputObject $inputObject = null;
-    // @todo Review Options for the CreateExtension command
-    // protected ?string $defaultGitBaseBranch = null;
-    // protected ?string $defaultGitUserName = null;
-    // protected ?string $defaultGitUserEmail = null;
-    // protected ?string $defaultGitHubRepoOwner = null;
-    // protected ?string $defaultGitHubRepoName = null;
 
     public function __construct(
         private CreateExtensionWorkerProvider $createExtensionWorkerProvider,
         private CreateExtensionStageResolver $createExtensionStageResolver,
         private CreateExtensionGuardInterface $createExtensionGuard,
-        // private ProcessRunner $processRunner,
         private StringUtils $stringUtils,
         SourcesPresenceValidator $sourcesPresenceValidator,
         ModifyProjectWorkerReporter $modifyProjectWorkerReporter
@@ -178,47 +171,6 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
         }
         return $this->inputObject;
     }
-
-    // @todo Review Options for the CreateExtension command
-    // protected function getDefaultGitHubRepoOwner(): string
-    // {
-    //     if ($this->defaultGitHubRepoOwner === null) {
-    //         $this->defaultGitHubRepoOwner = trim($this->processRunner->run("basename -s .git $(dirname `git config --get remote.origin.url`)"));
-    //     }
-    //     return $this->defaultGitHubRepoOwner;
-    // }
-
-    // protected function getDefaultGitHubRepoName(): string
-    // {
-    //     if ($this->defaultGitHubRepoName === null) {
-    //         $this->defaultGitHubRepoName = trim($this->processRunner->run("basename -s .git `git config --get remote.origin.url`"));
-    //     }
-    //     return $this->defaultGitHubRepoName;
-    // }
-
-    // protected function getDefaultGitBaseBranch(): string
-    // {
-    //     if ($this->defaultGitBaseBranch === null) {
-    //         $this->defaultGitBaseBranch = trim($this->processRunner->run("git remote show origin | sed -n '/HEAD branch/s/.*: //p'"));
-    //     }
-    //     return $this->defaultGitBaseBranch;
-    // }
-
-    // protected function getDefaultGitUserName(): string
-    // {
-    //     if ($this->defaultGitUserName === null) {
-    //         $this->defaultGitUserName = trim($this->processRunner->run("git config user.name"));
-    //     }
-    //     return $this->defaultGitUserName;
-    // }
-
-    // protected function getDefaultGitUserEmail(): string
-    // {
-    //     if ($this->defaultGitUserEmail === null) {
-    //         $this->defaultGitUserEmail = trim($this->processRunner->run("git config user.email"));
-    //     }
-    //     return $this->defaultGitUserEmail;
-    // }
 
     protected function getModifyProjectStageResolver(): ModifyProjectStageResolverInterface
     {
