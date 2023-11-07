@@ -40,7 +40,7 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
             );
             
             // Also rename files with "extension-template"
-            $smartFileInfos = $this->smartFinder->find([$fromFolder], 'extension-template');
+            $smartFileInfos = $this->smartFinder->find([$fromFolder], '*extension-template*');
             $fromRenameFiles = array_map(
                 fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
                 $smartFileInfos
