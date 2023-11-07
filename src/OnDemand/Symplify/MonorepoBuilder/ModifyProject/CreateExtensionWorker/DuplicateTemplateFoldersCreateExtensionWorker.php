@@ -39,7 +39,6 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
                 $fromFolder
             );
             
-            // Also rename files with "extension-template"
             $renameFiles = $this->getRenameFiles(
                 $fromFolder,
                 $extensionSlug,
