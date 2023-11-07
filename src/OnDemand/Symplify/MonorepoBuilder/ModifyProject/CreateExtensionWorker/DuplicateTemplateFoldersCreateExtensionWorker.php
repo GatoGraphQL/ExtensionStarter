@@ -12,6 +12,17 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
     /**
      * @param CreateExtensionInputObjectInterface $inputObject
      */
+    public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
+    {
+        return sprintf(
+            'Duplicate the extension template folders, using extension slug "%s"',
+            $inputObject->getExtensionSlug()
+        );
+    }
+
+    /**
+     * @param CreateExtensionInputObjectInterface $inputObject
+     */
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
         $folders = $this->getExtensionTemplateFolders();
@@ -33,17 +44,6 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
                 $patternReplacements,
             );
         }
-    }
-
-    /**
-     * @param CreateExtensionInputObjectInterface $inputObject
-     */
-    public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
-    {
-        return sprintf(
-            'Duplicate the extension template folders, using extension slug "%s"',
-            $inputObject->getExtensionSlug()
-        );
     }
 
     /**
