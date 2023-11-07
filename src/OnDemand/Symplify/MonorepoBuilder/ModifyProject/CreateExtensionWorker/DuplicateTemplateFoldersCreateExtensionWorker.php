@@ -136,7 +136,7 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
             fn (string $folder) => str_replace(
                 'extension-template',
                 $extensionSlug,
-                $folder//basename($folder)
+                $folder
             ),
             $fromRenameFolders
         );
