@@ -29,12 +29,29 @@ final class CreateExtensionGuard extends AbstractModifyProjectGuard implements C
         return $this->createExtensionWorkers;
     }
 
-    public function guardExtensionName(string $extensionName): void
+    /**
+     * Make sure the plugin file is valid
+     */
+    public function guardIntegrationPluginFile(string $file): void
     {
-        if (empty($extensionName)) {
-            throw new ConfigurationException(
-                'The extension name cannot be empty'
-            );
+        if(!preg_match('#^(\w+/){1,2}\w+\.php$#', $file)) {
+            throw new ConfigurationException(sprintf(
+                'Plugin file "%s" is not valid',
+                $file
+            ));
+        }
+    }
+
+    /**
+     * Make sure the version input follows semver
+     */
+    public function guardVersion(string $version): void
+    {
+        if (!$this->isSemverVersion($version)) {
+            throw new ConfigurationException(sprintf(
+                'Version "%s" does not follow semver',
+                $version
+            ));
         }
     }
 

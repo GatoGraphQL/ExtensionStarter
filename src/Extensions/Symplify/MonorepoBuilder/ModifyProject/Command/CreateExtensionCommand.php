@@ -10,6 +10,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contr
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard\CreateExtensionGuardInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorkerProvider;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObject;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Output\ModifyProjectWorkerReporter;
@@ -54,10 +55,29 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
 
         // @todo Review Options for the CreateExtension command
         $this->addOption(
+            Option::INTEGRATION_PLUGIN_FILE,
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Integration plugin file (eg: "woocommerce/woocommerce.php" for the WooCommerce plugin), if any',
+        );
+        $this->addOption(
+            Option::INTEGRATION_PLUGIN_VERSION_CONSTRAINT,
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Mimimum required version of the integration plugin, in semver (eg: "^8.1"). If not provided, any version is accepted',
+            '*',
+        );
+        $this->addOption(
+            Option::INTEGRATION_PLUGIN_NAME,
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Name of the integration plugin (eg: WooCommerce). If not provided, it is generated from the integration plugin slug',
+        );
+        $this->addOption(
             Option::EXTENSION_NAME,
             null,
             InputOption::VALUE_REQUIRED,
-            'Extension plugin name',
+            'Extension plugin name. If not provided, it is calculated from the integration plugin name',
         );
         $this->addOption(
             Option::EXTENSION_SLUG,
@@ -91,9 +111,37 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
     {
         if ($this->inputObject === null) {
             // @todo Review Options for the CreateExtension command
-            $extensionName = (string) $input->getOption(Option::EXTENSION_NAME);
+            $integrationPluginFile = (string) $input->getOption(Option::INTEGRATION_PLUGIN_FILE);
             // validation
-            $this->createExtensionGuard->guardExtensionName($extensionName);
+            $this->createExtensionGuard->guardIntegrationPluginFile($integrationPluginFile);
+
+            $integrationPluginSlug = '';
+            if ($integrationPluginFile !== '') {
+                $integrationPluginSlug = substr($integrationPluginFile, 0, strpos($integrationPluginFile, '/'));
+            }
+
+            $integrationPluginVersionConstraint = (string) $input->getOption(Option::INTEGRATION_PLUGIN_VERSION_CONSTRAINT);
+            if ($integrationPluginFile !== '' && $integrationPluginVersionConstraint === '') {
+                $integrationPluginVersionConstraint = '*';
+            }
+            // validation
+            $this->createExtensionGuard->guardVersion($integrationPluginVersionConstraint);
+
+            $integrationPluginName = (string) $input->getOption(Option::INTEGRATION_PLUGIN_NAME);
+            if ($integrationPluginSlug !== '' && $integrationPluginName === '') {
+                $integrationPluginName = ucwords(str_replace('-', ' ', $integrationPluginSlug));
+            }
+            
+            $extensionName = (string) $input->getOption(Option::EXTENSION_NAME);
+            if ($extensionName === '') {
+                $extensionName = $integrationPluginName;
+            }
+            // validation
+            if ($extensionName === '') {
+                throw new ConfigurationException(
+                    'The extension name cannot be empty'
+                );
+            }
 
             $extensionSlug = (string) $input->getOption(Option::EXTENSION_SLUG);
             if ($extensionSlug === '') {
@@ -114,6 +162,10 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
 
             $this->inputObject = new CreateExtensionInputObject(
                 // @todo Review Options for the CreateExtension command
+                $integrationPluginFile,
+                $integrationPluginSlug,
+                $integrationPluginVersionConstraint,
+                $integrationPluginName,
                 $extensionName,
                 $extensionSlug,
                 $extensionClassName,

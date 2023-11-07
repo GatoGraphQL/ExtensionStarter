@@ -67,6 +67,18 @@ final class Option
     /**
      * @var string
      */
+    public final const INTEGRATION_PLUGIN_FILE = 'integration-plugin-file';
+    /**
+     * @var string
+     */
+    public final const INTEGRATION_PLUGIN_VERSION_CONSTRAINT = 'integration-plugin-version-constraint';
+    /**
+     * @var string
+     */
+    public final const INTEGRATION_PLUGIN_NAME = 'integration-plugin-name';
+    /**
+     * @var string
+     */
     public final const EXTENSION_NAME = 'extension-name';
     /**
      * @var string
