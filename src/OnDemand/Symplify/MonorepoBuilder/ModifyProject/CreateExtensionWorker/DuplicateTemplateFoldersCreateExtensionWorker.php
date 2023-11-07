@@ -132,11 +132,12 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
             fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
             $smartFileInfos
         );
+        $fromFolderLength = strlen($fromFolder);
         $toRenameFolders = array_map(
             fn (string $folder) => str_replace(
                 'extension-template',
                 $extensionSlug,
-                $folder
+                substr($folder, $fromFolderLength)
             ),
             $fromRenameFolders
         );
