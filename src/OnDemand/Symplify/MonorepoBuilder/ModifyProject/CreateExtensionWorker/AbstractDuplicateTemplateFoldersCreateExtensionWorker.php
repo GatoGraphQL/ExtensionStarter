@@ -6,6 +6,7 @@ namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\C
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\CreateExtensionWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\SmartFile\FileCopierSystem;
+use Symplify\SmartFileSystem\Finder\SmartFinder;
 
 abstract class AbstractDuplicateTemplateFoldersCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
@@ -16,6 +17,7 @@ abstract class AbstractDuplicateTemplateFoldersCreateExtensionWorker implements 
 
     public function __construct(
         protected FileCopierSystem $fileCopierSystem,
+        protected SmartFinder $smartFinder,
     ) {
         $this->extensionTemplateFolders = $this->getExtensionTemplateFolders();
     }

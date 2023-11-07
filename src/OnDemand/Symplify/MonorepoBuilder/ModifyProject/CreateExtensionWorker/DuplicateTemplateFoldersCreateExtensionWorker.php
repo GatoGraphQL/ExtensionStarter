@@ -6,6 +6,7 @@ namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\C
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
+use Symplify\SmartFileSystem\SmartFileInfo;
 
 class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTemplateFoldersCreateExtensionWorker
 {
@@ -31,17 +32,39 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
         $patternReplacements = $this->getPatternReplacements();
         $templateName = $this->getTemplateName();
         $extensionSlug = $inputObject->getExtensionSlug();
-        foreach ($folders as $folder) {
+        foreach ($folders as $fromFolder) {
             $toFolder = str_replace(
                 ['templates/' . $templateName, 'extension-template'],
                 ['layers', $extensionSlug],
-                $folder
+                $fromFolder
             );
+            
+            // Also rename files with "extension-template"
+            $smartFileInfos = $this->smartFinder->find([$fromFolder], 'extension-template');
+            $fromRenameFiles = array_map(
+                fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
+                $smartFileInfos
+            );
+            $toRenameFiles = array_map(
+                fn (string $filePath) => str_replace(
+                    'extension-template',
+                    $extensionSlug,
+                    basename($filePath)
+                ),
+                $fromRenameFiles
+            );
+            $renameFiles = [];
+            $renameFileCount = count($fromRenameFiles);
+            for ($i = 0; $i < $renameFileCount; $i++) {
+                $renameFiles[$fromRenameFiles[$i]] = $toRenameFiles[$i];
+            }
+            
             $this->fileCopierSystem->copyFilesFromFolder(
-                $folder,
+                $fromFolder,
                 $toFolder,
                 false,
                 $patternReplacements,
+                $renameFiles,
             );
         }
     }
