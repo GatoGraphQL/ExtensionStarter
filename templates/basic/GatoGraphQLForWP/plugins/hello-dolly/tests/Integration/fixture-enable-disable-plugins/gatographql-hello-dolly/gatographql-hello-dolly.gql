@@ -1,0 +1,14 @@
+{
+  #################################################################
+  # This must keep working: before/after should be the same
+  #################################################################
+  id
+  posts(pagination: { limit: 3 }, sort: { by: ID, order: ASC }) {
+    id
+  }
+
+  #################################################################
+  # This must stop working: before/after should be different
+  #################################################################
+  helloDolly
+}

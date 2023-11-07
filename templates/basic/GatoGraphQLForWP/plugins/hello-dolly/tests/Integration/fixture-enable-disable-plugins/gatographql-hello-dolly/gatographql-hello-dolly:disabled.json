@@ -1,0 +1,38 @@
+{
+    "errors": [
+        {
+            "message": "There is no field 'helloDolly' on type 'QueryRoot'",
+            "locations": [
+                {
+                    "line": 13,
+                    "column": 3
+                }
+            ],
+            "extensions": {
+                "path": [
+                    "helloDolly",
+                    "query { ... }"
+                ],
+                "type": "QueryRoot",
+                "field": "helloDolly",
+                "code": "gql@5.3.1",
+                "specifiedBy": "https:\/\/spec.graphql.org\/draft\/#sec-Field-Selections"
+            }
+        }
+    ],
+    "data": {
+        "id": "root",
+        "posts": [
+            {
+                "id": 1
+            },
+            {
+                "id": 13
+            },
+            {
+                "id": 16
+            }
+        ],
+        "helloDolly": null
+    }
+}

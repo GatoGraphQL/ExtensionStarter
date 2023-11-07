@@ -1,0 +1,6 @@
+parameters:
+	bootstrapFiles:
+		- %currentWorkingDirectory%/stubs/wpackagist-plugin/hello-dolly/stubs.php
+	level: 8
+	paths:
+		- src

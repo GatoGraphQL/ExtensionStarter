@@ -1,0 +1,17 @@
+{
+    "data": {
+        "id": "root",
+        "posts": [
+            {
+                "id": 1
+            },
+            {
+                "id": 13
+            },
+            {
+                "id": 16
+            }
+        ],
+        "helloDolly": "You&#8217;re still glowin&#8217;, you&#8217;re still crowin&#8217;"
+    }
+}
