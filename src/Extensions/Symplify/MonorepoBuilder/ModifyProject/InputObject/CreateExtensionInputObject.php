@@ -11,6 +11,7 @@ class CreateExtensionInputObject implements CreateExtensionInputObjectInterface
         private string $extensionName,
         private string $extensionSlug,
         private string $extensionClassname,
+        private string $extensionModuleName,
     ) {
     }
 
@@ -28,5 +29,10 @@ class CreateExtensionInputObject implements CreateExtensionInputObjectInterface
     public function getExtensionClassname(): string
     {
         return $this->extensionClassname;
+    }
+
+    public function getExtensionModuleName(): string
+    {
+        return $this->extensionModuleName;
     }
 }

@@ -109,11 +109,15 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
             // validation
             $this->createExtensionGuard->guardExtensionClassname($extensionClassname);
 
+            // Calculate the module name
+            $extensionModuleName = strtoupper(str_replace('-', '_', $extensionSlug));
+
             $this->inputObject = new CreateExtensionInputObject(
                 // @todo Review Options for the CreateExtension command
                 $extensionName,
                 $extensionSlug,
                 $extensionClassname,
+                $extensionModuleName,
             );
         }
         return $this->inputObject;

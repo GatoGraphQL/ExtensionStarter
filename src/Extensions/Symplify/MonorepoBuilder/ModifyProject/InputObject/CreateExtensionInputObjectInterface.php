@@ -10,4 +10,5 @@ interface CreateExtensionInputObjectInterface extends ModifyProjectInputObjectIn
     public function getExtensionName(): string;
     public function getExtensionSlug(): string;
     public function getExtensionClassname(): string;
+    public function getExtensionModuleName(): string;
 }
