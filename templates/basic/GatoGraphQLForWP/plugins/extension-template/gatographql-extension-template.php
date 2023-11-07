@@ -110,46 +110,48 @@ add_action(
              * the required version constraint
              */
             $requiredPluginFile = 'extension-template/hello.php';
-            $requiredPluginVersion = '^1.7';
-            $isWordPressPluginActive = PluginStaticHelpers::isWordPressPluginActive($requiredPluginFile);
-            if (!$isWordPressPluginActive
-                || !PluginStaticHelpers::doesActivePluginSatisfyVersionConstraint(
-                    $requiredPluginFile,
-                    $requiredPluginVersion
-                )
-            ) {
-                /**
-                 * Register the depended-upon plugin main file, so that
-                 * once this is activated, the container is regenerated
-                 */
-                $extensionManager->registerInactiveExtensionDependedUponPluginFiles([
-                    $requiredPluginFile,
-                ]);
-                \add_action('admin_notices', function () use ($extensionName, $isWordPressPluginActive, $requiredPluginVersion) {
+            if ($requiredPluginFile !== '') {
+                $requiredPluginVersion = '^1.7';
+                $isWordPressPluginActive = PluginStaticHelpers::isWordPressPluginActive($requiredPluginFile);
+                if (!$isWordPressPluginActive
+                    || !PluginStaticHelpers::doesActivePluginSatisfyVersionConstraint(
+                        $requiredPluginFile,
+                        $requiredPluginVersion
+                    )
+                ) {
                     /**
-                     * @gatographql-extension-info
-                     * 
-                     * If the extension is an integration for some plugin (eg: WooCommerce,
-                     * Yoast SEO or, in this case, Extension Template), indicate the plugin's name:
+                     * Register the depended-upon plugin main file, so that
+                     * once this is activated, the container is regenerated
                      */
-                    $pluginName = __('Extension Template', 'gatographql-extension-template');
-                    printf(
-                        '<div class="notice notice-error"><p>%s</p></div>',
-                        $isWordPressPluginActive
-                            ? sprintf(
-                                __('Installed version of plugin <strong>%s</strong> does not satisfy required constraint <code>%s</code>. Plugin <strong>%s</strong> has not been loaded.', 'gatographql-extension-template'),
-                                $pluginName,
-                                $requiredPluginVersion,
-                                $extensionName
-                            )
-                            : sprintf(
-                                __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-extension-template'),
-                                $pluginName,
-                                $extensionName
-                            )
-                    );
-                });
-                return;
+                    $extensionManager->registerInactiveExtensionDependedUponPluginFiles([
+                        $requiredPluginFile,
+                    ]);
+                    \add_action('admin_notices', function () use ($extensionName, $isWordPressPluginActive, $requiredPluginVersion) {
+                        /**
+                         * @gatographql-extension-info
+                         * 
+                         * If the extension is an integration for some plugin (eg: WooCommerce,
+                         * Yoast SEO or, in this case, Extension Template), indicate the plugin's name:
+                         */
+                        $pluginName = __('Extension Template', 'gatographql-extension-template');
+                        printf(
+                            '<div class="notice notice-error"><p>%s</p></div>',
+                            $isWordPressPluginActive
+                                ? sprintf(
+                                    __('Installed version of plugin <strong>%s</strong> does not satisfy required constraint <code>%s</code>. Plugin <strong>%s</strong> has not been loaded.', 'gatographql-extension-template'),
+                                    $pluginName,
+                                    $requiredPluginVersion,
+                                    $extensionName
+                                )
+                                : sprintf(
+                                    __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-extension-template'),
+                                    $pluginName,
+                                    $extensionName
+                                )
+                        );
+                    });
+                    return;
+                }
             }
             
             // Load Composer’s autoloader

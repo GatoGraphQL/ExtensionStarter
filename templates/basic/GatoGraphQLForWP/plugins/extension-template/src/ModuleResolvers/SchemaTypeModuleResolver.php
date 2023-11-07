@@ -50,7 +50,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
         $requiredPluginFile = 'extension-template/hello.php';
         $requiredPluginVersion = '^1.7';
         return match ($module) {
-            self::SCHEMA_EXTENSION_TEMPLATE => [
+            self::SCHEMA_EXTENSION_TEMPLATE => $requiredPluginFile !== '' ? [
                 /**
                  * @gatographql-extension-info
                  *
@@ -66,7 +66,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
                     $requiredPluginFile,
                     $requiredPluginVersion,
                 ),
-            ],
+            ] : [],
             default => parent::getDependentOnActiveWordPressPlugins($module),
         };
     }
