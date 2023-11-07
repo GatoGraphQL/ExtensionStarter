@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard;
 
-use PharIo\Version\InvalidVersionException;
-use PharIo\Version\Version;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\CreateExtensionWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
@@ -55,12 +53,9 @@ final class CreateExtensionGuard extends AbstractModifyProjectGuard implements C
         }
     }
 
-    /**
-     * Validate theare are no forbidden characters
-     */
     public function guardExtensionClassname(string $extensionClassname): void
     {
-        if (!preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/", $extensionClassname)) {
+        if (!$this->isPHPClassOrNamespaceNameValid($extensionClassname)) {
             throw new ConfigurationException(sprintf(
                 'Extension classname "%s" is not valid',
                 $extensionClassname

@@ -85,4 +85,15 @@ abstract class AbstractModifyProjectGuard implements ModifyProjectGuardInterface
      * @return ModifyProjectWorkerInterface[]
      */
     abstract protected function getModifyProjectWorkers(): array;
+
+    /**
+     * Validate theare are no spaces or forbidden characters
+     * in the classname or namespace
+     *
+     * @see https://stackoverflow.com/a/60470526/14402031
+     */
+    protected function isPHPClassOrNamespaceNameValid(string $phpClassOrNamespaceName): bool
+    {
+        return preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/", $phpClassOrNamespaceName);
+    }
 }
