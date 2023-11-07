@@ -84,7 +84,7 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
             null,
             InputOption::VALUE_REQUIRED,
             sprintf(
-                'Slug of the extension plugin. If not provided, it is generated from the "%s" option',
+                'Slug of the extension plugin. If not provided, it is generated from the integration plugin\'s slug, or from the "%s" option',
                 Option::EXTENSION_NAME
             )
         );
@@ -145,7 +145,11 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
 
             $extensionSlug = (string) $input->getOption(Option::EXTENSION_SLUG);
             if ($extensionSlug === '') {
-                $extensionSlug = $this->stringUtils->slugify($extensionName);
+                if ($integrationPluginSlug !== '') {
+                    $extensionSlug = $integrationPluginSlug;
+                } else {
+                    $extensionSlug = $this->stringUtils->slugify($extensionName);
+                }
             }
             // validation
             $this->createExtensionGuard->guardExtensionSlug($extensionSlug);
