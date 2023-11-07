@@ -428,7 +428,7 @@ After tagging the repo on the step above, we must create a release from the tag 
 
 To create the release, head over to the `tags` page in your GitHub repo (`https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags`), and click on the new tag (eg: `0.1.0`).
 
-Then, on the tag page, click on `Create release from tag`.
+Then, on the tag page, click on `Create release from tag`, and then add a title and content, and submit the form.
 
 ![Create release from tag](assets/img/create-release-from-tag.png)
 
