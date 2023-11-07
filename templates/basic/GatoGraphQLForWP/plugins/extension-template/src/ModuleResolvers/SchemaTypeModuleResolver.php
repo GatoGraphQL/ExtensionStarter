@@ -46,7 +46,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
      */
     public function getDependentOnActiveWordPressPlugins(string $module): array
     {
-        $pluginName = __('Extension Template', 'gatographql-extension-template');
+        $requiredPluginName = __('Extension Template', 'gatographql-extension-template');
         $requiredPluginFile = 'extension-template/hello.php';
         $requiredPluginVersion = '^1.7';
         return match ($module) {
@@ -63,7 +63,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
                  * - the minimum required version (via a Composer version constraint)
                  */
                 new DependedOnActiveWordPressPlugin(
-                    $pluginName,
+                    $requiredPluginName,
                     $requiredPluginFile,
                     $requiredPluginVersion,
                 ),

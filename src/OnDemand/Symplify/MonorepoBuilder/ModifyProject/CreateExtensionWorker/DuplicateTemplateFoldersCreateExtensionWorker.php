@@ -100,7 +100,7 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
         return [
             "/" . preg_quote('$requiredPluginFile') . " = '.*';/" => "\$requiredPluginFile = '{$inputObject->getIntegrationPluginFile()}';",
             "/" . preg_quote('$requiredPluginVersion') . " = '.*';/" => "\$requiredPluginVersion = '{$inputObject->getIntegrationPluginVersionConstraint()}';",
-            "/" . preg_quote('$pluginName') . " = '.*';/" => "\$pluginName = '{$inputObject->getIntegrationPluginName()}';",
+            "/" . preg_quote('$requiredPluginName') . " = '.*';/" => "\$requiredPluginName = '{$inputObject->getIntegrationPluginName()}';",
             '/Extension Template/' => $inputObject->getExtensionName(),
             '/ExtensionTemplate/' => $inputObject->getExtensionClassName(),
             '/extension-template/' => $inputObject->getExtensionSlug(),

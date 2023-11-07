@@ -134,19 +134,19 @@ add_action(
                          * If the extension is an integration for some plugin (eg: WooCommerce,
                          * Yoast SEO or, in this case, Extension Template), indicate the plugin's name:
                          */
-                        $pluginName = __('Extension Template', 'gatographql-extension-template');
+                        $requiredPluginName = __('Extension Template', 'gatographql-extension-template');
                         printf(
                             '<div class="notice notice-error"><p>%s</p></div>',
                             $isWordPressPluginActive
                                 ? sprintf(
                                     __('Installed version of plugin <strong>%s</strong> does not satisfy required constraint <code>%s</code>. Plugin <strong>%s</strong> has not been loaded.', 'gatographql-extension-template'),
-                                    $pluginName,
+                                    $requiredPluginName,
                                     $requiredPluginVersion,
                                     $extensionName
                                 )
                                 : sprintf(
                                     __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-extension-template'),
-                                    $pluginName,
+                                    $requiredPluginName,
                                     $extensionName
                                 )
                         );
