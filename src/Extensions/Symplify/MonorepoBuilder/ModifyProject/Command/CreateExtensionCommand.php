@@ -17,7 +17,6 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Value
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\Utils\StringUtils;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
-use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\PackageBuilder\Console\Command\CommandNaming;
 
@@ -35,7 +34,7 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
         private CreateExtensionWorkerProvider $createExtensionWorkerProvider,
         private CreateExtensionStageResolver $createExtensionStageResolver,
         private CreateExtensionGuardInterface $createExtensionGuard,
-        private ProcessRunner $processRunner,
+        // private ProcessRunner $processRunner,
         private StringUtils $stringUtils,
         SourcesPresenceValidator $sourcesPresenceValidator,
         ModifyProjectWorkerReporter $modifyProjectWorkerReporter
