@@ -96,7 +96,7 @@ abstract class AbstractModifyProjectGuard implements ModifyProjectGuardInterface
      */
     protected function isPHPClassOrNamespaceNameValid(string $phpClassOrNamespaceName): bool
     {
-        return preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/", $phpClassOrNamespaceName);
+        return preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/", $phpClassOrNamespaceName) === 1;
     }
 
     protected function isSemverVersion(string $version): bool
