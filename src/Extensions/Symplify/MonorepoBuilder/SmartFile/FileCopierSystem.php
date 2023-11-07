@@ -28,7 +28,8 @@ final class FileCopierSystem
         string $fromFolder,
         string $toFolder,
         bool $removeFilesInToFolder = false,
-        array $patternReplacements = []
+        array $patternReplacements = [],
+        array $renameFiles = []
     ): array {
         $this->fileSystemGuard->ensureFileExists($fromFolder, __METHOD__);
 
@@ -48,7 +49,8 @@ final class FileCopierSystem
         return $this->copyFiles(
             $files,
             $toFolder,
-            $patternReplacements
+            $patternReplacements,
+            $renameFiles
         );
     }
 
