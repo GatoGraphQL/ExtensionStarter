@@ -8,4 +8,5 @@ interface CreateExtensionGuardInterface extends ModifyProjectGuardInterface
 {
     public function guardExtensionName(string $extensionName): void;
     public function guardExtensionSlug(string $extensionSlug): void;
+    public function guardExtensionClassname(string $extensionClassname): void;
 }

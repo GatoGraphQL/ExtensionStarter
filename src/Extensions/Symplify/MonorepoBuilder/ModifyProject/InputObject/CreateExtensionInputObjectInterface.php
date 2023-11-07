@@ -9,4 +9,5 @@ interface CreateExtensionInputObjectInterface extends ModifyProjectInputObjectIn
     // @todo Review Options for the CreateExtension command
     public function getExtensionName(): string;
     public function getExtensionSlug(): string;
+    public function getExtensionClassname(): string;
 }

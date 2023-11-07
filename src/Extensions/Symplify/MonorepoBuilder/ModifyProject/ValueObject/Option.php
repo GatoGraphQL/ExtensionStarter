@@ -72,4 +72,8 @@ final class Option
      * @var string
      */
     public final const EXTENSION_SLUG = 'extension-slug';
+    /**
+     * @var string
+     */
+    public final const EXTENSION_CLASSNAME = 'extension-classname';
 }

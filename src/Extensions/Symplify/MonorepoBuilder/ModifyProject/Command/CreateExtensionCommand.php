@@ -69,6 +69,15 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
                 Option::EXTENSION_NAME
             )
         );
+        $this->addOption(
+            Option::EXTENSION_CLASSNAME,
+            null,
+            InputOption::VALUE_REQUIRED,
+            sprintf(
+                'PHP classname to append to classes in the extension plugin. If not provided, it is generated from the "%s" option',
+                Option::EXTENSION_SLUG
+            )
+        );
     }
 
     /**
@@ -94,10 +103,18 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
             // validation
             $this->createExtensionGuard->guardExtensionSlug($extensionSlug);
 
+            $extensionClassname = (string) $input->getOption(Option::EXTENSION_CLASSNAME);
+            if ($extensionClassname === '') {
+                $extensionClassname = $this->stringUtils->dashesToCamelCase($extensionSlug);
+            }
+            // validation
+            $this->createExtensionGuard->guardExtensionClassname($extensionClassname);
+
             $this->inputObject = new CreateExtensionInputObject(
                 // @todo Review Options for the CreateExtension command
                 $extensionName,
                 $extensionSlug,
+                $extensionClassname,
             );
         }
         return $this->inputObject;

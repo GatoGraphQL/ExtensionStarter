@@ -47,10 +47,23 @@ final class CreateExtensionGuard extends AbstractModifyProjectGuard implements C
      */
     public function guardExtensionSlug(string $extensionSlug): void
     {
-        if (!preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/", $extensionSlug)) {
+        if (!preg_match("/^[a-zA-Z_\x7f-\xff-][a-zA-Z0-9_\x7f-\xff-]*$/", $extensionSlug)) {
             throw new ConfigurationException(sprintf(
                 'Extension slug "%s" is not valid',
                 $extensionSlug
+            ));
+        }
+    }
+
+    /**
+     * Validate theare are no forbidden characters
+     */
+    public function guardExtensionClassname(string $extensionClassname): void
+    {
+        if (!preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/", $extensionClassname)) {
+            throw new ConfigurationException(sprintf(
+                'Extension classname "%s" is not valid',
+                $extensionClassname
             ));
         }
     }
