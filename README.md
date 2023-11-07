@@ -528,7 +528,7 @@ Edit file `layers/GatoGraphQLForWP/plugins/your-extension/src/GatoGraphQLExtensi
 
 ```php
 return [
-  'your-extension/hello.php'
+  'your-extension/hello.php',
 ];
 ```
 
