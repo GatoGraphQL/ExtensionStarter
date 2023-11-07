@@ -110,6 +110,7 @@ add_action(
              * the required version constraint
              */
             $requiredPluginFile = 'extension-template/hello.php';
+            /** @phpstan-ignore-next-line */
             if ($requiredPluginFile !== '') {
                 $requiredPluginVersion = '^1.7';
                 $isWordPressPluginActive = PluginStaticHelpers::isWordPressPluginActive($requiredPluginFile);

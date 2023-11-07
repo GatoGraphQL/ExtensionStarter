@@ -50,6 +50,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
         $requiredPluginFile = 'extension-template/hello.php';
         $requiredPluginVersion = '^1.7';
         return match ($module) {
+            /** @phpstan-ignore-next-line */
             self::SCHEMA_EXTENSION_TEMPLATE => $requiredPluginFile !== '' ? [
                 /**
                  * @gatographql-extension-info
