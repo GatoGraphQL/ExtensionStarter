@@ -98,6 +98,9 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
     protected function getPatternReplacements(CreateExtensionInputObjectInterface $inputObject): array
     {
         return [
+            "/\$requiredPluginFile(\s+)?=(\s+)?['\"].+['\"](\s+)?;/" => '$requiredPluginFile = \'' . $inputObject->getIntegrationPluginFile() . '\';',
+            "/\$requiredPluginVersion(\s+)?=(\s+)?['\"].+['\"](\s+)?;/" => '$requiredPluginVersion = \'' . $inputObject->getIntegrationPluginVersionConstraint() . '\';',
+            "/\$pluginName(\s+)?=(\s+)?['\"].+['\"](\s+)?;/" => '$pluginName = \'' . $inputObject->getIntegrationPluginName() . '\';',
             '/Extension Template/' => $inputObject->getExtensionName(),
             '/ExtensionTemplate/' => $inputObject->getExtensionClassName(),
             '/extension-template/' => $inputObject->getExtensionSlug(),
