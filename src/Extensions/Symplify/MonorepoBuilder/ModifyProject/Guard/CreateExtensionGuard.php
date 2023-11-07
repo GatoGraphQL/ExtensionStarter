@@ -31,34 +31,27 @@ final class CreateExtensionGuard extends AbstractModifyProjectGuard implements C
         return $this->createExtensionWorkers;
     }
 
-    // @todo CreateExtension guard
-    // /**
-    //  * Make sure the version input follows semver
-    //  */
-    // public function guardVersion(string $version): void
-    // {
-    //     try {
-    //         new Version($version);
-    //     } catch (InvalidVersionException $e) {
-    //         throw new ConfigurationException(sprintf(
-    //             'Version "%s" does not follow semver',
-    //             $version
-    //         ));
-    //     }
-    // }
+    public function guardExtensionName(string $extensionName): void
+    {
+        if (empty($extensionName)) {
+            throw new ConfigurationException(
+                'The extension name cannot be empty'
+            );
+        }
+    }
 
-    // /**
-    //  * Validate theare are no spaces or forbidden characters
-    //  *
-    //  * @see https://stackoverflow.com/a/60470526/14402031
-    //  */
-    // public function guardPHPNamespaceOwner(string $phpNamespaceOwner): void
-    // {
-    //     if (!preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/", $phpNamespaceOwner)) {
-    //         throw new ConfigurationException(sprintf(
-    //             'PHP namespace owner "%s" is not valid',
-    //             $phpNamespaceOwner
-    //         ));
-    //     }
-    // }
+    /**
+     * Validate theare are no forbidden characters
+     *
+     * @see https://stackoverflow.com/a/60470526/14402031
+     */
+    public function guardExtensionSlug(string $extensionSlug): void
+    {
+        if (!preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/", $extensionSlug)) {
+            throw new ConfigurationException(sprintf(
+                'Extension slug "%s" is not valid',
+                $extensionSlug
+            ));
+        }
+    }
 }

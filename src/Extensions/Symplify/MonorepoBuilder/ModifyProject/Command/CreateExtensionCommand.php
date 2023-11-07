@@ -24,11 +24,12 @@ use Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class CreateExtensionCommand extends AbstractModifyProjectCommand
 {
     protected ?CreateExtensionInputObject $inputObject = null;
-    protected ?string $defaultGitBaseBranch = null;
-    protected ?string $defaultGitUserName = null;
-    protected ?string $defaultGitUserEmail = null;
-    protected ?string $defaultGitHubRepoOwner = null;
-    protected ?string $defaultGitHubRepoName = null;
+    // @todo Review Options for the CreateExtension command
+    // protected ?string $defaultGitBaseBranch = null;
+    // protected ?string $defaultGitUserName = null;
+    // protected ?string $defaultGitUserEmail = null;
+    // protected ?string $defaultGitHubRepoOwner = null;
+    // protected ?string $defaultGitHubRepoName = null;
 
     public function __construct(
         private CreateExtensionWorkerProvider $createExtensionWorkerProvider,
@@ -53,109 +54,21 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
         $this->setDescription('Create the scaffolding for an extension plugin, hosted in this monorepo.');
 
         // @todo Review Options for the CreateExtension command
-        // $this->addOption(
-        //     Option::GIT_BASE_BRANCH,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     'Base branch of the GitHub repository where this project is hosted. If not provided, this value is retrieved using `git`',
-        // );
-        // $this->addOption(
-        //     Option::GIT_USER_NAME,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     'Git user name, to "split" code and push it to a different repo when merging a PR. If not provided, this value is retrieved from the global `git` config',
-        // );
-        // $this->addOption(
-        //     Option::GIT_USER_EMAIL,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     'Git user email, to "split" code and push it to a different repo when merging a PR. If not provided, this value is retrieved from the global `git` config',
-        // );
-
-        // $this->addOption(
-        //     Option::GITHUB_REPO_OWNER,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     'Owner of the GitHub repository where this project is hosted (eg: "GatoGraphQL" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`',
-        // );
-        // $this->addOption(
-        //     Option::GITHUB_REPO_NAME,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     'Name of the GitHub repository where this project is hosted (eg: "ExtensionStarter" in "https://github.com/GatoGraphQL/ExtensionStarter"). If not provided, this value is retrieved using `git`',
-        // );
-
-        // $this->addOption(
-        //     Option::DOCS_GIT_BASE_BRANCH,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     sprintf(
-        //         'Base branch of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
-        //         Option::GIT_BASE_BRANCH
-        //     ),
-        // );
-        // $this->addOption(
-        //     Option::DOCS_GITHUB_REPO_OWNER,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     sprintf(
-        //         'Owner of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
-        //         Option::GITHUB_REPO_OWNER
-        //     ),
-        // );
-        // $this->addOption(
-        //     Option::DOCS_GITHUB_REPO_NAME,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     sprintf(
-        //         'Name of the (public) GitHub repository hosting the documentation for the extension, to access the images in PROD. If not provided, the value for option `%s` is used',
-        //         Option::GITHUB_REPO_NAME
-        //     ),
-        // );
-
-        // $this->addOption(
-        //     Option::PHP_NAMESPACE_OWNER,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     sprintf(
-        //         'PHP namespace owner to use in the codebase (eg: "MyCompanyName"). If not provided, the value from the "%s" option is used',
-        //         Option::GITHUB_REPO_OWNER
-        //     )
-        // );
-        // $this->addOption(
-        //     Option::COMPOSER_VENDOR,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     sprintf(
-        //         'Composer vendor to distribute the packages in the repo. If not provided, it is generated from the "%s" option',
-        //         Option::PHP_NAMESPACE_OWNER
-        //     )
-        // );
-
-        // $this->addOption(
-        //     Option::MY_COMPANY_NAME,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     sprintf(
-        //         'Name of the person or company owning the extension. If not provided, the value for option `%s` is used',
-        //         Option::GIT_USER_NAME
-        //     ),
-        // );
-        // $this->addOption(
-        //     Option::MY_COMPANY_EMAIL,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     sprintf(
-        //         'Email of the person or company owning the extension. If not provided, the value for option `%s` is used',
-        //         Option::GIT_USER_EMAIL
-        //     ),
-        // );
-        // $this->addOption(
-        //     Option::MY_COMPANY_WEBSITE,
-        //     null,
-        //     InputOption::VALUE_REQUIRED,
-        //     'Website of the person or company owning the extension. If not provided, the GitHub repo for this project is used',
-        // );
+        $this->addOption(
+            Option::EXTENSION_NAME,
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Extension plugin name',
+        );
+        $this->addOption(
+            Option::EXTENSION_SLUG,
+            null,
+            InputOption::VALUE_REQUIRED,
+            sprintf(
+                'Slug of the extension plugin. If not provided, it is generated from the "%s" option',
+                Option::EXTENSION_NAME
+            )
+        );
     }
 
     /**
@@ -170,88 +83,21 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
     {
         if ($this->inputObject === null) {
             // @todo Review Options for the CreateExtension command
-            // $initialVersion = '0.1.0';
-            // // validation
-            // $this->createExtensionGuard->guardVersion($initialVersion);
+            $extensionName = (string) $input->getOption(Option::EXTENSION_NAME);
+            // validation
+            $this->createExtensionGuard->guardExtensionName($extensionName);
 
-            // $gitBaseBranch = (string) $input->getOption(Option::GIT_BASE_BRANCH);
-            // if ($gitBaseBranch === '') {
-            //     $gitBaseBranch = $this->getDefaultGitBaseBranch();
-            // }
-            // $gitUserName = (string) $input->getOption(Option::GIT_USER_NAME);
-            // if ($gitUserName === '') {
-            //     $gitUserName = $this->getDefaultGitUserName();
-            // }
-            // $gitUserEmail = (string) $input->getOption(Option::GIT_USER_EMAIL);
-            // if ($gitUserEmail === '') {
-            //     $gitUserEmail = $this->getDefaultGitUserEmail();
-            // }
-            // $githubRepoOwner = (string) $input->getOption(Option::GITHUB_REPO_OWNER);
-            // if ($githubRepoOwner === '') {
-            //     $githubRepoOwner = $this->getDefaultGitHubRepoOwner();
-            // }
-            // $githubRepoName = (string) $input->getOption(Option::GITHUB_REPO_NAME);
-            // if ($githubRepoName === '') {
-            //     $githubRepoName = $this->getDefaultGitHubRepoName();
-            // }
-            // $docsGitBaseBranch = (string) $input->getOption(Option::DOCS_GIT_BASE_BRANCH);
-            // if ($docsGitBaseBranch === '') {
-            //     $docsGitBaseBranch = $gitBaseBranch;
-            // }
-            // $docsGithubRepoOwner = (string) $input->getOption(Option::DOCS_GITHUB_REPO_OWNER);
-            // if ($docsGithubRepoOwner === '') {
-            //     $docsGithubRepoOwner = $githubRepoOwner;
-            // }
-            // $docsGithubRepoName = (string) $input->getOption(Option::DOCS_GITHUB_REPO_NAME);
-            // if ($docsGithubRepoName === '') {
-            //     $docsGithubRepoName = $githubRepoName;
-            // }
-
-            // $phpNamespaceOwner = (string) $input->getOption(Option::PHP_NAMESPACE_OWNER);
-            // if ($phpNamespaceOwner === '') {
-            //     $phpNamespaceOwner = $this->stringUtils->dashesToCamelCase(str_replace('_', '-', $githubRepoOwner), true);
-            // }
-            // // validation
-            // $this->createExtensionGuard->guardPHPNamespaceOwner($phpNamespaceOwner);
-
-            // $composerVendor = (string) $input->getOption(Option::COMPOSER_VENDOR);
-            // if ($composerVendor === '') {
-            //     $composerVendor = $this->stringUtils->camelToUnderscore($phpNamespaceOwner);
-            // }
-
-            // $myCompanyName = (string) $input->getOption(Option::MY_COMPANY_NAME);
-            // if ($myCompanyName === '') {
-            //     $myCompanyName = $gitUserName;
-            // }
-            // $myCompanyEmail = (string) $input->getOption(Option::MY_COMPANY_EMAIL);
-            // if ($myCompanyEmail === '') {
-            //     $myCompanyEmail = $gitUserEmail;
-            // }
-            // $myCompanyWebsite = (string) $input->getOption(Option::MY_COMPANY_WEBSITE);
-            // if ($myCompanyWebsite === '') {
-            //     $myCompanyWebsite = sprintf(
-            //         'https://github.com/%s/%s',
-            //         $githubRepoOwner,
-            //         $githubRepoName
-            //     );
-            // }
+            $extensionSlug = (string) $input->getOption(Option::EXTENSION_SLUG);
+            if ($extensionSlug === '') {
+                $extensionSlug = $this->stringUtils->slugify($extensionName);
+            }
+            // validation
+            $this->createExtensionGuard->guardExtensionSlug($extensionSlug);
 
             $this->inputObject = new CreateExtensionInputObject(
                 // @todo Review Options for the CreateExtension command
-                // $initialVersion,
-                // $gitBaseBranch,
-                // $gitUserName,
-                // $gitUserEmail,
-                // $githubRepoOwner,
-                // $githubRepoName,
-                // $docsGitBaseBranch,
-                // $docsGithubRepoOwner,
-                // $docsGithubRepoName,
-                // $phpNamespaceOwner,
-                // $composerVendor,
-                // $myCompanyName,
-                // $myCompanyEmail,
-                // $myCompanyWebsite,
+                $extensionName,
+                $extensionSlug,
             );
         }
         return $this->inputObject;

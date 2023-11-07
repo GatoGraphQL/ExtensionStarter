@@ -62,4 +62,14 @@ final class Option
      * @var string
      */
     public final const MY_COMPANY_WEBSITE = 'my-company-website';
+
+
+    /**
+     * @var string
+     */
+    public final const EXTENSION_NAME = 'extension-name';
+    /**
+     * @var string
+     */
+    public final const EXTENSION_SLUG = 'extension-slug';
 }
