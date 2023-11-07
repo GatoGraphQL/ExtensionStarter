@@ -48,14 +48,13 @@ final class FileCopierSystem
         );
 
         /**
-         * Group files by their folder, and calculate
-         * the $toFolder for each group
+         * Group files by their folder
          *
          * @var array<string,string[]>
          */
         $dirFiles = [];
         /**
-         * Calculate the $toFolder for each group
+         * Calculate the $toFolder for each group of files
          *
          * @var array<string,string>
          */
