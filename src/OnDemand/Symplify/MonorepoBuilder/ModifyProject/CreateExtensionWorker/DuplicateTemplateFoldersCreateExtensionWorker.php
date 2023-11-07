@@ -14,21 +14,25 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
      */
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
-        // $files = [
-        //     $this->monorepoMetadataFile,
-        // ];
-        // $replacements = [];
-        // foreach ($this->getReplacements($inputObject) as $constName => $newValue) {
-        //     $replacements = array_merge(
-        //         $replacements,
-        //         $this->getRegexReplacement($constName, $newValue)
-        //     );
-        // }
-        // $this->fileContentReplacerSystem->replaceContentInFiles(
-        //     $files,
-        //     $replacements,
-        //     true,
-        // );
+        $folders = $this->getExtensionTemplateFolders();
+
+        // For each entry, copy to the destination, and execute a search/replace
+        $patternReplacements = [];
+        $templateName = $this->getTemplateName();
+        $extensionSlug = $inputObject->getExtensionSlug();
+        foreach ($folders as $folder) {
+            $toFolder = str_replace(
+                ['templates/' . $templateName, 'extension-template'],
+                ['layers', $extensionSlug],
+                $folder
+            );
+            $this->fileCopierSystem->copyFilesFromFolder(
+                $folder,
+                $toFolder,
+                false,
+                $patternReplacements,
+            );
+        }
     }
 
     /**
@@ -37,24 +41,8 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         return sprintf(
-            'Duplicate the template folders, using extension slug "%s"',
+            'Duplicate the extension template folders, using extension slug "%s"',
             $inputObject->getExtensionSlug()
         );
     }
-
-    // /**
-    //  * @return array<string,string> Key: const name, Value: new value to set for that const
-    //  */
-    // protected function getReplacements(CreateExtensionInputObjectInterface $inputObject): array
-    // {
-    //     return [
-    //         'VERSION' => $this->getInitialVersionForDev($inputObject),
-    //         'LATEST_PROD_VERSION' => '',
-    //         'GIT_BASE_BRANCH' => $inputObject->getGitBaseBranch(),
-    //         'GIT_USER_NAME' => $inputObject->getGitUserName(),
-    //         'GIT_USER_EMAIL' => $inputObject->getGitUserEmail(),
-    //         'GITHUB_REPO_OWNER' => $inputObject->getGithubRepoOwner(),
-    //         'GITHUB_REPO_NAME' => $inputObject->getGithubRepoName(),
-    //     ];
-    // }
 }
