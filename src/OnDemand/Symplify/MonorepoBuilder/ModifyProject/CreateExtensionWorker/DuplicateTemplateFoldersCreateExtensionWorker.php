@@ -29,7 +29,7 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
         $folders = $this->getExtensionTemplateFolders();
 
         // For each entry, copy to the destination, and execute a search/replace
-        $patternReplacements = $this->getPatternReplacements();
+        $patternReplacements = $this->getPatternReplacements($inputObject);
         $templateName = $this->getTemplateName();
         $extensionSlug = $inputObject->getExtensionSlug();
         foreach ($folders as $fromFolder) {
@@ -95,8 +95,13 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
     /**
      * @return string[]
      */
-    protected function getPatternReplacements(): array
+    protected function getPatternReplacements(CreateExtensionInputObjectInterface $inputObject): array
     {
-        return [];
+        return [
+            'Extension Template' => $inputObject->getExtensionName(),
+            'ExtensionTemplate' => $inputObject->getExtensionClassName(),
+            'extension-template' => $inputObject->getExtensionSlug(),
+            'EXTENSION_TEMPLATE' => $inputObject->getExtensionModuleName(),
+        ];
     }
 }
