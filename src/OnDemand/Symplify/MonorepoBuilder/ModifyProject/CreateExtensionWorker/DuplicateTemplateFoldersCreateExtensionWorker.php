@@ -34,8 +34,14 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
         $extensionSlug = $inputObject->getExtensionSlug();
         foreach ($folders as $fromFolder) {
             $toFolder = str_replace(
-                ['templates/' . $templateName, 'extension-template'],
-                ['layers', $extensionSlug],
+                [
+                    'templates/' . $templateName,
+                    'extension-template',
+                ],
+                [
+                    'layers',
+                    $extensionSlug,
+                ],
                 $fromFolder
             );
             
