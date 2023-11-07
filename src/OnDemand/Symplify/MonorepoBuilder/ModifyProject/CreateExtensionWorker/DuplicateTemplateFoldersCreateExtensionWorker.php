@@ -17,7 +17,7 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
         $folders = $this->getExtensionTemplateFolders();
 
         // For each entry, copy to the destination, and execute a search/replace
-        $patternReplacements = [];
+        $patternReplacements = $this->getPatternReplacements();
         $templateName = $this->getTemplateName();
         $extensionSlug = $inputObject->getExtensionSlug();
         foreach ($folders as $folder) {
@@ -44,5 +44,13 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
             'Duplicate the extension template folders, using extension slug "%s"',
             $inputObject->getExtensionSlug()
         );
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getPatternReplacements(): array
+    {
+        return [];
     }
 }
