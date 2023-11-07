@@ -40,24 +40,10 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
             );
             
             // Also rename files with "extension-template"
-            $smartFileInfos = $this->smartFinder->find([$fromFolder], '*extension-template*');
-            $fromRenameFiles = array_map(
-                fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
-                $smartFileInfos
+            $renameFiles = $this->getRenameFiles(
+                $fromFolder,
+                $extensionSlug,
             );
-            $toRenameFiles = array_map(
-                fn (string $filePath) => str_replace(
-                    'extension-template',
-                    $extensionSlug,
-                    basename($filePath)
-                ),
-                $fromRenameFiles
-            );
-            $renameFiles = [];
-            $renameFileCount = count($fromRenameFiles);
-            for ($i = 0; $i < $renameFileCount; $i++) {
-                $renameFiles[$fromRenameFiles[$i]] = $toRenameFiles[$i];
-            }
             
             $this->fileCopierSystem->copyFilesFromFolder(
                 $fromFolder,
@@ -67,6 +53,38 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
                 $renameFiles,
             );
         }
+    }
+
+    /**
+     * Find files with "extension-template", and indicate how
+     * to replace that name
+     * 
+     * @return array<string,string>
+     */
+    protected function getRenameFiles(
+        string $fromFolder,
+        string $extensionSlug,
+    ): array {
+        $smartFileInfos = $this->smartFinder->find([$fromFolder], '*extension-template*');
+        $fromRenameFiles = array_map(
+            fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
+            $smartFileInfos
+        );
+        $toRenameFiles = array_map(
+            fn (string $filePath) => str_replace(
+                'extension-template',
+                $extensionSlug,
+                basename($filePath)
+            ),
+            $fromRenameFiles
+        );
+        $renameFiles = [];
+        $renameFileCount = count($fromRenameFiles);
+        for ($i = 0; $i < $renameFileCount; $i++) {
+            $renameFiles[$fromRenameFiles[$i]] = $toRenameFiles[$i];
+        }
+
+        return $renameFiles;
     }
 
     /**
