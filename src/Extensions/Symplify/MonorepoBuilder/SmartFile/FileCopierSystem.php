@@ -42,16 +42,48 @@ final class FileCopierSystem
         }
 
         $smartFileInfos = $this->smartFinder->find([$fromFolder], '*');
-        $files = array_map(
+        $fromFiles = array_map(
             fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
             $smartFileInfos
         );
-        return $this->copyFiles(
-            $files,
-            $toFolder,
-            $patternReplacements,
-            $renameFiles
-        );
+
+        /**
+         * Group files by their folder, and calculate
+         * the $toFolder for each group
+         *
+         * @var array<string,string[]>
+         */
+        $dirFiles = [];
+        /**
+         * Calculate the $toFolder for each group
+         *
+         * @var array<string,string>
+         */
+        $dirToFolders = [];
+        $fromFolderLength = strlen($fromFolder);
+        foreach ($fromFiles as $file) {
+            $dir = dirname($file);
+            if (!isset($dirFiles[$dir])) {
+                $dirToFolders[$dir] = $toFolder . substr($dir, $fromFolderLength);
+                $dirFiles[$dir] = [];
+            }
+            $dirFiles[$dir][] = $file;
+        }
+        
+        $copiedFiles = [];
+        foreach ($dirToFolders as $dir => $dirToFolder) {
+            $files = $dirFiles[$dir];
+            $copiedFiles = [
+                ...$copiedFiles,
+                ...$this->copyFiles(
+                    $files,
+                    $dirToFolder,
+                    $patternReplacements,
+                    $renameFiles
+                )
+            ];
+        }
+        return $copiedFiles;
     }
 
     /**
