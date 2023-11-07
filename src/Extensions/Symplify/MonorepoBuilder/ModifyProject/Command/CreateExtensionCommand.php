@@ -149,7 +149,7 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
 
             $extensionClassName = (string) $input->getOption(Option::EXTENSION_CLASSNAME);
             if ($extensionClassName === '') {
-                $extensionClassName = $this->stringUtils->dashesToCamelCase($extensionSlug);
+                $extensionClassName = $this->stringUtils->dashesToCamelCase($extensionSlug, true);
             }
             // validation
             $this->createExtensionGuard->guardExtensionClassName($extensionClassName);
