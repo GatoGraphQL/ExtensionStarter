@@ -40,8 +40,9 @@ class GatoGraphQLExtension extends AbstractGatoGraphQLExtension
          * If the extension is an integration for some plugin (eg: WooCommerce,
          * Yoast SEO or, in this case, Extension Template), add below the plugin's main file
          */
+        $requiredPluginFile = 'extension-template/hello.php';
         return [
-            'extension-template/hello.php',
+            $requiredPluginFile,
         ];
     }
 }

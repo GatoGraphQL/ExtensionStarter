@@ -40,8 +40,9 @@ class GatoGraphQLExtension extends AbstractGatoGraphQLExtension
          * If the extension is an integration for some plugin (eg: WooCommerce,
          * Yoast SEO or, in this case, Hello Dolly), add below the plugin's main file
          */
+        $requiredPluginFile = 'hello-dolly/hello.php';
         return [
-            'hello-dolly/hello.php',
+            $requiredPluginFile,
         ];
     }
 }

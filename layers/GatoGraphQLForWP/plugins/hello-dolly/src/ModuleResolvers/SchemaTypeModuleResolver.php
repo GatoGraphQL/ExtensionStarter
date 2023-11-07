@@ -46,6 +46,9 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
      */
     public function getDependentOnActiveWordPressPlugins(string $module): array
     {
+        $pluginName = __('Hello Dolly', 'gatographql-hello-dolly');
+        $requiredPluginFile = 'hello-dolly/hello.php';
+        $requiredPluginVersion = '^1.7';
         return match ($module) {
             self::SCHEMA_HELLO_DOLLY => [
                 /**
@@ -59,9 +62,9 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
                  * - the minimum required version (via a Composer version constraint)
                  */
                 new DependedOnActiveWordPressPlugin(
-                    \__('Hello Dolly', 'gatographql-hello-dolly'),
-                    'hello-dolly/hello.php',
-                    '^1.7',
+                    $pluginName,
+                    $requiredPluginFile,
+                    $requiredPluginVersion,
                 ),
             ],
             default => parent::getDependentOnActiveWordPressPlugins($module),
