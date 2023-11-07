@@ -6,10 +6,22 @@ namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\C
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\SmartFile\FileCopierSystem;
+use Symfony\Component\Finder\Finder;
+use Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use Symplify\SmartFileSystem\Finder\SmartFinder;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTemplateFoldersCreateExtensionWorker
 {
+    public function __construct(
+        protected FileCopierSystem $fileCopierSystem,
+        protected SmartFinder $smartFinder,
+        protected FinderSanitizer $finderSanitizer,
+    ) {
+       parent::__construct();
+    }
+
     /**
      * @param CreateExtensionInputObjectInterface $inputObject
      */
@@ -49,6 +61,11 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
                 $fromFolder,
                 $extensionSlug,
             );
+
+            $renameFolders = $this->getRenameFolders(
+                $fromFolder,
+                $extensionSlug,
+            );
             
             $this->fileCopierSystem->copyFilesFromFolder(
                 $fromFolder,
@@ -56,6 +73,7 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
                 false,
                 $patternReplacements,
                 $renameFiles,
+                $renameFolders,
             );
         }
     }
@@ -83,6 +101,7 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
             ),
             $fromRenameFiles
         );
+        
         $renameFiles = [];
         $renameFileCount = count($fromRenameFiles);
         for ($i = 0; $i < $renameFileCount; $i++) {
@@ -90,6 +109,45 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
         }
 
         return $renameFiles;
+    }
+
+    /**
+     * Find folders with "extension-template", and indicate how
+     * to replace that name
+     * 
+     * @return array<string,string>
+     */
+    protected function getRenameFolders(
+        string $fromFolder,
+        string $extensionSlug,
+    ): array {
+        $finder = new Finder();
+        $finder->name('*extension-template*')
+            ->in($fromFolder)
+            ->directories()
+            ->sortByName();
+            
+        $smartFileInfos = $this->finderSanitizer->sanitize($finder);
+        $fromRenameFolders = array_map(
+            fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
+            $smartFileInfos
+        );
+        $toRenameFolders = array_map(
+            fn (string $folder) => str_replace(
+                'extension-template',
+                $extensionSlug,
+                $folder//basename($folder)
+            ),
+            $fromRenameFolders
+        );
+        
+        $renameFolders = [];
+        $renameFileCount = count($fromRenameFolders);
+        for ($i = 0; $i < $renameFileCount; $i++) {
+            $renameFolders[$fromRenameFolders[$i]] = $toRenameFolders[$i];
+        }
+
+        return $renameFolders;
     }
 
     /**

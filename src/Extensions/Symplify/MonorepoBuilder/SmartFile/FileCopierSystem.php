@@ -29,7 +29,8 @@ final class FileCopierSystem
         string $toFolder,
         bool $removeFilesInToFolder = false,
         array $patternReplacements = [],
-        array $renameFiles = []
+        array $renameFiles = [],
+        array $renameFolders = [],
     ): array {
         $this->fileSystemGuard->ensureFileExists($fromFolder, __METHOD__);
 
@@ -63,7 +64,8 @@ final class FileCopierSystem
         foreach ($fromFiles as $file) {
             $dir = dirname($file);
             if (!isset($dirFiles[$dir])) {
-                $dirToFolders[$dir] = $toFolder . substr($dir, $fromFolderLength);
+                $subfolderPath = $renameFolders[$dir] ?? substr($dir, $fromFolderLength);
+                $dirToFolders[$dir] = $toFolder . $subfolderPath;
                 $dirFiles[$dir] = [];
             }
             $dirFiles[$dir][] = $file;
