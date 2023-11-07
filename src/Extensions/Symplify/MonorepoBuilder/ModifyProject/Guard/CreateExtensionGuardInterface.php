@@ -7,7 +7,7 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 interface CreateExtensionGuardInterface extends ModifyProjectGuardInterface
 {
     public function guardIntegrationPluginFile(string $file): void;
-    public function guardVersion(string $version): void;
+    public function guardIntegrationPluginVersionConstraint(string $version): void;
     public function guardExtensionSlug(string $extensionSlug): void;
     public function guardExtensionClassName(string $extensionClassName): void;
 }

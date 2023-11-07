@@ -45,8 +45,11 @@ final class CreateExtensionGuard extends AbstractModifyProjectGuard implements C
     /**
      * Make sure the version input follows semver
      */
-    public function guardVersion(string $version): void
+    public function guardIntegrationPluginVersionConstraint(string $version): void
     {
+        if ($version === '*') {
+            return;
+        }
         if (!$this->isSemverVersion($version)) {
             throw new ConfigurationException(sprintf(
                 'Version "%s" does not follow semver',
