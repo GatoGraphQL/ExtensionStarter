@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MyCompanyForGatoGraphQL\HelloDolly\ModuleResolvers;
+namespace MyCompanyForGatoGraphQL\ExtensionTemplate\ModuleResolvers;
 
-use MyCompanyForGatoGraphQL\HelloDolly\GatoGraphQLExtension;
+use MyCompanyForGatoGraphQL\ExtensionTemplate\GatoGraphQLExtension;
 use GatoGraphQL\GatoGraphQL\ContentProcessors\MarkdownContentParserInterface;
 use GatoGraphQL\GatoGraphQL\ModuleResolvers\AbstractModuleResolver;
 use GatoGraphQL\GatoGraphQL\ModuleResolvers\SchemaTypeModuleResolverTrait;
@@ -17,7 +17,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
         SchemaTypeModuleResolverTrait::getPriority as getUpstreamPriority;
     }
 
-    public final const SCHEMA_HELLO_DOLLY = GatoGraphQLExtension::NAMESPACE . '\schema-hello-dolly';
+    public final const SCHEMA_EXTENSION_TEMPLATE = GatoGraphQLExtension::NAMESPACE . '\schema-extension-template';
 
     private ?MarkdownContentParserInterface $markdownContentParser = null;
 
@@ -37,7 +37,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getModulesToResolve(): array
     {
         return [
-            self::SCHEMA_HELLO_DOLLY,
+            self::SCHEMA_EXTENSION_TEMPLATE,
         ];
     }
 
@@ -47,20 +47,20 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getDependentOnActiveWordPressPlugins(string $module): array
     {
         return match ($module) {
-            self::SCHEMA_HELLO_DOLLY => [
+            self::SCHEMA_EXTENSION_TEMPLATE => [
                 /**
                  * @gatographql-extension-info
                  *
                  * If the extension is an integration for some plugin (eg: WooCommerce,
-                 * Yoast SEO or, in this case, Hello Dolly), add below:
+                 * Yoast SEO or, in this case, Extension Template), add below:
                  *
                  * - the plugin's name
                  * - the plugin's main file
                  * - the minimum required version (via a Composer version constraint)
                  */
                 new DependedOnActiveWordPressPlugin(
-                    \__('Hello Dolly', 'gatographql-hello-dolly'),
-                    'hello-dolly/hello.php',
+                    \__('Extension Template', 'gatographql-extension-template'),
+                    'extension-template/hello.php',
                     '^1.7',
                 ),
             ],
@@ -71,7 +71,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getName(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_HELLO_DOLLY => \__('Hello Dolly Schema', 'gatographql-hello-dolly'),
+            self::SCHEMA_EXTENSION_TEMPLATE => \__('Extension Template Schema', 'gatographql-extension-template'),
             default => $module,
         };
     }
@@ -79,7 +79,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getDescription(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_HELLO_DOLLY => \__('Add schema elements for the Hello Dolly extension for Gato GraphQL.', 'gatographql-hello-dolly'),
+            self::SCHEMA_EXTENSION_TEMPLATE => \__('Add schema elements for the Extension Template extension for Gato GraphQL.', 'gatographql-extension-template'),
             default => parent::getDescription($module),
         };
     }

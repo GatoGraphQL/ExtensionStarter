@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyCompanyForGatoGraphQL\HelloDolly;
+namespace MyCompanyForGatoGraphQL\ExtensionTemplate;
 
 use PoP\Root\Module\ModuleInterface;
 use GatoGraphQL\GatoGraphQL\PluginSkeleton\AbstractGatoGraphQLExtension;
@@ -38,10 +38,10 @@ class GatoGraphQLExtension extends AbstractGatoGraphQLExtension
          * @gatographql-extension-info
          *
          * If the extension is an integration for some plugin (eg: WooCommerce,
-         * Yoast SEO or, in this case, Hello Dolly), add below the plugin's main file
+         * Yoast SEO or, in this case, Extension Template), add below the plugin's main file
          */
         return [
-            'hello-dolly/hello.php',
+            'extension-template/hello.php',
         ];
     }
 }

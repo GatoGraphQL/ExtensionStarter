@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyCompanyForGatoGraphQL\HelloDolly;
+namespace MyCompanyForGatoGraphQL\ExtensionTemplate;
 
 use PoP\Root\Module\ModuleInterface;
 use GatoGraphQL\GatoGraphQL\PluginSkeleton\AbstractExtensionModule;
@@ -15,7 +15,7 @@ class Module extends AbstractExtensionModule
     public function getDependedModuleClasses(): array
     {
         return [
-            \MyCompanyForGatoGraphQL\HelloDollySchema\Module::class,
+            \MyCompanyForGatoGraphQL\ExtensionTemplateSchema\Module::class,
         ];
     }
 }

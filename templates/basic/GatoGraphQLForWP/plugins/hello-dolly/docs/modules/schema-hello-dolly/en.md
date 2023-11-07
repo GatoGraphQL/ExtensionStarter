@@ -1,5 +1,5 @@
-# Hello Dolly Schema
+# Extension Template Schema
 
-Integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin with Gato GraphQL.
+Integration for the [Extension Template](https://wordpress.org/plugins/extension-template/) plugin with Gato GraphQL.
 
-![Hello Dolly banner](../../images/hello-dolly-banner.jpg)
+![Extension Template banner](../../images/extension-template-banner.jpg)

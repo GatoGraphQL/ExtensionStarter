@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyCompanyForGatoGraphQL\HelloDolly;
+namespace MyCompanyForGatoGraphQL\ExtensionTemplate;
 
 use GatoGraphQL\GatoGraphQL\PluginApp;
 use GatoGraphQL\GatoGraphQL\StaticHelpers\PluginVersionHelpers;
@@ -28,6 +28,6 @@ class ExtensionStaticHelpers
 
     public static function getGitHubRepoDocsRootPathURL(): string
     {
-        return self::getGitHubRepoDocsRootURL() . '/' . self::getGitHubRepoDocsBranchOrTag() . '/layers/GatoGraphQLForWP/plugins/hello-dolly';
+        return self::getGitHubRepoDocsRootURL() . '/' . self::getGitHubRepoDocsBranchOrTag() . '/layers/GatoGraphQLForWP/plugins/extension-template';
     }
 }

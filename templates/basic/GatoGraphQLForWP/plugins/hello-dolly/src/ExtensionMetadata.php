@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyCompanyForGatoGraphQL\HelloDolly;
+namespace MyCompanyForGatoGraphQL\ExtensionTemplate;
 
 final class ExtensionMetadata
 {

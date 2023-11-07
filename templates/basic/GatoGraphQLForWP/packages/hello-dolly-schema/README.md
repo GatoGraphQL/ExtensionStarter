@@ -1,13 +1,13 @@
-# Hello Dolly Schema
+# Extension Template Schema
 
-Add schema elements for the Hello Dolly extension for Gato GraphQL.
+Add schema elements for the Extension Template extension for Gato GraphQL.
 
 ## Install
 
 Via Composer
 
 ``` bash
-composer require my-company-for-gatographql/hello-dolly-schema
+composer require my-company-for-gatographql/extension-template-schema
 ```
 
 ## PHP versions

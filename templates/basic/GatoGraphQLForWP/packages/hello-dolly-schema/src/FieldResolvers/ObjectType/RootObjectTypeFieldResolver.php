@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyCompanyForGatoGraphQL\HelloDollySchema\FieldResolvers\ObjectType;
+namespace MyCompanyForGatoGraphQL\ExtensionTemplateSchema\FieldResolvers\ObjectType;
 
 use PoP\ComponentModel\QueryResolution\FieldDataAccessorInterface;
 use PoP\ComponentModel\Feedback\ObjectTypeFieldResolutionFeedbackStore;
@@ -70,7 +70,7 @@ class RootObjectTypeFieldResolver extends AbstractObjectTypeFieldResolver
     public function getFieldDescription(ObjectTypeResolverInterface $objectTypeResolver, string $fieldName): ?string
     {
         return match ($fieldName) {
-            'helloDolly' => $this->getTranslationAPI()->__('Symbol of the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong: Hello, Dolly.', 'hello-dolly-schema'),
+            'helloDolly' => $this->getTranslationAPI()->__('Symbol of the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong: Hello, Dolly.', 'extension-template-schema'),
             default => parent::getFieldDescription($objectTypeResolver, $fieldName),
         };
     }
