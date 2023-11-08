@@ -48,6 +48,13 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
 
         // @todo Review Options for the CreateExtension command
         $this->addOption(
+            Option::TEMPLATE,
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Template to use to create the extension plugin',
+            'basic'
+        );
+        $this->addOption(
             Option::INTEGRATION_PLUGIN_FILE,
             null,
             InputOption::VALUE_REQUIRED,
@@ -100,9 +107,34 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
         return $this->createExtensionWorkerProvider->provideByStage($stage);
     }
 
+    /**
+     * @return string[]
+     */
+    protected function getAvailableTemplates(): array
+    {
+        return [
+            'basic',
+        ];
+    }
+
     protected function getModifyProjectInputObject(InputInterface $input, string $stage): ModifyProjectInputObjectInterface
     {
         if ($this->inputObject === null) {
+            $availableTemplates = $this->getAvailableTemplates();
+
+            // @todo Review Options for the CreateExtension command
+            $template = (string) $input->getOption(Option::TEMPLATE);
+            // validation
+            if (!in_array($template, $availableTemplates)) {
+                throw new ConfigurationException(
+                    sprintf(
+                        'Template "%s" does not exist. Available templates are: "%s"',
+                        $template,
+                        implode('", "', $availableTemplates)
+                    )
+                );
+            }
+            
             // @todo Review Options for the CreateExtension command
             $integrationPluginFile = (string) $input->getOption(Option::INTEGRATION_PLUGIN_FILE);
             // validation
@@ -159,6 +191,7 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
 
             $this->inputObject = new CreateExtensionInputObject(
                 // @todo Review Options for the CreateExtension command
+                $template,
                 $integrationPluginFile,
                 $integrationPluginSlug,
                 $integrationPluginVersionConstraint,

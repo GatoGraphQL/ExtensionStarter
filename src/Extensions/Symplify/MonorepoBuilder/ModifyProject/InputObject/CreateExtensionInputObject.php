@@ -8,6 +8,7 @@ class CreateExtensionInputObject implements CreateExtensionInputObjectInterface
 {
     public function __construct(
         // @todo Review Options for the CreateExtension command
+        private string $template,
         private string $integrationPluginFile,
         private string $integrationPluginSlug,
         private string $integrationPluginVersionConstraint,
@@ -20,6 +21,11 @@ class CreateExtensionInputObject implements CreateExtensionInputObjectInterface
     }
 
     // @todo Review Options for the CreateExtension command
+    public function getTemplate(): string
+    {
+        return $this->template;
+    }
+
     public function getIntegrationPluginFile(): string
     {
         return $this->integrationPluginFile;

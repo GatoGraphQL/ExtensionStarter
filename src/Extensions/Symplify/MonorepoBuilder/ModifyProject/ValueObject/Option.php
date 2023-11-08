@@ -67,6 +67,10 @@ final class Option
     /**
      * @var string
      */
+    public final const TEMPLATE = 'template';
+    /**
+     * @var string
+     */
     public final const INTEGRATION_PLUGIN_FILE = 'integration-plugin-file';
     /**
      * @var string
