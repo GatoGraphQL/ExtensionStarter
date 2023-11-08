@@ -31,6 +31,18 @@ abstract class AbstractDuplicateTemplateFilesAndFoldersCreateExtensionWorker imp
         ];
     }
 
+    /**
+     * @return string[]
+     */
+    protected function getExtensionTemplateFiles(): array
+    {
+        $rootFolder = dirname(__DIR__, 6);
+        return [
+            $rootFolder . '/templates/shared/config/rector/downgrade/extension-template/rector.php',
+            $rootFolder . '/templates/shared/src/Config/Rector/Downgrade/Configurators/ExtensionTemplateContainerConfigurationService.php',
+        ];
+    }
+
     protected function getTemplateName(): string
     {
         return 'basic';
