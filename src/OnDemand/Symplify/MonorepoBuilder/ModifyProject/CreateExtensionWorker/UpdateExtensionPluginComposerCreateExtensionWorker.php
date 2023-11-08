@@ -23,14 +23,20 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
      */
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        $description = sprintf(
-            'Add a "require-dev" entry with the integration plugin to the extension plugin\'s composer.json files',
-            $inputObject->getExtensionSlug()
-        );
-        if ($inputObject->getIntegrationPluginSlug() === '') {
+        $items = [];
+        if ($inputObject->getIntegrationPluginSlug() !== '') {
+            $items[] = sprintf(
+                'Add a "require-dev" entry with "%s"',
+                $this->getIntegrationPluginWPackagistDependency($inputObject)
+            );
+        }
+        $description = 'Update the extension plugin\'s composer.json files';
+        if ($items !== []) {
             return sprintf(
-                '(Nothing to do, since no integration plugin is required) %s',
-                $description
+                '%s:%s%s',
+                $description,
+                PHP_EOL . '- ',
+                implode(PHP_EOL . '- ', $items)
             );
         }
         return $description;
@@ -64,14 +70,20 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
         CreateExtensionInputObjectInterface $inputObject,
         string $composerJSONFile,
     ): void {
-        $integrationPluginSlug = $inputObject->getIntegrationPluginSlug();
-
         $composerJSONFileSmartFileInfo = new SmartFileInfo($composerJSONFile);
+        
         $json = $this->jsonFileManager->loadFromFileInfo($composerJSONFileSmartFileInfo);
-
-        $json[ComposerJsonSection::REQUIRE_DEV]["wpackagist-plugin/{$integrationPluginSlug}"] = $inputObject->getIntegrationPluginVersionConstraint();
+        $json[ComposerJsonSection::REQUIRE_DEV][$this->getIntegrationPluginWPackagistDependency($inputObject)] = $inputObject->getIntegrationPluginVersionConstraint();
         
         $this->jsonFileManager->printJsonToFileInfo($json, $composerJSONFileSmartFileInfo);
+    }
+
+    /**
+     * @param CreateExtensionInputObjectInterface $inputObject
+     */
+    protected function getIntegrationPluginWPackagistDependency(CreateExtensionInputObjectInterface $inputObject): string
+    {
+        return "wpackagist-plugin/{$inputObject->getIntegrationPluginSlug()}";
     }
 
     /**
