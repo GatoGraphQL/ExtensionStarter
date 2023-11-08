@@ -1,2 +1,2 @@
 <?php
-// Add the stubs for "Integration Plugin Template"
+// @gatographql-extension-todo Add the stubs for "Integration Plugin Template"
