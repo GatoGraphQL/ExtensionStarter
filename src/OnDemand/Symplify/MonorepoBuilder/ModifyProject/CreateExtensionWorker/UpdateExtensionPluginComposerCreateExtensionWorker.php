@@ -13,6 +13,8 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 
 class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
+    use UpdateExtensionPluginCreateExtensionWorkerTrait;
+    
     public function __construct(
         protected JsonFileManager $jsonFileManager,
     ) {
@@ -76,14 +78,6 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
         $json[ComposerJsonSection::REQUIRE_DEV][$this->getIntegrationPluginWPackagistDependency($inputObject)] = $inputObject->getIntegrationPluginVersionConstraint();
         
         $this->jsonFileManager->printJsonToFileInfo($json, $composerJSONFileSmartFileInfo);
-    }
-
-    /**
-     * @param CreateExtensionInputObjectInterface $inputObject
-     */
-    protected function getIntegrationPluginWPackagistDependency(CreateExtensionInputObjectInterface $inputObject): string
-    {
-        return "wpackagist-plugin/{$inputObject->getIntegrationPluginSlug()}";
     }
 
     /**
