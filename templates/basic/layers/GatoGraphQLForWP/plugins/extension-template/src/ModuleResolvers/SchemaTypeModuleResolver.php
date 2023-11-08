@@ -47,7 +47,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getDependentOnActiveWordPressPlugins(string $module): array
     {
         $requiredPluginName = __('Integration Plugin Template', 'gatographql-extension-template');
-        $requiredPluginFile = 'extension-template/hello.php';
+        $requiredPluginFile = 'extension-template/extension-template.php';
         $requiredPluginVersion = '*';
         return match ($module) {
             /** @phpstan-ignore-next-line */

@@ -109,7 +109,7 @@ add_action(
              * Validate the Extension Template plugin is active and satisfy
              * the required version constraint
              */
-            $requiredPluginFile = 'extension-template/hello.php';
+            $requiredPluginFile = 'extension-template/extension-template.php';
             /** @phpstan-ignore-next-line */
             if ($requiredPluginFile !== '') {
                 $requiredPluginVersion = '*';
