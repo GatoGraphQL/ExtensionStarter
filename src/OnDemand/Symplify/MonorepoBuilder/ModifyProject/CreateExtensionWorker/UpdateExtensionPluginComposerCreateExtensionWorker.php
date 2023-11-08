@@ -24,18 +24,20 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         return sprintf(
-            'Add a "require-dev" entry with the integration plugin to the extension plugin\'s composer.json files',
+            '(If an integration plugin is required) Add a "require-dev" entry with the integration plugin to the extension plugin\'s composer.json files',
             $inputObject->getExtensionSlug()
         );
     }
 
     /**
+     * Check there's an integration plugin required, otherwise
+     * nothing to do.
+     *
      * @param CreateExtensionInputObjectInterface $inputObject
      */
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
-        $integrationPluginSlug = $inputObject->getIntegrationPluginSlug();
-        if ($integrationPluginSlug === '') {
+        if ($inputObject->getIntegrationPluginSlug() === '') {
             return;
         }
 
