@@ -19,8 +19,7 @@
         "phpstan/phpstan": "^1.8",
         "phpunit/phpunit": "^10.2",
         "squizlabs/php_codesniffer": "^3.6",
-        "szepeviktor/phpstan-wordpress": "^1.0",
-        "wpackagist-plugin/extension-template": "^1.7"
+        "szepeviktor/phpstan-wordpress": "^1.0"
     },
     "repositories": [
         {
