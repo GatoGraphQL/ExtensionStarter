@@ -83,7 +83,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getDescription(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_EXTENSION_TEMPLATE => \__('Add schema elements for the Extension Template integration for Gato GraphQL.', 'gatographql-extension-template'),
+            self::SCHEMA_EXTENSION_TEMPLATE => \__('Add schema elements for the Extension Template extension for Gato GraphQL.', 'gatographql-extension-template'),
             default => parent::getDescription($module),
         };
     }

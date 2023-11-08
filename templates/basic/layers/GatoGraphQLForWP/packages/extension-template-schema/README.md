@@ -1,6 +1,6 @@
 # Extension Template Schema
 
-Add schema elements for the Extension Template integration for Gato GraphQL.
+Add schema elements for the Extension Template extension for Gato GraphQL.
 
 ## Install
 

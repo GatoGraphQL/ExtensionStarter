@@ -1,7 +1,7 @@
 {
     "name": "my-company-for-gatographql/extension-template-schema",
     "type": "library",
-    "description": "Schema for Extension Template integration for Gato GraphQL",
+    "description": "Schema for Extension Template extension for Gato GraphQL",
     "authors": [
         {
             "name": "My Company",

@@ -1,7 +1,7 @@
 {
     "name": "my-company-for-gatographql/extension-template",
     "type": "wordpress-plugin",
-    "description": "Extension Template integration for Gato GraphQL",
+    "description": "Extension Template extension for Gato GraphQL",
     "authors": [
         {
             "name": "My Company",
