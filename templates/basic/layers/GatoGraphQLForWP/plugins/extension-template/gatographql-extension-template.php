@@ -2,7 +2,7 @@
 /*
 Plugin Name: Gato GraphQL - Extension Template
 Plugin URI:
-Description: Integration of plugin Extension Template with Gato GraphQL
+Description: Extension Template integration for Gato GraphQL
 Version: 1.1.0-dev
 Requires at least: 5.4
 Requires PHP: 8.1
