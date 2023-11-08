@@ -1,5 +1,12 @@
 # Extension Template Schema
 
-Integration for the [Extension Template](https://wordpress.org/plugins/extension-template/) plugin with Gato GraphQL.
+<!--
+@gatographql-extension-todo
 
-<!-- ![Extension Template banner](../../images/extension-template-banner.jpg) -->
+Add documentation for the module, to be displayed on the Modules page,
+when clicking on the "View details" link.
+
+Place images on /images folder (parallel to /docs), then reference like:
+
+![Extension Template banner](../../images/extension-template-banner.jpg)
+-->
