@@ -38,12 +38,12 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker extends AbstractDupl
      */
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
-        $folders = $this->getExtensionTemplateFolders();
-
         // For each entry, copy to the destination, and execute a search/replace
         $patternReplacements = $this->getPatternReplacements($inputObject);
         $templateName = $this->getTemplateName();
         $extensionSlug = $inputObject->getExtensionSlug();
+     
+        $folders = $this->getExtensionTemplateFolders();
         foreach ($folders as $fromFolder) {
             $toFolder = str_replace(
                 [
