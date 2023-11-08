@@ -39,6 +39,14 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
             return;
         }
 
+        $this->addIntegrationPluginDependencyAsRequireDevInComposerJSON($inputObject);
+    }
+
+    /**
+     * @param CreateExtensionInputObjectInterface $inputObject
+     */
+    protected function addIntegrationPluginDependencyAsRequireDevInComposerJSON(CreateExtensionInputObjectInterface $inputObject): void
+    {
         $extensionPluginComposerJSONFile = $this->getExtensionPluginComposerJSONFile($inputObject);
         $json = $this->jsonFileManager->loadFromFileInfo(new SmartFileInfo($extensionPluginComposerJSONFile));
 
