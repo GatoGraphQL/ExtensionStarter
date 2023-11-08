@@ -40,14 +40,14 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
     {
         // For each entry, copy to the destination, and execute a search/replace
         $patternReplacements = $this->getPatternReplacements($inputObject);
-        $templateName = $this->getTemplateName();
+        $template = $inputObject->getTemplate();
         $extensionSlug = $inputObject->getExtensionSlug();
      
         $templateFolders = $this->getExtensionTemplateFolders($inputObject);
         foreach ($templateFolders as $fromFolder) {
             $toFolder = str_replace(
                 [
-                    'templates/' . $templateName . '/',
+                    'templates/' . $template . '/',
                     'extension-template',
                 ],
                 [
@@ -194,21 +194,16 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
         ];
     }
 
-    protected function getTemplateName(): string
-    {
-        return 'basic';
-    }
-
     /**
      * @return string[]
      */
     protected function getExtensionTemplateFolders(CreateExtensionInputObjectInterface $inputObject): array
     {
         $rootFolder = dirname(__DIR__, 6);
-        $templateName = $this->getTemplateName();
+        $template = $inputObject->getTemplate();
         return [
-            $rootFolder . '/templates/' . $templateName . '/layers/GatoGraphQLForWP/packages/extension-template-schema',
-            $rootFolder . '/templates/' . $templateName . '/layers/GatoGraphQLForWP/plugins/extension-template',
+            $rootFolder . '/templates/' . $template . '/layers/GatoGraphQLForWP/packages/extension-template-schema',
+            $rootFolder . '/templates/' . $template . '/layers/GatoGraphQLForWP/plugins/extension-template',
         ];
     }
 
