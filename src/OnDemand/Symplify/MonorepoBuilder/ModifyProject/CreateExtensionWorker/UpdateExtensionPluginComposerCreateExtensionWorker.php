@@ -50,7 +50,7 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
         $extensionPluginComposerJSONFile = $this->getExtensionPluginComposerJSONFile($inputObject);
         $json = $this->jsonFileManager->loadFromFileInfo(new SmartFileInfo($extensionPluginComposerJSONFile));
 
-        $json[ComposerJsonSection::REQUIRE_DEV]["wpackagist-plugin/{$$integrationPluginSlug}}"] = $inputObject->getIntegrationPluginVersionConstraint();
+        $json[ComposerJsonSection::REQUIRE_DEV]["wpackagist-plugin/{$integrationPluginSlug}"] = $inputObject->getIntegrationPluginVersionConstraint();
         
         $this->jsonFileManager->printJsonToFileInfo($json, $packageComposerFileInfo);
     }
