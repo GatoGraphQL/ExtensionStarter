@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\DuplicateTemplateFilesAndFoldersCreateExtensionWorker;
+use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateExtensionPluginComposerCreateExtensionWorker;
 
 class CreateExtensionWorkersDataSource
 {
@@ -16,6 +17,7 @@ class CreateExtensionWorkersDataSource
         return [
             // @todo Complete CreateExtension workers!!!
             DuplicateTemplateFilesAndFoldersCreateExtensionWorker::class,
+            UpdateExtensionPluginComposerCreateExtensionWorker::class,
         ];
     }
 }
