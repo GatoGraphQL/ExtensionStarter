@@ -41,11 +41,13 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
             return;
         }
 
-        $composerJSONFile = $this->getExtensionPluginComposerJSONFile($inputObject);
-        $this->addIntegrationPluginDependencyAsRequireDevInComposerJSON(
-            $inputObject,
-            $composerJSONFile,
-        );
+        $composerJSONFiles = $this->getExtensionPluginComposerJSONFiles($inputObject);
+        foreach ($composerJSONFiles as $composerJSONFile) {
+            $this->addIntegrationPluginDependencyAsRequireDevInComposerJSON(
+                $inputObject,
+                $composerJSONFile,
+            );
+        }
     }
 
     /**
@@ -65,9 +67,14 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
         $this->jsonFileManager->printJsonToFileInfo($json, $composerJSONFileSmartFileInfo);
     }
 
-    protected function getExtensionPluginComposerJSONFile(CreateExtensionInputObjectInterface $inputObject): string
+    /**
+     * @return string[]
+     */
+    protected function getExtensionPluginComposerJSONFiles(CreateExtensionInputObjectInterface $inputObject): array
     {
         $rootFolder = dirname(__DIR__, 6);
-        return $rootFolder . '/layers/GatoGraphQLForWP/plugins/' . $inputObject->getExtensionSlug() . '/composer.json';
+        return [
+            $rootFolder . '/layers/GatoGraphQLForWP/plugins/' . $inputObject->getExtensionSlug() . '/composer.json',
+        ];
     }
 }
