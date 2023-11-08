@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker;
 
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\CreateExtensionWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\SmartFile\FileCopierSystem;
@@ -12,7 +13,7 @@ use Symplify\SmartFileSystem\Finder\FinderSanitizer;
 use Symplify\SmartFileSystem\Finder\SmartFinder;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-class DuplicateTemplateFilesAndFoldersCreateExtensionWorker extends AbstractDuplicateTemplateFilesAndFoldersCreateExtensionWorker
+class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
     public function __construct(
         protected FileCopierSystem $fileCopierSystem,
@@ -190,6 +191,36 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker extends AbstractDupl
             '/ExtensionTemplate/' => $inputObject->getExtensionClassName(),
             '/extension-template/' => $inputObject->getExtensionSlug(),
             '/EXTENSION_TEMPLATE/' => $inputObject->getExtensionModuleName(),
+        ];
+    }
+
+    protected function getTemplateName(): string
+    {
+        return 'basic';
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getExtensionTemplateFolders(): array
+    {
+        $rootFolder = dirname(__DIR__, 6);
+        $templateName = $this->getTemplateName();
+        return [
+            $rootFolder . '/templates/' . $templateName . '/layers/GatoGraphQLForWP/packages/extension-template-schema',
+            $rootFolder . '/templates/' . $templateName . '/layers/GatoGraphQLForWP/plugins/extension-template',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getExtensionTemplateFiles(): array
+    {
+        $rootFolder = dirname(__DIR__, 6);
+        return [
+            $rootFolder . '/templates/shared/config/rector/downgrade/extension-template/rector.php',
+            $rootFolder . '/templates/shared/src/Config/Rector/Downgrade/Configurators/ExtensionTemplateContainerConfigurationService.php',
         ];
     }
 }
