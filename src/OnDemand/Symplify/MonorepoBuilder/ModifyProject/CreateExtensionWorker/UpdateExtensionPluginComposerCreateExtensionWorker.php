@@ -24,7 +24,7 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
         return sprintf(
-            'Update the extension plugin\'s composer.json file',
+            'Add a "require-dev" entry with the integration plugin to the extension plugin\'s composer.json files',
             $inputObject->getExtensionSlug()
         );
     }
@@ -48,7 +48,7 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
     protected function addIntegrationPluginDependencyAsRequireDevInComposerJSON(CreateExtensionInputObjectInterface $inputObject): void
     {
         $integrationPluginSlug = $inputObject->getIntegrationPluginSlug();
-        
+
         $composerJSONFile = $this->getExtensionPluginComposerJSONFile($inputObject);
         $composerJSONFileSmartFileInfo = new SmartFileInfo($composerJSONFile);
         $json = $this->jsonFileManager->loadFromFileInfo($composerJSONFileSmartFileInfo);
