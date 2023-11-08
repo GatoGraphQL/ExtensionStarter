@@ -116,20 +116,29 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
         CreateExtensionInputObjectInterface $inputObject,
         string $fromFolder,
     ): array {
-        return [
+        $files = [
             ...$this->getSearchReplaceRenameFiles(
-                $inputObject,
                 $fromFolder,
                 'extension-template',
                 $inputObject->getExtensionSlug(),
             ),
             ...$this->getSearchReplaceRenameFiles(
-                $inputObject,
                 $fromFolder,
                 'ExtensionTemplate',
                 $inputObject->getExtensionClassName(),
             ),
         ];
+        if ($inputObject->getIntegrationPluginSlug() !== '') {
+            $files = [
+                ...$files,
+                ...$this->getSearchReplaceRenameFiles(
+                    $fromFolder,
+                    'integration-plugin-template',
+                    $inputObject->getIntegrationPluginSlug(),
+                ),
+            ];
+        }
+        return $files;
     }
 
     /**
@@ -139,7 +148,6 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
      * @return array<string,string>
      */
     protected function getSearchReplaceRenameFiles(
-        CreateExtensionInputObjectInterface $inputObject,
         string $fromFolder,
         string $search,
         string $replace
@@ -222,6 +230,8 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
             '/ExtensionTemplate/' => $inputObject->getExtensionClassName(),
             '/extension-template/' => $inputObject->getExtensionSlug(),
             '/EXTENSION_TEMPLATE/' => $inputObject->getExtensionModuleName(),
+            '/Integration Plugin Template/' => $inputObject->getIntegrationPluginName(),
+            '/integration-plugin-template/' => $inputObject->getIntegrationPluginSlug(),
         ];
     }
 
@@ -244,9 +254,13 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
     protected function getExtensionTemplateFiles(CreateExtensionInputObjectInterface $inputObject): array
     {
         $rootFolder = dirname(__DIR__, 6);
-        return [
+        $files = [
             $rootFolder . '/templates/shared/config/rector/downgrade/extension-template/rector.php',
             $rootFolder . '/templates/shared/src/Config/Rector/Downgrade/Configurators/ExtensionTemplateContainerConfigurationService.php',
         ];
+        if ($inputObject->getIntegrationPluginSlug() !== '') {
+            $files[] = $rootFolder . '/templates/shared/stubs/wpackagist-plugin/integration-plugin-template/stubs.php';
+        }
+        return $files;
     }
 }
