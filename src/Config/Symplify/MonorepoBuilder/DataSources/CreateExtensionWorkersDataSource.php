@@ -6,6 +6,7 @@ namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\DuplicateTemplateFilesAndFoldersCreateExtensionWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateExtensionPluginComposerCreateExtensionWorker;
+use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateExtensionPluginPHPStanConfigCreateExtensionWorker;
 
 class CreateExtensionWorkersDataSource
 {
@@ -18,6 +19,7 @@ class CreateExtensionWorkersDataSource
             // @todo Complete CreateExtension workers!!!
             DuplicateTemplateFilesAndFoldersCreateExtensionWorker::class,
             UpdateExtensionPluginComposerCreateExtensionWorker::class,
+            UpdateExtensionPluginPHPStanConfigCreateExtensionWorker::class,
         ];
     }
 }
