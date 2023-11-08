@@ -43,8 +43,8 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker extends AbstractDupl
         $templateName = $this->getTemplateName();
         $extensionSlug = $inputObject->getExtensionSlug();
      
-        $folders = $this->getExtensionTemplateFolders();
-        foreach ($folders as $fromFolder) {
+        $templateFolders = $this->getExtensionTemplateFolders();
+        foreach ($templateFolders as $fromFolder) {
             $toFolder = str_replace(
                 [
                     'templates/' . $templateName . '/',
