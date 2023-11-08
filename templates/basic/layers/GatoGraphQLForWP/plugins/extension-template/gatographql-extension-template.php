@@ -134,7 +134,7 @@ add_action(
                          * If the extension is an integration for some plugin (eg: WooCommerce,
                          * Yoast SEO or, in this case, Extension Template), indicate the plugin's name:
                          */
-                        $requiredPluginName = __('Extension Template', 'gatographql-extension-template');
+                        $requiredPluginName = __('Integration Plugin Template', 'gatographql-extension-template');
                         printf(
                             '<div class="notice notice-error"><p>%s</p></div>',
                             $isWordPressPluginActive
