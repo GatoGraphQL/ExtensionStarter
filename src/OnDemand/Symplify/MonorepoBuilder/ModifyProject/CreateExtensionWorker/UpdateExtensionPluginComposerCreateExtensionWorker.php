@@ -75,6 +75,7 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
         $rootFolder = dirname(__DIR__, 6);
         return [
             $rootFolder . '/layers/GatoGraphQLForWP/plugins/' . $inputObject->getExtensionSlug() . '/composer.json',
+            $rootFolder . '/layers/GatoGraphQLForWP/packages/' . $inputObject->getExtensionSlug() . '-schema/composer.json',
         ];
     }
 }
