@@ -116,17 +116,44 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
         CreateExtensionInputObjectInterface $inputObject,
         string $fromFolder,
     ): array {
-        $smartFileInfos = $this->smartFinder->find([$fromFolder], '*extension-template*');
+        return [
+            ...$this->getSearchReplaceRenameFiles(
+                $inputObject,
+                $fromFolder,
+                'extension-template',
+                $inputObject->getExtensionSlug(),
+            ),
+            ...$this->getSearchReplaceRenameFiles(
+                $inputObject,
+                $fromFolder,
+                'ExtensionTemplate',
+                $inputObject->getExtensionClassName(),
+            ),
+        ];
+    }
+
+    /**
+     * Find files with "extension-template", and indicate how
+     * to replace that name
+     * 
+     * @return array<string,string>
+     */
+    protected function getSearchReplaceRenameFiles(
+        CreateExtensionInputObjectInterface $inputObject,
+        string $fromFolder,
+        string $search,
+        string $replace
+    ): array {
+        $smartFileInfos = $this->smartFinder->find([$fromFolder], "*{$search}*");
         $fromRenameFiles = array_map(
             fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
             $smartFileInfos
         );
 
-        $extensionSlug = $inputObject->getExtensionSlug();
         $toRenameFiles = array_map(
             fn (string $filePath) => str_replace(
-                'extension-template',
-                $extensionSlug,
+                $search,
+                $replace,
                 basename($filePath)
             ),
             $fromRenameFiles
