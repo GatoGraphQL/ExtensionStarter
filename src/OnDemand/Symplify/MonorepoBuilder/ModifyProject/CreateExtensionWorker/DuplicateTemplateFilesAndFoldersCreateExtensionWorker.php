@@ -76,6 +76,33 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker extends AbstractDupl
                 $renameFolders,
             );
         }
+
+        $templateFiles = $this->getExtensionTemplateFiles();
+        foreach ($templateFiles as $templateFile) {
+            $toFolder = str_replace(
+                [
+                    'templates/shared/',
+                    'extension-template',
+                ],
+                [
+                    '/',
+                    $extensionSlug,
+                ],
+                dirname($templateFile)
+            );
+            
+            $renameFiles = $this->getRenameFiles(
+                $fromFolder,
+                $extensionSlug,
+            );
+            
+            $this->fileCopierSystem->copyFiles(
+                [$templateFile],
+                $toFolder,
+                $patternReplacements,
+                $renameFiles,
+            );
+        }
     }
 
     /**
