@@ -239,7 +239,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
      */
     protected function getPatternReplacements(CreateExtensionInputObjectInterface $inputObject): array
     {
-        return [
+        $patternReplacements = [
             "/" . preg_quote('$requiredPluginFile') . " = '.*';/" => "\$requiredPluginFile = '{$inputObject->getIntegrationPluginFile()}';",
             "/" . preg_quote('$requiredPluginVersion') . " = '.*';/" => "\$requiredPluginVersion = '{$inputObject->getIntegrationPluginVersionConstraint()}';",
             "/" . preg_quote('$requiredPluginName') . " = '.*';/" => "\$requiredPluginName = '{$inputObject->getIntegrationPluginName()}';",
@@ -247,9 +247,12 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
             '/ExtensionTemplate/' => $inputObject->getExtensionClassName(),
             '/extension-template/' => $inputObject->getExtensionSlug(),
             '/EXTENSION_TEMPLATE/' => $inputObject->getExtensionModuleName(),
-            '/Integration Plugin Template/' => $inputObject->getIntegrationPluginName(),
-            '/integration-plugin-template/' => $inputObject->getIntegrationPluginSlug(),
         ];
+        if ($inputObject->getIntegrationPluginSlug() !== '') {
+            $patternReplacements['/Integration Plugin Template/'] = $inputObject->getIntegrationPluginName();
+            $patternReplacements['/integration-plugin-template/'] = $inputObject->getIntegrationPluginSlug();
+        }
+        return $patternReplacements;
     }
 
     /**
