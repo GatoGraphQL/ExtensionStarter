@@ -58,13 +58,13 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
             );
             
             $renameFiles = $this->getRenameFiles(
+                $inputObject,
                 $fromFolder,
-                $extensionSlug,
             );
 
             $renameFolders = $this->getRenameFolders(
+                $inputObject,
                 $fromFolder,
-                $extensionSlug,
             );
             
             $this->fileCopierSystem->copyFilesFromFolder(
@@ -79,6 +79,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
 
         $templateFiles = $this->getExtensionTemplateFiles($inputObject);
         foreach ($templateFiles as $templateFile) {
+            $templateFileDir = dirname($templateFile);
             $toFolder = str_replace(
                 [
                     'templates/shared/',
@@ -88,12 +89,12 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
                     '/',
                     $extensionSlug,
                 ],
-                dirname($templateFile)
+                $templateFileDir
             );
             
             $renameFiles = $this->getRenameFiles(
-                $fromFolder,
-                $extensionSlug,
+                $inputObject,
+                $templateFileDir,
             );
             
             $this->fileCopierSystem->copyFiles(
@@ -112,14 +113,16 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
      * @return array<string,string>
      */
     protected function getRenameFiles(
+        CreateExtensionInputObjectInterface $inputObject,
         string $fromFolder,
-        string $extensionSlug,
     ): array {
         $smartFileInfos = $this->smartFinder->find([$fromFolder], '*extension-template*');
         $fromRenameFiles = array_map(
             fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
             $smartFileInfos
         );
+
+        $extensionSlug = $inputObject->getExtensionSlug();
         $toRenameFiles = array_map(
             fn (string $filePath) => str_replace(
                 'extension-template',
@@ -145,8 +148,8 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
      * @return array<string,string>
      */
     protected function getRenameFolders(
+        CreateExtensionInputObjectInterface $inputObject,
         string $fromFolder,
-        string $extensionSlug,
     ): array {
         $finder = new Finder();
         $finder->name('*extension-template*')
@@ -160,6 +163,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
             $smartFileInfos
         );
         $fromFolderLength = strlen($fromFolder);
+        $extensionSlug = $inputObject->getExtensionSlug();
         $toRenameFolders = array_map(
             fn (string $folder) => str_replace(
                 'extension-template',
