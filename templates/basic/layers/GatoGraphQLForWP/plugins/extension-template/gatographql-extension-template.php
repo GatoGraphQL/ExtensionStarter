@@ -112,7 +112,7 @@ add_action(
             $requiredPluginFile = 'extension-template/hello.php';
             /** @phpstan-ignore-next-line */
             if ($requiredPluginFile !== '') {
-                $requiredPluginVersion = '^1.7';
+                $requiredPluginVersion = '*';
                 $isWordPressPluginActive = PluginStaticHelpers::isWordPressPluginActive($requiredPluginFile);
                 if (!$isWordPressPluginActive
                     || !PluginStaticHelpers::doesActivePluginSatisfyVersionConstraint(
