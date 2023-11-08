@@ -8,9 +8,9 @@ use Nette\Neon\Neon;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\CreateExtensionWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
-use PoP\PoP\Extensions\Symplify\MonorepoBuilder\Neon\NeonFilePrinter;
 use Symplify\PackageBuilder\Neon\NeonPrinter;
 use Symplify\SmartFileSystem\SmartFileInfo;
+use Symplify\SmartFileSystem\SmartFileSystem;
 
 class UpdateExtensionPluginPHPStanConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
@@ -18,7 +18,7 @@ class UpdateExtensionPluginPHPStanConfigCreateExtensionWorker implements CreateE
     
     public function __construct(
         private NeonPrinter $neonPrinter,
-        private NeonFilePrinter $neonFilePrinter,
+        private SmartFileSystem $smartFileSystem,
     ) {
     }
 
@@ -83,8 +83,7 @@ class UpdateExtensionPluginPHPStanConfigCreateExtensionWorker implements CreateE
         $phpstanNeonData['parameters']['bootstrapFiles'][] = "%currentWorkingDirectory%/stubs/{$this->getIntegrationPluginWPackagistDependency($inputObject)}/stubs.php";
         
         $phpstanNeonContent = $this->neonPrinter->printNeon($phpstanNeonData);
-
-        $this->neonFilePrinter->printContentToOutputFile($phpstanNeonContent, $phpstanNeonFile);
+        $this->smartFileSystem->dumpFile($phpstanNeonFile, $phpstanNeonContent);
     }
 
     /**
