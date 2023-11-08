@@ -1,6 +1,4 @@
 parameters:
-	bootstrapFiles:
-		- %currentWorkingDirectory%/stubs/wpackagist-plugin/extension-template/stubs.php
 	level: 8
 	paths:
 		- src
