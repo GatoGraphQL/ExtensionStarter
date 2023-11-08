@@ -42,6 +42,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
         $patternReplacements = $this->getPatternReplacements($inputObject);
         $template = $inputObject->getTemplate();
         $extensionSlug = $inputObject->getExtensionSlug();
+        $integrationPluginSlug = $inputObject->getIntegrationPluginSlug();
      
         $templateFolders = $this->getExtensionTemplateFolders($inputObject);
         foreach ($templateFolders as $fromFolder) {
@@ -84,10 +85,12 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
                 [
                     'templates/shared/',
                     'extension-template',
+                    'integration-plugin-template',
                 ],
                 [
                     '/',
                     $extensionSlug,
+                    $integrationPluginSlug,
                 ],
                 $templateFileDir
             );
