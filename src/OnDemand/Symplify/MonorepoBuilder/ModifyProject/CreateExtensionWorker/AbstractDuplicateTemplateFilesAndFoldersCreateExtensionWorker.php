@@ -9,16 +9,6 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contr
 abstract class AbstractDuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
     /**
-     * @var string[]
-     */
-    protected array $extensionTemplateFolders;
-
-    public function __construct()
-    {
-        $this->extensionTemplateFolders = $this->getExtensionTemplateFolders();
-    }
-
-    /**
      * @return string[]
      */
     protected function getExtensionTemplateFolders(): array

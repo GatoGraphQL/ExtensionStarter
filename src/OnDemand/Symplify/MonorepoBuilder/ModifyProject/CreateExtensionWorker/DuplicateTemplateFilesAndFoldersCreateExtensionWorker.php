@@ -19,7 +19,6 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker extends AbstractDupl
         protected SmartFinder $smartFinder,
         protected FinderSanitizer $finderSanitizer,
     ) {
-       parent::__construct();
     }
 
     /**
