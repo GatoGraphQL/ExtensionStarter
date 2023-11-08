@@ -43,7 +43,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
         $templateName = $this->getTemplateName();
         $extensionSlug = $inputObject->getExtensionSlug();
      
-        $templateFolders = $this->getExtensionTemplateFolders();
+        $templateFolders = $this->getExtensionTemplateFolders($inputObject);
         foreach ($templateFolders as $fromFolder) {
             $toFolder = str_replace(
                 [
@@ -77,7 +77,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
             );
         }
 
-        $templateFiles = $this->getExtensionTemplateFiles();
+        $templateFiles = $this->getExtensionTemplateFiles($inputObject);
         foreach ($templateFiles as $templateFile) {
             $toFolder = str_replace(
                 [
@@ -202,7 +202,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
     /**
      * @return string[]
      */
-    protected function getExtensionTemplateFolders(): array
+    protected function getExtensionTemplateFolders(CreateExtensionInputObjectInterface $inputObject): array
     {
         $rootFolder = dirname(__DIR__, 6);
         $templateName = $this->getTemplateName();
@@ -215,7 +215,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
     /**
      * @return string[]
      */
-    protected function getExtensionTemplateFiles(): array
+    protected function getExtensionTemplateFiles(CreateExtensionInputObjectInterface $inputObject): array
     {
         $rootFolder = dirname(__DIR__, 6);
         return [
