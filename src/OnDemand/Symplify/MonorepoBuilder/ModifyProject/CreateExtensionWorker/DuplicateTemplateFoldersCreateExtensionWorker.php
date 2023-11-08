@@ -47,11 +47,11 @@ class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTem
         foreach ($folders as $fromFolder) {
             $toFolder = str_replace(
                 [
-                    'templates/' . $templateName,
+                    'templates/' . $templateName . '/',
                     'extension-template',
                 ],
                 [
-                    'layers',
+                    '/',
                     $extensionSlug,
                 ],
                 $fromFolder

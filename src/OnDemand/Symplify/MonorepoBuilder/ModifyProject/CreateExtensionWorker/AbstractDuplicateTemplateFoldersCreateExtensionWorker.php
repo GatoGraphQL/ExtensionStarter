@@ -26,8 +26,8 @@ abstract class AbstractDuplicateTemplateFoldersCreateExtensionWorker implements 
         $rootFolder = dirname(__DIR__, 6);
         $templateName = $this->getTemplateName();
         return [
-            $rootFolder . '/templates/' . $templateName . '/GatoGraphQLForWP/packages/extension-template-schema',
-            $rootFolder . '/templates/' . $templateName . '/GatoGraphQLForWP/plugins/extension-template',
+            $rootFolder . '/templates/' . $templateName . '/layers/GatoGraphQLForWP/packages/extension-template-schema',
+            $rootFolder . '/templates/' . $templateName . '/layers/GatoGraphQLForWP/plugins/extension-template',
         ];
     }
 
