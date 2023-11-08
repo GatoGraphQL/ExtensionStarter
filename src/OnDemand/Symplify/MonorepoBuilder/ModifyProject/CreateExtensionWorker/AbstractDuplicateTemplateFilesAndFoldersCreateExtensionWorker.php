@@ -6,7 +6,7 @@ namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\C
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\CreateExtensionWorkerInterface;
 
-abstract class AbstractDuplicateTemplateFoldersCreateExtensionWorker implements CreateExtensionWorkerInterface
+abstract class AbstractDuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
     /**
      * @var string[]

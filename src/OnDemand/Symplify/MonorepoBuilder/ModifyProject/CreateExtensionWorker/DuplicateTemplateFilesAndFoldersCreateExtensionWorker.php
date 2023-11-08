@@ -12,7 +12,7 @@ use Symplify\SmartFileSystem\Finder\FinderSanitizer;
 use Symplify\SmartFileSystem\Finder\SmartFinder;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-class DuplicateTemplateFoldersCreateExtensionWorker extends AbstractDuplicateTemplateFoldersCreateExtensionWorker
+class DuplicateTemplateFilesAndFoldersCreateExtensionWorker extends AbstractDuplicateTemplateFilesAndFoldersCreateExtensionWorker
 {
     public function __construct(
         protected FileCopierSystem $fileCopierSystem,
