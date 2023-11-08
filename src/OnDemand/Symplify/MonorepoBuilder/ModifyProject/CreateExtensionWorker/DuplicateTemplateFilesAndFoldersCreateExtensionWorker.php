@@ -116,7 +116,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
         CreateExtensionInputObjectInterface $inputObject,
         string $fromFolder,
     ): array {
-        $files = [
+        return [
             ...$this->getSearchReplaceRenameFiles(
                 $fromFolder,
                 'extension-template',
@@ -128,17 +128,6 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
                 $inputObject->getExtensionClassName(),
             ),
         ];
-        if ($inputObject->getIntegrationPluginSlug() !== '') {
-            $files = [
-                ...$files,
-                ...$this->getSearchReplaceRenameFiles(
-                    $fromFolder,
-                    'integration-plugin-template',
-                    $inputObject->getIntegrationPluginSlug(),
-                ),
-            ];
-        }
-        return $files;
     }
 
     /**
@@ -186,8 +175,37 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
         CreateExtensionInputObjectInterface $inputObject,
         string $fromFolder,
     ): array {
+        $folders = $this->getSearchReplaceRenameFolders(
+            $fromFolder,
+            'extension-template',
+            $inputObject->getExtensionSlug(),
+        );
+        if ($inputObject->getIntegrationPluginSlug() !== '') {
+            $folders = [
+                ...$folders,
+                ...$this->getSearchReplaceRenameFolders(
+                    $fromFolder,
+                    'integration-plugin-template',
+                    $inputObject->getIntegrationPluginSlug(),
+                ),
+            ];
+        }
+        return $folders;
+    }
+
+    /**
+     * Find folders with "extension-template", and indicate how
+     * to replace that name
+     * 
+     * @return array<string,string>
+     */
+    protected function getSearchReplaceRenameFolders(
+        string $fromFolder,
+        string $search,
+        string $replace,
+    ): array {
         $finder = new Finder();
-        $finder->name('*extension-template*')
+        $finder->name("*{$search}*")
             ->in($fromFolder)
             ->directories()
             ->sortByName();
@@ -198,11 +216,10 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
             $smartFileInfos
         );
         $fromFolderLength = strlen($fromFolder);
-        $extensionSlug = $inputObject->getExtensionSlug();
         $toRenameFolders = array_map(
             fn (string $folder) => str_replace(
-                'extension-template',
-                $extensionSlug,
+                $search,
+                $replace,
                 substr($folder, $fromFolderLength)
             ),
             $fromRenameFolders
