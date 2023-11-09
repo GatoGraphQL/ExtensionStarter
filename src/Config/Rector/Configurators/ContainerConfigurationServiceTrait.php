@@ -22,34 +22,10 @@ trait ContainerConfigurationServiceTrait
     /**
      * @return string[]
      */
-    protected function getBootstrapFiles(): array
+    protected function getDownstreamBootstrapFiles(): array
     {
-        /**
-         * @gatographql-extension-info
-         *
-         * Add stubs for all plugins for which there is an extension
-         * (eg: WooCommerce, Yoast SEO or, in this case, Hello Dolly).
-         *
-         * This is to avoid PHPStan producing error from unexisting classes,
-         * methods, constants, etc, when analyzing those packages.
-         * (Eg: when calling `hello_dolly_get_lyric()` in the field resolver).
-         *
-         * It also avoids Rector from producing errors when downgrading
-         * the code.
-         *
-         * @see layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php
-         *
-         * The stub files, if not already available for that plugin,
-         * can be generated using `php-stubs/generator`
-         *
-         * @see https://github.com/php-stubs/generator
-         * @see https://github.com/php-stubs/wordpress-stubs
-         */
-        return array_merge(
-            parent::getBootstrapFiles(),
-            [
-                $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
-            ]
-        );
+        return [
+            $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+        ];
     }
 }
