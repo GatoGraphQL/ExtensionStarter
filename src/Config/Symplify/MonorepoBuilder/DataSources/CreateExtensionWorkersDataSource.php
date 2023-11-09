@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\DuplicateTemplateFilesAndFoldersCreateExtensionWorker;
+use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateDataToAppendAndRemoveDataSourceCreateExtensionWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateExtensionPluginComposerCreateExtensionWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateExtensionPluginPHPStanConfigCreateExtensionWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateExtensionPluginVSCodeConfigCreateExtensionWorker;
@@ -22,6 +23,7 @@ class CreateExtensionWorkersDataSource
             UpdateExtensionPluginComposerCreateExtensionWorker::class,
             UpdateExtensionPluginPHPStanConfigCreateExtensionWorker::class,
             UpdateExtensionPluginVSCodeConfigCreateExtensionWorker::class,
+            UpdateDataToAppendAndRemoveDataSourceCreateExtensionWorker::class,
         ];
     }
 }

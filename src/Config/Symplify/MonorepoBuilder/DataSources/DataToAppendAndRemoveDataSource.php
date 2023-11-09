@@ -20,7 +20,7 @@ class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataS
          *
          * @gatographql-readonly-code
          */
-        // { Placeholder: Insert an integration plugin here }
+        // { Command Placeholder: Integration plugin Composer package }
     ];
 
     public function __construct(
