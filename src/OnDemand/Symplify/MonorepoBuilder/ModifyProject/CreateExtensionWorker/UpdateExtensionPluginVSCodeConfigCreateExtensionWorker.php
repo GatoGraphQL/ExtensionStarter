@@ -8,6 +8,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contr
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
@@ -83,13 +84,42 @@ class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateEx
     protected function getVSCodeMappingEntries(CreateExtensionInputObjectInterface $inputObject): array
     {
         $extensionSlug = $inputObject->getExtensionSlug();
-        $entries = [
-            "/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}/vendor/composer-vendor/{$extensionSlug}-schema" => "layers/GatoGraphQLForWP/packages/{$extensionSlug}-schema",
-            "/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}" => "layers/GatoGraphQLForWP/plugins/{$extensionSlug}",
-        ];
+
+        $entries = [];
+
+        /**
+         * Because we don't know how "{composer-vendor}" was initialized
+         * with the `initialize-project` command, retrieve the package name
+         * (including the {composer-vendor} bit) from its composer.json
+         */
+        foreach ($this->getPackageComposerJSONFiles($inputObject) as $packageComposerJSONFile) {
+            $packageComposerJSONFileSmartFileInfo = new SmartFileInfo($packageComposerJSONFile);
+        
+            $json = $this->jsonFileManager->loadFromFileInfo($packageComposerJSONFileSmartFileInfo);
+            
+            // $packageName will be "composer-vendor/{$extensionSlug}-schema"
+            $packageName = $json[ComposerJsonSection::NAME];
+            $entries["/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}/vendor/{$packageName}"] = "layers/GatoGraphQLForWP/packages/{$extensionSlug}-schema";
+        }
+
+        // Add the entry for the plugin
+        $entries["/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}"] = "layers/GatoGraphQLForWP/plugins/{$extensionSlug}";
+
+        // Prepend the workspace folder to all entries
         return array_map(
             fn (string $entry) => '${workspaceFolder}/' . $entry,
             $entries 
         );
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getPackageComposerJSONFiles(CreateExtensionInputObjectInterface $inputObject): array
+    {
+        $rootFolder = dirname(__DIR__, 6);
+        return [
+            $rootFolder . '/layers/GatoGraphQLForWP/packages/' . $inputObject->getExtensionSlug() . '-schema/composer.json',
+        ];
     }
 }
