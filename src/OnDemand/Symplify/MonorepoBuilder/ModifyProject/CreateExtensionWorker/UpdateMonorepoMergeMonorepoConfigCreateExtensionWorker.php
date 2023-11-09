@@ -10,7 +10,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\PoP\Extensions\Symplify\MonorepoBuilder\SmartFile\FileContentReplacerSystem;
 
-class UpdateDataToAppendAndRemoveDataSourceCreateExtensionWorker implements CreateExtensionWorkerInterface
+class UpdateMonorepoMergeMonorepoConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
     use UpdateExtensionPluginCreateExtensionWorkerTrait;
     
