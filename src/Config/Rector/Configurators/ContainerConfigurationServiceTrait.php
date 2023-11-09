@@ -20,12 +20,19 @@ trait ContainerConfigurationServiceTrait
     }
 
     /**
+     * Retrieve all the PHP stubs from under stubs/
+     *
      * @return string[]
      */
     protected function getDownstreamBootstrapFiles(): array
     {
-        return [
-            $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
-        ];
+        $stubFiles = array_values(array_filter(
+            scandir($this->rootDirectory . '/stubs'),
+            fn(string $file) => str_ends_with($file, '.php')
+        ));
+        return $stubFiles;
+        // return [
+        //     $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+        // ];
     }
 }
