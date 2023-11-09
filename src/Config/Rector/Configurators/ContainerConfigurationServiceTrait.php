@@ -24,14 +24,17 @@ trait ContainerConfigurationServiceTrait
     /**
      * Retrieve all the PHP stubs from under stubs/
      *
+     * For instance, this will return:
+     * 
+     *   [
+     *     $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
+     *   ]
+     *
      * @return string[]
      */
     protected function getDownstreamBootstrapFiles(): array
     {
         $stubsFolder = $this->rootDirectory . '/stubs';
         return $this->getAllPHPFilesUnderFolder($stubsFolder);
-        // return [
-        //     $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
-        // ];
     }
 }
