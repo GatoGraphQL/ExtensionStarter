@@ -70,10 +70,14 @@ class UpdateMonorepoMergeMonorepoConfigCreateExtensionWorker implements CreateEx
         CreateExtensionInputObjectInterface $inputObject,
         string $monorepoMergePHPConfigFile,
     ): void {
+        $code = sprintf(
+            '$dataToRemove[\'require-dev\'][\'%s\'] = \'*\'',
+            $this->getIntegrationPluginWPackagistDependency($inputObject)
+        );
         $this->fileContentReplacerSystem->replaceContentInFiles(
             [$monorepoMergePHPConfigFile],
             [
-                '#(\s+?)(// { Command Placeholder: Integration plugin Composer package })#' => '$1' . $this->getIntegrationPluginWPackagistDependency($inputObject) . ',' . PHP_EOL . '$1$2',
+                '#(\s+?)(// { Command Placeholder: Integration plugin Composer package })#' => '$1' . $code . ',' . '$1$2',
             ],
             true,
         );
