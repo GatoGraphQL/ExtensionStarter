@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Config\Rector\Configurators;
 
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+
 trait ContainerConfigurationServiceTrait
 {
     /**
@@ -27,12 +30,32 @@ trait ContainerConfigurationServiceTrait
     protected function getDownstreamBootstrapFiles(): array
     {
         $stubFiles = array_values(array_filter(
-            scandir($this->rootDirectory . '/stubs'),
+            $this->getAllFilesUnderFolder($this->rootDirectory . '/stubs'),
             fn(string $file) => str_ends_with($file, '.php')
         ));
         return $stubFiles;
         // return [
         //     $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
         // ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getAllFilesUnderFolder(string $dir): array
+    {
+        $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
+        $files = []; 
+
+        /** @var SplFileInfo $file */
+        foreach ($rii as $file) {
+            if ($file->isDir()){ 
+                continue;
+            }
+                
+            $files[] = $file->getPathname();        
+        }
+
+        return $files;
     }
 }
