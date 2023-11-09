@@ -54,10 +54,15 @@ class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateEx
         $vscodeLaunchJSONFileSmartFileInfo = new SmartFileInfo($vscodeLaunchJSONFile);
 
         $json = $this->jsonFileManager->loadFromFileInfo($vscodeLaunchJSONFileSmartFileInfo);
-        $json['configurations'][0]['pathMappings'] = array_merge(
-            $json['configurations'][0]['pathMappings'] ?? [],
-            $this->getVSCodeMappingEntries(),
-        );
+        foreach ($json['configurations'] as &$configuration) {
+            if (!str_starts_with($configuration['name'], '[Lando webserver]')) {
+                continue;
+            }
+            $configuration['pathMappings'] = array_merge(
+                $configuration['pathMappings'] ?? [],
+                $this->getVSCodeMappingEntries(),
+            );
+        }
         
         $this->jsonFileManager->printJsonToFileInfo($json, $vscodeLaunchJSONFileSmartFileInfo);
     }
