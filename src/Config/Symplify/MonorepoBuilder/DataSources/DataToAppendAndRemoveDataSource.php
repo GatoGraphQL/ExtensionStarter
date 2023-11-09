@@ -16,7 +16,8 @@ class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataS
          * append new extension plugins when executing the
          * `create-extension` command.
          *
-         * @see 
+         * @see src/OnDemand/Symplify/MonorepoBuilder/ModifyProject/CreateExtensionWorker/UpdateMonorepoMergeMonorepoConfigCreateExtensionWorker.php
+         * @see UpdateMonorepoMergeMonorepoConfigCreateExtensionWorker::COMMAND_PLACEHOLDER
          *
          * @gatographql-readonly-code
          */
