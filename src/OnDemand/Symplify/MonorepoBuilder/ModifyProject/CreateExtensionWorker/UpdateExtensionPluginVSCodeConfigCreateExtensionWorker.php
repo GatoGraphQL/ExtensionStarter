@@ -59,8 +59,8 @@ class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateEx
                 continue;
             }
             $configuration['pathMappings'] = array_merge(
-                $configuration['pathMappings'] ?? [],
                 $this->getVSCodeMappingEntries(),
+                $configuration['pathMappings'] ?? [],
             );
         }
         
