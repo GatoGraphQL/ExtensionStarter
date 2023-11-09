@@ -42,13 +42,17 @@ class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateEx
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
         $vscodeLaunchJSONFile = $this->getVSCodeLaunchJSONFile();
-        $this->addMappingForPackagesToVSCodeLaunchJSONFile($vscodeLaunchJSONFile);
+        $this->addMappingForPackagesToVSCodeLaunchJSONFile(
+            $inputObject,
+            $vscodeLaunchJSONFile,
+        );
     }
 
     /**
      * @param CreateExtensionInputObjectInterface $inputObject
      */
     protected function addMappingForPackagesToVSCodeLaunchJSONFile(
+        CreateExtensionInputObjectInterface $inputObject,
         string $vscodeLaunchJSONFile,
     ): void {
         $vscodeLaunchJSONFileSmartFileInfo = new SmartFileInfo($vscodeLaunchJSONFile);
@@ -59,7 +63,7 @@ class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateEx
                 continue;
             }
             $configuration['pathMappings'] = array_merge(
-                $this->getVSCodeMappingEntries(),
+                $this->getVSCodeMappingEntries($inputObject),
                 $configuration['pathMappings'] ?? [],
             );
         }
@@ -76,11 +80,12 @@ class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateEx
     /**
      * @return string[]
      */
-    protected function getVSCodeMappingEntries(): array
+    protected function getVSCodeMappingEntries(CreateExtensionInputObjectInterface $inputObject): array
     {
+        $extensionSlug = $inputObject->getExtensionSlug();
         $entries = [
-            'layers/GatoGraphQLForWP/packages/extension-template-schema',
-            'layers/GatoGraphQLForWP/plugins/extension-template',
+            "/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}/vendor/composer-vendor/{$extensionSlug}-schema" => "layers/GatoGraphQLForWP/packages/{$extensionSlug}-schema",
+            "/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}" => "layers/GatoGraphQLForWP/plugins/{$extensionSlug}",
         ];
         return array_map(
             fn (string $entry) => '${workspaceFolder}/' . $entry,
