@@ -6,6 +6,7 @@ namespace PoP\ExtensionStarter\Config\Rector\Configurators;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use SplFileInfo;
 
 trait ContainerConfigurationServiceHelpersTrait
 {
@@ -21,12 +22,14 @@ trait ContainerConfigurationServiceHelpersTrait
     }
 
     /**
+     * @see https://stackoverflow.com/a/24784020/14402031
+     * 
      * @return string[]
      */
     protected function getAllFilesUnderFolder(string $dir): array
     {
+        $files = [];
         $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
-        $files = []; 
 
         /** @var SplFileInfo $file */
         foreach ($rii as $file) {
