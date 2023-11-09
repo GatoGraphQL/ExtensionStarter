@@ -9,8 +9,6 @@
             "pathMappings": {
                 "/app/wordpress/wp-content/plugins/gatographql-hello-dolly/vendor/my-company-for-gatographql/hello-dolly-schema": "${workspaceFolder}/layers/GatoGraphQLForWP/packages/hello-dolly-schema",
                 "/app/wordpress/wp-content/plugins/gatographql-hello-dolly": "${workspaceFolder}/layers/GatoGraphQLForWP/plugins/hello-dolly",
-                
-
                 "/app/wordpress/wp-content/plugins/gatographql-testing": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing",
                 "/app/wordpress/wp-content/plugins/gatographql-testing-schema": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema",
                 "/app/wordpress/wp-content/plugins/gatographql/vendor/getpop/component-model": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/Engine/packages/component-model",
@@ -132,8 +130,6 @@
                 "/app/wordpress/wp-content/plugins/gatographql/vendor/pop-wp-schema/usermeta": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/WPSchema/packages/usermeta",
                 "/app/wordpress/wp-content/plugins/gatographql/vendor/pop-wp-schema/users": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/WPSchema/packages/users",
                 "/app/wordpress/wp-content/plugins/gatographql": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql",
-
-
                 "/app/wordpress/Engine/packages/access-control/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/Engine/packages/access-control",
                 "/app/wordpress/Engine/packages/cache-control/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/Engine/packages/cache-control",
                 "/app/wordpress/Engine/packages/component-model/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/Engine/packages/component-model",
@@ -253,11 +249,7 @@
                 "/app/wordpress/WPSchema/packages/taxonomymeta/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/WPSchema/packages/taxonomymeta",
                 "/app/wordpress/WPSchema/packages/usermeta/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/WPSchema/packages/usermeta",
                 "/app/wordpress/WPSchema/packages/users/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/WPSchema/packages/users",
-
-
                 "/app/wordpress": "${workspaceFolder}/vendor/wordpress/wordpress",
-
-
                 "/app": "${workspaceFolder}"
             }
         },
