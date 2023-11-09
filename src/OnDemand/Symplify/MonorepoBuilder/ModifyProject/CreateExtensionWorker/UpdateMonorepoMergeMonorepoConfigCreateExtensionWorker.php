@@ -12,6 +12,8 @@ use PoP\PoP\Extensions\Symplify\MonorepoBuilder\SmartFile\FileContentReplacerSys
 
 class UpdateMonorepoMergeMonorepoConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
+    public const COMMAND_PLACEHOLDER = '// { Command Placeholder: Integration plugin Composer package }';
+
     use CreateExtensionWorkerTrait;
     
     public function __construct(
@@ -77,7 +79,7 @@ class UpdateMonorepoMergeMonorepoConfigCreateExtensionWorker implements CreateEx
         $this->fileContentReplacerSystem->replaceContentInFiles(
             [$monorepoMergePHPConfigFile],
             [
-                '#(\s+?)(// { Command Placeholder: Integration plugin Composer package })#' => '$1' . $code . ',' . '$1$2',
+                '#(\s+?)(' . self::COMMAND_PLACEHOLDER . ')#' => '$1' . $code . ',' . '$1$2',
             ],
             true,
         );
