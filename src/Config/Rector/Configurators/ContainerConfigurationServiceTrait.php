@@ -28,7 +28,8 @@ trait ContainerConfigurationServiceTrait
      */
     protected function getDownstreamBootstrapFiles(): array
     {
-        return $this->getAllPHPFilesUnderFolder($this->rootDirectory . '/stubs');
+        $stubsFolder = $this->rootDirectory . '/stubs';
+        return $this->getAllPHPFilesUnderFolder($stubsFolder);
         // return [
         //     $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
         // ];
