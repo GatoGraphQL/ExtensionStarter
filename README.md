@@ -630,7 +630,7 @@ The stub files, if not already available for that WordPress plugin, can be gener
 
 </details>
 
-Edit files:
+<!-- Edit files:
 
 - `src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php`
 - `src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
@@ -651,7 +651,7 @@ return array_merge(
     $this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
   ]
 );
-```
+``` -->
 
 Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc):
 
