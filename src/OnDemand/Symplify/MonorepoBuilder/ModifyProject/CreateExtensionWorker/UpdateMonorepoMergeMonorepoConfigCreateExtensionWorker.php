@@ -12,7 +12,7 @@ use PoP\PoP\Extensions\Symplify\MonorepoBuilder\SmartFile\FileContentReplacerSys
 
 class UpdateMonorepoMergeMonorepoConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
-    use UpdateExtensionPluginCreateExtensionWorkerTrait;
+    use CreateExtensionWorkerTrait;
     
     public function __construct(
         private FilesContainingStringFinder $filesContainingStringFinder,

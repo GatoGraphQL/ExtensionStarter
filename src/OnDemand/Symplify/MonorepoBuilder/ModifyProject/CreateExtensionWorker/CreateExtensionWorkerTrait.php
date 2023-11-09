@@ -6,7 +6,7 @@ namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\C
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 
-trait UpdateExtensionPluginCreateExtensionWorkerTrait
+trait CreateExtensionWorkerTrait
 {
     /**
      * @param CreateExtensionInputObjectInterface $inputObject

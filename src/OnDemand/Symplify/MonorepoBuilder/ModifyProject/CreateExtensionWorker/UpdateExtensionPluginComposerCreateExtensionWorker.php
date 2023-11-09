@@ -13,7 +13,7 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 
 class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
-    use UpdateExtensionPluginCreateExtensionWorkerTrait;
+    use CreateExtensionWorkerTrait;
     
     public function __construct(
         protected JsonFileManager $jsonFileManager,

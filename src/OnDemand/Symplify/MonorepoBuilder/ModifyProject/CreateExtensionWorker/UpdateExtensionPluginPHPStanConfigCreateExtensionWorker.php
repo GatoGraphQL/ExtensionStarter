@@ -14,7 +14,7 @@ use Symplify\SmartFileSystem\SmartFileSystem;
 
 class UpdateExtensionPluginPHPStanConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
-    use UpdateExtensionPluginCreateExtensionWorkerTrait;
+    use CreateExtensionWorkerTrait;
     
     public function __construct(
         private NeonPrinter $neonPrinter,
