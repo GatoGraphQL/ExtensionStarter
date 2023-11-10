@@ -11,9 +11,9 @@ use PoP\PoP\Extensions\Symplify\MonorepoBuilder\SmartFile\FileContentReplacerSys
 
 class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
-    public const COMMAND_PLACEHOLDER = '// { Command Placeholder: Integration plugin Composer package }';
-
     use CreateExtensionWorkerTrait;
+
+    public const COMMAND_PLACEHOLDER = '// { Command Placeholder: Integration plugin Composer package }';
 
     public function __construct(
         private FileContentReplacerSystem $fileContentReplacerSystem,
