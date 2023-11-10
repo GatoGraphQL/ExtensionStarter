@@ -6,7 +6,6 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 
 interface CreateExtensionInputObjectInterface extends ModifyProjectInputObjectInterface
 {
-    // @todo Review Options for the CreateExtension command
     public function getTemplate(): string;
     public function getIntegrationPluginFile(): string;
     public function getIntegrationPluginSlug(): string;

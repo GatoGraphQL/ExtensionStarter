@@ -46,7 +46,6 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Create the scaffolding for an extension plugin, hosted in this monorepo.');
 
-        // @todo Review Options for the CreateExtension command
         $this->addOption(
             Option::TEMPLATE,
             null,
@@ -122,7 +121,6 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
         if ($this->inputObject === null) {
             $availableTemplates = $this->getAvailableTemplates();
 
-            // @todo Review Options for the CreateExtension command
             $template = (string) $input->getOption(Option::TEMPLATE);
             // validation
             if (!in_array($template, $availableTemplates)) {
@@ -135,7 +133,6 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
                 );
             }
 
-            // @todo Review Options for the CreateExtension command
             $integrationPluginFile = (string) $input->getOption(Option::INTEGRATION_PLUGIN_FILE);
             // validation
             $this->createExtensionGuard->guardIntegrationPluginFile($integrationPluginFile);
@@ -196,7 +193,6 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
             $extensionModuleName = strtoupper(str_replace('-', '_', $extensionSlug));
 
             $this->inputObject = new CreateExtensionInputObject(
-                // @todo Review Options for the CreateExtension command
                 $template,
                 $integrationPluginFile,
                 $integrationPluginSlug,

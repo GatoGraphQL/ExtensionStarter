@@ -7,7 +7,6 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 class CreateExtensionInputObject implements CreateExtensionInputObjectInterface
 {
     public function __construct(
-        // @todo Review Options for the CreateExtension command
         private string $template,
         private string $integrationPluginFile,
         private string $integrationPluginSlug,
@@ -20,7 +19,6 @@ class CreateExtensionInputObject implements CreateExtensionInputObjectInterface
     ) {
     }
 
-    // @todo Review Options for the CreateExtension command
     public function getTemplate(): string
     {
         return $this->template;

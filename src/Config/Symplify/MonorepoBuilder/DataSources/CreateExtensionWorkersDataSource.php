@@ -23,7 +23,6 @@ class CreateExtensionWorkersDataSource
     public function getCreateExtensionWorkerClasses(): array
     {
         return [
-            // @todo Complete CreateExtension workers!!!
             DuplicateTemplateFilesAndFoldersCreateExtensionWorker::class,
             UpdateExtensionPluginComposerCreateExtensionWorker::class,
             UpdateExtensionPluginPHPStanConfigCreateExtensionWorker::class,
