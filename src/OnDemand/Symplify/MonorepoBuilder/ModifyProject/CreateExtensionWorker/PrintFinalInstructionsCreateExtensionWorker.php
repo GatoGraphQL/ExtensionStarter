@@ -15,22 +15,14 @@ final class PrintFinalInstructionsCreateExtensionWorker implements CreateExtensi
      */
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        $items = [];
-        if ($inputObject->getIntegrationPluginSlug() !== '') {
-            $items[] = sprintf(
-                'Add a "require-dev" entry with "%s"',
-                ''
-            );
-        }
-        $description = 'We are all set! Now, please execute the following commands:';
-        if ($items !== []) {
-            return sprintf(
-                '%s:%s%s',
-                $description,
-                PHP_EOL . '- ',
-                implode(PHP_EOL . '- ', $items)
-            );
-        }
+        $description = 'The `create-command` has been successful.
+        
+To finish, please execute the following commands:
+
+    $ composer rebuild-app-and-server
+    # (This will rebuild the Lando Webserver for DEV, mapping the new extension)
+
+        ';
         return $description;
     }
 
