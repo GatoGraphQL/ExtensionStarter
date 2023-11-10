@@ -26,10 +26,8 @@ trait CreateExtensionWorkerTrait
     {
         $packageComposerJSONFileSmartFileInfo = new SmartFileInfo($packageComposerJSONFile);
     
-        $json = $this->getJsonFileManager()->loadFromFileInfo($packageComposerJSONFileSmartFileInfo);
+        $json = $this->jsonFileManager->loadFromFileInfo($packageComposerJSONFileSmartFileInfo);
         
         return $json[ComposerJsonSection::NAME];
     }
-
-    abstract protected function getJsonFileManager(): JsonFileManager;
 }
