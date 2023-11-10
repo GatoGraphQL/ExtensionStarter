@@ -96,25 +96,31 @@ class UpdateMonorepoLandoBashSetupCreateExtensionWorker implements CreateExtensi
         if ($inputObject->getIntegrationPluginSlug() !== '') {
             $integrationPluginSlug = $inputObject->getIntegrationPluginSlug();
             $content = <<<BASH
-                if wp plugin is-installed $integrationPluginSlug; then
-                    wp plugin activate $integrationPluginSlug
-                else
-                    wp plugin install $integrationPluginSlug --activate
-                fi    
+
+            if wp plugin is-installed $integrationPluginSlug; then
+                wp plugin activate $integrationPluginSlug
+            else
+                wp plugin install $integrationPluginSlug --activate
+            fi
+
             BASH;
         }
 
         if ($isProd) {
             $content .= <<<BASH
+
             if wp plugin is-installed gatographql-$extensionSlug; then
                 wp plugin activate gatographql-$extensionSlug
             else
                 echo "Please download the latest PROD version of the 'Gato GraphQL - $extensionName' plugin from your GitHub repo, and install it on this WordPress site"
             fi
+
             BASH;
         } else {
             $content .= <<<BASH
-                wp plugin activate gatographql-$extensionSlug
+
+            wp plugin activate gatographql-$extensionSlug
+            
             BASH;
         }
 
