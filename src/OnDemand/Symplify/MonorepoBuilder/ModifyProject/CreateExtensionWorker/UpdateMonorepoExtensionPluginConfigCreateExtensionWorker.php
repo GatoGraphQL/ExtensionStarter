@@ -58,22 +58,19 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
             return;
         }
 
-        $monorepoMergePHPConfigFile = $this->getDataToAppendAndRemoveDataSourceFile();
-        $this->updateMergeMonorepoPHPConfig(
-            $inputObject,
-            $monorepoMergePHPConfigFile,
-        );
+        $this->updateDataToAppendAndRemoveDataSourceFile($inputObject);
     }
 
     /**
      * @param CreateExtensionInputObjectInterface $inputObject
      */
-    protected function updateMergeMonorepoPHPConfig(
+    protected function updateDataToAppendAndRemoveDataSourceFile(
         CreateExtensionInputObjectInterface $inputObject,
-        string $monorepoMergePHPConfigFile,
     ): void {
         $this->fileContentReplacerSystem->replaceContentInFiles(
-            [$monorepoMergePHPConfigFile],
+            [
+                $this->getDataToAppendAndRemoveDataSourceFile(),
+            ],
             [
                 '#(\s+?)(' . self::COMMAND_PLACEHOLDER . ')#' => '$1\'' . $this->getIntegrationPluginWPackagistDependency($inputObject) . '\',' . '$1$2',
             ],
