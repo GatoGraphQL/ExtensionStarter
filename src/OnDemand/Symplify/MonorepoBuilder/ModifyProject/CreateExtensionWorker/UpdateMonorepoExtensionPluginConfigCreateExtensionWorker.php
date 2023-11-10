@@ -10,7 +10,7 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Input
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\PoP\Extensions\Symplify\MonorepoBuilder\SmartFile\FileContentReplacerSystem;
 
-class UpdateMonorepoMergeMonorepoConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
+class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
     public const COMMAND_PLACEHOLDER = '// { Command Placeholder: Integration plugin Composer package }';
 
