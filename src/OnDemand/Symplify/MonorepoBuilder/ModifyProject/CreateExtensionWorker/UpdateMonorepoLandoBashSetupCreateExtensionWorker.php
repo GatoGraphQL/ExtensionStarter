@@ -54,32 +54,32 @@ class UpdateMonorepoLandoBashSetupCreateExtensionWorker implements CreateExtensi
         }
 
         // DEV server
-        $this->installIntegrationPluginInLandoServer($inputObject, false);
+        $this->installIntegrationPluginInLandoWebserver($inputObject, false);
 
         // PROD server
-        $this->installIntegrationPluginInLandoServer($inputObject, true);
+        $this->installIntegrationPluginInLandoWebserver($inputObject, true);
     }
 
     /**
      * @param CreateExtensionInputObjectInterface $inputObject
      */
-    protected function installIntegrationPluginInLandoServer(
+    protected function installIntegrationPluginInLandoWebserver(
         CreateExtensionInputObjectInterface $inputObject,
         bool $isProd,
     ): void {
-        $landoServerActivatePluginsBashFile = $this->getLandoServerActivatePluginsBashFile($isProd);
+        $landoWebserverActivatePluginsBashFile = $this->getLandoWebserverActivatePluginsBashFile($isProd);
 
-        $landoServerActivatePluginsBashFileSmartFileInfo = new SmartFileInfo($landoServerActivatePluginsBashFile);
+        $landoWebserverActivatePluginsBashFileSmartFileInfo = new SmartFileInfo($landoWebserverActivatePluginsBashFile);
 
-        $landoServerActivatePluginsBashContent = $landoServerActivatePluginsBashFileSmartFileInfo->getContents();
+        $landoWebserverActivatePluginsBashContent = $landoWebserverActivatePluginsBashFileSmartFileInfo->getContents();
         
         // Append the content
-        $landoServerActivatePluginsBashContent .= $this->getActivatePluginsBashContentToAppend($inputObject, $isProd);
+        $landoWebserverActivatePluginsBashContent .= $this->getActivatePluginsBashContentToAppend($inputObject, $isProd);
 
-        $this->smartFileSystem->dumpFile($landoServerActivatePluginsBashFile, $landoServerActivatePluginsBashContent);
+        $this->smartFileSystem->dumpFile($landoWebserverActivatePluginsBashFile, $landoWebserverActivatePluginsBashContent);
     }
 
-    protected function getLandoServerActivatePluginsBashFile(bool $isProd): string
+    protected function getLandoWebserverActivatePluginsBashFile(bool $isProd): string
     {
         $rootFolder = dirname(__DIR__, 6);
         return $rootFolder . '/webservers/gatographql-extensions' . ($isProd ? '-for-prod' : '') . '/setup-extensions/activate-plugins.sh';
