@@ -96,7 +96,8 @@ class UpdateMonorepoLandoBashSetupCreateExtensionWorker implements CreateExtensi
         if ($inputObject->getIntegrationPluginSlug() !== '') {
             $integrationPluginSlug = $inputObject->getIntegrationPluginSlug();
             $content = <<<BASH
-
+            
+            # Download and maybe activate external plugins
             if wp plugin is-installed $integrationPluginSlug; then
                 wp plugin activate $integrationPluginSlug
             else
@@ -109,6 +110,7 @@ class UpdateMonorepoLandoBashSetupCreateExtensionWorker implements CreateExtensi
         if ($isProd) {
             $content .= <<<BASH
 
+            # Activate own plugins
             if wp plugin is-installed gatographql-$extensionSlug; then
                 wp plugin activate gatographql-$extensionSlug
             else
@@ -119,8 +121,9 @@ class UpdateMonorepoLandoBashSetupCreateExtensionWorker implements CreateExtensi
         } else {
             $content .= <<<BASH
 
+            # Activate own plugins
             wp plugin activate gatographql-$extensionSlug
-            
+
             BASH;
         }
 
