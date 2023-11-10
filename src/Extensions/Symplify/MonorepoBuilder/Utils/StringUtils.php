@@ -41,22 +41,35 @@ final class StringUtils
      */
     public function slugify(string $text, string $divider = '-'): string
     {
-        // replace non letter or digits by divider
-        // @var string
+        /**
+         * replace non letter or digits by divider
+         *
+         * @var string
+         */
         $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
 
-        // transliterate
+        /**
+         * transliterate
+         *
+         * @var string
+         */
         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
 
-        // remove unwanted characters
-        // @var string
+        /**
+         * remove unwanted characters
+         *
+         * @var string
+         */
         $text = preg_replace('~[^-\w]+~', '', $text);
 
         // trim
         $text = trim($text, $divider);
 
-        // remove duplicate divider
-        // @var string
+        /**
+         * remove duplicate divider
+         *
+         * @var string
+         */
         $text = preg_replace('~-+~', $divider, $text);
 
         // lowercase
