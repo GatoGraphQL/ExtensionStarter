@@ -30,7 +30,7 @@ git push origin
 # ------------------------------------------------
 composer rebuild-app-and-server
 
-# ✅ Install/activate the extension plugin, and the integration plugin (DEV and PROD):
+# ✅ Install/activate the added plugin (DEV and PROD webservers):
 # ------------------------------------------------
 composer activate-extension-plugins
 composer activate-extension-plugins-prod
