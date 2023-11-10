@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources;
 
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\DuplicateTemplateFilesAndFoldersCreateExtensionWorker;
+use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\RebuildLandoDevWebserverExecuteBashCommandCreateExtensionWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\RegenerateMonorepoConfigExecuteBashCommandCreateExtensionWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateMonorepoExtensionPluginConfigCreateExtensionWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateExtensionPluginComposerCreateExtensionWorker;
@@ -32,6 +33,7 @@ class CreateExtensionWorkersDataSource
             UpdateMonorepoLandoComposerCreateExtensionWorker::class,
             UpdateMonorepoLandoBashSetupCreateExtensionWorker::class,
             RegenerateMonorepoConfigExecuteBashCommandCreateExtensionWorker::class,
+            RebuildLandoDevWebserverExecuteBashCommandCreateExtensionWorker::class,
         ];
     }
 }
