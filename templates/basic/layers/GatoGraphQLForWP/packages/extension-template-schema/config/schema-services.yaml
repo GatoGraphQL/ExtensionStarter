@@ -3,5 +3,5 @@ services:
         public: true
         autowire: true
 
-    MyCompanyForGatoGraphQL\ExtensionTemplateSchema\FieldResolvers\:
-        resource: '../src/FieldResolvers/*'
+    # MyCompanyForGatoGraphQL\ExtensionTemplateSchema\FieldResolvers\:
+    #     resource: '../src/FieldResolvers/*'

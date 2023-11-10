@@ -4,5 +4,5 @@ services:
         autowire: true
         autoconfigure: true
 
-    MyCompanyForGatoGraphQL\ExtensionTemplate\Hooks\:
-        resource: '../src/Hooks/*'
+    # MyCompanyForGatoGraphQL\ExtensionTemplate\Hooks\:
+    #     resource: '../src/Hooks/*'
