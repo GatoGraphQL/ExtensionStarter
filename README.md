@@ -1479,6 +1479,8 @@ composer list
 
 | `composer` command | Description |
 | --- | --- |
+| `activate-extension-plugins` | Download/activate the extension plugins, and any required integration plugin |
+| `activate-extension-plugins-prod` | Download/activate the extension plugins, and any required integration plugin, in the PROD server |
 | `analyse` | Run PHPStan static analysis of the code |
 | `build-js` | Build all JS packages, blocks and editor scripts for all plugins in the Gato GraphQL - Extension Starter repo |
 | `build-server` | Initialize the Lando webserver with the 'Gato GraphQL' demo site, for development. To be executed only the first time |

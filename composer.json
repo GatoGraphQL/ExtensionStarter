@@ -529,6 +529,8 @@
         "reset-db-prod": "Resets the WordPress database in the PROD server",
         "install-site": "Installs the WordPress site",
         "install-site-prod": "Installs the WordPress site in the PROD server",
+        "activate-extension-plugins": "Download/activate the extension plugins, and any required integration plugin",
+        "activate-extension-plugins-prod": "Download/activate the extension plugins, and any required integration plugin, in the PROD server",
         "import-data": "Imports pre-defined data into the DB (posts, users, CPTs, etc)",
         "update-deps": "Update the Composer dependencies for the 'Gato GraphQL' plugins",
         "optimize-autoloader": "Optimizes the Composer autoloaders for all the plugins installed in the webserver",
