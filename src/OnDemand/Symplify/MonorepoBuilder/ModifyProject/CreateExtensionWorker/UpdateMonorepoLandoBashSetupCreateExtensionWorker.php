@@ -55,7 +55,10 @@ class UpdateMonorepoLandoBashSetupCreateExtensionWorker implements CreateExtensi
             return;
         }
 
+        // DEV server
         $this->installIntegrationPluginInLandoServer($inputObject, false);
+
+        // PROD server
         $this->installIntegrationPluginInLandoServer($inputObject, true);
     }
 
