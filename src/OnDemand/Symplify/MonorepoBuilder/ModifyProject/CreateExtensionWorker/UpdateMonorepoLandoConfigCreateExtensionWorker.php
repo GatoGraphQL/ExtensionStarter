@@ -20,7 +20,6 @@ class UpdateMonorepoLandoConfigCreateExtensionWorker implements CreateExtensionW
     public function __construct(
         private NeonPrinter $neonPrinter,
         private SmartFileSystem $smartFileSystem,
-        private JsonFileManager $jsonFileManager,
     ) {
     }
 
