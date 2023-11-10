@@ -107,7 +107,7 @@ class UpdateMonorepoLandoConfigCreateExtensionWorker implements CreateExtensionW
             // $packageName will be "composer-vendor/{$extensionSlug}-schema"
             $packageName = $this->getComposerJSONPackageName($packageComposerJSONFile);
             $entries[] = sprintf(
-                '%s: %s',
+                '%s:%s',
                 "../../layers/GatoGraphQLForWP/packages/{$extensionSlug}-schema",
                 "/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}/vendor/{$packageName}"
             );
@@ -115,7 +115,7 @@ class UpdateMonorepoLandoConfigCreateExtensionWorker implements CreateExtensionW
 
         // Add the entry for the plugin
         $entries[] = sprintf(
-            '%s: %s',
+            '%s:%s',
             "../../layers/GatoGraphQLForWP/plugins/{$extensionSlug}",
             "/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}"
         );
