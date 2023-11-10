@@ -90,7 +90,9 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
     protected function updatePluginDataSourceFile(CreateExtensionInputObjectInterface $inputObject): void
     {
         $extensionSlug = $inputObject->getExtensionSlug();
+        $extensionName = $inputObject->getExtensionName();
         $code = "
+            // Gato GraphQL - $extensionName
             [
                 'path' => 'layers/GatoGraphQLForWP/plugins/$extensionSlug',
                 'plugin_slug' => 'gatographql-$extensionSlug',
