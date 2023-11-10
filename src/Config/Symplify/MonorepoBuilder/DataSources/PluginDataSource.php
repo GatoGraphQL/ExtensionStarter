@@ -17,6 +17,18 @@ class PluginDataSource extends UpstreamPluginDataSource
         // Plugins
         // ------------------------------------------------------------
         $pluginConfigEntries = [
+            /**
+             * Do not remove this comment! It is used to automatically
+             * append new extension plugins when executing the
+             * `create-extension` command.
+             *
+             * @see src/OnDemand/Symplify/MonorepoBuilder/ModifyProject/CreateExtensionWorker/UpdateMonorepoExtensionPluginConfigCreateExtensionWorker.php
+             * @see UpdateMonorepoExtensionPluginConfigCreateExtensionWorker::COMMAND_PLACEHOLDER
+             *
+             * @gatographql-readonly-code
+             */
+            // { Command Placeholder: Integration plugin Composer package }
+
             // Gato GraphQL - Hello Dolly
             [
                 'path' => 'layers/GatoGraphQLForWP/plugins/hello-dolly',
@@ -80,18 +92,6 @@ class PluginDataSource extends UpstreamPluginDataSource
                 //     'rector_test_config' => $this->rootDir . '/ci/scoping/rector-test-scoping-extensions.php',
                 // ],
             ],
-
-            /**
-             * Do not remove this comment! It is used to automatically
-             * append new extension plugins when executing the
-             * `create-extension` command.
-             *
-             * @see src/OnDemand/Symplify/MonorepoBuilder/ModifyProject/CreateExtensionWorker/UpdateMonorepoExtensionPluginConfigCreateExtensionWorker.php
-             * @see UpdateMonorepoExtensionPluginConfigCreateExtensionWorker::COMMAND_PLACEHOLDER
-             *
-             * @gatographql-readonly-code
-             */
-            // { Command Placeholder: Integration plugin Composer package }
         ];
 
         foreach ($pluginConfigEntries as &$pluginConfigEntry) {
