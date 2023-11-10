@@ -1,0 +1,122 @@
+<?php
+
+declare(strict_types=1);
+
+namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker;
+
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\CreateExtensionWorkerInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
+use Symplify\SmartFileSystem\SmartFileInfo;
+use Symplify\SmartFileSystem\SmartFileSystem;
+
+class UpdateMonorepoLandoBashSetupCreateExtensionWorker implements CreateExtensionWorkerInterface
+{
+    use CreateExtensionWorkerTrait;
+
+    public function __construct(
+        private SmartFileSystem $smartFileSystem,
+    ) {
+    }
+
+    /**
+     * @param CreateExtensionInputObjectInterface $inputObject
+     */
+    public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
+    {
+        $items = [];
+        if ($inputObject->getIntegrationPluginSlug() !== '') {
+            $items[] = sprintf(
+                'Install integration plugin "%s" in the webservers',
+                $inputObject->getIntegrationPluginName()
+            );
+        }
+        $description = 'Update the monorepo\'s Lando webserver .sh setup files';
+        if ($items !== []) {
+            return sprintf(
+                '%s:%s%s',
+                $description,
+                PHP_EOL . '- ',
+                implode(PHP_EOL . '- ', $items)
+            );
+        }
+        return $description;
+    }
+
+    /**
+     * Check there's an integration plugin required, otherwise
+     * nothing to do.
+     *
+     * @param CreateExtensionInputObjectInterface $inputObject
+     */
+    public function work(ModifyProjectInputObjectInterface $inputObject): void
+    {
+        if ($inputObject->getIntegrationPluginSlug() === '') {
+            return;
+        }
+
+        $this->installIntegrationPluginInLandoServer($inputObject, false);
+        $this->installIntegrationPluginInLandoServer($inputObject, true);
+    }
+
+    /**
+     * @param CreateExtensionInputObjectInterface $inputObject
+     */
+    protected function installIntegrationPluginInLandoServer(
+        CreateExtensionInputObjectInterface $inputObject,
+        bool $isProd,
+    ): void {
+        $landoServerActivatePluginsBashFile = $this->getLandoServerActivatePluginsBashFile($isProd);
+
+        $landoServerActivatePluginsBashFileSmartFileInfo = new SmartFileInfo($landoServerActivatePluginsBashFile);
+
+        $landoServerActivatePluginsBashContent = $landoServerActivatePluginsBashFileSmartFileInfo->getContents();
+        
+        // Append the content
+        $landoServerActivatePluginsBashContent .= $this->getActivatePluginsBashContentToAppend($inputObject, $isProd);
+
+        $this->smartFileSystem->dumpFile($landoServerActivatePluginsBashFile, $landoServerActivatePluginsBashContent);
+    }
+
+    protected function getLandoServerActivatePluginsBashFile(bool $isProd): string
+    {
+        $rootFolder = dirname(__DIR__, 6);
+        return $rootFolder . '/webservers/gatographql-extensions' . ($isProd ? '-for-prod' : '') . '/setup-extensions/activate-plugins.sh';
+    }
+
+    protected function getActivatePluginsBashContentToAppend(
+        CreateExtensionInputObjectInterface $inputObject,
+        bool $isProd,
+    ): string {
+        $extensionSlug = $inputObject->getExtensionSlug();
+        $extensionName = $inputObject->getExtensionName();
+
+        $content = '';
+        if ($inputObject->getIntegrationPluginSlug() !== '') {
+            $integrationPluginSlug = $inputObject->getIntegrationPluginSlug();
+            $content = <<<BASH
+                if wp plugin is-installed $integrationPluginSlug; then
+                    wp plugin activate $integrationPluginSlug
+                else
+                    wp plugin install $integrationPluginSlug --activate
+                fi    
+            BASH;
+        }
+
+        if ($isProd) {
+            $content .= <<<BASH
+            if wp plugin is-installed gatographql-$extensionSlug; then
+                wp plugin activate gatographql-$extensionSlug
+            else
+                echo "Please download the latest PROD version of the 'Gato GraphQL - $extensionName' plugin from your GitHub repo, and install it on this WordPress site"
+            fi
+            BASH;
+        } else {
+            $content .= <<<BASH
+                wp plugin activate gatographql-$extensionSlug
+            BASH;
+        }
+
+        return $content;
+    }
+}
