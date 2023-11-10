@@ -21,7 +21,7 @@ final class PrintFinalInstructionsCreateExtensionWorker implements CreateExtensi
 To finish, please execute the following commands:
 
     $ git add .
-    $ git commit -m "Created extension %s"
+    $ git commit -m "Created extension: %s"
     $ git push origin
     # (This will git commit and push the changes to the repo)
 
