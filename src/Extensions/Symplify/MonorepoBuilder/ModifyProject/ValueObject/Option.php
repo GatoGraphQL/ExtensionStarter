@@ -62,4 +62,34 @@ final class Option
      * @var string
      */
     public final const MY_COMPANY_WEBSITE = 'my-company-website';
+
+
+    /**
+     * @var string
+     */
+    public final const TEMPLATE = 'template';
+    /**
+     * @var string
+     */
+    public final const INTEGRATION_PLUGIN_FILE = 'integration-plugin-file';
+    /**
+     * @var string
+     */
+    public final const INTEGRATION_PLUGIN_VERSION_CONSTRAINT = 'integration-plugin-version-constraint';
+    /**
+     * @var string
+     */
+    public final const INTEGRATION_PLUGIN_NAME = 'integration-plugin-name';
+    /**
+     * @var string
+     */
+    public final const EXTENSION_NAME = 'extension-name';
+    /**
+     * @var string
+     */
+    public final const EXTENSION_SLUG = 'extension-slug';
+    /**
+     * @var string
+     */
+    public final const EXTENSION_CLASSNAME = 'extension-classname';
 }

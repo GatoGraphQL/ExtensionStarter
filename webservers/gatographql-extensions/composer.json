@@ -60,16 +60,14 @@
             "/bin/sh /app/setup/setup.sh",
             "/bin/sh /app/setup-extensions/setup.sh"
         ],
+        "activate-extension-plugins": "lando composer activate-extension-plugins-within-container",
+        "activate-extension-plugins-within-container": [
+            "/bin/sh /app/setup-extensions/activate-plugins.sh"
+        ],
         "import-data": "lando composer import-data-within-container",
         "import-data-within-container": "/bin/sh /app/setup/import-data.sh",
         "create-users": "lando composer create-users-within-container",
         "create-users-within-container": "/bin/sh /app/setup/create-users.sh",
-        "update-deps": [
-            "@symlink-vendor-for-gatographql-plugin",
-            "@symlink-vendor-for-gatographql-testing-schema-plugin",
-            "@symlink-vendor-for-gatographql-testing-plugin",
-            "@symlink-vendor-for-gatographql-hello-dolly-plugin"
-        ],
         "rebuild-server": [
             "Composer\\Config::disableProcessTimeout",
             "@purge-cache",
@@ -82,26 +80,6 @@
             "lando rebuild appserver -y"
         ],
         "stop-server": "lando stop",
-        "symlink-vendor-for-gatographql-plugin": [
-            "php -r \"copy('../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/composer.json', '../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/composer.local.json');\"",
-            "cd ../../submodules/GatoGraphQL && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/gatographql/composer.local.json",
-            "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql"
-        ],
-        "symlink-vendor-for-gatographql-testing-schema-plugin": [
-            "php -r \"copy('../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema/composer.json', '../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema/composer.local.json');\"",
-            "cd ../../submodules/GatoGraphQL && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/testing-schema/composer.local.json",
-            "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema"
-        ],
-        "symlink-vendor-for-gatographql-testing-plugin": [
-            "php -r \"copy('../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/composer.json', '../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/composer.local.json');\"",
-            "cd ../../submodules/GatoGraphQL && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/composer.local.json",
-            "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing"
-        ],
-        "symlink-vendor-for-gatographql-hello-dolly-plugin": [
-            "php -r \"copy('../../layers/GatoGraphQLForWP/plugins/hello-dolly/composer.json', '../../layers/GatoGraphQLForWP/plugins/hello-dolly/composer.local.json');\"",
-            "cd ../../ && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/hello-dolly/composer.local.json",
-            "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly"
-        ],
         "optimize-autoloader": [
             "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql",
             "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing",
@@ -148,6 +126,32 @@
             "@purge-cache"
         ],
         "purge-cache": "@php ../../submodules/GatoGraphQL/webservers/shared/composer-scripts/purge-cache.php \"wordpress/wp-content/gatographql/cache\" || true",
-        "server-info": "lando info"
+        "server-info": "lando info",
+        "update-deps": [
+            "@symlink-vendor-for-gatographql-plugin",
+            "@symlink-vendor-for-gatographql-testing-schema-plugin",
+            "@symlink-vendor-for-gatographql-testing-plugin",
+            "@symlink-vendor-for-gatographql-hello-dolly-plugin"
+        ],
+        "symlink-vendor-for-gatographql-plugin": [
+            "php -r \"copy('../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/composer.json', '../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/composer.local.json');\"",
+            "cd ../../submodules/GatoGraphQL && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/gatographql/composer.local.json",
+            "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql"
+        ],
+        "symlink-vendor-for-gatographql-testing-schema-plugin": [
+            "php -r \"copy('../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema/composer.json', '../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema/composer.local.json');\"",
+            "cd ../../submodules/GatoGraphQL && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/testing-schema/composer.local.json",
+            "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/testing-schema"
+        ],
+        "symlink-vendor-for-gatographql-testing-plugin": [
+            "php -r \"copy('../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/composer.json', '../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/composer.local.json');\"",
+            "cd ../../submodules/GatoGraphQL && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing/composer.local.json",
+            "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-plugins/gatographql-testing"
+        ],
+        "symlink-vendor-for-gatographql-hello-dolly-plugin": [
+            "php -r \"copy('../../layers/GatoGraphQLForWP/plugins/hello-dolly/composer.json', '../../layers/GatoGraphQLForWP/plugins/hello-dolly/composer.local.json');\"",
+            "cd ../../ && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/hello-dolly/composer.local.json",
+            "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../layers/GatoGraphQLForWP/plugins/hello-dolly"
+        ]
     }
 }

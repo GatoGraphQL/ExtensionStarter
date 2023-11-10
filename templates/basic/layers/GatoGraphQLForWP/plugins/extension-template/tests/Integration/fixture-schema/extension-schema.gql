@@ -1,0 +1,6 @@
+{
+  # @gatographql-extension-todo Complete the query, to test the schema elements
+  # (fields, types, directives, etc) added by the extension
+  id
+  # ...
+}

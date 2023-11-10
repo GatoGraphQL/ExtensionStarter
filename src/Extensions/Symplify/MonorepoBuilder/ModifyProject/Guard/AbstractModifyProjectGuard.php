@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Guard;
 
+use PharIo\Version\InvalidVersionException;
+use PharIo\Version\Version;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\ModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\StageAwareModifyProjectWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Exception\ConfigurationException;
@@ -85,4 +87,25 @@ abstract class AbstractModifyProjectGuard implements ModifyProjectGuardInterface
      * @return ModifyProjectWorkerInterface[]
      */
     abstract protected function getModifyProjectWorkers(): array;
+
+    /**
+     * Validate theare are no spaces or forbidden characters
+     * in the classname or namespace
+     *
+     * @see https://stackoverflow.com/a/60470526/14402031
+     */
+    protected function isPHPClassOrNamespaceNameValid(string $phpClassOrNamespaceName): bool
+    {
+        return preg_match("/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/", $phpClassOrNamespaceName) === 1;
+    }
+
+    protected function isSemverVersion(string $version): bool
+    {
+        try {
+            new Version($version);
+        } catch (InvalidVersionException $e) {
+            return false;
+        }
+        return true;
+    }
 }

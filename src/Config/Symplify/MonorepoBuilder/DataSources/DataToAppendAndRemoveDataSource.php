@@ -8,6 +8,21 @@ use PoP\PoP\Config\Symplify\MonorepoBuilder\DataSources\DataToAppendAndRemoveDat
 
 class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataSource
 {
+    private const INTEGRATION_PLUGIN_COMPOSER_PACKAGES = [
+        /**
+         * Do not remove this comment! It is used to automatically
+         * append new extension plugins when executing the
+         * `create-extension` command.
+         *
+         * @see src/OnDemand/Symplify/MonorepoBuilder/ModifyProject/CreateExtensionWorker/UpdateMonorepoExtensionPluginConfigCreateExtensionWorker.php
+         * @see UpdateMonorepoExtensionPluginConfigCreateExtensionWorker::COMMAND_PLACEHOLDER
+         *
+         * @gatographql-readonly-code
+         */
+        // { Command Placeholder: Integration plugin Composer package }
+        'wpackagist-plugin/hello-dolly',
+    ];
+
     public function __construct(
         protected string $upstreamRelativeRootPath
     ) {
@@ -47,7 +62,9 @@ class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataS
          *
          * (This will regenerate `composer.json`)
          */
-        $dataToRemove['require-dev']['wpackagist-plugin/hello-dolly'] = '*';
+        foreach (self::INTEGRATION_PLUGIN_COMPOSER_PACKAGES as $integrationPluginComposerPackage) {
+            $dataToRemove['require-dev'][$integrationPluginComposerPackage] = '*';
+        }
         return $dataToRemove;
     }
 }

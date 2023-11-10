@@ -1,0 +1,62 @@
+{
+    "name": "my-company-for-gatographql/extension-template",
+    "type": "wordpress-plugin",
+    "description": "Extension Template extension for Gato GraphQL",
+    "authors": [
+        {
+            "name": "My Company",
+            "email": "name@mycompany.com",
+            "homepage": "https://mycompany.com"
+        }
+    ],
+    "keywords": ["WordPress", "plugin", "Gato", "GatoGraphQL", "GraphQL", "Extension", "Starter"],
+    "homepage": "https://github.com/GatoGraphQL/extension-template",
+    "require": {
+        "php": "^8.1",
+        "my-company-for-gatographql/extension-template-schema": "^1.1"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^10.2",
+        "squizlabs/php_codesniffer": "^3.6",
+        "szepeviktor/phpstan-wordpress": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MyCompanyForGatoGraphQL\\ExtensionTemplate\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MyCompanyForGatoGraphQL\\ExtensionTemplate\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs src tests",
+        "fix-style": "phpcbf src tests",
+        "phpstan": "phpstan analyse -l 8 src tests"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.1-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "replace": {
+        "pop-schema/schema-commons": "self.version"
+    }
+}

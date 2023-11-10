@@ -6,6 +6,4 @@ namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject
 
 interface InitializeProjectWorkerInterface extends ModifyProjectWorkerInterface
 {
-    // public function getDescription(InitializeProjectInputObjectInterface $inputObject): string;
-    // public function work(InitializeProjectInputObjectInterface $inputObject): void;
 }

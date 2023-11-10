@@ -428,7 +428,7 @@ After tagging the repo on the step above, we must create a release from the tag 
 
 To create the release, head over to the `tags` page in your GitHub repo (`https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags`), and click on the new tag (eg: `0.1.0`).
 
-Then, on the tag page, click on `Create release from tag`.
+Then, on the tag page, click on `Create release from tag`, and then add a title and content, and submit the form.
 
 ![Create release from tag](assets/img/create-release-from-tag.png)
 
@@ -478,7 +478,7 @@ composer integration-test-prod
 
 This section explains all the steps needed to add an extension plugin to the monorepo.
 
-_Doing this process manually is tedious and error-prone. We are already [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate this process, and it should be ready before the end of October 2023._
+_Doing this process manually is tedious and error-prone. We are already [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate this process._
 
 ### Creating the extension manually
 
@@ -528,7 +528,7 @@ Edit file `layers/GatoGraphQLForWP/plugins/your-extension/src/GatoGraphQLExtensi
 
 ```php
 return [
-  'your-extension/hello.php'
+  'your-extension/hello.php',
 ];
 ```
 
@@ -630,7 +630,7 @@ The stub files, if not already available for that WordPress plugin, can be gener
 
 </details>
 
-Edit files:
+<!-- Edit files:
 
 - `src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php`
 - `src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
@@ -651,7 +651,7 @@ return array_merge(
     $this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
   ]
 );
-```
+``` -->
 
 Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc):
 
@@ -1479,6 +1479,8 @@ composer list
 
 | `composer` command | Description |
 | --- | --- |
+| `activate-extension-plugins` | Download/activate the extension plugins, and any required integration plugin |
+| `activate-extension-plugins-prod` | Download/activate the extension plugins, and any required integration plugin, in the PROD server |
 | `analyse` | Run PHPStan static analysis of the code |
 | `build-js` | Build all JS packages, blocks and editor scripts for all plugins in the Gato GraphQL - Extension Starter repo |
 | `build-server` | Initialize the Lando webserver with the 'Gato GraphQL' demo site, for development. To be executed only the first time |
@@ -1487,6 +1489,7 @@ composer list
 | `copy-files-from-upstream-monorepo` | [multi-monorepo] Copy specific files to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo |
 | `copy-folders-from-upstream-monorepo` | [multi-monorepo] Copy all files in specific folders to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo |
 | `copy-upstream-files` | [multi-monorepo] Copy both specific files, and all files in specific folders, to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo |
+| `create-extension` | Create an extension plugin, hosted in this monorepo |
 | `debug` | Run and debug PHPUnit tests |
 | `delete-settings` | Delete the plugin settings from the DB |
 | `deoptimize-autoloader` | Removes the optimization of the Composer autoloaders for all the plugins installed in the webserver |

@@ -13,6 +13,3 @@ composer.lock
 # Files for running the webservers
 composer.local.json
 composer.local.lock
-# VSCode
-/.vscode/
-!/.vscode/launch.json

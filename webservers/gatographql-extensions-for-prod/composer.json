@@ -57,6 +57,10 @@
             "/bin/sh /app/setup/setup.sh",
             "/bin/sh /app/setup-extensions/setup.sh"
         ],
+        "activate-extension-plugins": "lando composer activate-extension-plugins-within-container",
+        "activate-extension-plugins-within-container": [
+            "/bin/sh /app/setup-extensions/activate-plugins.sh"
+        ],
         "import-data": "lando composer import-data-within-container",
         "import-data-within-container": "/bin/sh /app/setup/import-data.sh",
         "create-users": "lando composer create-users-within-container",

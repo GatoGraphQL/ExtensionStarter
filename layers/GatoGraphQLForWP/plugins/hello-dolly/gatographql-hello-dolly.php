@@ -132,19 +132,19 @@ add_action(
                      * If the extension is an integration for some plugin (eg: WooCommerce,
                      * Yoast SEO or, in this case, Hello Dolly), indicate the plugin's name:
                      */
-                    $pluginName = __('Hello Dolly', 'gatographql-hello-dolly');
+                    $requiredPluginName = __('Hello Dolly', 'gatographql-hello-dolly');
                     printf(
                         '<div class="notice notice-error"><p>%s</p></div>',
                         $isWordPressPluginActive
                             ? sprintf(
                                 __('Installed version of plugin <strong>%s</strong> does not satisfy required constraint <code>%s</code>. Plugin <strong>%s</strong> has not been loaded.', 'gatographql-hello-dolly'),
-                                $pluginName,
+                                $requiredPluginName,
                                 $requiredPluginVersion,
                                 $extensionName
                             )
                             : sprintf(
                                 __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-hello-dolly'),
-                                $pluginName,
+                                $requiredPluginName,
                                 $extensionName
                             )
                     );

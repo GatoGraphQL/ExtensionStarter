@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\SmartFile;
 
 use PoP\PoP\Extensions\Symplify\MonorepoBuilder\SmartFile\FileContentReplacerSystem;
+use Symfony\Component\Finder\Finder;
 use Symplify\SmartFileSystem\FileSystemGuard;
-use Symplify\SmartFileSystem\Finder\SmartFinder;
+use Symplify\SmartFileSystem\Finder\FinderSanitizer;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SmartFileSystem\SmartFileSystem;
 
@@ -15,12 +16,14 @@ final class FileCopierSystem
     public function __construct(
         private SmartFileSystem $smartFileSystem,
         private FileSystemGuard $fileSystemGuard,
-        private SmartFinder $smartFinder,
         private FileContentReplacerSystem $fileContentReplacerSystem,
+        private FinderSanitizer $finderSanitizer,
     ) {
     }
 
     /**
+     * @param array<string,string> $renameFiles
+     * @param array<string,string> $renameFolders
      * @param array<string,string> $patternReplacements a regex pattern to search, and its replacement
      * @return string[] The copied files
      */
@@ -28,7 +31,9 @@ final class FileCopierSystem
         string $fromFolder,
         string $toFolder,
         bool $removeFilesInToFolder = false,
-        array $patternReplacements = []
+        array $patternReplacements = [],
+        array $renameFiles = [],
+        array $renameFolders = [],
     ): array {
         $this->fileSystemGuard->ensureFileExists($fromFolder, __METHOD__);
 
@@ -40,16 +45,58 @@ final class FileCopierSystem
             $this->smartFileSystem->remove($toFolder);
         }
 
-        $smartFileInfos = $this->smartFinder->find([$fromFolder], '*');
-        $files = array_map(
+        $finder = new Finder();
+        $finder->name([
+            '*', // All files
+            '.*', // Including .gitignore too
+        ])
+            ->in($fromFolder)
+            ->files()
+            ->ignoreDotFiles(false);
+        $smartFileInfos = $this->finderSanitizer->sanitize($finder);
+
+        $fromFiles = array_map(
             fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
             $smartFileInfos
         );
-        return $this->copyFiles(
-            $files,
-            $toFolder,
-            $patternReplacements
-        );
+
+        /**
+         * Group files by their folder
+         *
+         * @var array<string,string[]>
+         */
+        $dirFiles = [];
+        /**
+         * Calculate the $toFolder for each group of files
+         *
+         * @var array<string,string>
+         */
+        $dirToFolders = [];
+        $fromFolderLength = strlen($fromFolder);
+        foreach ($fromFiles as $file) {
+            $dir = dirname($file);
+            if (!isset($dirFiles[$dir])) {
+                $subfolderPath = $renameFolders[$dir] ?? substr($dir, $fromFolderLength);
+                $dirToFolders[$dir] = $toFolder . $subfolderPath;
+                $dirFiles[$dir] = [];
+            }
+            $dirFiles[$dir][] = $file;
+        }
+
+        $copiedFiles = [];
+        foreach ($dirToFolders as $dir => $dirToFolder) {
+            $files = $dirFiles[$dir];
+            $copiedFiles = [
+                ...$copiedFiles,
+                ...$this->copyFiles(
+                    $files,
+                    $dirToFolder,
+                    $patternReplacements,
+                    $renameFiles
+                )
+            ];
+        }
+        return $copiedFiles;
     }
 
     /**

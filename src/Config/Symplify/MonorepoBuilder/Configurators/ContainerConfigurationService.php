@@ -7,6 +7,7 @@ namespace PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\Configurators;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\AdditionalIntegrationTestPluginsDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\CopyUpstreamMonorepoFilesDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\CopyUpstreamMonorepoFoldersDataSource;
+use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\CreateExtensionWorkersDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\DataToAppendAndRemoveDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\DowngradeRectorDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\EnvironmentVariablesDataSource;
@@ -163,6 +164,11 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
         return new InitializeProjectWorkersDataSource();
     }
 
+    protected function getCreateExtensionWorkersDataSource(): ?CreateExtensionWorkersDataSource
+    {
+        return new CreateExtensionWorkersDataSource();
+    }
+
     protected function setCustomServices(ServicesConfigurator $services): void
     {
         $services
@@ -179,13 +185,23 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
         parent::setServices($services);
 
         $this->setInitializeProjectWorkerServices($services);
+        $this->setCreateExtensionWorkerServices($services);
     }
 
     protected function setInitializeProjectWorkerServices(ServicesConfigurator $services): void
     {
         if ($initializeProjectWorkersConfig = $this->getInitializeProjectWorkersDataSource()) {
-            foreach ($initializeProjectWorkersConfig->getInitializeProjectWorkerClasses() as $modifyProjectWorkerClass) {
-                $services->set($modifyProjectWorkerClass);
+            foreach ($initializeProjectWorkersConfig->getInitializeProjectWorkerClasses() as $initializeProjectWorkerClass) {
+                $services->set($initializeProjectWorkerClass);
+            }
+        }
+    }
+
+    protected function setCreateExtensionWorkerServices(ServicesConfigurator $services): void
+    {
+        if ($createExtensionWorkersConfig = $this->getCreateExtensionWorkersDataSource()) {
+            foreach ($createExtensionWorkersConfig->getCreateExtensionWorkerClasses() as $createExtensionWorkerClass) {
+                $services->set($createExtensionWorkerClass);
             }
         }
     }
