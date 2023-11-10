@@ -8,6 +8,7 @@ use Nette\Neon\Neon;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\CreateExtensionWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
+use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\Utils\ComposerUtils;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\PackageBuilder\Neon\NeonPrinter;
 use Symplify\SmartFileSystem\SmartFileInfo;
@@ -20,7 +21,7 @@ class UpdateMonorepoLandoConfigCreateExtensionWorker implements CreateExtensionW
     public function __construct(
         private NeonPrinter $neonPrinter,
         private SmartFileSystem $smartFileSystem,
-        private JsonFileManager $jsonFileManager,
+        private ComposerUtils $composerUtils,
     ) {
     }
 
@@ -105,7 +106,7 @@ class UpdateMonorepoLandoConfigCreateExtensionWorker implements CreateExtensionW
          */
         foreach ($this->getPackageComposerJSONFiles($inputObject) as $packageComposerJSONFile) {
             // $packageName will be "composer-vendor/{$extensionSlug}-schema"
-            $packageName = $this->getComposerJSONPackageName($packageComposerJSONFile);
+            $packageName = $this->composerUtils->getComposerJSONPackageName($packageComposerJSONFile);
             $entries[] = sprintf(
                 '%s:%s',
                 "../../layers/GatoGraphQLForWP/packages/{$extensionSlug}-schema",
