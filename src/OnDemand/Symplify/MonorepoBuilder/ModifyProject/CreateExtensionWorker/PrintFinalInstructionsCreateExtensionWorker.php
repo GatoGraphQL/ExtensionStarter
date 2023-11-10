@@ -15,19 +15,17 @@ final class PrintFinalInstructionsCreateExtensionWorker implements CreateExtensi
      */
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        $description = 'The `create-command` has been successful.
+        return 'The `create-command` has been successful.
         
 To finish, please execute the following commands:
 
     $ composer rebuild-app-and-server
     # (This will rebuild the Lando Webserver for DEV, mapping the new extension)
-        ';
-        if ($inputObject->getIntegrationPluginSlug() !== '') {
-            $description .= '
 
-            ';
-        }
-        return $description;
+    $ composer activate-extension-plugins
+    # (This will install and activate the extension plugin, and any required integration plugin)
+
+        ';
     }
 
     /**

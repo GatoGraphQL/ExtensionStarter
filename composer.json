@@ -421,6 +421,8 @@
         ],
         "install-site": "composer install-site -d webservers/gatographql-extensions",
         "install-site-prod": "composer install-site -d webservers/gatographql-extensions-for-prod",
+        "activate-extension-plugins": "composer activate-extension-plugins -d webservers/gatographql-extensions",
+        "activate-extension-plugins-prod": "composer activate-extension-plugins -d webservers/gatographql-extensions-for-prod",
         "import-data": "composer import-data -d webservers/gatographql-extensions",
         "create-users": "composer create-users -d webservers/gatographql-extensions",
         "update-deps": "composer update-deps -d webservers/gatographql-extensions",
