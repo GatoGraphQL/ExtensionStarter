@@ -9,6 +9,7 @@ use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateE
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateExtensionPluginComposerCreateExtensionWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateExtensionPluginPHPStanConfigCreateExtensionWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateExtensionPluginVSCodeConfigCreateExtensionWorker;
+use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker\UpdateMonorepoLandoConfigCreateExtensionWorker;
 
 class CreateExtensionWorkersDataSource
 {
@@ -24,6 +25,7 @@ class CreateExtensionWorkersDataSource
             UpdateExtensionPluginPHPStanConfigCreateExtensionWorker::class,
             UpdateExtensionPluginVSCodeConfigCreateExtensionWorker::class,
             UpdateMonorepoExtensionPluginConfigCreateExtensionWorker::class,
+            UpdateMonorepoLandoConfigCreateExtensionWorker::class,
         ];
     }
 }
