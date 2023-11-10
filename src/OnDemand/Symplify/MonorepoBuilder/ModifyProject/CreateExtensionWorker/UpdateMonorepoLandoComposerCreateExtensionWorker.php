@@ -44,7 +44,7 @@ class UpdateMonorepoLandoComposerCreateExtensionWorker implements CreateExtensio
      */
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
-        $composerJSONFiles = $this->getExtensionPluginLandoComposerFiles($inputObject);
+        $composerJSONFiles = $this->getMonorepoLandoComposerFiles($inputObject);
         foreach ($composerJSONFiles as $composerJSONFile) {
             $this->addUpdateDepsScriptInComposerJSON(
                 $inputObject,
@@ -85,7 +85,7 @@ class UpdateMonorepoLandoComposerCreateExtensionWorker implements CreateExtensio
     /**
      * @return string[]
      */
-    protected function getExtensionPluginLandoComposerFiles(CreateExtensionInputObjectInterface $inputObject): array
+    protected function getMonorepoLandoComposerFiles(CreateExtensionInputObjectInterface $inputObject): array
     {
         $rootFolder = dirname(__DIR__, 6);
         return [
