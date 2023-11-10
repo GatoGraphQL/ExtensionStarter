@@ -30,9 +30,10 @@ git push origin
 # ------------------------------------------------
 composer rebuild-app-and-server
 
-# Install and activate the extension plugin, and any required integration plugin:
+# Install/activate the extension plugin, and the integration plugin (DEV and PROD):
 # ------------------------------------------------
 composer activate-extension-plugins
+composer activate-extension-plugins-prod
 
             ',
             $inputObject->getExtensionName()
