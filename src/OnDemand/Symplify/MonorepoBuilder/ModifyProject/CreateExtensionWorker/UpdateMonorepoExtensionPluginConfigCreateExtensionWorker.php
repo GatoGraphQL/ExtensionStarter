@@ -58,7 +58,7 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
             return;
         }
 
-        $monorepoMergePHPConfigFile = $this->getMonorepoDataToAppendAndRemoveDataSourceFile();
+        $monorepoMergePHPConfigFile = $this->getDataToAppendAndRemoveDataSourceFile();
         $this->updateMergeMonorepoPHPConfig(
             $inputObject,
             $monorepoMergePHPConfigFile,
@@ -81,7 +81,7 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
         );
     }
 
-    protected function getMonorepoDataToAppendAndRemoveDataSourceFile(): string
+    protected function getDataToAppendAndRemoveDataSourceFile(): string
     {
         $rootFolder = dirname(__DIR__, 6);
         return $rootFolder . '/src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php';
