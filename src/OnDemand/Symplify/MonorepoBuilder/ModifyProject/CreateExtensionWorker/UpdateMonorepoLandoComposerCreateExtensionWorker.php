@@ -76,8 +76,8 @@ class UpdateMonorepoLandoComposerCreateExtensionWorker implements CreateExtensio
         ];
 
         // Optimize/Deoptimize autoloader scripts
-        $json[ComposerJsonSection::SCRIPTS]['optimize-autoloader'][] = "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../layers/GatoGraphQLForWP/plugins/{$scriptName}";
-        $json[ComposerJsonSection::SCRIPTS]['deoptimize-autoloader'][] = "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../layers/GatoGraphQLForWP/plugins/{$scriptName}";
+        $json[ComposerJsonSection::SCRIPTS]['optimize-autoloader'][] = "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../layers/GatoGraphQLForWP/plugins/{$extensionSlug}";
+        $json[ComposerJsonSection::SCRIPTS]['deoptimize-autoloader'][] = "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../layers/GatoGraphQLForWP/plugins/{$extensionSlug}";
         
         $this->jsonFileManager->printJsonToFileInfo($json, $composerJSONFileSmartFileInfo);
     }
