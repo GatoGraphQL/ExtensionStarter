@@ -59,14 +59,14 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
         }
 
         $this->updateDataToAppendAndRemoveDataSourceFile($inputObject);
+        $this->updatePluginDataSourceFile($inputObject);
     }
 
     /**
      * @param CreateExtensionInputObjectInterface $inputObject
      */
-    protected function updateDataToAppendAndRemoveDataSourceFile(
-        CreateExtensionInputObjectInterface $inputObject,
-    ): void {
+    protected function updateDataToAppendAndRemoveDataSourceFile(CreateExtensionInputObjectInterface $inputObject): void
+    {
         $this->fileContentReplacerSystem->replaceContentInFiles(
             [
                 $this->getDataToAppendAndRemoveDataSourceFile(),
@@ -82,5 +82,39 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
     {
         $rootFolder = dirname(__DIR__, 6);
         return $rootFolder . '/src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php';
+    }
+
+    /**
+     * @param CreateExtensionInputObjectInterface $inputObject
+     */
+    protected function updatePluginDataSourceFile(CreateExtensionInputObjectInterface $inputObject): void
+    {
+        $extensionSlug = $inputObject->getExtensionSlug();
+        $code = <<<PHP
+        [
+            'path' => 'layers/GatoGraphQLForWP/plugins/$extensionSlug',
+            'plugin_slug' => 'gatographql-$extensionSlug',
+            'main_file' => 'gatographql-$extensionSlug.php',
+            'rector_downgrade_config' => \$this->rootDir . '/config/rector/downgrade/$extensionSlug/rector.php',
+            'exclude_files' => implode(' ', [
+                'docs/images/\*',
+            ]),
+        ],
+        PHP;
+        $this->fileContentReplacerSystem->replaceContentInFiles(
+            [
+                $this->getPluginDataSourceFile(),
+            ],
+            [
+                '#(\s+?)(' . self::COMMAND_PLACEHOLDER . ')#' => '$1\'' . $code . '\',' . '$1$2',
+            ],
+            true,
+        );
+    }
+
+    protected function getPluginDataSourceFile(): string
+    {
+        $rootFolder = dirname(__DIR__, 6);
+        return $rootFolder . '/src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php';
     }
 }
