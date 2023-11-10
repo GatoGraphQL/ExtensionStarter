@@ -41,12 +41,12 @@ class GatoGraphQLExtension extends AbstractGatoGraphQLExtension
          * Yoast SEO or, in this case, Extension Template), add below the plugin's main file
          */
         $requiredPluginFile = 'extension-template/extension-template.php';
-        /** @phpstan-ignore-next-line */
         if ($requiredPluginFile !== '') {
             return [
                 $requiredPluginFile,
             ];
         }
+        /** @phpstan-ignore-next-line */
         return parent::getDependentOnPluginFiles();
     }
 }

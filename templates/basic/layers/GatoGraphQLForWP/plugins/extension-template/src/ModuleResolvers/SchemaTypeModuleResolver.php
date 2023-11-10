@@ -50,7 +50,6 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
         $requiredPluginFile = 'extension-template/extension-template.php';
         $requiredPluginVersion = '*';
         return match ($module) {
-            /** @phpstan-ignore-next-line */
             self::SCHEMA_EXTENSION_TEMPLATE => $requiredPluginFile !== '' ? [
                 /**
                  * @gatographql-extension-info
@@ -67,7 +66,9 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
                     $requiredPluginFile,
                     $requiredPluginVersion,
                 ),
-            ] : [],
+            ]
+            /** @phpstan-ignore-next-line */
+            : [],
             default => parent::getDependentOnActiveWordPressPlugins($module),
         };
     }
