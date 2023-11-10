@@ -101,8 +101,7 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
                 'exclude_files' => implode(' ', [
                     'docs/images/\*',
                 ]),
-            ],
-        ";
+            ],";
         $this->fileContentReplacerSystem->replaceContentInFiles(
             [
                 $this->getPluginDataSourceFile(),
