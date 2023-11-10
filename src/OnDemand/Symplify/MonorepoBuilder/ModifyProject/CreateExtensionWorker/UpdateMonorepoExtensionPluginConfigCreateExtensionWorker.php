@@ -72,7 +72,7 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
                 $this->getDataToAppendAndRemoveDataSourceFile(),
             ],
             [
-                '#(\s+?)(' . self::COMMAND_PLACEHOLDER . ')#' => '$1\'' . $this->getIntegrationPluginWPackagistDependency($inputObject) . '\',' . '$1$2',
+                '#(\s+?)(' . self::COMMAND_PLACEHOLDER . ')#' => '$1$2$1\'' . $this->getIntegrationPluginWPackagistDependency($inputObject) . '\',',
             ],
             true,
         );

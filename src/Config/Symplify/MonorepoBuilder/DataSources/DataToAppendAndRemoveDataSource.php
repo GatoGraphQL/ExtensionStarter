@@ -9,8 +9,6 @@ use PoP\PoP\Config\Symplify\MonorepoBuilder\DataSources\DataToAppendAndRemoveDat
 class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataSource
 {
     private const INTEGRATION_PLUGIN_COMPOSER_PACKAGES = [
-        'wpackagist-plugin/hello-dolly',
-
         /**
          * Do not remove this comment! It is used to automatically
          * append new extension plugins when executing the
@@ -22,6 +20,9 @@ class DataToAppendAndRemoveDataSource extends UpstreamDataToAppendAndRemoveDataS
          * @gatographql-readonly-code
          */
         // { Command Placeholder: Integration plugin Composer package }
+        
+        
+        'wpackagist-plugin/hello-dolly',
     ];
 
     public function __construct(
