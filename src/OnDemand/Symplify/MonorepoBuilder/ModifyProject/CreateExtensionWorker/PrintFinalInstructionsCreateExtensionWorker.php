@@ -29,9 +29,7 @@ final class PrintFinalInstructionsCreateExtensionWorker implements CreateExtensi
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
         $this->symfonyStyle->write(sprintf(
-            'The `create-command` has been successful.
-        
-To finish, please execute the following commands:
+            'Please execute the following commands to complete the process:
 
 # ✅ Git commit and push the changes to the repo:
 # ------------------------------------------------
