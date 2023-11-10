@@ -8,11 +8,12 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contr
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
+    use CreateExtensionWorkerTrait;
+
     public function __construct(
         protected JsonFileManager $jsonFileManager,
     ) {
@@ -93,12 +94,8 @@ class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateEx
          * (including the {composer-vendor} bit) from its composer.json
          */
         foreach ($this->getPackageComposerJSONFiles($inputObject) as $packageComposerJSONFile) {
-            $packageComposerJSONFileSmartFileInfo = new SmartFileInfo($packageComposerJSONFile);
-        
-            $json = $this->jsonFileManager->loadFromFileInfo($packageComposerJSONFileSmartFileInfo);
-            
             // $packageName will be "composer-vendor/{$extensionSlug}-schema"
-            $packageName = $json[ComposerJsonSection::NAME];
+            $packageName = $this->getComposerJSONPackageName($packageComposerJSONFile);
             $entries["/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}/vendor/{$packageName}"] = "layers/GatoGraphQLForWP/packages/{$extensionSlug}-schema";
         }
 
