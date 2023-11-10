@@ -90,17 +90,17 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
     protected function updatePluginDataSourceFile(CreateExtensionInputObjectInterface $inputObject): void
     {
         $extensionSlug = $inputObject->getExtensionSlug();
-        $code = <<<PHP
-        [
-            'path' => 'layers/GatoGraphQLForWP/plugins/$extensionSlug',
-            'plugin_slug' => 'gatographql-$extensionSlug',
-            'main_file' => 'gatographql-$extensionSlug.php',
-            'rector_downgrade_config' => \$this->rootDir . '/config/rector/downgrade/$extensionSlug/rector.php',
-            'exclude_files' => implode(' ', [
-                'docs/images/\*',
-            ]),
-        ],
-        PHP;
+        $code = "
+            [
+                'path' => 'layers/GatoGraphQLForWP/plugins/$extensionSlug',
+                'plugin_slug' => 'gatographql-$extensionSlug',
+                'main_file' => 'gatographql-$extensionSlug.php',
+                'rector_downgrade_config' => \$this->rootDir . '/config/rector/downgrade/$extensionSlug/rector.php',
+                'exclude_files' => implode(' ', [
+                    'docs/images/\*',
+                ]),
+            ],
+        ";
         $this->fileContentReplacerSystem->replaceContentInFiles(
             [
                 $this->getPluginDataSourceFile(),
