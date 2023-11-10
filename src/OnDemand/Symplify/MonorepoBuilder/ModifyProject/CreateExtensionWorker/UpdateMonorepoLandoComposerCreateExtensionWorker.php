@@ -13,8 +13,6 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 
 class UpdateMonorepoLandoComposerCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
-    use CreateExtensionWorkerTrait;
-    
     public function __construct(
         protected JsonFileManager $jsonFileManager,
     ) {

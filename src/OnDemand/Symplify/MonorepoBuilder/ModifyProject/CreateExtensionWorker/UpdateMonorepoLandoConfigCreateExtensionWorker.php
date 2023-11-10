@@ -9,15 +9,12 @@ use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contr
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\Utils\ComposerUtils;
-use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\PackageBuilder\Neon\NeonPrinter;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SmartFileSystem\SmartFileSystem;
 
 class UpdateMonorepoLandoConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
-    use CreateExtensionWorkerTrait;
-
     public function __construct(
         private NeonPrinter $neonPrinter,
         private SmartFileSystem $smartFileSystem,

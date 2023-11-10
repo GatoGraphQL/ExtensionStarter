@@ -12,8 +12,6 @@ use Symplify\SmartFileSystem\SmartFileSystem;
 
 class UpdateMonorepoLandoBashSetupCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
-    use CreateExtensionWorkerTrait;
-
     public function __construct(
         private SmartFileSystem $smartFileSystem,
     ) {

@@ -13,8 +13,6 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 
 class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
-    use CreateExtensionWorkerTrait;
-
     public function __construct(
         private JsonFileManager $jsonFileManager,
         private ComposerUtils $composerUtils,
