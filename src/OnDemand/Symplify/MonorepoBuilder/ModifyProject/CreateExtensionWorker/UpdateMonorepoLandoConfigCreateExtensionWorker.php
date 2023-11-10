@@ -8,6 +8,7 @@ use Nette\Neon\Neon;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\CreateExtensionWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
+use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\PackageBuilder\Neon\NeonPrinter;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SmartFileSystem\SmartFileSystem;
@@ -19,6 +20,7 @@ class UpdateMonorepoLandoConfigCreateExtensionWorker implements CreateExtensionW
     public function __construct(
         private NeonPrinter $neonPrinter,
         private SmartFileSystem $smartFileSystem,
+        private JsonFileManager $jsonFileManager,
     ) {
     }
 
@@ -124,5 +126,10 @@ class UpdateMonorepoLandoConfigCreateExtensionWorker implements CreateExtensionW
         return [
             $rootFolder . '/layers/GatoGraphQLForWP/packages/' . $inputObject->getExtensionSlug() . '-schema/composer.json',
         ];
+    }
+
+    protected function getJsonFileManager(): JsonFileManager
+    {
+        return $this->jsonFileManager;
     }
 }

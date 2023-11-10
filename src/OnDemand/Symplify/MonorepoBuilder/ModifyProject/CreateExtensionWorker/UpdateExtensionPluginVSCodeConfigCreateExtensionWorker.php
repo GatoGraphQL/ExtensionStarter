@@ -119,4 +119,9 @@ class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateEx
             $rootFolder . '/layers/GatoGraphQLForWP/packages/' . $inputObject->getExtensionSlug() . '-schema/composer.json',
         ];
     }
+
+    protected function getJsonFileManager(): JsonFileManager
+    {
+        return $this->jsonFileManager;
+    }
 }

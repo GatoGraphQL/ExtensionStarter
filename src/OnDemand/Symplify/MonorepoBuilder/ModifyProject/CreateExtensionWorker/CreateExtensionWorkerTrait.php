@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker;
 
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
+use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
@@ -25,8 +26,10 @@ trait CreateExtensionWorkerTrait
     {
         $packageComposerJSONFileSmartFileInfo = new SmartFileInfo($packageComposerJSONFile);
     
-        $json = $this->jsonFileManager->loadFromFileInfo($packageComposerJSONFileSmartFileInfo);
+        $json = $this->getJsonFileManager()->loadFromFileInfo($packageComposerJSONFileSmartFileInfo);
         
         return $json[ComposerJsonSection::NAME];
     }
+
+    abstract protected function getJsonFileManager(): JsonFileManager;
 }
