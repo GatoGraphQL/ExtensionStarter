@@ -142,7 +142,13 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
 
             $integrationPluginSlug = '';
             if ($integrationPluginFile !== '') {
-                $integrationPluginSlug = substr($integrationPluginFile, 0, strpos($integrationPluginFile, '/'));
+                $pos = strpos($integrationPluginFile, '/');
+                if ($pos === false) {
+                    throw new ConfigurationException(
+                        'The integration plugin file must have format "slug/file.php"'
+                    );
+                }
+                $integrationPluginSlug = substr($integrationPluginFile, 0, $pos);
             }
 
             $integrationPluginVersionConstraint = (string) $input->getOption(Option::INTEGRATION_PLUGIN_VERSION_CONSTRAINT);
