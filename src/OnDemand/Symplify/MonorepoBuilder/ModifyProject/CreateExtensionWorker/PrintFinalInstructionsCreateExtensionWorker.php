@@ -31,22 +31,21 @@ final class PrintFinalInstructionsCreateExtensionWorker implements CreateExtensi
         $this->symfonyStyle->write(sprintf(
             'Please execute the following commands to complete the process:
 
-# ✅ Git commit and push the changes to the repo:
-# ------------------------------------------------
+# (Git commit/push the changes to the repo)
 git add .
 git commit -m "Created extension: %s"
 git push origin
 
-# ✅ Rebuild the Lando Webserver for DEV, mapping the new extension:
-# ------------------------------------------------
+# (Rebuild the Lando Webserver for DEV)
 composer rebuild-app-and-server
 
-# ✅ Install/activate the added plugin (DEV and PROD webservers):
-# ------------------------------------------------
+# (Install/activate the added plugins, on DEV and PROD webservers)
 composer activate-extension-plugins
 composer activate-extension-plugins-prod
 
-🎉 Extension "%s" is now ready. Happy coding!
+🎉 After executing these commands, "%s" will be ready.
+
+Happy coding!
             ',
             $inputObject->getExtensionName(),
             $inputObject->getExtensionSlug()
