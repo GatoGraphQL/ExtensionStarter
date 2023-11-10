@@ -21,8 +21,12 @@ To finish, please execute the following commands:
 
     $ composer rebuild-app-and-server
     # (This will rebuild the Lando Webserver for DEV, mapping the new extension)
-
         ';
+        if ($inputObject->getIntegrationPluginSlug() !== '') {
+            $description .= '
+
+            ';
+        }
         return $description;
     }
 
