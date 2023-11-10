@@ -106,11 +106,19 @@ class UpdateMonorepoLandoConfigCreateExtensionWorker implements CreateExtensionW
         foreach ($this->getPackageComposerJSONFiles($inputObject) as $packageComposerJSONFile) {
             // $packageName will be "composer-vendor/{$extensionSlug}-schema"
             $packageName = $this->getComposerJSONPackageName($packageComposerJSONFile);
-            $entries["../../layers/GatoGraphQLForWP/packages/{$extensionSlug}-schema"] = "/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}/vendor/{$packageName}";
+            $entries[] = sprintf(
+                '- %s: %s',
+                "../../layers/GatoGraphQLForWP/packages/{$extensionSlug}-schema",
+                "/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}/vendor/{$packageName}"
+            );
         }
 
         // Add the entry for the plugin
-        $entries["../../layers/GatoGraphQLForWP/plugins/{$extensionSlug}"] = "/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}";
+        $entries[] = sprintf(
+            '- %s: %s',
+            "../../layers/GatoGraphQLForWP/plugins/{$extensionSlug}",
+            "/app/wordpress/wp-content/plugins/gatographql-{$extensionSlug}"
+        );
 
         // Prepend the workspace folder to all entries
         return $entries;
