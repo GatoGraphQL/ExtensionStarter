@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\SmartFile;
 
 use PoP\PoP\Extensions\Symplify\MonorepoBuilder\SmartFile\FileContentReplacerSystem;
+use Symfony\Component\Finder\Finder;
 use Symplify\SmartFileSystem\FileSystemGuard;
-use Symplify\SmartFileSystem\Finder\SmartFinder;
+use Symplify\SmartFileSystem\Finder\FinderSanitizer;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SmartFileSystem\SmartFileSystem;
 
@@ -15,8 +16,8 @@ final class FileCopierSystem
     public function __construct(
         private SmartFileSystem $smartFileSystem,
         private FileSystemGuard $fileSystemGuard,
-        private SmartFinder $smartFinder,
         private FileContentReplacerSystem $fileContentReplacerSystem,
+        private FinderSanitizer $finderSanitizer,
     ) {
     }
 
@@ -42,7 +43,13 @@ final class FileCopierSystem
             $this->smartFileSystem->remove($toFolder);
         }
 
-        $smartFileInfos = $this->smartFinder->find([$fromFolder], '*');
+        $finder = new Finder();
+        $finder->name('*')
+            ->in($fromFolder)
+            ->files()
+            ->ignoreDotFiles(false);
+        $smartFileInfos = $this->finderSanitizer->sanitize($finder);
+
         $fromFiles = array_map(
             fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
             $smartFileInfos
