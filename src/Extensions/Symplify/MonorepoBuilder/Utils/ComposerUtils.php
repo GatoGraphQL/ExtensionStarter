@@ -15,9 +15,6 @@ final class ComposerUtils
     ) {
     }
 
-    /**
-     * @return string[]
-     */
     public function getComposerJSONPackageName(string $packageComposerJSONFile): string
     {
         $packageComposerJSONFileSmartFileInfo = new SmartFileInfo($packageComposerJSONFile);
