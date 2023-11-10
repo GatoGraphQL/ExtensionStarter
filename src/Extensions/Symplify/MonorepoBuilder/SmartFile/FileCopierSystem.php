@@ -44,7 +44,7 @@ final class FileCopierSystem
         }
 
         $finder = new Finder();
-        $finder->name('*')
+        $finder->name(['*', '.gitignore'])
             ->in($fromFolder)
             ->files()
             ->ignoreDotFiles(false);
