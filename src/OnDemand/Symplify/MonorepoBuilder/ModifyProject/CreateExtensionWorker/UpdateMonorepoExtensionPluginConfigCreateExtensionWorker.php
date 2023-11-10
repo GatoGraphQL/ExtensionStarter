@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\CreateExtensionWorker;
 
-use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\FilesContainingStringFinder;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\CreateExtensionWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
@@ -17,7 +16,6 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
     use CreateExtensionWorkerTrait;
 
     public function __construct(
-        private FilesContainingStringFinder $filesContainingStringFinder,
         private FileContentReplacerSystem $fileContentReplacerSystem,
     ) {
     }
