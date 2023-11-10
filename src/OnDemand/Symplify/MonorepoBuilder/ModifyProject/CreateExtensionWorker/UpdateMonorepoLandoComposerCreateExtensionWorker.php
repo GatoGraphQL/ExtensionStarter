@@ -74,6 +74,10 @@ class UpdateMonorepoLandoComposerCreateExtensionWorker implements CreateExtensio
             "cd ../../ && vendor/bin/monorepo-builder symlink-local-package --config=config/monorepo-builder/symlink-local-package.php layers/GatoGraphQLForWP/plugins/{$extensionSlug}/composer.local.json",
             "COMPOSER=composer.local.json composer update --no-dev --working-dir=../../layers/GatoGraphQLForWP/plugins/{$extensionSlug}"
         ];
+
+        // Optimize/Deoptimize autoloader scripts
+        $json[ComposerJsonSection::SCRIPTS]['optimize-autoloader'][] = "COMPOSER=composer.local.json composer dump-autoload --optimize --working-dir=../../layers/GatoGraphQLForWP/plugins/{$scriptName}";
+        $json[ComposerJsonSection::SCRIPTS]['deoptimize-autoloader'][] = "COMPOSER=composer.local.json composer dump-autoload --working-dir=../../layers/GatoGraphQLForWP/plugins/{$scriptName}";
         
         $this->jsonFileManager->printJsonToFileInfo($json, $composerJSONFileSmartFileInfo);
     }
