@@ -20,16 +20,19 @@ final class PrintFinalInstructionsCreateExtensionWorker implements CreateExtensi
         
 To finish, please execute the following commands:
 
-    $ git add .
-    $ git commit -m "Created extension: %s"
-    $ git push origin
-    # (This will git commit and push the changes to the repo)
+# Git commit and push the changes to the repo:
+# ------------------------------------------------
+git add .
+git commit -m "Created extension: %s"
+git push origin
 
-    $ composer rebuild-app-and-server
-    # (This will rebuild the Lando Webserver for DEV, mapping the new extension)
+# Rebuild the Lando Webserver for DEV, mapping the new extension:
+# ------------------------------------------------
+composer rebuild-app-and-server
 
-    $ composer activate-extension-plugins
-    # (This will install and activate the extension plugin, and any required integration plugin)
+# Install and activate the extension plugin, and any required integration plugin:
+# ------------------------------------------------
+composer activate-extension-plugins
 
             ',
             $inputObject->getExtensionName()
