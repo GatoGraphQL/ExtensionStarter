@@ -22,6 +22,8 @@ final class FileCopierSystem
     }
 
     /**
+     * @param array<string,string> $renameFiles
+     * @param array<string,string> $renameFolders
      * @param array<string,string> $patternReplacements a regex pattern to search, and its replacement
      * @return string[] The copied files
      */
