@@ -7,15 +7,28 @@ namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\ModifyProject\C
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\Contract\ModifyProjectWorker\CreateExtensionWorkerInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\CreateExtensionInputObjectInterface;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ModifyProject\InputObject\ModifyProjectInputObjectInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class PrintFinalInstructionsCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
+    public function __construct(
+        private SymfonyStyle $symfonyStyle
+    ) {
+    }
     /**
      * @param CreateExtensionInputObjectInterface $inputObject
      */
     public function getDescription(ModifyProjectInputObjectInterface $inputObject): string
     {
-        return sprintf(
+        return 'Print instructions to complete the creation of the extension';
+    }
+
+    /**
+     * @param CreateExtensionInputObjectInterface $inputObject
+     */
+    public function work(ModifyProjectInputObjectInterface $inputObject): void
+    {
+        $this->symfonyStyle->write(sprintf(
             'The `create-command` has been successful.
         
 To finish, please execute the following commands:
@@ -39,14 +52,6 @@ composer activate-extension-plugins-prod
             ',
             $inputObject->getExtensionName(),
             $inputObject->getExtensionSlug()
-        );
-    }
-
-    /**
-     * @param CreateExtensionInputObjectInterface $inputObject
-     */
-    public function work(ModifyProjectInputObjectInterface $inputObject): void
-    {
-        // Do nothing...
+        ));
     }
 }
