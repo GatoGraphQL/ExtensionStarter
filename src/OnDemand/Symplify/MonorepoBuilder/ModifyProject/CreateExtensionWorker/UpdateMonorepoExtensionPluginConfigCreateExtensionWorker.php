@@ -15,7 +15,7 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
     public const COMMAND_PLACEHOLDER = '// { Command Placeholder: Integration plugin Composer package }';
 
     use CreateExtensionWorkerTrait;
-    
+
     public function __construct(
         private FilesContainingStringFinder $filesContainingStringFinder,
         private FileContentReplacerSystem $fileContentReplacerSystem,

@@ -69,7 +69,7 @@ class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateEx
                 $configuration['pathMappings'] ?? [],
             );
         }
-        
+
         $this->jsonFileManager->printJsonToFileInfo($json, $vscodeLaunchJSONFileSmartFileInfo);
     }
 
@@ -105,7 +105,7 @@ class UpdateExtensionPluginVSCodeConfigCreateExtensionWorker implements CreateEx
         // Prepend the workspace folder to all entries
         return array_map(
             fn (string $entry) => '${workspaceFolder}/' . $entry,
-            $entries 
+            $entries
         );
     }
 

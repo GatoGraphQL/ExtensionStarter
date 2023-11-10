@@ -25,7 +25,7 @@ trait ContainerConfigurationServiceTrait
      * Retrieve all the PHP stubs from under stubs/
      *
      * For instance, this will return:
-     * 
+     *
      *   [
      *     $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
      *   ]

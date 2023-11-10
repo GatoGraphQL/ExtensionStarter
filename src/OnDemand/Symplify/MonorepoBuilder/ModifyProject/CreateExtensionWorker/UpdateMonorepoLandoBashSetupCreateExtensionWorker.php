@@ -72,7 +72,7 @@ class UpdateMonorepoLandoBashSetupCreateExtensionWorker implements CreateExtensi
         $landoWebserverActivatePluginsBashFileSmartFileInfo = new SmartFileInfo($landoWebserverActivatePluginsBashFile);
 
         $landoWebserverActivatePluginsBashContent = $landoWebserverActivatePluginsBashFileSmartFileInfo->getContents();
-        
+
         // Append the content
         $landoWebserverActivatePluginsBashContent .= $this->getActivatePluginsBashContentToAppend($inputObject, $isProd);
 

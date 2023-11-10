@@ -23,7 +23,7 @@ trait ContainerConfigurationServiceHelpersTrait
 
     /**
      * @see https://stackoverflow.com/a/24784020/14402031
-     * 
+     *
      * @return string[]
      */
     protected function getAllFilesUnderFolder(string $dir): array
@@ -33,11 +33,11 @@ trait ContainerConfigurationServiceHelpersTrait
 
         /** @var SplFileInfo $file */
         foreach ($rii as $file) {
-            if ($file->isDir()){ 
+            if ($file->isDir()) {
                 continue;
             }
-                
-            $files[] = $file->getPathname();        
+
+            $files[] = $file->getPathname();
         }
 
         return $files;

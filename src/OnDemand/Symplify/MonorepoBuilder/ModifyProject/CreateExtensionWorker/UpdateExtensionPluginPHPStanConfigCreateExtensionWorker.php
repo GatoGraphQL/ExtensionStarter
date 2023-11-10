@@ -15,7 +15,7 @@ use Symplify\SmartFileSystem\SmartFileSystem;
 class UpdateExtensionPluginPHPStanConfigCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
     use CreateExtensionWorkerTrait;
-    
+
     public function __construct(
         private NeonPrinter $neonPrinter,
         private SmartFileSystem $smartFileSystem,
@@ -78,10 +78,10 @@ class UpdateExtensionPluginPHPStanConfigCreateExtensionWorker implements CreateE
 
         $phpstanNeonContent = $phpstanNeonFileSmartFileInfo->getContents();
         $phpstanNeonData = (array) Neon::decode($phpstanNeonContent);
-        
+
         $phpstanNeonData['parameters']['bootstrapFiles'] ??= [];
         $phpstanNeonData['parameters']['bootstrapFiles'][] = "%currentWorkingDirectory%/stubs/{$this->getIntegrationPluginWPackagistDependency($inputObject)}/stubs.php";
-        
+
         $phpstanNeonContent = $this->neonPrinter->printNeon($phpstanNeonData);
         $this->smartFileSystem->dumpFile($phpstanNeonFile, $phpstanNeonContent);
     }

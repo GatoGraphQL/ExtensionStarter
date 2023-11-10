@@ -34,7 +34,7 @@ final class CreateExtensionGuard extends AbstractModifyProjectGuard implements C
      */
     public function guardIntegrationPluginFile(string $file): void
     {
-        if(!preg_match('#^(\w+/){1,2}\w+\.php$#', $file)) {
+        if (!preg_match('#^(\w+/){1,2}\w+\.php$#', $file)) {
             throw new ConfigurationException(sprintf(
                 'Plugin file "%s" is not valid',
                 $file

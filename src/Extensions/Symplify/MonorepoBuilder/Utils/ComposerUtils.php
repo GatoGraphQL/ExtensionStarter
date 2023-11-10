@@ -21,9 +21,9 @@ final class ComposerUtils
     public function getComposerJSONPackageName(string $packageComposerJSONFile): string
     {
         $packageComposerJSONFileSmartFileInfo = new SmartFileInfo($packageComposerJSONFile);
-    
+
         $json = $this->jsonFileManager->loadFromFileInfo($packageComposerJSONFileSmartFileInfo);
-        
+
         return $json[ComposerJsonSection::NAME];
     }
 }

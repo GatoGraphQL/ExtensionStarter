@@ -80,7 +80,7 @@ final class FileCopierSystem
             }
             $dirFiles[$dir][] = $file;
         }
-        
+
         $copiedFiles = [];
         foreach ($dirToFolders as $dir => $dirToFolder) {
             $files = $dirFiles[$dir];

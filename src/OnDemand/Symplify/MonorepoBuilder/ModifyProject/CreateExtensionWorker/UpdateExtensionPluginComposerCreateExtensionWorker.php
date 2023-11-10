@@ -14,7 +14,7 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtensionWorkerInterface
 {
     use CreateExtensionWorkerTrait;
-    
+
     public function __construct(
         protected JsonFileManager $jsonFileManager,
     ) {
@@ -73,10 +73,10 @@ class UpdateExtensionPluginComposerCreateExtensionWorker implements CreateExtens
         string $composerJSONFile,
     ): void {
         $composerJSONFileSmartFileInfo = new SmartFileInfo($composerJSONFile);
-        
+
         $json = $this->jsonFileManager->loadFromFileInfo($composerJSONFileSmartFileInfo);
         $json[ComposerJsonSection::REQUIRE_DEV][$this->getIntegrationPluginWPackagistDependency($inputObject)] = $inputObject->getIntegrationPluginVersionConstraint();
-        
+
         $this->jsonFileManager->printJsonToFileInfo($json, $composerJSONFileSmartFileInfo);
     }
 

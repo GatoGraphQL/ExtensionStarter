@@ -43,7 +43,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
         $template = $inputObject->getTemplate();
         $extensionSlug = $inputObject->getExtensionSlug();
         $integrationPluginSlug = $inputObject->getIntegrationPluginSlug();
-     
+
         $templateFolders = $this->getExtensionTemplateFolders($inputObject);
         foreach ($templateFolders as $fromFolder) {
             $toFolder = str_replace(
@@ -57,7 +57,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
                 ],
                 $fromFolder
             );
-            
+
             $renameFiles = $this->getRenameFiles(
                 $inputObject,
                 $fromFolder,
@@ -67,7 +67,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
                 $inputObject,
                 $fromFolder,
             );
-            
+
             $this->fileCopierSystem->copyFilesFromFolder(
                 $fromFolder,
                 $toFolder,
@@ -94,12 +94,12 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
                 ],
                 $templateFileDir
             );
-            
+
             $renameFiles = $this->getRenameFiles(
                 $inputObject,
                 $templateFileDir,
             );
-            
+
             $this->fileCopierSystem->copyFiles(
                 [$templateFile],
                 $toFolder,
@@ -112,7 +112,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
     /**
      * Find files with "extension-template", and indicate how
      * to replace that name
-     * 
+     *
      * @return array<string,string>
      */
     protected function getRenameFiles(
@@ -136,7 +136,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
     /**
      * Find files with "extension-template", and indicate how
      * to replace that name
-     * 
+     *
      * @return array<string,string>
      */
     protected function getSearchReplaceRenameFiles(
@@ -158,7 +158,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
             ),
             $fromRenameFiles
         );
-        
+
         $renameFiles = [];
         $renameFileCount = count($fromRenameFiles);
         for ($i = 0; $i < $renameFileCount; $i++) {
@@ -171,7 +171,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
     /**
      * Find folders with "extension-template", and indicate how
      * to replace that name
-     * 
+     *
      * @return array<string,string>
      */
     protected function getRenameFolders(
@@ -199,7 +199,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
     /**
      * Find folders with "extension-template", and indicate how
      * to replace that name
-     * 
+     *
      * @return array<string,string>
      */
     protected function getSearchReplaceRenameFolders(
@@ -212,7 +212,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
             ->in($fromFolder)
             ->directories()
             ->sortByName();
-            
+
         $smartFileInfos = $this->finderSanitizer->sanitize($finder);
         $fromRenameFolders = array_map(
             fn (SmartFileInfo $smartFileInfo) => $smartFileInfo->getRealPath(),
@@ -227,7 +227,7 @@ class DuplicateTemplateFilesAndFoldersCreateExtensionWorker implements CreateExt
             ),
             $fromRenameFolders
         );
-        
+
         $renameFolders = [];
         $renameFileCount = count($fromRenameFolders);
         for ($i = 0; $i < $renameFileCount; $i++) {

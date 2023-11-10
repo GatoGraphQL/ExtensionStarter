@@ -30,7 +30,7 @@ class CodeQualityContainerConfigurationService extends AbstractCodeQualityContai
     {
         return $this->getDownstreamProjectPaths();
     }
-    
+
     /**
      * @return string[]
      */

@@ -134,7 +134,7 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
                     )
                 );
             }
-            
+
             // @todo Review Options for the CreateExtension command
             $integrationPluginFile = (string) $input->getOption(Option::INTEGRATION_PLUGIN_FILE);
             // validation
@@ -156,7 +156,7 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
             if ($integrationPluginSlug !== '' && $integrationPluginName === '') {
                 $integrationPluginName = ucwords(str_replace('-', ' ', $integrationPluginSlug));
             }
-            
+
             $extensionName = (string) $input->getOption(Option::EXTENSION_NAME);
             if ($extensionName === '') {
                 $extensionName = $integrationPluginName;
