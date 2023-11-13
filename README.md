@@ -845,6 +845,10 @@ Now, when loading the Lando webserver for DEV (under `https://gatographql-{compo
 
 ### Add stubs for your integration plugin
 
+If integrating with another WordPress plugin, you will need to complete the file with stubs for that plugin, to avoid errors with PHPStan.
+
+The stub file is under `stubs/wpackagist-plugin/{integration-plugin}/stubs.php`.
+
 <details>
 
 <summary>What are stubs needed for? And how to generate them? 🤔</summary>
