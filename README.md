@@ -1486,6 +1486,7 @@ composer list
 | `build-server` | Initialize the Lando webserver with the 'Gato GraphQL' demo site, for development. To be executed only the first time |
 | `build-server-prod` | Initialize the Lando webserver with the 'Gato GraphQL' demo site, for production. To be executed only the first time |
 | `check-style` | Validate PSR-12 coding standards (via phpcs) |
+| `check-style-wp` | Validate WordPress custom rules coding standards (via phpcs) |
 | `copy-files-from-upstream-monorepo` | [multi-monorepo] Copy specific files to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo |
 | `copy-folders-from-upstream-monorepo` | [multi-monorepo] Copy all files in specific folders to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo |
 | `copy-upstream-files` | [multi-monorepo] Copy both specific files, and all files in specific folders, to be reused across monorepos, from the upstream GatoGraphQL/GatoGraphQL to this downstream repo |
@@ -1500,6 +1501,7 @@ composer list
 | `enable-caching` | Enable caching for the 'Gato GraphQL' in DEV |
 | `enable-restrictive-defaults` | Use restrictive default values for the Settings |
 | `fix-style` | Fix PSR-12 coding standards (via phpcbf) |
+| `fix-style-wp` | Fix WordPress custom rules coding standards (via phpcbf) |
 | `import-data` | Imports pre-defined data into the DB (posts, users, CPTs, etc) |
 | `improve-code-quality` | Improve code quality (via Rector) |
 | `init-server` | Alias of 'start-server |
