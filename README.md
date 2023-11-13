@@ -1171,49 +1171,6 @@ Input all these in:
 	.vscode/launch.json
 	.lando.base.yml -->
 
-## Manage the Lando webservers
-
-### Re-install the WordPress site (DEV and PROD)
-
-You can at any moment re-install the WordPress site (and import the initial dataset).
-
-On the DEV webserver:
-
-```bash
-composer reset-db
-```
-
-On PROD:
-
-```bash
-composer reset-db-prod
-```
-
-This is useful when:
-
-- The installation when doing `build-server` was halted midway (or failed for some reason)
-- Running the integration tests was not completed (modifying the DB data to a different state, so that running the tests again will fail)
-
-### Re-build the Lando webserver for DEV
-
-When a plugin or package folder has been renamed, you need to update the path in the `overrides` section of the [`.lando.upstream.yml`](webservers/gatographql-extensions/.lando.upstream.yml) Lando config file, and then rebuild the Lando webserver to reflect these changes.
-
-Run:
-
-```bash
-composer rebuild-server
-```
-
-### Regenerate the Composer autoload files for DEV
-
-When a new extension plugin is added to the monorepo, it must have its Composer autoload file generated, and the plugin must be symlinked to the Lando webserver.
-
-Run:
-
-```bash
-composer rebuild-app-and-server
-```
-
 ## Development Process
 
 ### Purging the cache
@@ -1272,6 +1229,47 @@ The `update-monorepo-config` command will:
 - Regenerate the root `phpstan.neon`, adding the new packages
 
 </details>
+
+### Re-install the WordPress site (DEV and PROD)
+
+You can at any moment re-install the WordPress site (and import the initial dataset).
+
+On the DEV webserver:
+
+```bash
+composer reset-db
+```
+
+On PROD:
+
+```bash
+composer reset-db-prod
+```
+
+This is useful when:
+
+- The installation when doing `build-server` was halted midway (or failed for some reason)
+- Running the integration tests was not completed (modifying the DB data to a different state, so that running the tests again will fail)
+
+### Re-build the Lando webserver for DEV
+
+When a plugin or package folder has been renamed, you need to update the path in the `overrides` section of the [`.lando.upstream.yml`](webservers/gatographql-extensions/.lando.upstream.yml) Lando config file, and then rebuild the Lando webserver to reflect these changes.
+
+Run:
+
+```bash
+composer rebuild-server
+```
+
+### Regenerate the Composer autoload files for DEV
+
+When a new extension plugin is added to the monorepo, it must have its Composer autoload file generated, and the plugin must be symlinked to the Lando webserver.
+
+Run:
+
+```bash
+composer rebuild-app-and-server
+```
 
 ## Development Tools
 
