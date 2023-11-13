@@ -105,7 +105,7 @@ class UpdateMonorepoExtensionPluginConfigCreateExtensionWorker implements Create
                 $this->getPluginDataSourceFile(),
             ],
             [
-                '#(\s+?)(' . self::COMMAND_PLACEHOLDER . ')#' => '$1$2$1' . $code,
+                '#(\s+?)(' . self::COMMAND_PLACEHOLDER . ')#' => '$1$2' . PHP_EOL . $code,
             ],
             true,
         );
