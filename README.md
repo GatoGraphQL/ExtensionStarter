@@ -478,6 +478,107 @@ composer integration-test-prod
 
 This section explains all the steps needed to add an extension plugin to the monorepo.
 
+### Run command to create the extension
+
+Run:
+
+```bash
+composer create-extension -- \
+  --extension-name="Extension name"
+```
+
+If the extension is an integration for some WordPress plugin, run:
+
+```bash
+composer create-extension -- \
+  --integration-plugin-name="Plugin name" \
+  --integration-plugin-file=slug/file.php \
+  --integration-plugin-version-constraint="..."
+```
+
+For instance, to build an integration for WooCommerce with version 8 or above, run:
+
+```bash
+composer create-extension -- \
+  --integration-plugin-name=WooCommerce \
+  --integration-plugin-file=woocommerce/woocommerce.php \
+  --integration-plugin-version-constraint="^8"
+```
+
+To print all the arguments for the `create-extension` command, run:
+
+```bash
+composer create-extension -- --help
+```
+
+<details>
+
+<summary>View all <code>create-extension</code> command arguments</summary>
+
+| Option | Description |
+| --- | --- |
+| `--integration-plugin-file` | Integration plugin file (eg: "woocommerce/woocommerce.php" for the WooCommerce plugin), if any |
+| `--integration-plugin-version-constraint` | Mimimum required version of the integration plugin, in semver (eg: "^8.1"). If not provided, any version is accepted [default: "*"] |
+| `--integration-plugin-name` | Name of the integration plugin (eg: WooCommerce). If not provided, it is generated from the integration plugin slug |
+| `--extension-name` | Extension plugin name. If not provided, it is calculated from the integration plugin name |
+| `--extension-slug` | Slug of the extension plugin. If not provided, it is generated from the integration plugin's slug, or from the "extension-name" option |
+| `--extension-classname` | PHP classname to append to classes in the extension plugin. If not provided, it is generated from the "extension-slug" option |
+
+</details>
+
+### Regenerate monorepo config
+
+After running the command above, execute the following bash commands to complete the process:
+
+```bash
+# (Git commit/push the changes to the repo)
+# ------------------------------------------------
+git add .
+git commit -m "Created new extension"
+git push origin
+
+
+# (Rebuild the Lando Webserver for DEV)
+# ------------------------------------------------
+composer rebuild-app-and-server
+
+
+# (Install/activate the added plugins, on DEV and PROD webservers)
+# ------------------------------------------------
+composer activate-extension-plugins
+composer activate-extension-plugins-prod
+```
+
+### Complete the docs
+
+Complete the documentation for your module, under file: `layers/GatoGraphQLForWP/plugins/{extension-slug}/docs/modules/schema-{extension-slug}/en.md`.
+
+You can also search for string `@gatographql-extension-todo` to find it.
+
+### Add stubs for your integration plugin
+
+If integrating with another WordPress plugin, you will need to complete the file with stubs for that plugin, to avoid errors with PHPStan.
+
+The stub file is under `stubs/wpackagist-plugin/{integration-plugin}/stubs.php`.
+
+<details>
+
+<summary>What are stubs needed for? And how to generate them? 🤔</summary>
+
+Stubs are placeholders to "load" a functionality that is otherwise missing (because the plugin that contains it is not loaded when running unit tests and static analysis).
+
+Stubs avoid PHPStan producing an error when analyzing packages which invoke classes, methods, constants, etc, from 3rd-party WordPress plugins. (Eg: [the stubs file for `hello-dolly`](stubs/wpackagist-plugin/hello-dolly/stubs.php) avoids an error from [calling `hello_dolly_get_lyric()` in the field resolver](layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)).
+
+It also avoids Rector from producing errors when downgrading the code.
+
+Stubs must be added for all the WordPress integration plugins for which there is an extension in the monorepo (eg: WooCommerce, Yoast SEO, etc).
+
+The stub files, if not already available for that WordPress plugin, can be generated using [`php-stubs/generator`](https://github.com/php-stubs/generator) (check also [`php-stubs/wordpress-stubs`](https://github.com/php-stubs/wordpress-stubs)).
+
+</details>
+
+<!--
+
 _Doing this process manually is tedious and error-prone. We are already [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate this process._
 
 ### Creating the extension manually
@@ -613,45 +714,6 @@ i.e. it will look like this:
 ```
 
 Create empty file `stubs/wpackagist-plugin/your-extension/stubs.php`, to be filled with stubs for all classes/functions/constants invoked on your WordPress integration plugin (eg: WooCommerce, Yoast SEO, etc).
-
-<details>
-
-<summary>What are stubs needed for? And how to generate them? 🤔</summary>
-
-Stubs are placeholders to "load" a functionality that is otherwise missing (because the plugin that contains it is not loaded when running unit tests and static analysis).
-
-Stubs avoid PHPStan producing an error when analyzing packages which invoke classes, methods, constants, etc, from 3rd-party WordPress plugins. (Eg: [the stubs file for `hello-dolly`](stubs/wpackagist-plugin/hello-dolly/stubs.php) avoids an error from [calling `hello_dolly_get_lyric()` in the field resolver](layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)).
-
-It also avoids Rector from producing errors when downgrading the code.
-
-Stubs must be added for all the WordPress integration plugins for which there is an extension in the monorepo (eg: WooCommerce, Yoast SEO, etc).
-
-The stub files, if not already available for that WordPress plugin, can be generated using [`php-stubs/generator`](https://github.com/php-stubs/generator) (check also [`php-stubs/wordpress-stubs`](https://github.com/php-stubs/wordpress-stubs)).
-
-</details>
-
-<!-- Edit files:
-
-- `src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php`
-- `src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
-
-...adding the following line of PHP code:
-
-```php
-$this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
-```
-
-i.e. they will look like this:
-
-```php
-return array_merge(
-  parent::getBootstrapFiles(),
-  [
-    $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
-    $this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
-  ]
-);
-``` -->
 
 Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc):
 
@@ -811,7 +873,7 @@ And regenerate the mapping for the Lando webserver for DEV, by running:
 composer rebuild-app-and-server
 ```
 
-Now, when loading the Lando webserver for DEV (under `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`), the new extension should be loaded and working (even though it doesn't contain any resolver yet).
+Now, when loading the Lando webserver for DEV (under `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`), the new extension should be loaded and working (even though it doesn't contain any resolver yet). -->
 
 <!-- ### Defining an Integration Plugin
 
