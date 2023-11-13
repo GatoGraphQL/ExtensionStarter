@@ -114,6 +114,7 @@ class SearchAndReplaceInitialTextInCodebaseInitializeProjectWorker extends Abstr
             $rootFolder . '/ci',
             $rootFolder . '/layers',
             $rootFolder . '/src/Config/Symplify/MonorepoBuilder/DataSources',
+            $rootFolder . '/templates',
             $rootFolder . '/webservers',
         ];
     }
