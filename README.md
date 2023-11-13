@@ -476,7 +476,28 @@ composer integration-test-prod
 
 ## Creating your Extension Plugin
 
-This section explains all the steps needed to add an extension plugin to the monorepo.
+Run:
+
+```bash
+composer create-extension -- \
+  --extension-name="Extension name"
+```
+
+If the extension is an integration for some WordPress plugin, run:
+
+```bash
+composer create-extension -- \
+  --integration-plugin-name="Plugin name" \
+  --integration-plugin-file=slug/file.php
+```
+
+For instance, to build an integration for WooCommerce, run:
+
+```bash
+composer create-extension -- \
+  --integration-plugin-name=WooCommerce \
+  --integration-plugin-file=woocommerce/woocommerce.php
+```
 
 <!-- ### Creating the extension manually
 
