@@ -40,9 +40,12 @@ git add . && git commit -m "Created extension: %s" && git push origin
 # ------------------------------------------------
 composer rebuild-app-and-server
 
-# (Install/activate the added plugins, on DEV and PROD webservers)
+# (Install/activate the added plugins on the DEV webserver)
 # ------------------------------------------------
 composer activate-extension-plugins
+
+# (Install/activate the added integration plugins on the PROD webserver)
+# ------------------------------------------------
 composer activate-extension-plugins-prod
 
 
