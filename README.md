@@ -418,13 +418,23 @@ The new extension plugin created with the command above contains the comment `@g
 
 ### Documentation
 
-Complete the documentation for your module, under file: `layers/GatoGraphQLForWP/plugins/{extension-slug}/docs/modules/schema-{extension-slug}/en.md`.
+Complete the documentation for your module, under file:
+
+`layers/GatoGraphQLForWP/plugins/{extension-slug}/docs/modules/schema-{extension-slug}/en.md`.
+
+### Integration Tests for the Extension Schema
+
+To test the schema elements added by the extension, complete the GraphQL document:
+
+`layers/GatoGraphQLForWP/plugins/{extension-slug}/tests/Integration/fixture-schema/extension-schema.gql`
+
+(and the JSON response, in the same folder).
 
 ### Stubs for your integration plugin
 
-If integrating with another WordPress plugin, you will need to complete the file with stubs for that plugin, to avoid errors with PHPStan/Rector.
+If integrating with another WordPress plugin, you will need to complete the file with stubs for that plugin (to avoid errors with PHPStan/Rector), under:
 
-The stub file is under `stubs/wpackagist-plugin/{integration-plugin}/stubs.php`.
+`stubs/wpackagist-plugin/{integration-plugin}/stubs.php`.
 
 <details>
 
