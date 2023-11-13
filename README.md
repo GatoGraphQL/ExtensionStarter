@@ -478,7 +478,7 @@ composer integration-test-prod
 
 This section explains all the steps needed to add an extension plugin to the monorepo.
 
-### Creating the extension manually
+<!-- ### Creating the extension manually
 
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
 
@@ -770,7 +770,7 @@ And regenerate the mapping for the Lando webserver for DEV, by running:
 composer rebuild-app-and-server
 ```
 
-Now, when loading the Lando webserver for DEV (under `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`), the new extension should be loaded and working (even though it doesn't contain any resolver yet).
+Now, when loading the Lando webserver for DEV (under `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`), the new extension should be loaded and working (even though it doesn't contain any resolver yet). -->
 
 ### Add stubs for your integration plugin
 
