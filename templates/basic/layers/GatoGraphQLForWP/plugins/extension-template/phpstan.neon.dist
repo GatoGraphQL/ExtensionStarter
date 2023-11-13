@@ -3,3 +3,20 @@ parameters:
     paths:
         - src/
         - tests/
+    ignoreErrors:
+        - 
+            message: "#Strict comparison using !== between '' and '' will always evaluate to false.#"
+            path: src/GatoGraphQLExtension.php
+            reportUnmatched: false
+        - 
+            message: "#Unreachable statement - code above always terminates.#"
+            path: src/GatoGraphQLExtension.php
+            reportUnmatched: false
+        - 
+            message: "#Strict comparison using !== between '' and '' will always evaluate to false.#"
+            path: src/ModuleResolvers/SchemaTypeModuleResolver.php
+            reportUnmatched: false
+        - 
+            message: "#Else branch is unreachable because ternary operator condition is always true.#"
+            path: src/ModuleResolvers/SchemaTypeModuleResolver.php
+            reportUnmatched: false
