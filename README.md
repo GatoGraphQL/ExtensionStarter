@@ -78,7 +78,7 @@ $ cd submodules/GatoGraphQL && composer install && cd ../.. && composer install
 
 ### Initialize the Project
 
-This step will replace all the generic strings in the extension starter (the PHP namespace `MyCompanyForGatoGraphQL`, company name `My Company`, and others) with the values corresponding to your project.
+This step will replace all the initial placeholder strings in the extension starter with the values corresponding to your project.
 
 Input your values in the command below and run:
 
