@@ -428,16 +428,6 @@ The stub files, if not already available for that WordPress plugin, can be gener
 
 </details>
 
-### Create Tests
-
-#### Unit Tests
-
-@todo
-
-#### Integration Tests
-
-@todo
-
 <!-- Point to a .gql test
 Point to a .gql test when disabling the plugin
 Point to a .gql test when disabling the module
@@ -1018,6 +1008,16 @@ Run:
 composer create-custom-post-type-field-resolver
 ```
 -->
+
+## Creating Tests
+
+### Unit Tests
+
+@todo
+
+### Integration Tests
+
+@todo
 
 ## Release your extension plugins for PROD
 
