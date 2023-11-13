@@ -139,7 +139,7 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
             if ($integrationPluginFile !== '') {
                 // validation
                 $this->createExtensionGuard->guardIntegrationPluginFile($integrationPluginFile);
-                
+
                 $pos = strpos($integrationPluginFile, '/');
                 if ($pos === false) {
                     throw new ConfigurationException(
