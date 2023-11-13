@@ -1197,7 +1197,7 @@ Input all these in:
 	.vscode/launch.json
 	.lando.base.yml -->
 
-## Development Process
+## Development Helpers
 
 ### Purging the cache
 
