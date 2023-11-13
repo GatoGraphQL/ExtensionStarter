@@ -18,7 +18,7 @@ The benefits of using the multi-monorepo approach as a starter project are sever
 
 No. The packages are internal, and the Monorepo Builder can symlink to the internal packages, hence these are not retrieved from [Packagist](https://packagist.org/).
 
-However, as an advanced use case, you do have the option to distribute packages via Packagist (or any other directory). For that, the "Monorepo Split" feature must be enabled (see section [Monorepo Split](#monorepo-split) below), and then you can link to the package on its own repo.
+However, as an advanced use case, you do have the option to distribute packages via Packagist (or any other directory). For that, the "Monorepo Split" feature must be enabled (see section [Monorepo Split](../README.md#monorepo-split) below), and then you can link to the package on its own repo.
 
 </details>
 
@@ -48,7 +48,7 @@ Once we create a new repository from a GitHub template, the repository and the t
 
 The Gato GraphQL monorepo deals with this issue by providing tools that copy content (code, scripts, workflows, etc) from the Gato GraphQL repo (available as a Git submodule) to the extension project repo. This enables the extension project to be updated when there are changes to the main plugin.
 
-See section [Synchronizing files from the upstream Gato GraphQL repo](#synchronizing-files-from-the-upstream-gato-graphql-repo) to learn more.
+See section [Synchronizing files from the upstream Gato GraphQL repo](../README.md#synchronizing-files-from-the-upstream-gato-graphql-repo) to learn more.
 
 ### Use the GitHub Actions workflows developed for the Gato GraphQL plugin
 
