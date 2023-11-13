@@ -325,155 +325,6 @@ From then on, run:
 composer init-server-prod
 ```
 
-## Manage the Lando webservers
-
-### Re-install the WordPress site (DEV and PROD)
-
-You can at any moment re-install the WordPress site (and import the initial dataset).
-
-On the DEV webserver:
-
-```bash
-composer reset-db
-```
-
-On PROD:
-
-```bash
-composer reset-db-prod
-```
-
-This is useful when:
-
-- The installation when doing `build-server` was halted midway (or failed for some reason)
-- Running the integration tests was not completed (modifying the DB data to a different state, so that running the tests again will fail)
-
-### Re-build the Lando webserver for DEV
-
-When a plugin or package folder has been renamed, you need to update the path in the `overrides` section of the [`.lando.upstream.yml`](webservers/gatographql-extensions/.lando.upstream.yml) Lando config file, and then rebuild the Lando webserver to reflect these changes.
-
-Run:
-
-```bash
-composer rebuild-server
-```
-
-### Regenerate the Composer autoload files for DEV
-
-When a new extension plugin is added to the monorepo, it must have its Composer autoload file generated, and the plugin must be symlinked to the Lando webserver.
-
-Run:
-
-```bash
-composer rebuild-app-and-server
-```
-
-## Release your extension plugins for PROD
-
-The monorepo includes scripts that completely automate the process of releasing the extension plugins in the monorepo.
-
-Follow these steps:
-
-### Tag the monorepo as `patch`, `minor` or `major`
-
-Choose which version you will be releasing. The same version will be applied to all plugins in the monorepo.
-
-_(Given that the current version is `0.0.0`...)_
-
-To release version `0.0.1`, run:
-
-```bash
-composer release-patch
-```
-
-To release version `0.1.0`, run:
-
-```bash
-composer release-minor
-```
-
-To release version `1.0.0`, run:
-
-```bash
-composer release-major
-```
-
-<details>
-
-<summary>What do these commands do? 🤔</summary>
-
-Executing these commands will first prepare the repo for PROD:
-
-- Update the version (in the plugin file's header, readme.txt's Stable tag, others) for all the extension plugins in the monorepo
-- Update the documentation image URLs to point to that tag, under `raw.githubusercontent.com`
-- Commit and push
-- Git tag with the version, and push tag to GitHub
-
-And then, it will prepare the repo for DEV again:
-
-- Update the version to the next DEV version (next semver + `-dev`)
-- Commit and push
-
-</details>
-
-To preview running the command without actually executing it, append `-- --dry-run`:
-
-```bash
-composer release-patch -- --dry-run
-```
-
-### Create release from tag in GitHub
-
-After tagging the repo on the step above, we must create a release from the tag to generate the extension plugins for production.
-
-To create the release, head over to the `tags` page in your GitHub repo (`https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags`), and click on the new tag (eg: `0.1.0`).
-
-Then, on the tag page, click on `Create release from tag`, and then add a title and content, and submit the form.
-
-![Create release from tag](assets/img/create-release-from-tag.png)
-
-This will trigger the [`generate_plugins.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml) workflow, which will generate the extension plugins and attach them as assets to the tag page.
-
-For instance, after tagging Gato GraphQL with `1.0.9`, the tag page [GatoGraphQL/GatoGraphQL/releases/tag/1.0.9](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/1.0.9) had the following assets attached to it:
-
-- `gatographql-1.0.9.zip`
-- `gatographql-testing-1.0.9.zip`
-- `gatographql-testing-schema-1.0.9.zip`
-
-### Install the extension in the PROD webserver
-
-Once the extension plugin has been generated, install it on the PROD webserver to test it, whether manually or using WP-CLI.
-
-Using WP-CLI, if your repo is `my-account/GatoGraphQLExtensionsForMyCompany` and you have released version `0.1.0`, run:
-
-```bash
-$ cd webservers/gatographql-extensions-for-prod
-$ lando wp plugin install https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/releases/latest/download/gatographql-hello-dolly-0.1.0.zip --force --activate
-$ cd ../..
-```
-
-### Query the extension in the `wp-admin`
-
-Once you've installed the release on the Lando webserver for PROD, log-in to the `wp-admin`, access the GraphiQL client, and execute the following GraphQL query:
-
-```graphql
-{
-  helloDolly
-}
-```
-
-If the release was generated successfully, you will receive a response:
-
-!["Hello Dolly" in the webserver for PROD](assets/img/graphiql-hello-dolly-prod.png)
-
-### Run Integration Tests for PROD
-
-Run:
-
-``` bash
-composer integration-test-prod
-```
-
 ## Creating your Extension Plugin
 
 This section explains all the steps needed to add an extension plugin to the monorepo.
@@ -576,6 +427,30 @@ Stubs must be added for all the WordPress integration plugins for which there is
 The stub files, if not already available for that WordPress plugin, can be generated using [`php-stubs/generator`](https://github.com/php-stubs/generator) (check also [`php-stubs/wordpress-stubs`](https://github.com/php-stubs/wordpress-stubs)).
 
 </details>
+
+### Create Tests
+
+#### Unit Tests
+
+@todo
+
+#### Integration Tests
+
+@todo
+
+<!-- Point to a .gql test
+Point to a .gql test when disabling the plugin
+Point to a .gql test when disabling the module
+
+Run hello-dolly tests:
+  phpunit layers/GatoGraphQLForWP/plugins/hello-dolly/tests/Integration/SchemaFixtureWebserverRequestTest.php
+  phpunit layers/GatoGraphQLForWP/plugins/hello-dolly/tests/Integration/EnableDisablePluginFixtureWordPressAuthenticatedUserWebserverRequestTest.php
+  phpunit layers/GatoGraphQLForWP/plugins/hello-dolly/tests/Integration/FixtureThirdPartyPluginDependencyWordPressAuthenticatedUserWebserverRequestTest.php
+Indicate the "enabled.json" and "only-one-enabled.json" items fail because of the random nature of the test
+  But I kept them only for documentation, for your own tests
+  alternatively with regex, could use test:
+    submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Integration/AccessPrivatePersistedQuerySourceByAdminQueryExecutionFixtureWebserverRequestTest.php
+Explain what each of them does! -->
 
 <!--
 
@@ -875,52 +750,6 @@ composer rebuild-app-and-server
 
 Now, when loading the Lando webserver for DEV (under `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`), the new extension should be loaded and working (even though it doesn't contain any resolver yet). -->
 
-<!-- ### Adding 3rd-party Composer Dependencies
-
-```json
-{
-  "replace": {
-    "pop-schema/schema-commons": "self.version"
-  }
-}    
-```
-
-@todo
-
-#### Scoping
-
-Fix everything 4 packages:
-	hello-gato-schema
-	hello-gato-schema-wp
-	hello-gato-schema-mutations
-	hello-gato-schema-mutations-wp
-Because of scoping!
-	Indicate in instructions
-	i.e. If the plugin needs 3rd-party libraries, these must be scoped
-		So these must be referenced under hello-gato-schema
-		never under hello-gato-schema-wp, because it has WP code, and it can't be scoped
-
-Document:
-
-// Exclude all libraries for WordPress
-// 1. Exclude libraries ending in "-wp" from general packages
-
-Also:
-
-Finder::create()->append([
-  convertRelativeToFullPath('vendor/getpop/root-wp/src/Module.php'),
-  convertRelativeToFullPath('vendor/getpop/root-wp/src/Hooks/SetupCortexRoutingHookSet.php'),
-])
-
-### Creating Internal Packages
-
-Explain why we manage them with packages
-  Create 2 modules, 1 for mutations
-
-Input all these in:
-	.vscode/launch.json
-	.lando.base.yml -->
-
 ## Extending the GraphQL Schema
 
 This section provides examples from the codebase in the upstream `GatoGraphQL/GatoGraphQL` monorepo, demonstrating how to create the resolvers to extend the GraphQL schema.
@@ -1190,29 +1019,200 @@ composer create-custom-post-type-field-resolver
 ```
 -->
 
-## Creating Tests
+## Release your extension plugins for PROD
 
-### Creating Unit Tests
+The monorepo includes scripts that completely automate the process of releasing the extension plugins in the monorepo.
+
+Follow these steps:
+
+### Tag the monorepo as `patch`, `minor` or `major`
+
+Choose which version you will be releasing. The same version will be applied to all plugins in the monorepo.
+
+_(Given that the current version is `0.0.0`...)_
+
+To release version `0.0.1`, run:
+
+```bash
+composer release-patch
+```
+
+To release version `0.1.0`, run:
+
+```bash
+composer release-minor
+```
+
+To release version `1.0.0`, run:
+
+```bash
+composer release-major
+```
+
+<details>
+
+<summary>What do these commands do? 🤔</summary>
+
+Executing these commands will first prepare the repo for PROD:
+
+- Update the version (in the plugin file's header, readme.txt's Stable tag, others) for all the extension plugins in the monorepo
+- Update the documentation image URLs to point to that tag, under `raw.githubusercontent.com`
+- Commit and push
+- Git tag with the version, and push tag to GitHub
+
+And then, it will prepare the repo for DEV again:
+
+- Update the version to the next DEV version (next semver + `-dev`)
+- Commit and push
+
+</details>
+
+To preview running the command without actually executing it, append `-- --dry-run`:
+
+```bash
+composer release-patch -- --dry-run
+```
+
+### Create release from tag in GitHub
+
+After tagging the repo on the step above, we must create a release from the tag to generate the extension plugins for production.
+
+To create the release, head over to the `tags` page in your GitHub repo (`https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/tags`), and click on the new tag (eg: `0.1.0`).
+
+Then, on the tag page, click on `Create release from tag`, and then add a title and content, and submit the form.
+
+![Create release from tag](assets/img/create-release-from-tag.png)
+
+This will trigger the [`generate_plugins.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml) workflow, which will generate the extension plugins and attach them as assets to the tag page.
+
+For instance, after tagging Gato GraphQL with `1.0.9`, the tag page [GatoGraphQL/GatoGraphQL/releases/tag/1.0.9](https://github.com/GatoGraphQL/GatoGraphQL/releases/tag/1.0.9) had the following assets attached to it:
+
+- `gatographql-1.0.9.zip`
+- `gatographql-testing-1.0.9.zip`
+- `gatographql-testing-schema-1.0.9.zip`
+
+### Install the extension in the PROD webserver
+
+Once the extension plugin has been generated, install it on the PROD webserver to test it, whether manually or using WP-CLI.
+
+Using WP-CLI, if your repo is `my-account/GatoGraphQLExtensionsForMyCompany` and you have released version `0.1.0`, run:
+
+```bash
+$ cd webservers/gatographql-extensions-for-prod
+$ lando wp plugin install https://github.com/my-account/GatoGraphQLExtensionsForMyCompany/releases/latest/download/gatographql-hello-dolly-0.1.0.zip --force --activate
+$ cd ../..
+```
+
+### Query the extension in the `wp-admin`
+
+Once you've installed the release on the Lando webserver for PROD, log-in to the `wp-admin`, access the GraphiQL client, and execute the following GraphQL query:
+
+```graphql
+{
+  helloDolly
+}
+```
+
+If the release was generated successfully, you will receive a response:
+
+!["Hello Dolly" in the webserver for PROD](assets/img/graphiql-hello-dolly-prod.png)
+
+### Run Integration Tests for PROD
+
+Run:
+
+``` bash
+composer integration-test-prod
+```
+
+<!-- ### Adding 3rd-party Composer Dependencies
+
+```json
+{
+  "replace": {
+    "pop-schema/schema-commons": "self.version"
+  }
+}    
+```
 
 @todo
 
-### Creating Integration Tests
+#### Scoping
 
-@todo
+Fix everything 4 packages:
+	hello-gato-schema
+	hello-gato-schema-wp
+	hello-gato-schema-mutations
+	hello-gato-schema-mutations-wp
+Because of scoping!
+	Indicate in instructions
+	i.e. If the plugin needs 3rd-party libraries, these must be scoped
+		So these must be referenced under hello-gato-schema
+		never under hello-gato-schema-wp, because it has WP code, and it can't be scoped
 
-<!-- Point to a .gql test
-Point to a .gql test when disabling the plugin
-Point to a .gql test when disabling the module
+Document:
 
-Run hello-dolly tests:
-  phpunit layers/GatoGraphQLForWP/plugins/hello-dolly/tests/Integration/SchemaFixtureWebserverRequestTest.php
-  phpunit layers/GatoGraphQLForWP/plugins/hello-dolly/tests/Integration/EnableDisablePluginFixtureWordPressAuthenticatedUserWebserverRequestTest.php
-  phpunit layers/GatoGraphQLForWP/plugins/hello-dolly/tests/Integration/FixtureThirdPartyPluginDependencyWordPressAuthenticatedUserWebserverRequestTest.php
-Indicate the "enabled.json" and "only-one-enabled.json" items fail because of the random nature of the test
-  But I kept them only for documentation, for your own tests
-  alternatively with regex, could use test:
-    submodules/GatoGraphQL/layers/GatoGraphQLForWP/phpunit-packages/gatographql/tests/Integration/AccessPrivatePersistedQuerySourceByAdminQueryExecutionFixtureWebserverRequestTest.php
-Explain what each of them does! -->
+// Exclude all libraries for WordPress
+// 1. Exclude libraries ending in "-wp" from general packages
+
+Also:
+
+Finder::create()->append([
+  convertRelativeToFullPath('vendor/getpop/root-wp/src/Module.php'),
+  convertRelativeToFullPath('vendor/getpop/root-wp/src/Hooks/SetupCortexRoutingHookSet.php'),
+])
+
+### Creating Internal Packages
+
+Explain why we manage them with packages
+  Create 2 modules, 1 for mutations
+
+Input all these in:
+	.vscode/launch.json
+	.lando.base.yml -->
+
+## Manage the Lando webservers
+
+### Re-install the WordPress site (DEV and PROD)
+
+You can at any moment re-install the WordPress site (and import the initial dataset).
+
+On the DEV webserver:
+
+```bash
+composer reset-db
+```
+
+On PROD:
+
+```bash
+composer reset-db-prod
+```
+
+This is useful when:
+
+- The installation when doing `build-server` was halted midway (or failed for some reason)
+- Running the integration tests was not completed (modifying the DB data to a different state, so that running the tests again will fail)
+
+### Re-build the Lando webserver for DEV
+
+When a plugin or package folder has been renamed, you need to update the path in the `overrides` section of the [`.lando.upstream.yml`](webservers/gatographql-extensions/.lando.upstream.yml) Lando config file, and then rebuild the Lando webserver to reflect these changes.
+
+Run:
+
+```bash
+composer rebuild-server
+```
+
+### Regenerate the Composer autoload files for DEV
+
+When a new extension plugin is added to the monorepo, it must have its Composer autoload file generated, and the plugin must be symlinked to the Lando webserver.
+
+Run:
+
+```bash
+composer rebuild-app-and-server
+```
 
 ## Development Process
 
