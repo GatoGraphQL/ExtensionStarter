@@ -742,7 +742,7 @@ You must also have those services injected into the service container, by defini
 
 <!-- ### General to GraphQL -->
 
-### Create a Type Resolver
+### Type Resolver
 
 _(From this section downwards, these features are general to GraphQL.)_
 
@@ -758,7 +758,7 @@ composer create-type-resolver
 ```
 -->
 
-### Create a Field Resolver
+### Field Resolver
 
 Fields `name`, `displayName`, and others, for the `User` type:
 
@@ -772,7 +772,7 @@ composer create-field-resolver
 ```
 -->
 
-### Create a Mutation Resolver
+### Mutation Resolver
 
 Mutation `createPost`:
 
@@ -786,7 +786,7 @@ composer create-mutation-resolver
 ```
 -->
 
-### Create a Custom Scalar Resolver
+### Custom Scalar Resolver
 
 Custom scalar `Email`:
 
@@ -800,7 +800,7 @@ composer create-custom-scalar-resolver
 ```
 -->
 
-### Create an Enum Resolver
+### Enum Resolver
 
 Enum `CommentTypeEnum`:
 
@@ -814,7 +814,7 @@ composer create-enum-resolver
 ```
 -->
 
-### Create an Interface Resolver
+### Interface Resolver
 
 Interface `CustomPostInterfaceTypeResolver`:
 
@@ -828,7 +828,7 @@ composer create-interface-resolver
 ```
 -->
 
-### Create a Union Type-Resolver
+### Union Type-Resolver
 
 Union type `CustomPostUnionTypeResolver`:
 
@@ -842,7 +842,7 @@ composer create-union-type-resolver
 ```
 -->
 
-### Create an Input Object Resolver
+### Input Object Resolver
 
 Input Object `UserSortInput`:
 
@@ -856,7 +856,7 @@ composer create-input-object-resolver
 ```
 -->
 
-### Create a Oneof Input Object Resolver
+### Oneof Input Object Resolver
 
 Oneof Input Object `UserByInput`:
 
@@ -870,7 +870,7 @@ composer create-oneof-input-object-resolver
 ```
 -->
 
-### Create a Directive Resolver
+### Directive Resolver
 
 Directive `@skip`:
 
@@ -886,7 +886,7 @@ composer create-directive-resolver
 
 <!-- ### Specific to Gato GraphQL -->
 
-### Create a Global Field Resolver
+### Global Field Resolver
 
 _(From this section downwards, these features are specific to Gato GraphQL.)_
 
@@ -902,7 +902,7 @@ composer create-global-field-resolver
 ```
 -->
 
-### Create an Enum String Resolver
+### Enum String Resolver
 
 Enum String `CustomPostEnumString`:
 
@@ -916,7 +916,7 @@ composer create-enum-string-resolver
 ```
 -->
 
-### Create an Error Payload Union Type Resolver
+### Error Payload Union Type Resolver
 
 Error Payload Union Type `RootAddCommentToCustomPostMutationErrorPayloadUnion`:
 
@@ -930,7 +930,7 @@ composer create-error-payload-union-type-resolver
 ```
 -->
 
-<!-- ### Create a Composable Directive Resolver
+<!-- ### Composable Directive Resolver
 
 @todo
 
@@ -949,7 +949,7 @@ Mutation `Post.update`:
 
 [`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php`](submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php)
 
-### Filtering Results from a Field
+### Field Arguments to filter data
 
 Field `Root.comments`:
 
@@ -965,7 +965,7 @@ Field `Root.comments`:
 
 <!-- ### Specific for WordPress -->
 
-### Create a Custom Post Type Resolver
+### Custom Post Type - Type Resolver
 
 _(From this section downwards, these features are specific to WordPress.)_
 
@@ -981,7 +981,7 @@ composer create-custom-post-type-resolver
 ```
 -->
 
-### Create a Custom Post Type Field Resolver
+### Custom Post Type - Field Resolver
 
 Field `CustomPost.author`:
 
