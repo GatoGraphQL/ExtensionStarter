@@ -92,7 +92,11 @@ composer initialize-project -- \
 
 These arguments (and additional ones, see below) are optional. If any of them is not provided, a default value is computed from the configuration in Git and the GitHub repo.
 
-To see the default values, run:
+<details>
+
+<summary>Print arguments and default values for <code>initialize-project</code></summary>
+
+To see the default values for the arguments, run:
 
 ```bash
 composer initialize-project -- --dry-run
@@ -103,6 +107,8 @@ To print all the arguments for the `initialize-project` command, run:
 ```bash
 composer initialize-project -- --help
 ```
+
+</details>
 
 <details>
 
