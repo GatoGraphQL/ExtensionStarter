@@ -987,7 +987,7 @@ composer create-custom-post-type-field-resolver
 ```
 -->
 
-## Creating Tests
+<!-- ## Creating Tests
 
 ### Unit Tests
 
@@ -995,7 +995,7 @@ composer create-custom-post-type-field-resolver
 
 ### Integration Tests
 
-@todo
+@todo -->
 
 ## Release your extension plugins for PROD
 
