@@ -555,6 +555,28 @@ Complete the documentation for your module, under file: `layers/GatoGraphQLForWP
 
 You can also search for string `@gatographql-extension-todo` to find it.
 
+### Add stubs for your integration plugin
+
+If integrating with another WordPress plugin, you will need to complete the file with stubs for that plugin, to avoid errors with PHPStan.
+
+The stub file is under `stubs/wpackagist-plugin/{integration-plugin}/stubs.php`.
+
+<details>
+
+<summary>What are stubs needed for? And how to generate them? 🤔</summary>
+
+Stubs are placeholders to "load" a functionality that is otherwise missing (because the plugin that contains it is not loaded when running unit tests and static analysis).
+
+Stubs avoid PHPStan producing an error when analyzing packages which invoke classes, methods, constants, etc, from 3rd-party WordPress plugins. (Eg: [the stubs file for `hello-dolly`](stubs/wpackagist-plugin/hello-dolly/stubs.php) avoids an error from [calling `hello_dolly_get_lyric()` in the field resolver](layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)).
+
+It also avoids Rector from producing errors when downgrading the code.
+
+Stubs must be added for all the WordPress integration plugins for which there is an extension in the monorepo (eg: WooCommerce, Yoast SEO, etc).
+
+The stub files, if not already available for that WordPress plugin, can be generated using [`php-stubs/generator`](https://github.com/php-stubs/generator) (check also [`php-stubs/wordpress-stubs`](https://github.com/php-stubs/wordpress-stubs)).
+
+</details>
+
 <!-- ### Creating the extension manually
 
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
@@ -848,28 +870,6 @@ composer rebuild-app-and-server
 ```
 
 Now, when loading the Lando webserver for DEV (under `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`), the new extension should be loaded and working (even though it doesn't contain any resolver yet). -->
-
-### Add stubs for your integration plugin
-
-If integrating with another WordPress plugin, you will need to complete the file with stubs for that plugin, to avoid errors with PHPStan.
-
-The stub file is under `stubs/wpackagist-plugin/{integration-plugin}/stubs.php`.
-
-<details>
-
-<summary>What are stubs needed for? And how to generate them? 🤔</summary>
-
-Stubs are placeholders to "load" a functionality that is otherwise missing (because the plugin that contains it is not loaded when running unit tests and static analysis).
-
-Stubs avoid PHPStan producing an error when analyzing packages which invoke classes, methods, constants, etc, from 3rd-party WordPress plugins. (Eg: [the stubs file for `hello-dolly`](stubs/wpackagist-plugin/hello-dolly/stubs.php) avoids an error from [calling `hello_dolly_get_lyric()` in the field resolver](layers/GatoGraphQLForWP/packages/hello-dolly-schema/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)).
-
-It also avoids Rector from producing errors when downgrading the code.
-
-Stubs must be added for all the WordPress integration plugins for which there is an extension in the monorepo (eg: WooCommerce, Yoast SEO, etc).
-
-The stub files, if not already available for that WordPress plugin, can be generated using [`php-stubs/generator`](https://github.com/php-stubs/generator) (check also [`php-stubs/wordpress-stubs`](https://github.com/php-stubs/wordpress-stubs)).
-
-</details>
 
 <!-- ### Defining an Integration Plugin
 
