@@ -488,15 +488,17 @@ If the extension is an integration for some WordPress plugin, run:
 ```bash
 composer create-extension -- \
   --integration-plugin-name="Plugin name" \
-  --integration-plugin-file=slug/file.php
+  --integration-plugin-file=slug/file.php \
+  --integration-plugin-version-constraint="..."
 ```
 
-For instance, to build an integration for WooCommerce, run:
+For instance, to build an integration for WooCommerce with version 8 or above, run:
 
 ```bash
 composer create-extension -- \
   --integration-plugin-name=WooCommerce \
-  --integration-plugin-file=woocommerce/woocommerce.php
+  --integration-plugin-file=woocommerce/woocommerce.php \
+  --integration-plugin-version-constraint="^8"
 ```
 
 To print all the arguments for the `create-extension` command, run:
