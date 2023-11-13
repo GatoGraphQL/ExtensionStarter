@@ -4,6 +4,7 @@ parameters:
         - src/
         - tests/
     ignoreErrors:
+        # These errors below are needed by the Extension Starter as we don't know if there will be an integration plugin or not, and to avoid the errors from the corresponding `if` statements
         - 
             message: "#Strict comparison using !== between '' and '' will always evaluate to false.#"
             path: src/GatoGraphQLExtension.php
