@@ -134,11 +134,12 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
             }
 
             $integrationPluginFile = (string) $input->getOption(Option::INTEGRATION_PLUGIN_FILE);
-            // validation
-            $this->createExtensionGuard->guardIntegrationPluginFile($integrationPluginFile);
-
             $integrationPluginSlug = '';
+
             if ($integrationPluginFile !== '') {
+                // validation
+                $this->createExtensionGuard->guardIntegrationPluginFile($integrationPluginFile);
+                
                 $pos = strpos($integrationPluginFile, '/');
                 if ($pos === false) {
                     throw new ConfigurationException(
