@@ -273,14 +273,6 @@ If the installation of the starter was successful, you will receive a response:
 
 !["Hello Dolly" in the webserver](assets/img/graphiql-hello-dolly.png)
 
-### Run Integration Tests
-
-Run:
-
-``` bash
-composer integration-test
-```
-
 ### Start the Lando webserver for DEV
 
 Building the webserver (above) is needed only the first time.
@@ -1141,9 +1133,15 @@ If the release was generated successfully, you will receive a response:
 
 !["Hello Dolly" in the webserver for PROD](assets/img/graphiql-hello-dolly-prod.png)
 
-### Run Integration Tests for PROD
+## Run Integration Tests
 
-Run:
+For DEV, run:
+
+``` bash
+composer integration-test
+```
+
+For PROD, run:
 
 ``` bash
 composer integration-test-prod
