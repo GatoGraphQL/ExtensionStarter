@@ -152,8 +152,8 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
             if ($integrationPluginFile !== '' && $integrationPluginVersionConstraint === '') {
                 $integrationPluginVersionConstraint = '*';
             }
-            // validation
-            $this->createExtensionGuard->guardIntegrationPluginVersionConstraint($integrationPluginVersionConstraint);
+            // // validation
+            // $this->createExtensionGuard->guardIntegrationPluginVersionConstraint($integrationPluginVersionConstraint);
 
             $integrationPluginName = (string) $input->getOption(Option::INTEGRATION_PLUGIN_NAME);
             if ($integrationPluginSlug !== '' && $integrationPluginName === '') {
