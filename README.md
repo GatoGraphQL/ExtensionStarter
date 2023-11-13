@@ -362,11 +362,17 @@ composer create-extension -- \
   --integration-plugin-version-constraint="^8"
 ```
 
+<details>
+
+<summary>Print arguments for <code>create-extension</code></summary>
+
 To print all the arguments for the `create-extension` command, run:
 
 ```bash
 composer create-extension -- --help
 ```
+
+</details>
 
 <details>
 
