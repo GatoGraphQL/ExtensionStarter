@@ -342,7 +342,7 @@ composer create-extension -- --help
 
 | Option | Description |
 | --- | --- |
-| `--template` |  Template to use to create the extension plugin [default: "basic"] |
+| `--template` |  Template to use to create the extension plugin, from available options: "basic" [default: "basic"] |
 | `--integration-plugin-file` | Integration plugin file (eg: "woocommerce/woocommerce.php" for the WooCommerce plugin), if any |
 | `--integration-plugin-version-constraint` | Mimimum required version of the integration plugin, in semver (eg: "^8.1"). If not provided, any version is accepted [default: "*"] |
 | `--integration-plugin-name` | Name of the integration plugin (eg: WooCommerce). If not provided, it is generated from the integration plugin slug |

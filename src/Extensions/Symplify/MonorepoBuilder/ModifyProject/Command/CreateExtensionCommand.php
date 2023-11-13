@@ -46,11 +46,15 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
         $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Create the scaffolding for an extension plugin, hosted in this monorepo.');
 
+        $availableTemplates = $this->getAvailableTemplates();
         $this->addOption(
             Option::TEMPLATE,
             null,
             InputOption::VALUE_REQUIRED,
-            'Template to use to create the extension plugin',
+            sprintf(
+                'Template to use to create the extension plugin, from available options: "%s"',
+                implode('", "', $availableTemplates)
+            ),
             'basic'
         );
         $this->addOption(
