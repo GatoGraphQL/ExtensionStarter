@@ -549,6 +549,12 @@ composer activate-extension-plugins
 composer activate-extension-plugins-prod
 ```
 
+### Complete the docs
+
+Complete the documentation for your module, under file: `layers/GatoGraphQLForWP/plugins/{extension-slug}/docs/modules/schema-{extension-slug}/en.md`.
+
+You can also search for string `@gatographql-extension-todo` to find it.
+
 <!-- ### Creating the extension manually
 
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
