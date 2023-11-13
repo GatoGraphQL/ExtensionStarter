@@ -285,6 +285,14 @@ From then on, run:
 composer init-server
 ```
 
+### Run Integration Tests for DEV
+
+Run:
+
+``` bash
+composer integration-test
+```
+
 ## Create an Extension Plugin
 
 This section explains all the steps needed to add an extension plugin to the monorepo.
@@ -1135,15 +1143,9 @@ From then on, run:
 composer init-server-prod
 ```
 
-## Run Integration Tests
+### Run Integration Tests for PROD
 
-For DEV, run:
-
-``` bash
-composer integration-test
-```
-
-For PROD, run:
+Run:
 
 ``` bash
 composer integration-test-prod
