@@ -389,7 +389,7 @@ composer create-extension -- --help
 
 </details>
 
-### Regenerate monorepo config
+### Commit + Rebuild Lando webservers
 
 After running the command above, execute the following bash commands to complete the process:
 
