@@ -748,7 +748,7 @@ _(From this section downwards, these features are general to GraphQL.)_
 
 `User` type:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/ObjectType/UserObjectTypeResolver.php)
 
 <!--
 Run:
@@ -762,7 +762,7 @@ composer create-type-resolver
 
 Fields `name`, `displayName`, and others, for the `User` type:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/FieldResolvers/ObjectType/UserObjectTypeFieldResolver.php)
 
 <!--
 Run:
@@ -776,7 +776,7 @@ composer create-field-resolver
 
 Mutation `createPost`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
 
 <!--
 Run:
@@ -790,7 +790,7 @@ composer create-mutation-resolver
 
 Custom scalar `Email`:
 
-- [`submodules/GatoGraphQL/layers/Schema/packages/schema-commons/src/TypeResolvers/ScalarType/EmailScalarTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/Schema/packages/schema-commons/src/TypeResolvers/ScalarType/EmailScalarTypeResolver.php)
+[`submodules/GatoGraphQL/layers/Schema/packages/schema-commons/src/TypeResolvers/ScalarType/EmailScalarTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/Schema/packages/schema-commons/src/TypeResolvers/ScalarType/EmailScalarTypeResolver.php)
 
 <!--
 Run:
@@ -804,7 +804,7 @@ composer create-custom-scalar-resolver
 
 Enum `CommentTypeEnum`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/TypeResolvers/EnumType/CommentTypeEnumTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/TypeResolvers/EnumType/CommentTypeEnumTypeResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/TypeResolvers/EnumType/CommentTypeEnumTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/TypeResolvers/EnumType/CommentTypeEnumTypeResolver.php)
 
 <!--
 Run:
@@ -818,7 +818,7 @@ composer create-enum-resolver
 
 Interface `CustomPostInterfaceTypeResolver`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/InterfaceType/CustomPostInterfaceTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/InterfaceType/CustomPostInterfaceTypeResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/InterfaceType/CustomPostInterfaceTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/InterfaceType/CustomPostInterfaceTypeResolver.php)
 
 <!--
 Run:
@@ -832,7 +832,7 @@ composer create-interface-resolver
 
 Union type `CustomPostUnionTypeResolver`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/UnionType/CustomPostUnionTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/UnionType/CustomPostUnionTypeResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/UnionType/CustomPostUnionTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/UnionType/CustomPostUnionTypeResolver.php)
 
 <!--
 Run:
@@ -846,7 +846,7 @@ composer create-union-type-resolver
 
 Input Object `UserSortInput`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserSortInputObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserSortInputObjectTypeResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserSortInputObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserSortInputObjectTypeResolver.php)
 
 <!--
 Run:
@@ -860,7 +860,7 @@ composer create-input-object-resolver
 
 Oneof Input Object `UserByInput`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserByOneofInputObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserByOneofInputObjectTypeResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserByOneofInputObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/TypeResolvers/InputObjectType/UserByOneofInputObjectTypeResolver.php)
 
 <!--
 Run:
@@ -874,7 +874,7 @@ composer create-oneof-input-object-resolver
 
 Directive `@skip`:
 
-- [`submodules/GatoGraphQL/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php)
+[`submodules/GatoGraphQL/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/Engine/packages/engine/src/DirectiveResolvers/SkipFieldDirectiveResolver.php)
 
 <!--
 Run:
@@ -892,7 +892,7 @@ _(From this section downwards, these features are specific to Gato GraphQL.)_
 
 Field `__typename`:
 
-- [`submodules/GatoGraphQL/layers/GraphQLByPoP/packages/graphql-server/src/FieldResolvers/ObjectType/GlobalObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/GraphQLByPoP/packages/graphql-server/src/FieldResolvers/ObjectType/GlobalObjectTypeFieldResolver.php)
+[`submodules/GatoGraphQL/layers/GraphQLByPoP/packages/graphql-server/src/FieldResolvers/ObjectType/GlobalObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/GraphQLByPoP/packages/graphql-server/src/FieldResolvers/ObjectType/GlobalObjectTypeFieldResolver.php)
 
 <!--
 Run:
@@ -906,7 +906,7 @@ composer create-global-field-resolver
 
 Enum String `CustomPostEnumString`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/EnumType/CustomPostEnumStringScalarTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/EnumType/CustomPostEnumStringScalarTypeResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/customposts/src/TypeResolvers/EnumType/CustomPostEnumStringScalarTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/customposts/src/TypeResolvers/EnumType/CustomPostEnumStringScalarTypeResolver.php)
 
 <!--
 Run:
@@ -920,7 +920,7 @@ composer create-enum-string-resolver
 
 Error Payload Union Type `RootAddCommentToCustomPostMutationErrorPayloadUnion`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comment-mutations/src/TypeResolvers/UnionType/RootAddCommentToCustomPostMutationErrorPayloadUnionTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comment-mutations/src/TypeResolvers/UnionType/RootAddCommentToCustomPostMutationErrorPayloadUnionTypeResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/comment-mutations/src/TypeResolvers/UnionType/RootAddCommentToCustomPostMutationErrorPayloadUnionTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comment-mutations/src/TypeResolvers/UnionType/RootAddCommentToCustomPostMutationErrorPayloadUnionTypeResolver.php)
 
 <!--
 Run:
@@ -947,13 +947,13 @@ composer create-composable-directive-resolver
 
 Mutation `Post.update`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php`](submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php`](submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/post-mutations/src/FieldResolvers/ObjectType/PostObjectTypeFieldResolver.php)
 
 ### Filtering Results from a Field
 
 Field `Root.comments`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/comments/src/FieldResolvers/ObjectType/RootObjectTypeFieldResolver.php)
 
 <!-- ### Validating Constraints for Field and Directive Arguments
 
@@ -971,7 +971,7 @@ _(From this section downwards, these features are specific to WordPress.)_
 
 Custom Post Type `Page`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/pages/src/TypeResolvers/ObjectType/PageObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/pages/src/TypeResolvers/ObjectType/PageObjectTypeResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/pages/src/TypeResolvers/ObjectType/PageObjectTypeResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/pages/src/TypeResolvers/ObjectType/PageObjectTypeResolver.php)
 
 <!--
 Run:
@@ -985,7 +985,7 @@ composer create-custom-post-type-resolver
 
 Field `CustomPost.author`:
 
-- [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/ConditionalOnModule/CustomPosts/FieldResolvers/ObjectType/CustomPostObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/ConditionalOnModule/CustomPosts/FieldResolvers/ObjectType/CustomPostObjectTypeFieldResolver.php)
+[`submodules/GatoGraphQL/layers/CMSSchema/packages/users/src/ConditionalOnModule/CustomPosts/FieldResolvers/ObjectType/CustomPostObjectTypeFieldResolver.php`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/src/ConditionalOnModule/CustomPosts/FieldResolvers/ObjectType/CustomPostObjectTypeFieldResolver.php)
 
 <!--
 Run:
