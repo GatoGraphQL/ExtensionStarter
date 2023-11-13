@@ -412,15 +412,17 @@ composer activate-extension-plugins
 composer activate-extension-plugins-prod
 ```
 
-### Complete the docs
+## Complete the Extension Plugin
+
+The new extension plugin created with the command above contains the comment `@gatographql-extension-todo` indicating that there are items to complete.
+
+### Documentation
 
 Complete the documentation for your module, under file: `layers/GatoGraphQLForWP/plugins/{extension-slug}/docs/modules/schema-{extension-slug}/en.md`.
 
-You can also search for string `@gatographql-extension-todo` to find it.
+### Stubs for your integration plugin
 
-### Add stubs for your integration plugin
-
-If integrating with another WordPress plugin, you will need to complete the file with stubs for that plugin, to avoid errors with PHPStan.
+If integrating with another WordPress plugin, you will need to complete the file with stubs for that plugin, to avoid errors with PHPStan/Rector.
 
 The stub file is under `stubs/wpackagist-plugin/{integration-plugin}/stubs.php`.
 
