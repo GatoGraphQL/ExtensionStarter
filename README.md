@@ -628,29 +628,6 @@ The stub files, if not already available for that WordPress plugin, can be gener
 
 </details>
 
-<!-- Edit files:
-
-- `src/Config/Rector/Configurators/ContainerConfigurationServiceTrait.php`
-- `src/Config/Rector/Downgrade/Configurators/MonorepoDowngradeContainerConfigurationService.php`
-
-...adding the following line of PHP code:
-
-```php
-$this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
-```
-
-i.e. they will look like this:
-
-```php
-return array_merge(
-  parent::getBootstrapFiles(),
-  [
-    $this->rootDirectory . '/stubs/wpackagist-plugin/hello-dolly/stubs.php',
-    $this->rootDirectory . '/stubs/wpackagist-plugin/your-extension/stubs.php',
-  ]
-);
-``` -->
-
 Edit file `src/Config/Symplify/MonorepoBuilder/DataSources/DataToAppendAndRemoveDataSource.php` and append the line of PHP code below, replacing `your-wordpress-integration-plugin` with the slug of the WordPress integration plugin for the extension (eg: `woocommerce`, `wordpress-seo`, etc):
 
 ```php
