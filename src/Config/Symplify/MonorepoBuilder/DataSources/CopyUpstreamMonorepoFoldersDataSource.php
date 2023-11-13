@@ -39,6 +39,7 @@ class CopyUpstreamMonorepoFoldersDataSource
                         '#(ci/downgrade/before_downgrade_code\.sh)#' => $this->upstreamRelativeRootPath . '/$1',
                         '#(ci/downgrade/downgrade_code\.sh)#' => $this->upstreamRelativeRootPath . '/$1',
                         '#(ci/downgrade/after_downgrade_code\.sh)#' => $this->upstreamRelativeRootPath . '/$1',
+                        '#(phpcs/WordPress-Custom/ruleset\.xml)#' => $this->upstreamRelativeRootPath . '/$1',
                     ],
                     // $this->runGitHubActionsOnPRs() ? [] : [
                     //     '/pull_request: null/' => '#pull_request: null',
