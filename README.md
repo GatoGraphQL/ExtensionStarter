@@ -331,7 +331,7 @@ From then on, run:
 composer init-server-prod
 ```
 
-## Creating your Extension Plugin
+## Create an Extension Plugin
 
 This section explains all the steps needed to add an extension plugin to the monorepo.
 
