@@ -24,7 +24,7 @@ Gato GraphQL extensions add functionality and expand the GraphQL schema provided
 
 **This template repository helps you kickstart a GitHub repo, to develop, test and release your own extensions for Gato GraphQL.**
 
-To learn about the features provided by the multi-monorepo architecture on this starter project, visit [Multi-Monorepo (Architecture of the Extension Starter)](docs/Multi-Monorepo_Architecture).
+To learn about the features provided by the multi-monorepo architecture on this starter project, visit [Multi-Monorepo (Architecture of the Extension Starter)](docs/Multi-Monorepo_Architecture.md).
 
 <details>
 
@@ -1368,7 +1368,7 @@ If this is the case, you can [disable these workflows](https://docs.github.com/e
 
 ## Multi-Monorepo (Architecture of the Extension Starter)
 
-`GatoGraphQL/ExtensionStarter` is multi-monorepo. To learn about the features provided by this architecture, visit [Multi-Monorepo (Architecture of the Extension Starter)](docs/Multi-Monorepo_Architecture).
+`GatoGraphQL/ExtensionStarter` is multi-monorepo. To learn about the features provided by this architecture, visit [Multi-Monorepo (Architecture of the Extension Starter)](docs/Multi-Monorepo_Architecture.md).
 
 ## Multi-Monorepo Tools
 
