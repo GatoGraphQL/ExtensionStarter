@@ -357,19 +357,15 @@ After running the command above, execute the following bash commands to complete
 
 ```bash
 # (Git commit/push the changes to the repo)
-# ------------------------------------------------
 git add . && git commit -m "Created new extension" && git push origin
 
 # (Rebuild the Lando Webserver for DEV)
-# ------------------------------------------------
 composer rebuild-app-and-server
 
 # (Install/activate the added plugins on the DEV webserver)
-# ------------------------------------------------
 composer activate-extension-plugins
 
 # (Install/activate the added integration plugins on the PROD webserver)
-# ------------------------------------------------
 composer activate-extension-plugins-prod
 ```
 
