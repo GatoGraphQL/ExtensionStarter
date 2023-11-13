@@ -875,10 +875,6 @@ composer rebuild-app-and-server
 
 Now, when loading the Lando webserver for DEV (under `https://gatographql-{composer-vendor}-extensions.lndo.site/wp-admin`), the new extension should be loaded and working (even though it doesn't contain any resolver yet). -->
 
-<!-- ### Defining an Integration Plugin
-
-@todo -->
-
 <!-- ### Adding 3rd-party Composer Dependencies
 
 ```json
