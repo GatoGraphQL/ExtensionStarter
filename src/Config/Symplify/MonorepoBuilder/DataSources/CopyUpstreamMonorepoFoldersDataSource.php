@@ -36,9 +36,9 @@ class CopyUpstreamMonorepoFoldersDataSource
                         // Replace the Git branch if needed
                         '#COMPOSER_ROOT_VERSION:(\s+.*)#' => 'COMPOSER_ROOT_VERSION: ' . $devBranch,
                         // Use files from upstream
-                        '#ci/downgrade/before_downgrade_code\.sh#' => $this->upstreamRelativeRootPath . '/ci/downgrade/before_downgrade_code.sh',
-                        '#ci/downgrade/downgrade_code\.sh#' => $this->upstreamRelativeRootPath . '/ci/downgrade/downgrade_code.sh',
-                        '#ci/downgrade/after_downgrade_code\.sh#' => $this->upstreamRelativeRootPath . '/ci/downgrade/after_downgrade_code.sh',
+                        '#(ci/downgrade/before_downgrade_code\.sh)#' => $this->upstreamRelativeRootPath . '/$1',
+                        '#(ci/downgrade/downgrade_code\.sh)#' => $this->upstreamRelativeRootPath . '/$1',
+                        '#(ci/downgrade/after_downgrade_code\.sh)#' => $this->upstreamRelativeRootPath . '/$1',
                     ],
                     // $this->runGitHubActionsOnPRs() ? [] : [
                     //     '/pull_request: null/' => '#pull_request: null',
