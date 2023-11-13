@@ -67,7 +67,6 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
                     $requiredPluginVersion,
                 ),
             ]
-            /** @phpstan-ignore-next-line */
             : [],
             default => parent::getDependentOnActiveWordPressPlugins($module),
         };

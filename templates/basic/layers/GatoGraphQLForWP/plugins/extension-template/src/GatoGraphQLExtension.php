@@ -46,7 +46,6 @@ class GatoGraphQLExtension extends AbstractGatoGraphQLExtension
                 $requiredPluginFile,
             ];
         }
-        /** @phpstan-ignore-next-line */
         return parent::getDependentOnPluginFiles();
     }
 }
