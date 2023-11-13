@@ -577,7 +577,11 @@ The stub files, if not already available for that WordPress plugin, can be gener
 
 </details>
 
-<!-- ### Creating the extension manually
+<!--
+
+_Doing this process manually is tedious and error-prone. We are already [working on a `create-extension` command](https://github.com/GatoGraphQL/ExtensionStarter/issues/73) to automate this process._
+
+### Creating the extension manually
 
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
 
