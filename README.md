@@ -476,6 +476,10 @@ composer integration-test-prod
 
 ## Creating your Extension Plugin
 
+This section explains all the steps needed to add an extension plugin to the monorepo.
+
+### Run command to create the extension
+
 Run:
 
 ```bash
@@ -521,6 +525,29 @@ composer create-extension -- --help
 | `--extension-classname` | PHP classname to append to classes in the extension plugin. If not provided, it is generated from the "extension-slug" option |
 
 </details>
+
+### Regenerate monorepo config
+
+After running the command above, execute the following bash commands to complete the process:
+
+```bash
+# (Git commit/push the changes to the repo)
+# ------------------------------------------------
+git add .
+git commit -m "Created new extension"
+git push origin
+
+
+# (Rebuild the Lando Webserver for DEV)
+# ------------------------------------------------
+composer rebuild-app-and-server
+
+
+# (Install/activate the added plugins, on DEV and PROD webservers)
+# ------------------------------------------------
+composer activate-extension-plugins
+composer activate-extension-plugins-prod
+```
 
 <!-- ### Creating the extension manually
 
