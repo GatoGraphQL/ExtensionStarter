@@ -49,10 +49,6 @@ class UpdateMonorepoLandoBashSetupCreateExtensionWorker implements CreateExtensi
      */
     public function work(ModifyProjectInputObjectInterface $inputObject): void
     {
-        if ($inputObject->getIntegrationPluginSlug() === '') {
-            return;
-        }
-
         // DEV server
         $this->installIntegrationPluginInLandoWebserver($inputObject, false);
 
