@@ -36,13 +36,13 @@ final class PrintFinalInstructionsCreateExtensionWorker implements CreateExtensi
 # (Git commit/push the changes to the repo)
 git add . && git commit -m "Created extension: %s" && git push origin
 
-# (Rebuild the Lando Webserver for DEV)
+# (Rebuild the Lando webserver for DEV)
 composer rebuild-app-and-server
 
 # (Install/activate the added plugins on the DEV webserver)
 composer activate-extension-plugins
 
-# (Install/activate the added integration plugins on the PROD webserver)
+# (Install/activate the integration plugin on the PROD webserver) <= if already created
 composer activate-extension-plugins-prod
 
 # ------------------------------------------------
