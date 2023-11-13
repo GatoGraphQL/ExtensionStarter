@@ -499,6 +499,27 @@ composer create-extension -- \
   --integration-plugin-file=woocommerce/woocommerce.php
 ```
 
+To print all the arguments for the `create-extension` command, run:
+
+```bash
+composer create-extension -- --help
+```
+
+<details>
+
+<summary>View all <code>create-extension</code> command arguments</summary>
+
+| Option | Description |
+| --- | --- |
+| `--integration-plugin-file` | Integration plugin file (eg: "woocommerce/woocommerce.php" for the WooCommerce plugin), if any |
+| `--integration-plugin-version-constraint` | Mimimum required version of the integration plugin, in semver (eg: "^8.1"). If not provided, any version is accepted [default: "*"] |
+| `--integration-plugin-name` | Name of the integration plugin (eg: WooCommerce). If not provided, it is generated from the integration plugin slug |
+| `--extension-name` | Extension plugin name. If not provided, it is calculated from the integration plugin name |
+| `--extension-slug` | Slug of the extension plugin. If not provided, it is generated from the integration plugin's slug, or from the "extension-name" option |
+| `--extension-classname` | PHP classname to append to classes in the extension plugin. If not provided, it is generated from the "extension-slug" option |
+
+</details>
+
 <!-- ### Creating the extension manually
 
 This starter project includes one fully-working extension plugin as demo: "Gato GraphQL - Hello Dolly", an integration for the [Hello Dolly](https://wordpress.org/plugins/hello-dolly/) plugin.
