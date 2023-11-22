@@ -21,7 +21,7 @@ class DowngradeRectorDataSource extends UpstreamDowngradeRectorDataSource
     public function getAdditionalDowngradeRectorBeforeFiles(): array
     {
         return [
-            $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/config/rector/downgrade/monorepo/chained-rules/rector-change-if-or-return-earlyreturn.php',
+            $this->rootDir . '/config/rector/downgrade/monorepo/chained-rules/rector-change-if-or-return-earlyreturn.php',
         ];
     }
 
