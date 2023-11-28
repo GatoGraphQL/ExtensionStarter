@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 wp config set AUTH_KEY          '*qCDwXB=ED1|0_V!B~U8|J [%T~)KFPQ2q)W`zf?s,j;:l**qBI0cuQ[UFJN;-N['
 wp config set SECURE_AUTH_KEY   '9dxzixY%^d`@D^Ad$f|$/N=)HZ{+-2n33Rz1(+/OLp5pRYjf-G~W0@gjcol9qS[7'
 wp config set LOGGED_IN_KEY     'mj/-Wwz*fZ+8=?TT=#BC-s=w}!PPt*i{%S8T/a9[CZry!)l)h~S,z:.*-^ {,>@o'
