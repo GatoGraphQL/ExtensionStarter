@@ -1,2 +1,2 @@
 #!/bin/bash
-/bin/sh /app/setup-extensions/activate-plugins.sh
+/bin/bash /app/setup-extensions/activate-plugins.sh
