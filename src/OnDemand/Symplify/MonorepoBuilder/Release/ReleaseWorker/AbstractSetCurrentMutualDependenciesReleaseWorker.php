@@ -44,7 +44,7 @@ abstract class AbstractSetCurrentMutualDependenciesReleaseWorker implements Rele
         $upstreamPackageNames = $this->upstreamPackageFilterer->filterUpstreamPackageNames($packageNames);
 
         $this->dependencyUpdater->updateFileInfosWithPackagesAndVersion(
-            $this->composerJsonProvider->getPackagesComposerFileInfos(),
+            $this->getPackagesComposerFileInfos(),
             $upstreamPackageNames,
             $upstreamVersionInString
         );
