@@ -17,6 +17,7 @@ use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetNextMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetTemplateCurrentMutualDependenciesReleaseWorker;
+use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetTemplateNextMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateBranchAliasReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateReplaceReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateVersionConstraintToGatoGraphQLPluginInPluginMainFileReleaseWorker;
@@ -118,6 +119,9 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
             ],
             SetCurrentMutualDependenciesReleaseWorker::class => [
                 SetTemplateCurrentMutualDependenciesReleaseWorker::class,
+            ],
+            SetNextMutualDependenciesReleaseWorker::class => [
+                SetTemplateNextMutualDependenciesReleaseWorker::class,
             ],
         ];
         foreach ($afterWorkerAppendWorkerClasses as $workerClass => $additionalWorkerClasses) {
