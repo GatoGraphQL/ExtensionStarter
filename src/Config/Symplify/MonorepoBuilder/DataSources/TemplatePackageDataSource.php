@@ -13,13 +13,15 @@ class TemplatePackageDataSource
     }
 
     /**
-     * @return array<string,string>
+     * @return array<string,string[]>
      */
     public function getTemplatePackagePaths(): array
     {
         return [
-            'layers/GatoGraphQLForWP/plugins',
-            'layers/GatoGraphQLForWP/packages',
+            'basic' => [
+                'layers/GatoGraphQLForWP/plugins',
+                'layers/GatoGraphQLForWP/packages',
+            ],
         ];
     }
 
@@ -28,10 +30,13 @@ class TemplatePackageDataSource
      */
     public function getTemplatePackageDirectories(): array
     {
-        return array_map(
-            fn (string $packagePath) => $this->rootDir . '/templates/basic/' . $packagePath,
-            $this->getTemplatePackagePaths()
-        );
+        $packageDirectories = [];
+        foreach ($this->getTemplatePackagePaths() as $template => $packagePaths) {
+            foreach ($packagePaths as $packagePath) {
+                $packageDirectories[] = $this->rootDir . '/templates/' . $template . '/' . $packagePath;
+            }
+        }
+        return $packageDirectories;
     }
 
     /**
