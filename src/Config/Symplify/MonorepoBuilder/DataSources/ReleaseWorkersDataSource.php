@@ -16,7 +16,6 @@ use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualConflictsReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetNextMutualDependenciesReleaseWorker;
-use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetTemplateCurrentMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetTemplateNextMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateBranchAliasReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateReplaceReleaseWorker;
@@ -117,10 +116,21 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
             ConvertVersionForProdInPluginMainFileReleaseWorker::class => [
                 UpdateVersionConstraintToGatoGraphQLPluginInPluginMainFileReleaseWorker::class,
             ],
+
+            /**
+             * Watch out! The "next" version needs to already be stored
+             * in the template when pushing to the repo.
+             *
+             * Hence SetTemplateCurrentMutualDependenciesReleaseWorker is not
+             * used, and apply straight the "next" release worker in that step.
+             */
+            // SetCurrentMutualDependenciesReleaseWorker::class => [
+            //     SetTemplateCurrentMutualDependenciesReleaseWorker::class,
+            // ],
+            // SetNextMutualDependenciesReleaseWorker::class => [
+            //     SetTemplateNextMutualDependenciesReleaseWorker::class,
+            // ],
             SetCurrentMutualDependenciesReleaseWorker::class => [
-                SetTemplateCurrentMutualDependenciesReleaseWorker::class,
-            ],
-            SetNextMutualDependenciesReleaseWorker::class => [
                 SetTemplateNextMutualDependenciesReleaseWorker::class,
             ],
         ];
