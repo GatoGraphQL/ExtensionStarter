@@ -19,6 +19,7 @@ use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PackageOrga
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\PluginDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\ReleaseWorkersDataSource;
 use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\SkipDowngradeTestPathsDataSource;
+use PoP\ExtensionStarter\Config\Symplify\MonorepoBuilder\DataSources\TemplatePackageDataSource;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ValueObject\Option as CustomOption;
 use PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\ValueObject\Param;
 use PoP\ExtensionStarter\Monorepo\MonorepoMetadata;
@@ -75,6 +76,20 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
             $parameters->set(
                 CustomOption::COPY_UPSTREAM_MONOREPO_FILE_ENTRIES,
                 $copyUpstreamMonorepoFilesDataSource->getCopyUpstreamMonorepoFilesEntries()
+            );
+        }
+
+        /**
+         * Template Packages
+         */
+        if ($templatePackageConfig = $this->getTemplatePackageDataSource()) {
+            $parameters->set(
+                CustomOption::TEMPLATE_PACKAGE_DIRECTORIES,
+                $templatePackageConfig->getTemplatePackageDirectories()
+            );
+            $parameters->set(
+                CustomOption::TEMPLATE_PACKAGE_DIRECTORIES_EXCLUDES,
+                $templatePackageConfig->getTemplatePackageDirectoryExcludes()
             );
         }
     }
@@ -217,6 +232,14 @@ class ContainerConfigurationService extends UpstreamContainerConfigurationServic
     protected function getCopyUpstreamMonorepoFilesDataSource(): ?CopyUpstreamMonorepoFilesDataSource
     {
         return new CopyUpstreamMonorepoFilesDataSource(
+            $this->rootDirectory,
+            $this->upstreamRelativeRootPath,
+        );
+    }
+
+    protected function getTemplatePackageDataSource(): ?TemplatePackageDataSource
+    {
+        return new TemplatePackageDataSource(
             $this->rootDirectory,
             $this->upstreamRelativeRootPath,
         );

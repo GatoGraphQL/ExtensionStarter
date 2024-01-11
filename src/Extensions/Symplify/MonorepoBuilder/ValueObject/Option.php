@@ -14,4 +14,16 @@ final class Option
      * @var string
      */
     public final const COPY_UPSTREAM_MONOREPO_FILE_ENTRIES = 'copy-upstream-monorepo-file-entries';
+
+    /**
+     * @var string
+     * @api
+     */
+    public const TEMPLATE_PACKAGE_DIRECTORIES = 'template_package_directories';
+
+    /**
+     * @var string
+     * @api
+     */
+    public const TEMPLATE_PACKAGE_DIRECTORIES_EXCLUDES = 'template_package_directories_excludes';
 }
