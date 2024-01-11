@@ -29,7 +29,7 @@ class TemplatePackageDataSource
     public function getTemplatePackageDirectories(): array
     {
         return array_map(
-            fn (string $packagePath) => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/templates/basic/' . $packagePath,
+            fn (string $packagePath) => $this->rootDir . '/templates/basic/' . $packagePath,
             $this->getTemplatePackagePaths()
         );
     }
