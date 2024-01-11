@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
 use PharIo\Version\Version;
+use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class SetCurrentMutualDependenciesReleaseWorker extends AbstractSetCurrentMutualDependenciesReleaseWorker
 {

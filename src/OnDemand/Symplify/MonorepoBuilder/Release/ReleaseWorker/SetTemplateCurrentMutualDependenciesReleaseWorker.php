@@ -35,7 +35,6 @@ final class SetTemplateCurrentMutualDependenciesReleaseWorker extends AbstractSe
             $parameterProvider,
             $upstreamVersionResolver,
             $upstreamPackageFilterer,
-            $packageNamesProvider,
         );
     }
 
