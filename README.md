@@ -72,13 +72,13 @@ git clone --recursive https://github.com/my-account/GatoGraphQLExtensionsForMyCo
 Step on the project's folder:
 
 ```bash
-$ cd {project folder}
+cd {project folder}
 ```
 
 And then run:
 
 ```bash
-$ cd submodules/GatoGraphQL && composer install && cd ../.. && composer install
+cd submodules/GatoGraphQL && composer install && cd ../.. && composer install
 ```
 
 ### Initialize the Project
