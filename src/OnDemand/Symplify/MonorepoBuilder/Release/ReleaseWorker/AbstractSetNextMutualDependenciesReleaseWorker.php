@@ -14,13 +14,14 @@ use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Symplify\SmartFileSystem\SmartFileInfo;
 
 abstract class AbstractSetNextMutualDependenciesReleaseWorker implements ReleaseWorkerInterface
 {
     private string $upstreamRelativePath;
 
     public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
+        protected ComposerJsonProvider $composerJsonProvider,
         private DependencyUpdater $dependencyUpdater,
         private PackageNamesProvider $packageNamesProvider,
         protected VersionUtils $versionUtils,
@@ -43,9 +44,14 @@ abstract class AbstractSetNextMutualDependenciesReleaseWorker implements Release
         $upstreamPackageNames = $this->upstreamPackageFilterer->filterUpstreamPackageNames($packageNames);
 
         $this->dependencyUpdater->updateFileInfosWithPackagesAndVersion(
-            $this->composerJsonProvider->getPackagesComposerFileInfos(),
+            $this->getPackagesComposerFileInfos(),
             $upstreamPackageNames,
             $upstreamVersionInString
         );
     }
+
+    /**
+     * @return SmartFileInfo[]
+     */
+    abstract protected function getPackagesComposerFileInfos(): array;
 }
