@@ -69,10 +69,15 @@ git clone --recursive https://github.com/my-account/GatoGraphQLExtensionsForMyCo
 
 ### Install Composer dependencies
 
-Run:
+Step on the project's folder:
 
 ```bash
 $ cd {project folder}
+```
+
+And then run:
+
+```bash
 $ cd submodules/GatoGraphQL && composer install && cd ../.. && composer install
 ```
 
