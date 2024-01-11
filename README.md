@@ -1007,6 +1007,14 @@ The monorepo includes scripts that completely automate the process of releasing 
 
 Follow these steps:
 
+### Set the "Worflow permissions" to "Read and write" in your repo settings
+
+_(This is done only the first time, after creating the repo)_
+
+On your repo's "Settings > Actions > General > Workflow permissions", select option `Read and write permissions`.
+
+This will enable uploading the generated artifacts when creating a new release.
+
 ### Tag the monorepo as `patch`, `minor` or `major`
 
 Choose which version you will be releasing. The same version will be applied to all plugins in the monorepo.
