@@ -393,12 +393,6 @@ To test the schema elements added by the extension, complete the GraphQL documen
 
 (and the JSON response, in the same folder).
 
-### Load the container services
-
-To add elements to the GraphQL schema (field resolvers, mutation resolvers, input object resolvers, etc), the corresponding entries on the service container configuration file must be uncommented:
-
-`layers/GatoGraphQLForWP/packages/{extension-slug}-schema/config/schema-services.yaml`
-
 ### Stubs for your integration plugin
 
 If integrating with another WordPress plugin, you will need to complete the file with stubs for that plugin (to avoid errors with PHPStan/Rector), under:
@@ -735,7 +729,7 @@ Now, when loading the Lando webserver for DEV (under `https://gatographql-{compo
 
 ## Extending the GraphQL Schema
 
-This section provides examples from the codebase in the upstream `GatoGraphQL/GatoGraphQL` monorepo, demonstrating how to create the resolvers to extend the GraphQL schema.
+This section provides examples from the codebase in the upstream `GatoGraphQL/GatoGraphQL` monorepo, demonstrating how to create the resolvers to extend the GraphQL schema (for fields, mutations, input objects, directives, etc).
 
 In your code editor, copy the example file and paste it inside your extension folder (under the original folder structure), and adapt it to your needs:
 
@@ -743,7 +737,9 @@ In your code editor, copy the example file and paste it inside your extension fo
 - Inspect all services referenced inside the class, and verify if any of them must too be duplicated and adapted
 - Similarly, find all references to the original class (eg: using the [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client) addon for VSCode), and verify if any of them must also be duplicated and adapted
 
-You must also have those services injected into the service container, by defining them in file `schema-services.yaml`. Check [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/config/schema-services.yaml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/config/schema-services.yaml) for an example.
+You must also define those services in the service container, by uncommenting the corresponding entries on configuration file `layers/GatoGraphQLForWP/packages/{extension-slug}-schema/config/schema-services.yaml`.
+
+(Check [`submodules/GatoGraphQL/layers/CMSSchema/packages/users/config/schema-services.yaml`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/layers/CMSSchema/packages/users/config/schema-services.yaml) for an example.)
 
 <!-- _In the future, we expect to have [commands to automatically generate the PHP code inside the extension](https://github.com/GatoGraphQL/ExtensionStarter/issues/74)._ -->
 
