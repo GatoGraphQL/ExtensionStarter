@@ -393,6 +393,12 @@ To test the schema elements added by the extension, complete the GraphQL documen
 
 (and the JSON response, in the same folder).
 
+### Load the container services
+
+To add elements to the GraphQL schema (field resolvers, mutation resolvers, input object resolvers, etc), the corresponding entries on the service container configuration file must be uncommented:
+
+`layers/GatoGraphQLForWP/packages/{extension-slug}-schema/config/schema-services.yaml`
+
 ### Stubs for your integration plugin
 
 If integrating with another WordPress plugin, you will need to complete the file with stubs for that plugin (to avoid errors with PHPStan/Rector), under:

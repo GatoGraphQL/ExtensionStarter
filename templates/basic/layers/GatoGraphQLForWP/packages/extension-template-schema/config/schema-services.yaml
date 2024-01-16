@@ -3,5 +3,26 @@ services:
         public: true
         autowire: true
 
+    # @gatographql-extension-todo Uncomment the corresponding entries
+    # to load the services
+
     # MyCompanyForGatoGraphQL\ExtensionTemplateSchema\FieldResolvers\:
     #     resource: '../src/FieldResolvers/*'
+
+    # MyCompanyForGatoGraphQL\ExtensionTemplateSchema\MutationResolvers\:
+    #     resource: '../src/MutationResolvers/*'
+
+    # MyCompanyForGatoGraphQL\ExtensionTemplateSchema\TypeResolvers\:
+    #     resource: '../src/TypeResolvers/*'
+
+    # MyCompanyForGatoGraphQL\ExtensionTemplateSchema\RelationalTypeDataLoaders\:
+    #     resource: '../src/RelationalTypeDataLoaders/*'
+
+    # MyCompanyForGatoGraphQL\ExtensionTemplateSchema\RelationalTypeResolverDecorators\:
+    #     resource: '../src/RelationalTypeResolverDecorators/*'
+
+    # MyCompanyForGatoGraphQL\ExtensionTemplateSchema\ObjectTypeResolverPickers\:
+    #     resource: '../src/ObjectTypeResolverPickers/*'
+
+    # MyCompanyForGatoGraphQL\ExtensionTemplateSchema\DirectiveResolvers\:
+    #     resource: '../src/DirectiveResolvers/*'
