@@ -37,7 +37,7 @@ final class SetTemplateNextMutualDependenciesReleaseWorker extends AbstractSetNe
             $upstreamPackageFilterer,
         );
     }
-    
+
     /**
      * @return SmartFileInfo[]
      */
@@ -45,7 +45,7 @@ final class SetTemplateNextMutualDependenciesReleaseWorker extends AbstractSetNe
     {
         return $this->templateComposerJsonProvider->getPackagesComposerFileInfos();
     }
-    
+
     public function getDescription(Version $version): string
     {
         $versionInString = $this->versionUtils->getRequiredNextFormat($version);
