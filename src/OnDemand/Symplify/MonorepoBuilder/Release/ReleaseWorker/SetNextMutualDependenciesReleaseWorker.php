@@ -16,7 +16,7 @@ final class SetNextMutualDependenciesReleaseWorker extends AbstractSetNextMutual
     {
         return $this->composerJsonProvider->getPackagesComposerFileInfos();
     }
-    
+
     public function getDescription(Version $version): string
     {
         $versionInString = $this->versionUtils->getRequiredNextFormat($version);
