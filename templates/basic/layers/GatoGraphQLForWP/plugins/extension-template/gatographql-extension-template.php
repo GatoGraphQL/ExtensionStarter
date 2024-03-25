@@ -1,6 +1,7 @@
 <?php
 /*
 Plugin Name: Gato GraphQL - Extension Template
+Requires Plugins: gatographql
 Plugin URI:
 Description: Extension Template extension for Gato GraphQL
 Version: 1.1.0-dev
