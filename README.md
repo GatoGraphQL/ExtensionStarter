@@ -30,7 +30,7 @@ Gato GraphQL extensions add functionality and expand the GraphQL schema provided
 
 <summary>Trivia fact 🤔</summary>
 
-_All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) (26 extensions and 4 bundles to date) are hosted on a monorepo created from `GatoGraphQL/ExtensionStarter` 🚀_
+_All extensions from [gatographql.com/extensions](https://gatographql.com/extensions/) are hosted on a monorepo created from `GatoGraphQL/ExtensionStarter` 🚀_
 
 </details>
 
