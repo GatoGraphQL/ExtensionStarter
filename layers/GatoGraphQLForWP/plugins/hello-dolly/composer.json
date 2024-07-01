@@ -153,7 +153,7 @@
     "homepage": "https://github.com/GatoGraphQL/hello-dolly",
     "require": {
         "php": "^8.1",
-        "my-company-for-gatographql/hello-dolly-schema": "^2.6.1"
+        "my-company-for-gatographql/hello-dolly-schema": "^2.7"
     },
     "require-dev": {
         "johnpbloch/wordpress": "^6.4",
@@ -189,7 +189,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-main": "2.6-dev"
+            "dev-main": "2.7-dev"
         }
     },
     "config": {
