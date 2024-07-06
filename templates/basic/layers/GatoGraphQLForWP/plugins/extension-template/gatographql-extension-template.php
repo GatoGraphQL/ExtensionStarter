@@ -5,7 +5,7 @@ Requires Plugins: gatographql
 Plugin URI:
 Description: Extension Template extension for Gato GraphQL
 Version: 1.1.0-dev
-Requires at least: 5.4
+Requires at least: 6.0
 Requires PHP: 8.1
 Author: My Company
 License:
