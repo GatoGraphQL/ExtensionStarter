@@ -4,7 +4,7 @@ Plugin Name: Gato GraphQL - Hello Dolly
 Plugin URI:
 Description: Integration of plugin Hello Dolly with Gato GraphQL
 Version: 2.7.0-dev
-Requires at least: 5.4
+Requires at least: 6.0
 Requires PHP: 8.1
 Author: My Company
 License:
