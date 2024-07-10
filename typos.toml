@@ -1,0 +1,28 @@
+[files]
+extend-exclude = [
+    ".git/",
+    "**/submodules/**",
+    "**/vendors/**",
+    "**/build/**",
+    "**.wordpress.xml",
+    "**/gatographql-testing-data.xml",
+    "**/fixture-schema/*.json",
+    "**.disabled.sh",
+]
+ignore-hidden = false
+
+[default]
+extend-ignore-re = [
+    "And gettin' caught",
+    "Allow URE",
+    "URE source",
+    "X-Github-Access-Token",
+    "[a|A]dditionals"
+]
+
+[default.extend-identifiers]
+safly = "safly"
+
+# Typos
+"Github" = "GitHub"
+"Wordpress" = "WordPress"

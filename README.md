@@ -349,7 +349,7 @@ composer create-extension -- --help
 | --- | --- |
 | `--template` |  Template to use to create the extension plugin, from available options: "basic" [default: "basic"] |
 | `--integration-plugin-file` | Integration plugin file (eg: "woocommerce/woocommerce.php" for the WooCommerce plugin), if any |
-| `--integration-plugin-version-constraint` | Mimimum required version of the integration plugin, in semver (eg: "^8.1"). If not provided, any version is accepted [default: "*"] |
+| `--integration-plugin-version-constraint` | Minimum required version of the integration plugin, in semver (eg: "^8.1"). If not provided, any version is accepted [default: "*"] |
 | `--integration-plugin-name` | Name of the integration plugin (eg: WooCommerce). If not provided, it is generated from the integration plugin slug |
 | `--extension-name` | Extension plugin name. If not provided, it is calculated from the integration plugin name |
 | `--extension-slug` | Slug of the extension plugin. If not provided, it is generated from the integration plugin's slug, or from the "extension-name" option |
@@ -1014,7 +1014,7 @@ The monorepo includes scripts that completely automate the process of releasing 
 
 Follow these steps:
 
-### Set the "Worflow permissions" to "Read and write" in your repo settings
+### Set the "Workflow permissions" to "Read and write" in your repo settings
 
 _(This is done only the first time, after creating the repo)_
 
