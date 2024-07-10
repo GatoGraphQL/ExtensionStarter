@@ -1,0 +1,19 @@
+[files]
+extend-exclude = [
+    ".git/",
+    "**/vendors/**",
+    "**/build/**",
+    "**.wordpress.xml",
+    "**/gatographql-testing-data.xml",
+    "**/fixture-schema/*.json",
+]
+ignore-hidden = false
+
+[default]
+extend-ignore-re = [
+    "X-Github-Access-Token"
+]
+
+# Typos
+"Github" = "GitHub"
+"Wordpress" = "WordPress"
