@@ -67,7 +67,7 @@ final class CreateExtensionCommand extends AbstractModifyProjectCommand
             Option::INTEGRATION_PLUGIN_VERSION_CONSTRAINT,
             null,
             InputOption::VALUE_REQUIRED,
-            'Mimimum required version of the integration plugin, in semver (eg: "^8.1"). If not provided, any version is accepted',
+            'Minimum required version of the integration plugin, in semver (eg: "^8.1"). If not provided, any version is accepted',
             '*',
         );
         $this->addOption(
