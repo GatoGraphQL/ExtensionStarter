@@ -1014,7 +1014,7 @@ The monorepo includes scripts that completely automate the process of releasing 
 
 Follow these steps:
 
-### Set the "Worflow permissions" to "Read and write" in your repo settings
+### Set the "Workflow permissions" to "Read and write" in your repo settings
 
 _(This is done only the first time, after creating the repo)_
 
