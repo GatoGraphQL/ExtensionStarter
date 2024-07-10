@@ -9,9 +9,8 @@ on:
         branches:
             - main
     pull_request: null
-# Only check typos in the current repo, no upstream ones
-# env:
-#     CHECKOUT_SUBMODULES: "recursive"
+env:
+    CHECKOUT_SUBMODULES: "recursive"
 
 jobs:
     main:
