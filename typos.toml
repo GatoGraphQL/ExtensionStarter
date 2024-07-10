@@ -11,8 +11,15 @@ ignore-hidden = false
 
 [default]
 extend-ignore-re = [
-    "X-Github-Access-Token"
+    "And gettin' caught",
+    "Allow URE",
+    "URE source",
+    "X-Github-Access-Token",
+    "[a|A]dditionals"
 ]
+
+[default.extend-identifiers]
+safly = "safly"
 
 # Typos
 "Github" = "GitHub"
