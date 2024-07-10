@@ -1,6 +1,7 @@
 [files]
 extend-exclude = [
     ".git/",
+    "**/submodules/**",
     "**/vendors/**",
     "**/build/**",
     "**.wordpress.xml",
