@@ -29,5 +29,6 @@ services:
       environment:
         XDEBUG_MODE: ''
 env_file:
-  - ../../submodules/GatoGraphQL/webservers/gatographql/defaults.env
+  - ../../submodules/GatoGraphQL/webservers/gatographql/defaults.app.env
+  - defaults.env
   - defaults.local.env
