@@ -44,7 +44,7 @@
     "extra": {
         "wordpress-install-dir": "vendor/wordpress/wordpress",
         "branch-alias": {
-            "dev-main": "3.1-dev"
+            "dev-main": "4.0-dev"
         }
     },
     "config": {
