@@ -5,7 +5,7 @@ proxy:
     - mail.gatographql-extensions.lndo.site
 config:
   webroot: wordpress
-  php: '8.1'
+  php: '8.2'
   ssl: true
   database: mariadb
   xdebug: true
