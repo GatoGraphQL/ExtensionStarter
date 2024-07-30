@@ -187,6 +187,10 @@ services:
         - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/taxonomyquery:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/taxonomyquery
         - >-
+          ../../submodules/GatoGraphQL/layers/CMSSchema/packages/taxonomy-mutations-wp:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/taxonomy-mutations-wp
+        - >-
+          ../../submodules/GatoGraphQL/layers/CMSSchema/packages/taxonomy-mutations:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/taxonomy-mutations
+        - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/taxonomymeta-wp:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/taxonomymeta-wp
         - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/taxonomymeta:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/taxonomymeta
