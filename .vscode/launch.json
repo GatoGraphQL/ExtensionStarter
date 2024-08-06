@@ -228,6 +228,8 @@
                 "/app/wordpress/CMSSchema/packages/settings/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/settings",
                 "/app/wordpress/CMSSchema/packages/tags-wp/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/tags-wp",
                 "/app/wordpress/CMSSchema/packages/tags/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/tags",
+                "/app/wordpress/CMSSchema/packages/tag-mutations-wp/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/tag-mutations-wp",
+                "/app/wordpress/CMSSchema/packages/tag-mutations/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/tag-mutations",
                 "/app/wordpress/CMSSchema/packages/taxonomies-wp/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/taxonomies-wp",
                 "/app/wordpress/CMSSchema/packages/taxonomies/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/taxonomies",
                 "/app/wordpress/CMSSchema/packages/taxonomy-mutations-wp/": "${workspaceFolder}/submodules/ExtensionStarter/submodules/GatoGraphQL/layers/CMSSchema/packages/taxonomy-mutations-wp",
