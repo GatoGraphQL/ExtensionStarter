@@ -15,6 +15,6 @@ class SchemaFixtureWebserverRequestTest extends AbstractApplicationPasswordQuery
 
     protected static function getEndpoint(): string
     {
-        return 'graphql/';
+        return 'graphql';
     }
 }
