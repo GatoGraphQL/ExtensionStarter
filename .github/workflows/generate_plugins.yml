@@ -27,6 +27,7 @@ on:
     push:
         branches:
             - main
+            - versions/*
     pull_request: null
 
 env:
