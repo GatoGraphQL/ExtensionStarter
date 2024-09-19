@@ -34,7 +34,7 @@ class PluginDataSource extends UpstreamPluginDataSource
                 'path' => 'layers/GatoGraphQLForWP/plugins/hello-dolly',
                 'plugin_slug' => 'gatographql-hello-dolly',
                 'main_file' => 'gatographql-hello-dolly.php',
-                'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/hello-dolly/rector.php',
+                'rector_downgrade_config' => $this->rootDir . '/config/rector/downgrade/plugins/hello-dolly/rector.php',
 
                 /**
                  * @gatographql-extension-info
