@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use PoP\ExtensionStarter\Config\Rector\Downgrade\Configurators\HelloDollyContainerConfigurationService;
+use PoP\ExtensionStarter\Config\Rector\Downgrade\Configurators\Plugins\HelloDollyContainerConfigurationService;
 use Rector\Config\RectorConfig;
 
 return static function (RectorConfig $rectorConfig): void {
