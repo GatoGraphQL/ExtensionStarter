@@ -420,7 +420,7 @@
             "@preview-src-downgrade",
             "@preview-vendor-downgrade"
         ],
-        "preview-hello-dolly-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/hello-dolly/rector.php --dry-run layers/GatoGraphQLForWP/plugins/hello-dolly \"\" \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
+        "preview-hello-dolly-downgrade": "bash -x submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/plugins/hello-dolly/rector.php --dry-run layers/GatoGraphQLForWP/plugins/hello-dolly \"\" \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\"",
         "ssh-server": [
             "Composer\\Config::disableProcessTimeout",
             "composer ssh-server -d webservers/gatographql-extensions"
