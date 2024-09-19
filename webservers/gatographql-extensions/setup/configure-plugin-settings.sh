@@ -23,8 +23,7 @@ curl -i --insecure \
 #   -H "Content-Type: application/json" \
 #   -d '{"state": "enabled"}' \
 #   $(echo $SITE_DOMAIN)/wp-json/gatographql/v1/admin/modules/gatographql_gatographql_single-endpoint
-
-
+  
 echo Selecting "dummy" CPT, categories and tags
 
 curl -i --insecure \
