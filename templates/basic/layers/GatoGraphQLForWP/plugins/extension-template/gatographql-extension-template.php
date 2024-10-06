@@ -12,6 +12,7 @@ License:
 License URI:
 Text Domain: gatographql-extension-template
 Domain Path: /languages
+Requires Plugins: gatographql
 */
 
 use MyCompanyForGatoGraphQL\ExtensionTemplate\GatoGraphQLExtension;

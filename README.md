@@ -448,7 +448,7 @@ Duplicate folders:
 
 Duplicate files:
 
-- `config/rector/downgrade/hello-dolly/rector.php` into `config/rector/downgrade/your-extension/rector.php`
+- `config/rector/downgrade/plugins/hello-dolly/rector.php` into `config/rector/downgrade/your-extension/rector.php`
 - `src/Config/Rector/Downgrade/Configurators/HelloDollyContainerConfigurationService.php` into `src/Config/Rector/Downgrade/Configurators/YourExtensionContainerConfigurationService.php`
 
 Within the duplicated folders and files above, search and replace all occurrences of:
