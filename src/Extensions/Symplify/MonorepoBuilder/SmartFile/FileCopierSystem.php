@@ -109,18 +109,27 @@ final class FileCopierSystem
         array $files,
         string $toFolder,
         array $patternReplacements = [],
-        array $renameFiles = []
+        array $renameFiles = [],
+        bool $appendIfDestinationFileExists = false,
     ): array {
         $copiedFiles = [];
         foreach ($files as $fromFile) {
             $this->fileSystemGuard->ensureFileExists($fromFile, __METHOD__);
             $toFilename = $renameFiles[$fromFile] ?? basename($fromFile);
             $toFile = $toFolder . '/' . $toFilename;
-            $this->smartFileSystem->copy($fromFile, $toFile, true);
+            if ($appendIfDestinationFileExists && file_exists($toFile)) {
+                $fromFileContent = file_get_contents($fromFile);
+                if ($patternReplacements !== []) {
+                    $fromFileContent = $this->fileContentReplacerSystem->replaceContent($fromFileContent, $patternReplacements, true);
+                }
+                $this->smartFileSystem->appendToFile($toFile, $fromFileContent);
+            } else {
+                $this->smartFileSystem->copy($fromFile, $toFile, true);
+                if ($patternReplacements !== []) {
+                    $this->fileContentReplacerSystem->replaceContentInFiles([$toFile], $patternReplacements, true);
+                }
+            }
             $copiedFiles[] = $toFile;
-        }
-        if ($patternReplacements !== []) {
-            $this->fileContentReplacerSystem->replaceContentInFiles($copiedFiles, $patternReplacements, true);
         }
         return $copiedFiles;
     }

@@ -41,6 +41,7 @@ final class CopyUpstreamMonorepoFilesCommand extends AbstractSymplifyCommand
                     $entry['toFolder'],
                     $entry['patternReplacements'] ?? [],
                     $entry['renameFiles'] ?? [],
+                    $entry['appendIfDestinationFileExists'] ?? false,
                 )
             );
         }
