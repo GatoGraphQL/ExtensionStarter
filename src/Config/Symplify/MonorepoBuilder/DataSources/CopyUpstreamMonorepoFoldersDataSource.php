@@ -20,10 +20,6 @@ class CopyUpstreamMonorepoFoldersDataSource
     public function getCopyUpstreamMonorepoFoldersEntries(): array
     {
         $devBranch = 'dev-' . $this->getGitMainBranch();
-        $commentOutSetupStepsPatternReplacements = [
-            '#(/bin/bash /app/setup/activate-theme.sh)#' => '#$1',
-            '#(/bin/bash /app/setup/create-menus.sh)#' => '#$1',
-        ];
         return [
             // GitHub Workflows
             [
@@ -53,36 +49,15 @@ class CopyUpstreamMonorepoFoldersDataSource
                     ],
                 )
             ],
-            // Webserver assets
-            [
-                'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql/assets',
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions/assets',
-            ],
-            [
-                'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql-for-prod/assets',
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions-for-prod/assets',
-            ],
-            // Webserver setup
-            [
-                'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql/setup',
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions/setup',
-                'patternReplacements' => array_merge(
-                    $commentOutSetupStepsPatternReplacements,
-                    [
-                        '#gatographql.lndo.site#' => 'gatographql-extensions.lndo.site',
-                    ]
-                ),
-            ],
-            [
-                'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql-for-prod/setup',
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions-for-prod/setup',
-                'patternReplacements' => array_merge(
-                    $commentOutSetupStepsPatternReplacements,
-                    [
-                        '#gatographql-for-prod.lndo.site#' => 'gatographql-extensions-for-prod.lndo.site',
-                    ]
-                ),
-            ],
+            // // Webserver assets
+            // [
+            //     'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql/assets',
+            //     'toFolder' => $this->rootDir . '/webservers/gatographql-extensions/assets',
+            // ],
+            // [
+            //     'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql-for-prod/assets',
+            //     'toFolder' => $this->rootDir . '/webservers/gatographql-extensions-for-prod/assets',
+            // ],
         ];
     }
 

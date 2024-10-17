@@ -7,7 +7,8 @@ config:
   webroot: wordpress
   php: '8.2'
   ssl: true
-  database: mariadb
+  # @todo Maybe re-enable MariaDB, sometimes giving error when doing `rebuild-server` in Lando
+  # database: mariadb
   xdebug: true
   config:
     php: ../../submodules/GatoGraphQL/webservers/shared/config/php.ini
@@ -28,6 +29,9 @@ services:
     overrides:
       environment:
         XDEBUG_MODE: ''
+      volumes:
+        - ../../submodules/GatoGraphQL/webservers/_shared:/app/_shared-webserver
+        - ../_shared:/app/_shared-webserver-extensions
 env_file:
   - ../../submodules/GatoGraphQL/webservers/gatographql/defaults.app.env
   - defaults.env
