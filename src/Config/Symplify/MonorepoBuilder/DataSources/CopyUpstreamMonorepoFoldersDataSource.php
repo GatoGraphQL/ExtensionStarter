@@ -62,27 +62,6 @@ class CopyUpstreamMonorepoFoldersDataSource
                 'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql-for-prod/assets',
                 'toFolder' => $this->rootDir . '/webservers/gatographql-extensions-for-prod/assets',
             ],
-            // Webserver setup
-            [
-                'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql/setup',
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions/setup',
-                'patternReplacements' => array_merge(
-                    $commentOutSetupStepsPatternReplacements,
-                    [
-                        '#gatographql.lndo.site#' => 'gatographql-extensions.lndo.site',
-                    ]
-                ),
-            ],
-            [
-                'fromFolder' => $this->rootDir . '/' . $this->upstreamRelativeRootPath . '/webservers/gatographql-for-prod/setup',
-                'toFolder' => $this->rootDir . '/webservers/gatographql-extensions-for-prod/setup',
-                'patternReplacements' => array_merge(
-                    $commentOutSetupStepsPatternReplacements,
-                    [
-                        '#gatographql-for-prod.lndo.site#' => 'gatographql-extensions-for-prod.lndo.site',
-                    ]
-                ),
-            ],
         ];
     }
 
