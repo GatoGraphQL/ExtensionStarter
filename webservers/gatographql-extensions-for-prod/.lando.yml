@@ -23,6 +23,7 @@ services:
       volumes:
         - ../../submodules/GatoGraphQL/webservers/_shared:/app/_shared-webserver
         - ../../submodules/GatoGraphQL/webservers/_shared-prod:/app/_shared-webserver-prod
+        - ../_shared:/app/_shared-webserver-extensions
   database:
     portforward: true
 env_file:
