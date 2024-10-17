@@ -20,10 +20,6 @@ class CopyUpstreamMonorepoFoldersDataSource
     public function getCopyUpstreamMonorepoFoldersEntries(): array
     {
         $devBranch = 'dev-' . $this->getGitMainBranch();
-        $commentOutSetupStepsPatternReplacements = [
-            '#(/bin/bash /app/setup/activate-theme.sh)#' => '#$1',
-            '#(/bin/bash /app/setup/create-menus.sh)#' => '#$1',
-        ];
         return [
             // GitHub Workflows
             [
