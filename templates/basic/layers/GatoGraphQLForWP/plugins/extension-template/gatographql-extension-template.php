@@ -52,7 +52,7 @@ add_action(
          *
          * @gatographql-readonly-code
          */
-        $extensionVersion = '1.1.0-dev';
+        $extensionVersion = '7.0.0-dev';
         $extensionName = \__('Gato GraphQL - Extension Template', 'gatographql-extension-template');
         /**
          * @gatographql-extension-info
@@ -60,7 +60,7 @@ add_action(
          * The minimum version required from the Gato GraphQL plugin
          * to activate the extension.
          */
-        $gatoGraphQLPluginVersionConstraint = '^1.0';
+        $gatoGraphQLPluginVersionConstraint = '^7.0';
         
         /**
          * Validate Gato GraphQL is active
