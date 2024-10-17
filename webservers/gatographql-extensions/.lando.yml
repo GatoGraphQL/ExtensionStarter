@@ -31,6 +31,7 @@ services:
         XDEBUG_MODE: ''
       volumes:
         - ../../submodules/GatoGraphQL/webservers/_shared:/app/_shared-webserver
+        - ../_shared:/app/_shared-webserver-extensions
 env_file:
   - ../../submodules/GatoGraphQL/webservers/gatographql/defaults.app.env
   - defaults.env
