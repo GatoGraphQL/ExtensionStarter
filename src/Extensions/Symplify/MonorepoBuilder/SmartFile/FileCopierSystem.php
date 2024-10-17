@@ -119,6 +119,9 @@ final class FileCopierSystem
             $toFile = $toFolder . '/' . $toFilename;
             if ($appendIfDestinationFileExists && file_exists($toFile)) {
                 $fromFileContent = file_get_contents($fromFile);
+                if ($fromFileContent === false) {
+                    continue;
+                }
                 if ($patternReplacements !== []) {
                     $fromFileContent = $this->fileContentReplacerSystem->replaceContent($fromFileContent, $patternReplacements, true);
                 }
