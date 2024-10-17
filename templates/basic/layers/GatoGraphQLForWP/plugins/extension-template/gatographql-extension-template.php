@@ -183,7 +183,7 @@ add_action(
             maybeAdaptGatoGraphQLBundledExtensionPluginFile(
                 __FILE__,
                 GatoGraphQLExtension::class,
-                'my-company-for-gatographql',
+                'my-company-for-gatographql'
             ),
             $extensionVersion,
             $extensionName,
