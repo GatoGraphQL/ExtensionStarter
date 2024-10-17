@@ -22,6 +22,7 @@ services:
     overrides:
       volumes:
         - ../../submodules/GatoGraphQL/webservers/_shared:/app/_shared-webserver
+        - ../../submodules/GatoGraphQL/webservers/_shared-prod:/app/_shared-webserver-prod
   database:
     portforward: true
 env_file:
