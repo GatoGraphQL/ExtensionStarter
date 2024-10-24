@@ -88,7 +88,9 @@ class PluginDataSource extends UpstreamPluginDataSource
                  * @see https://github.com/humbug/php-scoper
                  */
                 // 'scoping' => [
-                //     'phpscoper_config' => $this->rootDir . '/ci/scoping/scoper-extensions.inc.php',
+                //     'phpscoper_config' => [
+                //         'external' => $this->rootDir . '/ci/scoping/scoper-extensions.inc.php',
+                //     ],
                 //     'rector_test_config' => $this->rootDir . '/ci/scoping/rector-test-scoping-extensions.php',
                 // ],
             ],
