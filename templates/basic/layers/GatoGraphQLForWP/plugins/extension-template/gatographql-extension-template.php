@@ -180,7 +180,7 @@ add_action(
 
         // Create and set-up the extension instance
         $extensionManager->register(new GatoGraphQLExtension(
-            maybeAdaptGatoGraphQLBundledExtensionPluginFile(
+            \PoPIncludes\GatoGraphQL\Startup::maybeAdaptGatoGraphQLBundledExtensionPluginFile(
                 __FILE__,
                 GatoGraphQLExtension::class,
                 'my-company-for-gatographql'
