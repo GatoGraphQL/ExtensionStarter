@@ -7,7 +7,7 @@ use Isolated\Symfony\Component\Finder\Finder;
 /**
  * @see submodules/GatoGraphQL/ci/scoping/scoper-gatographql.inc.php
  */
-function convertRelativeToFullPath(string $relativePath): string
+function convertExtensionsRelativeToFullPath(string $relativePath): string
 {
     $monorepoDir = dirname(__DIR__, 2);
     $pluginDir = $monorepoDir . '/layers/GatoGraphQLForWP/plugins';
@@ -47,7 +47,7 @@ return [
                 // ...
             ])
             ->in([
-                convertRelativeToFullPath('hello-dolly/vendor'),
+                convertExtensionsRelativeToFullPath('hello-dolly/vendor'),
             ]),
     ],
     'exclude-namespaces' => [
