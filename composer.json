@@ -55,6 +55,7 @@
     },
     "autoload": {
         "psr-4": {
+            "GatoGraphQLStandalone\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLStandaloneForWP/plugin-packages/gatographql/src",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/src",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/src",
             "GatoGraphQL\\PluginUtils\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/plugin-utils/src",
@@ -205,6 +206,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "GatoGraphQLStandalone\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLStandaloneForWP/plugin-packages/gatographql/tests",
             "GatoGraphQL\\ExternalDependencyWrappers\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/external-dependency-wrappers/tests",
             "GatoGraphQL\\GatoGraphQL\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/plugins/gatographql/tests",
             "GatoGraphQL\\PluginUtils\\": "submodules/GatoGraphQL/layers/GatoGraphQLForWP/packages/plugin-utils/tests",
@@ -602,6 +604,7 @@
         "install-deps-build-js": "Install all dependencies from npm to build the JS packages, blocks and editor scripts for all plugins in the Gato GraphQL - Extension Starter repo"
     },
     "replace": {
+        "gatographql-standalone/gatographql": "self.version",
         "gatographql/external-dependency-wrappers": "6.0.2",
         "gatographql/gatographql": "6.0.2",
         "gatographql/plugin-utils": "6.0.2",
