@@ -449,6 +449,14 @@
             "Composer\\Config::disableProcessTimeout",
             "composer reset-db -d webservers/gatographql-extensions-for-prod"
         ],
+        "reset-domain": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer reset-domain -d webservers/gatographql-extensions"
+        ],
+        "reset-domain-prod": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer reset-domain -d webservers/gatographql-extensions-for-prod"
+        ],
         "install-site": "composer install-site -d webservers/gatographql-extensions",
         "install-site-prod": "composer install-site -d webservers/gatographql-extensions-for-prod",
         "activate-extension-plugins": "composer activate-extension-plugins -d webservers/gatographql-extensions",
@@ -558,6 +566,7 @@
         "destroy-server": "Destroy the Lando webserver with the 'Gato GraphQL' demo site",
         "destroy-server-prod": "Destroy the Lando webserver with the 'Gato GraphQL' demo site for PROD",
         "reset-db": "Resets the WordPress database",
+        "reset-domain": "Resets the Lando domain in the WordPress site (for when not using proxy)",
         "reset-db-prod": "Resets the WordPress database in the PROD server",
         "install-site": "Installs the WordPress site",
         "install-site-prod": "Installs the WordPress site in the PROD server",
