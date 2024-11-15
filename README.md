@@ -193,7 +193,7 @@ composer build-server
 
 After a few minutes, the website will be available under `https://gatographql-{composer-vendor}-extensions.lndo.site`.
 
-(Of, if you have [Lando's proxy disabled](https://docs.lando.dev/core/v3/proxy.html#configuration), it will be available under `https://localhost:{randomPort}`.)
+(Or, if you have [Lando's proxy disabled](https://docs.lando.dev/core/v3/proxy.html#configuration), it will be available under `https://localhost:{randomPort}`.)
 
 <!-- (`{composer-vendor}` is an argument to the `initialize-project` command above; its default value is generated from the `php-namespace-owner` option.) -->
 
