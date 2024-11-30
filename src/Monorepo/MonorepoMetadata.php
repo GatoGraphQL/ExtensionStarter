@@ -26,7 +26,7 @@ final class MonorepoMetadata
      *
      * @gatographql-readonly-code
      */
-    final public const VERSION = '8.0.0';
+    final public const VERSION = '8.1.0-dev';
 
     /**
      * @gatographql-project-info
