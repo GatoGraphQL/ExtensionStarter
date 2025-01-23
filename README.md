@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/GatoGraphQL/GatoGraphQL/master/assets/GatoGraphQL-logo.png"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/GatoGraphQL/GatoGraphQL/master/assets/GatoGraphQL-logo.webp"/></p>
 
 ![Unit tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/unit_tests.yml/badge.svg)
 ![Downgrade PHP tests](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/downgrade_php_tests.yml/badge.svg)
@@ -57,7 +57,7 @@ Follow these steps:
 
 As a result, a copy of this template will have been created under your GitHub repo:
 
-![GitHub repo from template](assets/img/repo-from-template.png)
+![GitHub repo from template](assets/img/repo-from-template.webp)
 
 ### Clone your repo locally
 
@@ -199,7 +199,7 @@ After a few minutes, the website will be available under `https://gatographql-{c
 
 The URL is printed on the console under `APPSERVER URLS` (you will need to scroll up):
 
-![Lando webserver URL](assets/img/lando-webserver-url.png)
+![Lando webserver URL](assets/img/lando-webserver-url.webp)
 
 To print the URL again, run:
 
@@ -280,7 +280,7 @@ will return:
 
 If the installation of the starter was successful, you will receive a response:
 
-!["Hello Dolly" in the webserver](assets/img/graphiql-hello-dolly.png)
+!["Hello Dolly" in the webserver](assets/img/graphiql-hello-dolly.webp)
 
 ### Start the Lando webserver for DEV
 
@@ -1080,7 +1080,7 @@ To create the release, head over to the `tags` page in your GitHub repo (`https:
 
 Then, on the tag page, click on `Create release from tag`, and then add a title and content, and submit the form.
 
-![Create release from tag](assets/img/create-release-from-tag.png)
+![Create release from tag](assets/img/create-release-from-tag.webp)
 
 This will trigger the [`generate_plugins.yml`](https://github.com/GatoGraphQL/ExtensionStarter/actions/workflows/generate_plugins.yml) workflow, which will generate the extension plugins and attach them as assets to the tag page.
 
@@ -1114,7 +1114,7 @@ Once you've installed the release on the Lando webserver for PROD, log-in to the
 
 If the release was generated successfully, you will receive a response:
 
-!["Hello Dolly" in the webserver for PROD](assets/img/graphiql-hello-dolly-prod.png)
+!["Hello Dolly" in the webserver for PROD](assets/img/graphiql-hello-dolly-prod.webp)
 
 ## Run the webserver for PROD
 
