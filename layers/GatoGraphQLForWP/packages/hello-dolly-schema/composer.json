@@ -13,7 +13,7 @@
     "homepage": "https://github.com/GatoGraphQL/hello-dolly-schema",
     "require": {
         "php": "^8.1",
-        "pop-schema/schema-commons": "^10.3"
+        "pop-schema/schema-commons": "^10.4"
     },
     "require-dev": {
         "johnpbloch/wordpress": "^6.6",
@@ -44,7 +44,7 @@
     "extra": {
         "wordpress-install-dir": "vendor/wordpress/wordpress",
         "branch-alias": {
-            "dev-main": "10.3-dev"
+            "dev-main": "10.4-dev"
         }
     },
     "config": {
