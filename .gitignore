@@ -13,3 +13,4 @@ composer.lock
 # Files for running the webservers
 composer.local.json
 composer.local.lock
+.cursor/scratchpad.md
