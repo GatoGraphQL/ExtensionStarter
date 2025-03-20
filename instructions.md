@@ -26,7 +26,7 @@ Gato GraphQL is a WordPress plugin that provides a GraphQL server for WordPress.
 - Testing plugins: `submodules/ExtensionStarter/layers/{layer_name}/phpunit-plugins/{plugin_name}`
 - Testing plugin packages: `submodules/ExtensionStarter/layers/{layer_name}/phpunit-packages/{package_name}`
 
-### Monorepo files
+### Development helper files
 
 - Integrations stubs: `stubs/wpackagist-plugin/{integration-plugin}/stubs.php`
 
