@@ -31,16 +31,13 @@ Gato GraphQL is a WordPress plugin that provides a GraphQL server for WordPress.
 - Integrations stubs: `stubs/wpackagist-plugin/{integration-plugin}/stubs.php`
 - Configuration to generate plugins: `src/Config/Symplify/MonorepoBuilder/DataSources/PluginDataSource.php`
 - VSCode mappings: `.vscode/launch.json`
+- Lando webserver config to override volumes (point to local source): `webservers/gatographql-extensions/.lando.upstream.yml`
 
 ### Rector
 
 - Downgrade source code
   - Config file: `config/rector/plugins/{integration-plugin}/`
   - Source code: `src/Config/Rector/Downgrade/Configurators/Plugins/{Integration-plugin}ContainerConfigurationService.php`
-
-### Lando webserver
-
-- Configuration to override volumes (point to local source): `webservers/gatographql-extensions/.lando.upstream.yml`
 
 ### Gato GraphQL plugin
 
