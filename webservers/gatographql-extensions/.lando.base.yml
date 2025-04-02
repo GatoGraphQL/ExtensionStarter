@@ -81,6 +81,10 @@ services:
         - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/commentmeta:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/commentmeta
         - >-
+          ../../submodules/GatoGraphQL/layers/CMSSchema/packages/commentmeta-mutations-wp:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/commentmeta-mutations-wp
+        - >-
+          ../../submodules/GatoGraphQL/layers/CMSSchema/packages/commentmeta-mutations:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/commentmeta-mutations
+        - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/comments-wp:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/comments-wp
         - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/comments:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/comments
@@ -231,6 +235,10 @@ services:
         - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/user-avatars:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/user-avatars
         - >-
+          ../../submodules/GatoGraphQL/layers/CMSSchema/packages/user-mutations-wp:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/user-mutations-wp
+        - >-
+          ../../submodules/GatoGraphQL/layers/CMSSchema/packages/user-mutations:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/user-mutations
+        - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/user-roles-wp:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/user-roles-wp
         - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/user-roles:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/user-roles
@@ -246,6 +254,10 @@ services:
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/usermeta-wp:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/usermeta-wp
         - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/usermeta:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/usermeta
+        - >-
+          ../../submodules/GatoGraphQL/layers/CMSSchema/packages/usermeta-mutations-wp:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/usermeta-mutations-wp
+        - >-
+          ../../submodules/GatoGraphQL/layers/CMSSchema/packages/usermeta-mutations:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/usermeta-mutations
         - >-
           ../../submodules/GatoGraphQL/layers/CMSSchema/packages/users-wp:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-cms-schema/users-wp
         - >-
