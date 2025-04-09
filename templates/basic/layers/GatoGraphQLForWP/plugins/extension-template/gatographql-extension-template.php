@@ -53,7 +53,7 @@ add_action(
          * @gatographql-readonly-code
          */
         $extensionVersion = '7.0.0-dev';
-        $extensionName = \__('Gato GraphQL - Extension Template', 'gatographql-extension-template');
+        $extensionName = 'Gato GraphQL - Extension Template';
         /**
          * @gatographql-extension-info
          *

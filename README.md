@@ -499,7 +499,7 @@ And likewise, edit file `layers/GatoGraphQLForWP/plugins/your-extension/src/Modu
 
 ```php
 new DependedOnActiveWordPressPlugin(
-  \__('Your Extension', 'gatographql-your-extension'),
+  'Your Extension',
   'your-extension/hello.php',
   '^1.7',
 ),

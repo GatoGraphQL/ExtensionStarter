@@ -52,7 +52,7 @@ add_action(
          * @gatographql-readonly-code
          */
         $extensionVersion = '11.3.0-dev';
-        $extensionName = \__('Gato GraphQL - Hello Dolly', 'gatographql-hello-dolly');
+        $extensionName = 'Gato GraphQL - Hello Dolly';
         /**
          * @gatographql-extension-info
          *
