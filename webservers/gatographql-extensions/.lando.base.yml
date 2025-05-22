@@ -271,6 +271,8 @@ services:
         - >-
           ../../submodules/GatoGraphQL/layers/Schema/packages/http-requests:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-schema/http-requests
         - >-
+          ../../submodules/GatoGraphQL/layers/Schema/packages/logger:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-schema/logger
+        - >-
           ../../submodules/GatoGraphQL/layers/Schema/packages/schema-commons:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-schema/schema-commons
         - >-
           ../../submodules/GatoGraphQL/layers/WPSchema/packages/block-content-parser:/app/wordpress/wp-content/plugins/gatographql/vendor/pop-wp-schema/block-content-parser
