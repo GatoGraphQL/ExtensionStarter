@@ -12,7 +12,7 @@
     "keywords": ["WordPress", "plugin", "Gato", "GatoGraphQL", "GraphQL", "Extension", "Starter"],
     "homepage": "https://github.com/GatoGraphQL/extension-template",
     "require": {
-        "php": "^8.1",
+        "php": "8.1",
         "my-company-for-gatographql/extension-template-schema": "^1.1"
     },
     "require-dev": {
