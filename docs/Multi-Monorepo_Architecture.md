@@ -58,11 +58,11 @@ This includes Continuous Integration workflows to:
 
 - Generate the plugin (when merging a PR, or creating a release from a tag)
 - Scope the extension plugin
-- Downgrade the code from PHP 8.1 (for DEV), to PHP 7.4 (for PROD)
+<!-- - Downgrade the code from PHP 8.1 (for DEV), to PHP 7.4 (for PROD) -->
 - Run coding standard checks (via PHPCS), unit tests (via PHPUnit) and static code analysis (via PHPStan)
 - Run integration tests via InstaWP (automatically installing the newly-generated extension plugin on the InstaWP instance)
 
-### Downgrade Code - PHP 8.1 (during DEV) is converted to PHP 7.4 (for PROD)
+<!-- ### Downgrade Code - PHP 8.1 (during DEV) is converted to PHP 7.4 (for PROD)
 
 The source code for the main Gato GraphQL plugin, and any of its extensions, is PHP 8.1.
 
@@ -73,7 +73,7 @@ Downgrading code provides the best trade-off between availability of PHP feature
 - Use the strict typing features from PHP 8.1 (typed properties, union types, and others) to develop the plugin, reducing the possibility it will contain bugs
 - Increase the potential number of users who can use your plugin, in production, by releasing it with PHP 7.4
 
-_Not all PHP 8.1 features are available, but only those ones that are "downgradeable" via Rector. Check the list of [Supported PHP features in `GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/docs/supported-php-features.md)._
+_Not all PHP 8.1 features are available, but only those ones that are "downgradeable" via Rector. Check the list of [Supported PHP features in `GatoGraphQL/GatoGraphQL`](https://github.com/GatoGraphQL/GatoGraphQL/blob/master/docs/supported-php-features.md)._ -->
 
 ### Scope 3rd-party libraries
 
@@ -85,12 +85,12 @@ When the extension uses 3rd-party libraries (loaded via Composer), these must be
 
 Lando is already set-up and configured, making 2 webservers available:
 
-1. A webserver to develop the extensions, using PHP 8.1
-2. A webserver to test the generated extension plugins, using PHP 7.4
+1. A webserver to develop the extensions<!-- , using PHP 8.1 -->
+2. A webserver to test the generated extension plugins<!-- , using PHP 7.4 -->
 
 ### The source code is mapped to Lando's DEV webserver
 
-The Lando webserver for DEV (on PHP 8.1) overrides the code deployed within the container, mapping the source code from the repo instead.
+The Lando webserver for DEV<!--  (on PHP 8.1) --> overrides the code deployed within the container, mapping the source code from the repo instead.
 
 As such, changes to the source code will be immediately reflected in the webserver.
 
@@ -123,7 +123,7 @@ The monorepo split feature is disabled by default. To enable it, return an empty
 
 ### Distribute PROD code to its own repo
 
-Similar to the monorepo split, when generating the plugin for PROD, we can deploy its code (scoped, downgraded, with the Composer autoload generated, etc) into its own repo.
+Similar to the monorepo split, when generating the plugin for PROD, we can deploy its code (scoped, <!-- downgraded, -->with the Composer autoload generated, etc) into its own repo.
 
 This is useful for:
 
