@@ -13,15 +13,15 @@
     "homepage": "https://github.com/GatoGraphQL/extension-template-schema",
     "require": {
         "php": "^8.1",
-        "pop-schema/schema-commons": "^13.3"
+        "pop-schema/schema-commons": "^14.1"
     },
     "require-dev": {
         "johnpbloch/wordpress": "^6.6",
-        "phpstan/phpstan": "^1.8",
+        "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^10.2",
-        "rector/rector": "^0.18",
+        "rector/rector": "^2.1",
         "squizlabs/php_codesniffer": "^3.6",
-        "szepeviktor/phpstan-wordpress": "^1.0",
+        "szepeviktor/phpstan-wordpress": "^2.0",
         "wp-coding-standards/wpcs": "^3.0"
     },
     "autoload": {
