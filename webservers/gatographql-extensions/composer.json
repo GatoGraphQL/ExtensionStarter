@@ -61,6 +61,7 @@
         "reset-domain": "lando wp search-replace \"$(lando wp option get siteurl | grep -E -o 'localhost:[0-9]+')\" \"$(lando info | grep -E -o 'https:\/\/localhost:[0-9]+' | grep -E -o 'localhost:[0-9]+')\"",
         "install-site": "lando composer install-site-within-container -- \"$(lando info | grep -E -o 'https:\/\/localhost:[0-9]+' | grep -E -o 'localhost:[0-9]+')\"",
         "install-site-within-container": [
+            "Composer\\Config::disableProcessTimeout",
             "/bin/bash /app/setup/setup.sh",
             "/bin/bash /app/setup-extensions/setup.sh"
         ],
