@@ -10,7 +10,7 @@ Via Composer
 composer require my-company-for-gatographql/hello-dolly-schema
 ```
 
-## PHP versions
+<!-- ## PHP versions
 
 Requirements:
 
@@ -27,7 +27,7 @@ Via [Rector](https://github.com/rectorphp/rector) (dry-run mode):
 
 ```bash
 composer preview-code-downgrade
-```
+``` -->
 
 ## Standards
 
