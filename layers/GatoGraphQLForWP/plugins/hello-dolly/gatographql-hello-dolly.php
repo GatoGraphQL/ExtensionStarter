@@ -25,7 +25,10 @@ if (!defined('ABSPATH')) {
 }
 
 \add_action('init', function (): void {
-    load_plugin_textdomain('gatographql-hello-dolly', false, plugin_basename(__FILE__) . '/languages');
+    $mofile = __DIR__ . '/languages/' . \basename(__FILE__, '.php') . '-' . \determine_locale() . '.mo';
+    if (\is_readable($mofile)) {
+        \load_textdomain('gatographql', $mofile);
+    }
 });
 
 /**
