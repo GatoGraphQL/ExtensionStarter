@@ -46,7 +46,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
      */
     public function getDependentOnActiveWordPressPlugins(string $module): array
     {
-        $requiredPluginName = __('Hello Dolly', 'gatographql-hello-dolly');
+        $requiredPluginName = __('Hello Dolly', 'gatographql');
         $requiredPluginFile = 'hello-dolly/hello.php';
         $requiredPluginVersion = '^1.7';
         return match ($module) {
@@ -74,7 +74,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getName(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_HELLO_DOLLY => \__('Hello Dolly Schema', 'gatographql-hello-dolly'),
+            self::SCHEMA_HELLO_DOLLY => \__('Hello Dolly Schema', 'gatographql'),
             default => $module,
         };
     }
@@ -82,7 +82,7 @@ class SchemaTypeModuleResolver extends AbstractModuleResolver
     public function getDescription(string $module): string
     {
         return match ($module) {
-            self::SCHEMA_HELLO_DOLLY => \__('Add schema elements for the Hello Dolly extension for Gato GraphQL.', 'gatographql-hello-dolly'),
+            self::SCHEMA_HELLO_DOLLY => \__('Add schema elements for the Hello Dolly extension for Gato GraphQL.', 'gatographql'),
             default => parent::getDescription($module),
         };
     }
