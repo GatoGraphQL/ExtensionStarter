@@ -13,7 +13,6 @@ use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\ConvertVersionForProdInPluginMainFileReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\ConvertVersionForProdInPluginNodeJSPackageJSONFilesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\RestoreVersionForDevInPluginBlockCompiledMarkdownFilesReleaseWorker;
-use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualConflictsReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetNextMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetTemplateCurrentMutualDependenciesReleaseWorker;
@@ -50,6 +49,11 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
         // Obtain the classes from upstream
         $releaseWorkerClasses = parent::getReleaseWorkerClasses();
 
+        $releaseWorkerClasses = array_values(array_filter(
+            $releaseWorkerClasses,
+            fn (string $releaseWorkerClass): bool => $releaseWorkerClass !== UpstreamSetCurrentMutualConflictsReleaseWorker::class,
+        ));
+
         /**
          * After executing each release worker from upstream, the version from downstream will have been injected
          * Then, execute an additional release worker, to replace that version with the one from upstream,
@@ -57,7 +61,6 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
          */
         $upstreamDownstreamClasses = [
             UpstreamUpdateReplaceReleaseWorker::class => UpdateReplaceReleaseWorker::class,
-            UpstreamSetCurrentMutualConflictsReleaseWorker::class => SetCurrentMutualConflictsReleaseWorker::class,
             UpstreamSetCurrentMutualDependenciesReleaseWorker::class => SetCurrentMutualDependenciesReleaseWorker::class,
             UpstreamSetNextMutualDependenciesReleaseWorker::class => SetNextMutualDependenciesReleaseWorker::class,
             UpstreamUpdateBranchAliasReleaseWorker::class => UpdateBranchAliasReleaseWorker::class,

@@ -16,6 +16,13 @@ use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterfa
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
+/**
+ * @deprecated Mutual "conflict" constraints are no longer set on the packages'
+ *   "composer.json" during a release, so this release worker (and its upstream
+ *   counterpart Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualConflictsReleaseWorker)
+ *   is no longer registered in the release worker list. See ReleaseWorkersDataSource,
+ *   where the upstream worker is filtered out from the list of classes to execute.
+ */
 final class SetCurrentMutualConflictsReleaseWorker implements ReleaseWorkerInterface
 {
     private string $upstreamRelativePath;
