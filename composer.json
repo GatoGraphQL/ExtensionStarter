@@ -441,7 +441,6 @@
         "wordpress-install-dir": "vendor/wordpress/wordpress"
     },
     "config": {
-        "source-fallback": true,
         "sort-packages": true,
         "allow-plugins": {
             "boxuk/wp-muplugin-loader": true,
