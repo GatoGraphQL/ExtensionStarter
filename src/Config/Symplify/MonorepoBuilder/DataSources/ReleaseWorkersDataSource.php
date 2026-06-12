@@ -13,7 +13,6 @@ use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\ConvertVersionForProdInPluginMainFileReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\ConvertVersionForProdInPluginNodeJSPackageJSONFilesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\RestoreVersionForDevInPluginBlockCompiledMarkdownFilesReleaseWorker;
-use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualConflictsReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetNextMutualDependenciesReleaseWorker;
 use PoP\ExtensionStarter\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\SetTemplateCurrentMutualDependenciesReleaseWorker;
@@ -31,7 +30,6 @@ use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\ConvertVersi
 use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\ConvertVersionForProdInPluginMainFileReleaseWorker as UpstreamConvertVersionForProdInPluginMainFileReleaseWorker;
 use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\ConvertVersionForProdInPluginNodeJSPackageJSONFilesReleaseWorker as UpstreamConvertVersionForProdInPluginNodeJSPackageJSONFilesReleaseWorker;
 use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\RestoreVersionForDevInPluginBlockCompiledMarkdownFilesReleaseWorker as UpstreamRestoreVersionForDevInPluginBlockCompiledMarkdownFilesReleaseWorker;
-use Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualConflictsReleaseWorker as UpstreamSetCurrentMutualConflictsReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualDependenciesReleaseWorker as UpstreamSetCurrentMutualDependenciesReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\SetNextMutualDependenciesReleaseWorker as UpstreamSetNextMutualDependenciesReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateBranchAliasReleaseWorker as UpstreamUpdateBranchAliasReleaseWorker;
@@ -57,7 +55,6 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
          */
         $upstreamDownstreamClasses = [
             UpstreamUpdateReplaceReleaseWorker::class => UpdateReplaceReleaseWorker::class,
-            UpstreamSetCurrentMutualConflictsReleaseWorker::class => SetCurrentMutualConflictsReleaseWorker::class,
             UpstreamSetCurrentMutualDependenciesReleaseWorker::class => SetCurrentMutualDependenciesReleaseWorker::class,
             UpstreamSetNextMutualDependenciesReleaseWorker::class => SetNextMutualDependenciesReleaseWorker::class,
             UpstreamUpdateBranchAliasReleaseWorker::class => UpdateBranchAliasReleaseWorker::class,
