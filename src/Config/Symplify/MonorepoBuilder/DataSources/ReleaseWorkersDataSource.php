@@ -30,7 +30,6 @@ use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\ConvertVersi
 use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\ConvertVersionForProdInPluginMainFileReleaseWorker as UpstreamConvertVersionForProdInPluginMainFileReleaseWorker;
 use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\ConvertVersionForProdInPluginNodeJSPackageJSONFilesReleaseWorker as UpstreamConvertVersionForProdInPluginNodeJSPackageJSONFilesReleaseWorker;
 use PoP\PoP\OnDemand\Symplify\MonorepoBuilder\Release\ReleaseWorker\RestoreVersionForDevInPluginBlockCompiledMarkdownFilesReleaseWorker as UpstreamRestoreVersionForDevInPluginBlockCompiledMarkdownFilesReleaseWorker;
-use Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualConflictsReleaseWorker as UpstreamSetCurrentMutualConflictsReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualDependenciesReleaseWorker as UpstreamSetCurrentMutualDependenciesReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\SetNextMutualDependenciesReleaseWorker as UpstreamSetNextMutualDependenciesReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateBranchAliasReleaseWorker as UpstreamUpdateBranchAliasReleaseWorker;
@@ -48,11 +47,6 @@ class ReleaseWorkersDataSource extends UpstreamReleaseWorkersDataSource
     {
         // Obtain the classes from upstream
         $releaseWorkerClasses = parent::getReleaseWorkerClasses();
-
-        $releaseWorkerClasses = array_values(array_filter(
-            $releaseWorkerClasses,
-            fn (string $releaseWorkerClass): bool => $releaseWorkerClass !== UpstreamSetCurrentMutualConflictsReleaseWorker::class,
-        ));
 
         /**
          * After executing each release worker from upstream, the version from downstream will have been injected
