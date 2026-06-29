@@ -24,9 +24,12 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-\add_action('init', function (): void {
-    load_plugin_textdomain('gatographql-hello-dolly', false, plugin_basename(__FILE__) . '/languages');
-});
+add_action('init', function (): void {
+    if (!class_exists(\PoPIncludes\GatoGraphQL\Startup::class)) {
+        return;
+    }
+    \PoPIncludes\GatoGraphQL\Startup::loadTextdomainWithFallback(__DIR__ . '/languages/', basename(__FILE__, '.php') . '-');
+}, PHP_INT_MIN);
 
 /**
  * Create and set-up the extension
@@ -69,8 +72,8 @@ add_action(
                 printf(
                     '<div class="notice notice-error"><p>%s</p></div>',
                     sprintf(
-                        __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-hello-dolly'),
-                        __('Gato GraphQL', 'gatographql-hello-dolly'),
+                        __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql'),
+                        __('Gato GraphQL', 'gatographql'),
                         $extensionName
                     )
                 );
@@ -133,18 +136,18 @@ add_action(
                      * If the extension is an integration for some plugin (eg: WooCommerce,
                      * Yoast SEO or, in this case, Hello Dolly), indicate the plugin's name:
                      */
-                    $requiredPluginName = __('Hello Dolly', 'gatographql-hello-dolly');
+                    $requiredPluginName = __('Hello Dolly', 'gatographql');
                     printf(
                         '<div class="notice notice-error"><p>%s</p></div>',
                         $isWordPressPluginActive
                             ? sprintf(
-                                __('Installed version of plugin <strong>%s</strong> does not satisfy required constraint <code>%s</code>. Plugin <strong>%s</strong> has not been loaded.', 'gatographql-hello-dolly'),
+                                __('Installed version of plugin <strong>%s</strong> does not satisfy required constraint <code>%s</code>. Plugin <strong>%s</strong> has not been loaded.', 'gatographql'),
                                 $requiredPluginName,
                                 $requiredPluginVersion,
                                 $extensionName
                             )
                             : sprintf(
-                                __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql-hello-dolly'),
+                                __('Plugin <strong>%s</strong> is not installed or activated. Without it, plugin <strong>%s</strong> will not be loaded.', 'gatographql'),
                                 $requiredPluginName,
                                 $extensionName
                             )

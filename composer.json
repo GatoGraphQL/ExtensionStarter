@@ -59,6 +59,7 @@
         "symfony/var-dumper": "^6.0",
         "symplify/monorepo-builder": "^10.2.2",
         "szepeviktor/phpstan-wordpress": "^2.0",
+        "wp-cli/i18n-command": "^2.7",
         "wp-coding-standards/wpcs": "^3.0"
     },
     "autoload": {
@@ -426,6 +427,14 @@
         {
             "type": "vcs",
             "url": "https://github.com/leoloso/package-builder.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/leoloso/symplify-composer-json-manipulator.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/leoloso/symplify-easy-testing.git"
         }
     ],
     "extra": {
@@ -473,7 +482,7 @@
         "check-style-wp": "php -d memory_limit=512M vendor/bin/phpcs --standard=submodules/GatoGraphQL/phpcs/WordPress-Custom/ruleset.xml -n $(monorepo-builder source-packages --config=config/monorepo-builder/monorepo-builder-without-upstream-packages.php --psr4-only --wp-only --subfolder=src --subfolder=tests)",
         "fix-style": "php -d memory_limit=512M vendor/bin/phpcbf -n src $(monorepo-builder source-packages --config=config/monorepo-builder/monorepo-builder-without-upstream-packages.php --psr4-only --subfolder=src --subfolder=tests)",
         "fix-style-wp": "php -d memory_limit=512M vendor/bin/phpcbf --standard=submodules/GatoGraphQL/phpcs/WordPress-Custom/ruleset.xml -n src $(monorepo-builder source-packages --config=config/monorepo-builder/monorepo-builder-without-upstream-packages.php --psr4-only --wp-only --subfolder=src --subfolder=tests)",
-        "analyse": "phpstan analyse --memory-limit 1G --ansi",
+        "analyse": "phpstan analyse --memory-limit 2G --ansi",
         "preview-src-downgrade": "rector process $(monorepo-builder source-packages --config=config/monorepo-builder/source-packages.php --psr4-only --subfolder=src) --config=config/rector/downgrade/monorepo/rector.php --ansi --dry-run || true",
         "preview-vendor-downgrade": "submodules/GatoGraphQL/ci/downgrade/downgrade_code.sh config/rector/downgrade/monorepo/rector.php --dry-run \"\" \"\" \"\" \"$(monorepo-builder local-package-owners --config=config/monorepo-builder/local-package-owners.php)\" || true",
         "preview-code-downgrade": [
