@@ -477,6 +477,7 @@
             "Composer\\Config::disableProcessTimeout",
             "composer stopping-integration-test -d webservers/gatographql-extensions-for-prod"
         ],
+        "i18n-check": "composer i18n-check -d submodules/GatoGraphQL",
         "debug": "XDEBUG_TRIGGER=debug phpunit",
         "check-style": "php -d memory_limit=512M vendor/bin/phpcs -n src $(monorepo-builder source-packages --config=config/monorepo-builder/monorepo-builder-without-upstream-packages.php --psr4-only --subfolder=src --subfolder=tests)",
         "check-style-wp": "php -d memory_limit=512M vendor/bin/phpcs --standard=submodules/GatoGraphQL/phpcs/WordPress-Custom/ruleset.xml -n $(monorepo-builder source-packages --config=config/monorepo-builder/monorepo-builder-without-upstream-packages.php --psr4-only --wp-only --subfolder=src --subfolder=tests)",
