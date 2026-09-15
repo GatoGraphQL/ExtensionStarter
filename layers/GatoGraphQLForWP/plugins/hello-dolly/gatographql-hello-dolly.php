@@ -11,7 +11,6 @@ License:
 License URI:
 Text Domain: gatographql-hello-dolly
 Domain Path: /languages
-Requires Plugins: gatographql
 */
 
 use MyCompanyForGatoGraphQL\HelloDolly\GatoGraphQLExtension;
