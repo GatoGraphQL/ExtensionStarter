@@ -5,7 +5,7 @@ proxy:
     - mail.gatographql-extensions.lndo.site
 config:
   webroot: wordpress
-  php: '8.2'
+  php: '8.1'
   ssl: true
   # @todo Maybe re-enable MariaDB, sometimes giving error when doing `rebuild-server` in Lando
   # database: mariadb
