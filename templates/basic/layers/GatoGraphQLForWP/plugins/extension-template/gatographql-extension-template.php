@@ -1,7 +1,6 @@
 <?php
 /*
 Plugin Name: Gato GraphQL - Extension Template
-Requires Plugins: gatographql
 Plugin URI:
 Description: Extension Template extension for Gato GraphQL
 Version: 7.0.0-dev
@@ -12,7 +11,6 @@ License:
 License URI:
 Text Domain: gatographql-extension-template
 Domain Path: /languages
-Requires Plugins: gatographql
 */
 
 use MyCompanyForGatoGraphQL\ExtensionTemplate\GatoGraphQLExtension;
