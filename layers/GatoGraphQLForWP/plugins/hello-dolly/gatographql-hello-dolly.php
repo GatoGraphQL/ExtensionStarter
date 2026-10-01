@@ -54,7 +54,7 @@ add_action(
          * The minimum version required from the Gato GraphQL plugin
          * to activate the extension.
          */
-        $gatoGraphQLPluginVersionConstraint = '^19.3';
+        $gatoGraphQLPluginVersionConstraint = '^20.0';
         
         /**
          * Validate Gato GraphQL is active
