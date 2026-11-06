@@ -49,9 +49,11 @@
         "init-server": "@start-server",
         "start-server": [
             "@purge-cache",
-            "lando start"
+            "lando start",
+            "@route-in-lando-proxy"
         ],
         "destroy-server": "lando destroy -y",
+        "route-in-lando-proxy": "python3 ../../submodules/GatoGraphQL/webservers/shared/composer-scripts/route-in-lando-proxy.py",
         "reset-db": [
             "Composer\\Config::disableProcessTimeout",
             "@purge-cache",
@@ -76,13 +78,15 @@
         "rebuild-server": [
             "Composer\\Config::disableProcessTimeout",
             "@purge-cache",
-            "lando rebuild appserver -y"
+            "lando rebuild appserver -y",
+            "@route-in-lando-proxy"
         ],
         "rebuild-app-and-server": [
             "Composer\\Config::disableProcessTimeout",
             "@purge-cache",
             "@update-deps",
-            "lando rebuild appserver -y"
+            "lando rebuild appserver -y",
+            "@route-in-lando-proxy"
         ],
         "stop-server": "lando stop",
         "optimize-autoloader": [
