@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\ExtensionStarter\Extensions\Symplify\MonorepoBuilder\Release\Configuration;
 
 use PharIo\Version\Version;
+use PoP\PoP\Extensions\Symplify\MonorepoBuilder\Utils\VersionUtils;
 use Symplify\MonorepoBuilder\Git\MostRecentTagResolver;
 
 final class UpstreamVersionResolver
@@ -13,12 +14,22 @@ final class UpstreamVersionResolver
     private array $cachedVersions = [];
 
     public function __construct(
-        private MostRecentTagResolver $mostRecentTagResolver
+        private MostRecentTagResolver $mostRecentTagResolver,
+        private VersionUtils $versionUtils,
     ) {
     }
 
     public function resolveVersion(string $upstreamRelativePath): Version
     {
+        /**
+         * When bumping the dev version without a release, the upstream
+         * has no new tag, and the command sets the version to use
+         */
+        $upstreamVersion = $this->versionUtils->getUpstreamVersion();
+        if ($upstreamVersion !== null) {
+            return $upstreamVersion;
+        }
+
         if (isset($this->cachedVersions[$upstreamRelativePath])) {
             return $this->cachedVersions[$upstreamRelativePath];
         }
