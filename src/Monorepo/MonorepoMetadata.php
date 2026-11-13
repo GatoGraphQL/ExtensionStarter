@@ -40,7 +40,7 @@ final class MonorepoMetadata
      *
      * @gatographql-readonly-code
      */
-    final public const LATEST_PROD_VERSION = '20.0.1';
+    final public const LATEST_PROD_VERSION = '20.0.2';
 
     /**
      * @gatographql-project-info
