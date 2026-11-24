@@ -3,7 +3,7 @@
 Plugin Name: Gato GraphQL - Hello Dolly
 Plugin URI:
 Description: Integration of plugin Hello Dolly with Gato GraphQL
-Version: 21.0.0-dev
+Version: 21.0.0
 Requires at least: 6.5
 Requires PHP: 8.1
 Author: My Company
@@ -46,7 +46,7 @@ add_action(
          *
          * @gatographql-readonly-code
          */
-        $extensionVersion = '21.0.0-dev';
+        $extensionVersion = '21.0.0';
         $extensionName = 'Gato GraphQL - Hello Dolly';
         /**
          * @gatographql-extension-info
@@ -54,7 +54,7 @@ add_action(
          * The minimum version required from the Gato GraphQL plugin
          * to activate the extension.
          */
-        $gatoGraphQLPluginVersionConstraint = '^20.0';
+        $gatoGraphQLPluginVersionConstraint = '^21.0';
         
         /**
          * Validate Gato GraphQL is active
